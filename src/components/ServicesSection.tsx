@@ -7,7 +7,7 @@ const services = [
     title: "Posicionamento Estratégico",
     subtitle: "Para quem é visto, mas não é percebido com profundidade.",
     description:
-      "Redesenho a narrativa e o posicionamento de figuras públicas e empresas para que a percepção de mercado esteja alinhada com o valor real entregue. Autoridade não se constrói com volume — se constrói com precisão.",
+      "Redesenhamos a narrativa e o posicionamento de figuras públicas e empresas para que a percepção de mercado esteja alinhada com o valor real entregue. Autoridade não se constrói com volume — se constrói com precisão.",
   },
   {
     icon: Network,
