@@ -16,11 +16,11 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
+          transition={{ duration: 1, ease: "easeOut" }}>
+          
           <div className="line-gold mx-auto mb-8" />
           <p className="text-primary font-display tracking-[0.3em] uppercase text-sm mb-6">
-            Arquitetura de Ecossistemas & Articulação de Negócios
+            Arquitetura de Ecossistemas & Articulação Corporativa  
           </p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-8">
             Transformo <span className="text-gradient-gold">influência</span> em
@@ -45,12 +45,12 @@ const HeroSection = () => {
       <motion.div
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-      >
+        transition={{ repeat: Infinity, duration: 2 }}>
+        
         <div className="w-px h-12 bg-gradient-to-b from-primary/60 to-transparent" />
       </motion.div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
