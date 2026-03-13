@@ -14,7 +14,7 @@ const services = [
     title: "Arquitetura de Ecossistemas",
     subtitle: "Para quem tem audiência, mas não tem estrutura.",
     description:
-      "Projeto e construo ecossistemas de negócio que conectam produtos, serviços e parcerias de forma integrada. Cada peça gera receita e reforça as demais — sem dependência de uma única fonte.",
+      "Projetamos e construimos ecossistemas de negócio que conectam produtos, serviços e parcerias de forma integrada. Cada peça gera receita e reforça as demais — sem dependência de uma única fonte.",
   },
   {
     icon: TrendingUp,
