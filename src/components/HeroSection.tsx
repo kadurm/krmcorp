@@ -23,7 +23,7 @@ const HeroSection = () => {
             Arquitetura de Ecossistemas & Articulação Corporativa  
           </p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-8">
-            Transformo <span className="text-gradient-gold">influência</span> em
+            Transformamos <span className="text-gradient-gold">influência</span> em
             <br />
             estrutura lucrativa
           </h1>

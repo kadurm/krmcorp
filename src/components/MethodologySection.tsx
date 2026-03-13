@@ -39,7 +39,7 @@ const MethodologySection = () => {
             Metodologia
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold">
-            Como eu entrego <span className="text-gradient-gold">resultado</span>
+            Como entregamos <span className="text-gradient-gold">resultados</span>
           </h2>
         </motion.div>
 

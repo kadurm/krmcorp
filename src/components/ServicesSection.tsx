@@ -7,21 +7,21 @@ const services = [
     title: "Posicionamento Estratégico",
     subtitle: "Para quem é visto, mas não é percebido com profundidade.",
     description:
-      "Redesenho a narrativa e o posicionamento de figuras públicas e empresas para que a percepção de mercado esteja alinhada com o valor real entregue. Autoridade não se constrói com volume — se constrói com precisão.",
+      "Redesenhamos a narrativa e o posicionamento de figuras públicas e empresas para que a percepção de mercado esteja alinhada com o valor real entregue. Autoridade não se constrói com volume — se constrói com precisão.",
   },
   {
     icon: Network,
     title: "Arquitetura de Ecossistemas",
     subtitle: "Para quem tem audiência, mas não tem estrutura.",
     description:
-      "Projeto e construo ecossistemas de negócio que conectam produtos, serviços e parcerias de forma integrada. Cada peça gera receita e reforça as demais — sem dependência de uma única fonte.",
+      "Projetamos e construimos ecossistemas de negócio que conectam produtos, serviços e parcerias de forma integrada. Cada peça gera receita e reforça as demais — sem dependência de uma única fonte.",
   },
   {
     icon: TrendingUp,
     title: "Articulação de Negócios",
     subtitle: "Para quem precisa de resultados, não de reuniões.",
     description:
-      "Conecto pessoas, oportunidades e capitais com foco em execução. Atuo como articulador entre as partes para viabilizar acordos, parcerias e operações que geram valor mensurável.",
+      "Conectamos pessoas, oportunidades e capitais com foco em execução. Atuamos como articuladores entre as partes para viabilizar parcerias, acordos e operações que geram valor mensurável.",
   },
 ];
 
