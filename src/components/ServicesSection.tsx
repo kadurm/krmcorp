@@ -21,7 +21,7 @@ const services = [
     title: "Articulação de Negócios",
     subtitle: "Para quem precisa de resultados, não de reuniões.",
     description:
-      "Conecto pessoas, oportunidades e capitais com foco em execução. Atuo como articulador entre as partes para viabilizar acordos, parcerias e operações que geram valor mensurável.",
+      "Conectamos pessoas, oportunidades e capitais com foco em execução. Atuamos como articuladores entre as partes para viabilizar parcerias, acordos e operações que geram valor mensurável.",
   },
 ];
 
