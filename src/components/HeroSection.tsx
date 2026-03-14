@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ApplicationModal from "@/components/ApplicationModal";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
@@ -17,10 +18,10 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}>
-          
+
           <div className="line-gold mx-auto mb-8" />
           <p className="text-primary font-display tracking-[0.3em] uppercase text-sm mb-6">
-            Arquitetura de Ecossistemas & Articulação Corporativa  
+            Arquitetura de Ecossistemas & Articulação Corporativa
           </p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-8">
             Transformamos <span className="text-gradient-gold">influência</span> em
@@ -31,9 +32,13 @@ const HeroSection = () => {
             Estratégia, articulação e execução para quem precisa converter autoridade em resultados financeiros reais. Sem ruído. Sem improviso.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" className="px-10 py-6">
-              Agendar Conversa
-            </Button>
+            <ApplicationModal
+              trigger={
+                <Button variant="hero" size="lg" className="px-10 py-6">
+                  Agendar Conversa
+                </Button>
+              }
+            />
             <Button variant="hero-outline" size="lg" className="px-10 py-6">
               Conheça o Método
             </Button>
@@ -46,11 +51,11 @@ const HeroSection = () => {
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}>
-        
+
         <div className="w-px h-12 bg-gradient-to-b from-primary/60 to-transparent" />
       </motion.div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default HeroSection;
