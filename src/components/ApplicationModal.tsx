@@ -60,8 +60,8 @@ O que faz atualmente: ${data.descricao}`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[480px] max-w-[95vw] mx-4 bg-background border-muted/20 max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="pb-4">
+      <DialogContent className="w-[95vw] max-w-[500px] sm:max-w-[450px] bg-background border-muted/20 mx-4 sm:mx-auto">
+        <DialogHeader className="px-4 sm:px-6">
           <DialogTitle className="text-xl sm:text-2xl font-display text-center mb-2">
             Aplicação para Consultoria
           </DialogTitle>
@@ -71,7 +71,7 @@ O que faz atualmente: ${data.descricao}`;
         </DialogHeader>
 
         {isSuccess ? (
-          <div className="py-8 sm:py-12 text-center space-y-4">
+          <div className="py-8 sm:py-12 text-center space-y-4 px-4 sm:px-6">
             <div className="text-3xl sm:text-4xl">✨</div>
             <h3 className="text-lg sm:text-xl font-medium text-gradient-gold">Aplicação Recebida!</h3>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -79,7 +79,7 @@ O que faz atualmente: ${data.descricao}`;
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 mt-4 text-left">
+          <form onSubmit={handleSubmit} className="space-y-5 mt-4 text-left px-4 sm:px-6 pb-4 sm:pb-6">
             <input type="text" name="_honey" style={{ display: "none" }} />
             <input type="hidden" name="_captcha" value="false" />
 
@@ -94,7 +94,7 @@ O que faz atualmente: ${data.descricao}`;
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="instagram">@ do Instagram</Label>
                 <Input
@@ -143,7 +143,7 @@ O que faz atualmente: ${data.descricao}`;
             <Button
               type="submit"
               variant="hero"
-              className="w-full mt-4 sm:mt-6 py-4 sm:py-6 text-sm sm:text-md"
+              className="w-full mt-6 py-4 sm:py-6 text-sm sm:text-md"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Enviando aplicação..." : "Enviar Aplicação"}
