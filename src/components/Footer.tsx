@@ -7,7 +7,7 @@ const Footer = () => {
         </span>
         <div className="flex gap-6">
           <a
-            href="https://www.instagram.com/krm.corpigsh=cnpwZ2FxMjl0eXV1&utm_source=qr"
+            href="https://www.instagram.com/krm.corpigsh=MWM1NG1tMXZlMDAzaQ=="
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary text-xs tracking-wider uppercase transition-colors"
