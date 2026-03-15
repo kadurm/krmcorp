@@ -60,7 +60,7 @@ O que faz atualmente: ${data.descricao}`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="w-[95vw] max-w-[500px] sm:max-w-[450px] bg-background border-muted/20 mx-4 sm:mx-auto">
+      <DialogContent className="w-[95vw] max-w-lg sm:max-w-md bg-background border-muted/20 mx-auto">
         <DialogHeader className="px-4 sm:px-6">
           <DialogTitle className="text-xl sm:text-2xl font-display text-center mb-2">
             Aplicação para Consultoria
