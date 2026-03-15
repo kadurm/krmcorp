@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d C:/Users/ADM/Desktop/**)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}
