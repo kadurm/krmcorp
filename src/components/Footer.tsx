@@ -6,15 +6,14 @@ const Footer = () => {
           © {new Date().getFullYear()} · Todos os direitos reservados
         </span>
         <div className="flex gap-6">
-          {["LinkedIn", "Instagram"].map((social) => (
-            <a
-              key={social}
-              href="#"
-              className="text-muted-foreground hover:text-primary text-xs tracking-wider uppercase transition-colors"
-            >
-              {social}
-            </a>
-          ))}
+          <a
+            href="https://www.instagram.com/krm.corpigsh=cnpwZ2FxMjl0eXV1&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary text-xs tracking-wider uppercase transition-colors"
+          >
+            Instagram
+          </a>
         </div>
       </div>
     </footer>
