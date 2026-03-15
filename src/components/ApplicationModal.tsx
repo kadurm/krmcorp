@@ -60,90 +60,90 @@ O que faz atualmente: ${data.descricao}`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="w-[95vw] max-w-lg sm:max-w-md bg-background border-muted/20 mx-auto">
-        <DialogHeader className="px-4 sm:px-6">
-          <DialogTitle className="text-xl sm:text-2xl font-display text-center mb-2">
+      <DialogContent className="w-[95vw] max-w-lg sm:max-w-md bg-background border-muted/20 mx-auto my-4 sm:my-8 p-0 overflow-hidden">
+        <DialogHeader className="px-4 sm:px-6 pt-4 pb-2">
+          <DialogTitle className="text-lg sm:text-xl font-display text-center mb-1">
             Aplicação para Consultoria
           </DialogTitle>
-          <DialogDescription className="text-center text-muted-foreground text-sm sm:text-base">
-            Preencha os dados abaixo para analisarmos seu perfil e ecossistema antes da nossa conversa.
+          <DialogDescription className="text-center text-muted-foreground text-xs sm:text-sm">
+            Preencha os dados abaixo para analisarmos seu perfil.
           </DialogDescription>
         </DialogHeader>
 
         {isSuccess ? (
-          <div className="py-8 sm:py-12 text-center space-y-4 px-4 sm:px-6">
-            <div className="text-3xl sm:text-4xl">✨</div>
-            <h3 className="text-lg sm:text-xl font-medium text-gradient-gold">Aplicação Recebida!</h3>
-            <p className="text-muted-foreground text-sm sm:text-base">
+          <div className="py-6 sm:py-8 text-center space-y-3 px-4 sm:px-6">
+            <div className="text-2xl sm:text-3xl">✨</div>
+            <h3 className="text-base sm:text-lg font-medium text-gradient-gold">Aplicação Recebida!</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm">
               Analisaremos seu perfil e entraremos em contato em breve.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-5 mt-4 text-left px-4 sm:px-6 pb-4 sm:pb-6">
+          <form onSubmit={handleSubmit} className="space-y-3 mt-2 text-left px-4 sm:px-6 pb-6">
             <input type="text" name="_honey" style={{ display: "none" }} />
             <input type="hidden" name="_captcha" value="false" />
 
-            <div className="space-y-2">
-              <Label htmlFor="nome">Nome Completo</Label>
+            <div className="space-y-1">
+              <Label htmlFor="nome" className="text-xs">Nome Completo</Label>
               <Input
                 id="nome"
                 name="nome"
                 required
                 placeholder="Digite seu nome completo"
-                className="bg-muted/50"
+                className="bg-muted/50 h-9 text-sm"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="instagram">@ do Instagram</Label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <Label htmlFor="instagram" className="text-xs">@ do Instagram</Label>
                 <Input
                   id="instagram"
                   name="instagram"
                   required
                   placeholder="@seu.perfil"
-                  className="bg-muted/50"
+                  className="bg-muted/50 h-9 text-sm"
                 />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="telefone">WhatsApp / Telefone</Label>
+              <div className="space-y-1">
+                <Label htmlFor="telefone" className="text-xs">WhatsApp / Telefone</Label>
                 <Input
                   id="telefone"
                   name="telefone"
                   required
                   placeholder="(00) 00000-0000"
-                  className="bg-muted/50"
+                  className="bg-muted/50 h-9 text-sm"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">E-mail</Label>
+            <div className="space-y-1">
+              <Label htmlFor="email" className="text-xs">E-mail</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 required
                 placeholder="seu@email.com"
-                className="bg-muted/50"
+                className="bg-muted/50 h-9 text-sm"
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="descricao">Quem é você e o que faz atualmente?</Label>
+            <div className="space-y-1">
+              <Label htmlFor="descricao" className="text-xs">Quem é você e o que faz atualmente?</Label>
               <Textarea
                 id="descricao"
                 name="descricao"
                 required
-                placeholder="Descreva brevemente sua atuação, modelo de negócio e principal objetivo hoje..."
-                className="min-h-[100px] sm:min-h-[120px] bg-muted/50 resize-none"
+                placeholder="Descreva brevemente sua atuação..."
+                className="min-h-[70px] sm:min-h-[80px] bg-muted/50 resize-none text-sm"
               />
             </div>
 
             <Button
               type="submit"
               variant="hero"
-              className="w-full mt-6 py-4 sm:py-6 text-sm sm:text-md"
+              className="w-full mt-4 py-4 sm:py-5 text-sm"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Enviando aplicação..." : "Enviar Aplicação"}
