@@ -27,7 +27,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="py-32 relative">
+    <section id="servicos" className="py-32 relative">
       <div className="container max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
