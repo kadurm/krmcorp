@@ -169,7 +169,7 @@ const Presentation = () => {
 
             <div className="bg-card/30 border border-white/5 p-8 rounded-2xl max-w-2xl text-center space-y-8">
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Com a base validada, entramos na fase de Escala a partir do 3º mês. Aqui, implementamos uma Landing Page focada em conversão, centralizando a atenção do cliente e barateando o custo por contato.
+                Com a base validada, entramos na fase de Escala a partir do 3º mês. Aqui, implementamos uma Landing Page focada em conversão, centralizando a atenção do cliente e qualificando o lead.
               </p>
               <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
                 <p className="text-primary font-medium text-sm">Investimento: R$ 2.000,00 mensais</p>
