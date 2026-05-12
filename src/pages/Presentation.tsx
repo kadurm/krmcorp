@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Target, Image as ImageIcon, Video, Calendar, Layout, CheckCircle2 } from "lucide-react";
+import { Target, Image as ImageIcon, Video, Calendar, Layout, CheckCircle2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { jsPDF } from "jspdf";
 
 const MetaIcon = ({ className }: { className?: string }) => (
   <svg 
@@ -21,6 +22,7 @@ const MetaIcon = ({ className }: { className?: string }) => (
 const Presentation = () => {
   const [step, setStep] = useState(0);
   const [bottleneck, setBottleneck] = useState("");
+  const [pdfGenerated, setPdfGenerated] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -34,6 +36,72 @@ const Presentation = () => {
     initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -20 },
+  };
+
+  const generateContractPDF = () => {
+    const doc = new jsPDF();
+    
+    // Design do PDF
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.text("KrM Corp", 105, 20, { align: "center" });
+    
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "normal");
+    doc.text("Proposta Comercial & Contrato de Prestação de Serviços", 105, 30, { align: "center" });
+    
+    doc.setLineWidth(0.5);
+    doc.line(20, 35, 190, 35);
+    
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text("Cliente:", 20, 50);
+    doc.setFont("helvetica", "normal");
+    doc.text("Isa Materiais de Construções (A/C Lessio)", 40, 50);
+    
+    doc.setFont("helvetica", "bold");
+    doc.text("1. Diagnóstico do Cenário Atual", 20, 70);
+    doc.setFont("helvetica", "normal");
+    const splitBottleneck = doc.splitTextToSize(bottleneck || "Não informado na plataforma.", 170);
+    doc.text(splitBottleneck, 20, 80);
+    
+    const yAfterBottleneck = 80 + (splitBottleneck.length * 7);
+    
+    doc.setFont("helvetica", "bold");
+    doc.text("2. Escopo do Projeto (Ciclo de 6 Meses)", 20, yAfterBottleneck + 10);
+    
+    doc.setFont("helvetica", "normal");
+    doc.text("FASE 1: Tração (Mês 1 e 2)", 20, yAfterBottleneck + 20);
+    doc.text("- Gestão Avançada de Meta Ads (Instagram & Facebook)", 25, yAfterBottleneck + 30);
+    doc.text("- Produção de 10 Criativos Estáticos e 2 Vídeos Profissionais", 25, yAfterBottleneck + 37);
+    doc.text("- Alinhamento Estratégico Semanal", 25, yAfterBottleneck + 44);
+    doc.setFont("helvetica", "bold");
+    doc.text("Honorários Fase 1: R$ 1.500,00 mensais", 25, yAfterBottleneck + 54);
+    
+    doc.setFont("helvetica", "normal");
+    doc.text("FASE 2: Escala (Mês 3 ao 6)", 20, yAfterBottleneck + 74);
+    doc.text("- Todos os serviços da Fase 1", 25, yAfterBottleneck + 84);
+    doc.text("- Desenvolvimento e Manutenção de Landing Page de Alta Conversão", 25, yAfterBottleneck + 91);
+    doc.setFont("helvetica", "bold");
+    doc.text("Honorários Fase 2: R$ 2.000,00 mensais", 25, yAfterBottleneck + 101);
+    
+    doc.text("3. Verba de Mídia Obrigatória", 20, yAfterBottleneck + 121);
+    doc.setFont("helvetica", "normal");
+    const mediaText = "O cliente compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Meta Ads) e não compõe os honorários da KrM Corp.";
+    const splitMedia = doc.splitTextToSize(mediaText, 170);
+    doc.text(splitMedia, 20, yAfterBottleneck + 131);
+    
+    // Assinaturas
+    const yAssinatura = 260;
+    doc.setLineWidth(0.5);
+    doc.line(20, yAssinatura, 90, yAssinatura);
+    doc.text("KrM Corp", 45, yAssinatura + 10, { align: "center" });
+    
+    doc.line(110, yAssinatura, 190, yAssinatura);
+    doc.text("Isa Materiais de Construções", 150, yAssinatura + 10, { align: "center" });
+    
+    doc.save("Contrato_Isa_Materiais.pdf");
+    setPdfGenerated(true);
   };
 
   const renderStepContent = () => {
@@ -316,16 +384,30 @@ const Presentation = () => {
               A estratégia está mapeada e o roteiro para escalar a <span className="text-primary font-medium">Isa Materiais de Construções</span> está claro. Com o plano de ação validado, podemos confirmar o início do projeto agora mesmo para iniciarmos a construção desse ecossistema e liberarmos o cronograma de integração?
             </p>
 
-            <a 
-              href="https://wa.me/5538988450377?text=Ol%C3%A1%2C%20estou%20pronto%20para%20iniciar%20o%20projeto%20da%20Isa%20Materiais!" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto mt-8"
-            >
-              <Button variant="hero" size="lg" className="px-12 py-8 text-lg w-full">
-                Confirmar e Iniciar Projeto
+            {!pdfGenerated ? (
+              <Button onClick={generateContractPDF} variant="hero" size="lg" className="px-12 py-8 text-lg w-full sm:w-auto mt-8 flex gap-3">
+                <Download className="w-5 h-5" />
+                Gerar Contrato em PDF
               </Button>
-            </a>
+            ) : (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col items-center mt-8 space-y-4 w-full"
+              >
+                <p className="text-sm text-primary font-medium">Contrato gerado com sucesso!</p>
+                <a 
+                  href="https://wa.me/5538988450377?text=Ol%C3%A1%2C%20baixei%20o%20contrato%20da%20Isa%20Materiais%20e%20estou%20de%20acordo%20com%20a%20proposta.%20Segue%20o%20documento%20assinado%20em%20anexo." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="lg" className="px-12 py-8 text-lg w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none shadow-[0_0_20px_rgba(37,211,102,0.3)]">
+                    Enviar Aceite no WhatsApp
+                  </Button>
+                </a>
+              </motion.div>
+            )}
           </motion.div>
         );
 
