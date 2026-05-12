@@ -13,7 +13,7 @@ const CTASection = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="line-gold mx-auto mb-8" />
-          <h2 className="font-display text-3xl md:text-5xl font-semibold mb-6">
+          <h2 className="font-display text-2xl md:text-4xl font-semibold mb-6">
             Pronto para converter
             <br />
             <span className="text-gradient-gold">autoridade em lucratividade?</span>

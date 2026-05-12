@@ -40,7 +40,7 @@ const ServicesSection = () => {
           <p className="text-primary font-display tracking-[0.3em] uppercase text-sm mb-4">
             Pilares de Atuação
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-semibold">
+          <h2 className="font-display text-2xl md:text-4xl font-semibold">
             Onde a estratégia encontra <span className="text-gradient-gold">execução</span>
           </h2>
         </motion.div>

@@ -38,7 +38,7 @@ const MethodologySection = () => {
           <p className="text-primary font-display tracking-[0.3em] uppercase text-sm mb-4">
             Metodologia
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-semibold">
+          <h2 className="font-display text-2xl md:text-4xl font-semibold">
             Como entregamos <span className="text-gradient-gold">resultados</span>
           </h2>
         </motion.div>

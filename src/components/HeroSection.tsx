@@ -43,7 +43,7 @@ const HeroSection = () => {
           
           <motion.h1 
             variants={itemVariants}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] mb-8"
+            className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.1] mb-8"
           >
             Projetamos o <span className="text-gradient-gold">ecossistema</span> que consolida a sua autoridade e escala o seu negócio.
           </motion.h1>
