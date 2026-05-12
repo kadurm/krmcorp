@@ -53,12 +53,15 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group bg-card border border-border rounded-lg p-8 hover:border-primary/30 hover:glow-gold transition-all duration-500"
+              className="group bg-card/40 backdrop-blur-xl border border-white/5 rounded-xl p-8 hover:border-primary/40 hover:glow-gold transition-all duration-500 relative overflow-hidden"
             >
-              <service.icon className="w-8 h-8 text-primary mb-6" strokeWidth={1.5} />
-              <h3 className="font-display text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-primary/80 text-sm font-medium mb-4 italic">{service.subtitle}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+              {/* Subtle gradient overlay for extra depth */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <service.icon className="w-10 h-10 text-primary mb-6 relative z-10" strokeWidth={1} />
+              <h3 className="font-display text-2xl font-semibold mb-3 relative z-10">{service.title}</h3>
+              <p className="text-primary/70 text-sm font-medium mb-5 italic tracking-wide relative z-10">{service.subtitle}</p>
+              <p className="text-muted-foreground text-base leading-relaxed relative z-10">{service.description}</p>
             </motion.div>
           ))}
         </div>

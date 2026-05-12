@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +13,24 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const formSchema = z.object({
+  nome: z.string().min(3, "Nome deve ter pelo menos 3 caracteres"),
+  instagram: z.string().min(2, "Instagram inválido"),
+  telefone: z.string().min(10, "Telefone inválido (mínimo 10 dígitos)"),
+  email: z.string().email("E-mail inválido"),
+  descricao: z.string().min(10, "Conte-nos um pouco mais sobre você"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 interface ApplicationModalProps {
   trigger?: React.ReactNode;
@@ -19,17 +39,21 @@ interface ApplicationModalProps {
 const ApplicationModal: React.FC<ApplicationModalProps> = ({
   trigger,
 }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nome: "",
+      instagram: "",
+      telefone: "",
+      email: "",
+      descricao: "",
+    },
+  });
 
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
+  const onSubmit = async (data: FormValues) => {
     const message = `🚀 Nova Aplicação de Consultoria - KRM Corp
 
 Nome: ${data.nome}
@@ -46,14 +70,13 @@ O que faz atualmente: ${data.descricao}`;
     setTimeout(() => {
       setIsSuccess(false);
       setOpen(false);
+      form.reset();
     }, 3000);
-
-    setIsSubmitting(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild onClick={() => setOpen(true)}>
+      <DialogTrigger asChild>
         {trigger || (
           <Button variant="hero" size="lg" className="px-12 py-6">
             Iniciar Conversa Estratégica
@@ -61,94 +84,111 @@ O que faz atualmente: ${data.descricao}`;
         )}
       </DialogTrigger>
       <DialogContent className="w-[95vw] max-w-lg sm:max-w-md bg-background border-muted/20 mx-auto my-4 sm:my-8 p-0 overflow-hidden">
-        <DialogHeader className="px-4 sm:px-6 pt-4 pb-2">
-          <DialogTitle className="text-lg sm:text-xl font-display text-center mb-1">
+        <DialogHeader className="px-4 sm:px-6 pt-6 pb-2">
+          <DialogTitle className="text-xl sm:text-2xl font-display text-center mb-1">
             Aplicação para Consultoria
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground text-xs sm:text-sm">
-            Preencha os dados abaixo para analisarmos seu perfil.
+            Preencha os dados abaixo para analisarmos seu perfil estrategicamente.
           </DialogDescription>
         </DialogHeader>
 
         {isSuccess ? (
-          <div className="py-6 sm:py-8 text-center space-y-3 px-4 sm:px-6">
-            <div className="text-2xl sm:text-3xl">✨</div>
-            <h3 className="text-base sm:text-lg font-medium text-gradient-gold">Aplicação Recebida!</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm">
+          <div className="py-10 text-center space-y-4 px-6">
+            <div className="text-4xl animate-bounce">✨</div>
+            <h3 className="text-xl font-medium text-gradient-gold">Aplicação Recebida!</h3>
+            <p className="text-muted-foreground text-sm">
               Analisaremos seu perfil e entraremos em contato em breve.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-3 mt-2 text-left px-4 sm:px-6 pb-6">
-            <input type="text" name="_honey" style={{ display: "none" }} />
-            <input type="hidden" name="_captcha" value="false" />
-
-            <div className="space-y-1">
-              <Label htmlFor="nome" className="text-xs">Nome Completo</Label>
-              <Input
-                id="nome"
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-2 text-left px-6 pb-8">
+              <FormField
+                control={form.control}
                 name="nome"
-                required
-                placeholder="Digite seu nome completo"
-                className="bg-muted/50 h-9 text-sm"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">Nome Completo</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Digite seu nome completo" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                    </FormControl>
+                    <FormMessage className="text-[10px]" />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="space-y-1">
-                <Label htmlFor="instagram" className="text-xs">@ do Instagram</Label>
-                <Input
-                  id="instagram"
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
                   name="instagram"
-                  required
-                  placeholder="@seu.perfil"
-                  className="bg-muted/50 h-9 text-sm"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs uppercase tracking-wider opacity-70">@ do Instagram</FormLabel>
+                      <FormControl>
+                        <Input placeholder="@seu.perfil" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                      </FormControl>
+                      <FormMessage className="text-[10px]" />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="telefone" className="text-xs">WhatsApp / Telefone</Label>
-                <Input
-                  id="telefone"
+                <FormField
+                  control={form.control}
                   name="telefone"
-                  required
-                  placeholder="(00) 00000-0000"
-                  className="bg-muted/50 h-9 text-sm"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs uppercase tracking-wider opacity-70">WhatsApp</FormLabel>
+                      <FormControl>
+                        <Input placeholder="(00) 00000-0000" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                      </FormControl>
+                      <FormMessage className="text-[10px]" />
+                    </FormItem>
+                  )}
                 />
               </div>
-            </div>
 
-            <div className="space-y-1">
-              <Label htmlFor="email" className="text-xs">E-mail</Label>
-              <Input
-                id="email"
+              <FormField
+                control={form.control}
                 name="email"
-                type="email"
-                required
-                placeholder="seu@email.com"
-                className="bg-muted/50 h-9 text-sm"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">E-mail Corporativo</FormLabel>
+                    <FormControl>
+                      <Input placeholder="seu@email.com" type="email" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                    </FormControl>
+                    <FormMessage className="text-[10px]" />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            <div className="space-y-1">
-              <Label htmlFor="descricao" className="text-xs">Quem é você e o que faz atualmente?</Label>
-              <Textarea
-                id="descricao"
+              <FormField
+                control={form.control}
                 name="descricao"
-                required
-                placeholder="Descreva brevemente sua atuação..."
-                className="min-h-[70px] sm:min-h-[80px] bg-muted/50 resize-none text-sm"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">Descreva sua atuação atual</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Ex: Sou mentor de executivos e busco estruturar meu ecossistema digital..." 
+                        className="min-h-[100px] bg-muted/30 border-white/5 focus:border-primary/50 transition-colors resize-none" 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage className="text-[10px]" />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            <Button
-              type="submit"
-              variant="hero"
-              className="w-full mt-4 py-4 sm:py-5 text-sm"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Enviando aplicação..." : "Enviar Aplicação"}
-            </Button>
-          </form>
+              <Button
+                type="submit"
+                variant="hero"
+                className="w-full mt-6 py-6 text-base uppercase tracking-widest"
+                disabled={form.formState.isSubmitting}
+              >
+                {form.formState.isSubmitting ? "Enviando..." : "Enviar Aplicação"}
+              </Button>
+            </form>
+          </Form>
         )}
       </DialogContent>
     </Dialog>
