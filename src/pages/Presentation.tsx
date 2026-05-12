@@ -41,52 +41,81 @@ const Presentation = () => {
   const generateContractPDF = () => {
     const doc = new jsPDF();
     
-    // Design do PDF
+    // Fundo Escuro (Dark Mode)
+    doc.setFillColor(15, 15, 15); // Cor de fundo semelhante ao bg-background
+    doc.rect(0, 0, 210, 297, "F");
+
+    // Cores
+    const colorGold = [212, 175, 55] as [number, number, number];
+    const colorWhite = [240, 240, 240] as [number, number, number];
+    const colorMuted = [160, 160, 160] as [number, number, number];
+
+    // Cabeçalho
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
+    doc.setTextColor(...colorGold);
     doc.text("KrM Corp", 105, 20, { align: "center" });
     
     doc.setFontSize(14);
     doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorWhite);
     doc.text("Proposta Comercial & Contrato de Prestação de Serviços", 105, 30, { align: "center" });
     
     doc.setLineWidth(0.5);
+    doc.setDrawColor(...colorGold);
     doc.line(20, 35, 190, 35);
     
+    // Dados do Cliente
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colorGold);
     doc.text("Cliente:", 20, 50);
     doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorWhite);
     doc.text("Isa Materiais de Construções (A/C Lessio)", 40, 50);
     
+    // Diagnóstico
     doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colorGold);
     doc.text("1. Diagnóstico do Cenário Atual", 20, 70);
     doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorMuted);
     const splitBottleneck = doc.splitTextToSize(bottleneck || "Não informado na plataforma.", 170);
     doc.text(splitBottleneck, 20, 80);
     
     const yAfterBottleneck = 80 + (splitBottleneck.length * 7);
     
+    // Escopo do Projeto
     doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colorGold);
     doc.text("2. Escopo do Projeto (Ciclo de 6 Meses)", 20, yAfterBottleneck + 10);
     
     doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorWhite);
     doc.text("FASE 1: Tração (Mês 1 e 2)", 20, yAfterBottleneck + 20);
+    doc.setTextColor(...colorMuted);
     doc.text("- Gestão Avançada de Meta Ads (Instagram & Facebook)", 25, yAfterBottleneck + 30);
     doc.text("- Produção de 10 Criativos Estáticos e 2 Vídeos Profissionais", 25, yAfterBottleneck + 37);
     doc.text("- Alinhamento Estratégico Semanal", 25, yAfterBottleneck + 44);
     doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colorGold);
     doc.text("Honorários Fase 1: R$ 1.500,00 mensais", 25, yAfterBottleneck + 54);
     
     doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorWhite);
     doc.text("FASE 2: Escala (Mês 3 ao 6)", 20, yAfterBottleneck + 74);
+    doc.setTextColor(...colorMuted);
     doc.text("- Todos os serviços da Fase 1", 25, yAfterBottleneck + 84);
     doc.text("- Desenvolvimento e Manutenção de Landing Page de Alta Conversão", 25, yAfterBottleneck + 91);
     doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colorGold);
     doc.text("Honorários Fase 2: R$ 2.000,00 mensais", 25, yAfterBottleneck + 101);
     
+    // Verba de Mídia
+    doc.setTextColor(...colorGold);
     doc.text("3. Verba de Mídia Obrigatória", 20, yAfterBottleneck + 121);
     doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorMuted);
     const mediaText = "O cliente compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Meta Ads) e não compõe os honorários da KrM Corp.";
     const splitMedia = doc.splitTextToSize(mediaText, 170);
     doc.text(splitMedia, 20, yAfterBottleneck + 131);
@@ -94,7 +123,9 @@ const Presentation = () => {
     // Assinaturas
     const yAssinatura = 260;
     doc.setLineWidth(0.5);
+    doc.setDrawColor(...colorGold);
     doc.line(20, yAssinatura, 90, yAssinatura);
+    doc.setTextColor(...colorWhite);
     doc.text("KrM Corp", 45, yAssinatura + 10, { align: "center" });
     
     doc.line(110, yAssinatura, 190, yAssinatura);
