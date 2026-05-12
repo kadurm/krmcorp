@@ -83,52 +83,52 @@ O que faz atualmente: ${data.descricao}`;
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="w-[95vw] max-w-lg sm:max-w-md bg-background border-muted/20 mx-auto my-4 sm:my-8 p-0 overflow-hidden">
-        <DialogHeader className="px-4 sm:px-6 pt-6 pb-2">
-          <DialogTitle className="text-xl sm:text-2xl font-display text-center mb-1">
+      <DialogContent className="w-[95vw] max-w-lg sm:max-w-md bg-background border-muted/20 mx-auto my-2 p-0 overflow-hidden shadow-2xl">
+        <DialogHeader className="px-4 sm:px-6 pt-3 pb-1 border-b border-white/5">
+          <DialogTitle className="text-lg sm:text-xl font-display text-center mb-0">
             Aplicação para Consultoria
           </DialogTitle>
-          <DialogDescription className="text-center text-muted-foreground text-xs sm:text-sm">
-            Preencha os dados abaixo para analisarmos seu perfil estrategicamente.
+          <DialogDescription className="text-center text-muted-foreground text-[10px] sm:text-xs">
+            Análise estratégica de perfil.
           </DialogDescription>
         </DialogHeader>
 
         {isSuccess ? (
-          <div className="py-10 text-center space-y-4 px-6">
-            <div className="text-4xl animate-bounce">✨</div>
-            <h3 className="text-xl font-medium text-gradient-gold">Aplicação Recebida!</h3>
-            <p className="text-muted-foreground text-sm">
-              Analisaremos seu perfil e entraremos em contato em breve.
+          <div className="py-6 text-center space-y-2 px-6">
+            <div className="text-2xl animate-bounce">✨</div>
+            <h3 className="text-lg font-medium text-gradient-gold">Aplicação Recebida!</h3>
+            <p className="text-muted-foreground text-xs">
+              Entraremos em contato em breve.
             </p>
           </div>
         ) : (
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-2 text-left px-6 pb-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1.5 mt-1 text-left px-6 pb-5">
               <FormField
                 control={form.control}
                 name="nome"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">Nome Completo</FormLabel>
+                  <FormItem className="space-y-0.5">
+                    <FormLabel className="text-[10px] uppercase tracking-wider opacity-70">Nome Completo</FormLabel>
                     <FormControl>
-                      <Input placeholder="Digite seu nome completo" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                      <Input placeholder="Digite seu nome" className="h-8 bg-muted/20 border-white/5 focus:border-primary/50 transition-colors text-xs" {...field} />
                     </FormControl>
-                    <FormMessage className="text-[10px]" />
+                    <FormMessage className="text-[9px]" />
                   </FormItem>
                 )}
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <FormField
                   control={form.control}
                   name="instagram"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs uppercase tracking-wider opacity-70">@ do Instagram</FormLabel>
+                    <FormItem className="space-y-0.5">
+                      <FormLabel className="text-[10px] uppercase tracking-wider opacity-70">Instagram</FormLabel>
                       <FormControl>
-                        <Input placeholder="@seu.perfil" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                        <Input placeholder="@perfil" className="h-8 bg-muted/20 border-white/5 focus:border-primary/50 transition-colors text-xs" {...field} />
                       </FormControl>
-                      <FormMessage className="text-[10px]" />
+                      <FormMessage className="text-[9px]" />
                     </FormItem>
                   )}
                 />
@@ -136,12 +136,12 @@ O que faz atualmente: ${data.descricao}`;
                   control={form.control}
                   name="telefone"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-xs uppercase tracking-wider opacity-70">WhatsApp</FormLabel>
+                    <FormItem className="space-y-0.5">
+                      <FormLabel className="text-[10px] uppercase tracking-wider opacity-70">WhatsApp</FormLabel>
                       <FormControl>
-                        <Input placeholder="(00) 00000-0000" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                        <Input placeholder="(00) 00000-0000" className="h-8 bg-muted/20 border-white/5 focus:border-primary/50 transition-colors text-xs" {...field} />
                       </FormControl>
-                      <FormMessage className="text-[10px]" />
+                      <FormMessage className="text-[9px]" />
                     </FormItem>
                   )}
                 />
@@ -151,12 +151,12 @@ O que faz atualmente: ${data.descricao}`;
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">E-mail Corporativo</FormLabel>
+                  <FormItem className="space-y-0.5">
+                    <FormLabel className="text-[10px] uppercase tracking-wider opacity-70">E-mail Corporativo</FormLabel>
                     <FormControl>
-                      <Input placeholder="seu@email.com" type="email" className="bg-muted/30 border-white/5 focus:border-primary/50 transition-colors" {...field} />
+                      <Input placeholder="seu@email.com" type="email" className="h-8 bg-muted/20 border-white/5 focus:border-primary/50 transition-colors text-xs" {...field} />
                     </FormControl>
-                    <FormMessage className="text-[10px]" />
+                    <FormMessage className="text-[9px]" />
                   </FormItem>
                 )}
               />
@@ -165,16 +165,16 @@ O que faz atualmente: ${data.descricao}`;
                 control={form.control}
                 name="descricao"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">Descreva o momento da sua empresa/projeto</FormLabel>
+                  <FormItem className="space-y-0.5">
+                    <FormLabel className="text-[10px] uppercase tracking-wider opacity-70">Empresa / Projeto</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Ex: Preciso integrar toda minha operação, ou apenas tráfego pago, lading page, e-commerce e CRM..." 
-                        className="min-h-[100px] bg-muted/30 border-white/5 focus:border-primary/50 transition-colors resize-none" 
+                        placeholder="Ex: Preciso integrar toda minha operação..." 
+                        className="min-h-[50px] bg-muted/20 border-white/5 focus:border-primary/50 transition-colors resize-none text-xs" 
                         {...field} 
                       />
                     </FormControl>
-                    <FormMessage className="text-[10px]" />
+                    <FormMessage className="text-[9px]" />
                   </FormItem>
                 )}
               />
@@ -182,7 +182,7 @@ O que faz atualmente: ${data.descricao}`;
               <Button
                 type="submit"
                 variant="hero"
-                className="w-full mt-6 py-6 text-base uppercase tracking-widest"
+                className="w-full mt-2 py-4 h-10 text-xs uppercase tracking-widest"
                 disabled={form.formState.isSubmitting}
               >
                 {form.formState.isSubmitting ? "Enviando..." : "Enviar Aplicação"}
