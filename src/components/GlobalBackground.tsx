@@ -18,7 +18,7 @@ const GlobalBackground = () => {
         <img
           src={logoWatermark}
           alt="Logo KrM Corp"
-          className="w-full max-w-5xl object-contain opacity-40 z-10"
+          className="w-full max-w-5xl object-contain opacity-[0.10] z-10"
         />
       </div>
 
