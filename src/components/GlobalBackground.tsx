@@ -17,13 +17,13 @@ const GlobalBackground = () => {
       <div className="absolute inset-0 flex items-center justify-center p-12 pointer-events-none">
         <img
           src={logoWatermark}
-          alt=""
-          className="w-full max-w-5xl object-contain opacity-[0.12]"
+          alt="Logo KrM Corp"
+          className="w-full max-w-5xl object-contain opacity-40 z-10"
         />
       </div>
 
       {/* Darkening Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/95" />
       
       {/* Subtle Noise or Texture could be added here if needed */}
     </div>
