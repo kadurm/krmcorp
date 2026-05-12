@@ -41,14 +41,20 @@ const Presentation = () => {
   const generateContractPDF = () => {
     const doc = new jsPDF();
     
-    // Fundo Escuro (Dark Mode)
-    doc.setFillColor(15, 15, 15); // Cor de fundo semelhante ao bg-background
-    doc.rect(0, 0, 210, 297, "F");
-
-    // Cores
     const colorGold = [212, 175, 55] as [number, number, number];
     const colorWhite = [240, 240, 240] as [number, number, number];
     const colorMuted = [160, 160, 160] as [number, number, number];
+    const colorBg = [15, 15, 15] as [number, number, number];
+    const colorCard = [25, 25, 25] as [number, number, number];
+    const colorBorder = [40, 40, 40] as [number, number, number];
+
+    const addDarkPage = () => {
+      doc.setFillColor(...colorBg);
+      doc.rect(0, 0, 210, 297, "F");
+    };
+
+    // --- PÁGINA 1: Identificação e Objeto ---
+    addDarkPage();
 
     // Cabeçalho
     doc.setFont("helvetica", "bold");
@@ -59,79 +65,187 @@ const Presentation = () => {
     doc.setFontSize(14);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colorWhite);
-    doc.text("Proposta Comercial & Contrato de Prestação de Serviços", 105, 30, { align: "center" });
+    doc.text("CONTRATO DE PRESTAÇÃO DE SERVIÇOS", 105, 30, { align: "center" });
     
     doc.setLineWidth(0.5);
     doc.setDrawColor(...colorGold);
     doc.line(20, 35, 190, 35);
     
-    // Dados do Cliente
+    // Partes
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colorMuted);
+    
+    doc.text("CONTRATANTE: ISA MATERIAIS DE CONSTRUÇÕES", 20, 45);
+    doc.text("(A/C Lessio Barbosa)", 20, 50);
+    
+    doc.text("CONTRATADO: CARLOS EDUARDO RIBEIRO MENEZES (KrM Corp)", 20, 60);
+    doc.text("CNPJ: 41.390.829/0001-25", 20, 65);
+    
+    // Objeto e Diagnóstico
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...colorGold);
-    doc.text("Cliente:", 20, 50);
+    doc.text("CLÁUSULA 1 - DO OBJETO", 20, 80);
+    
     doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
     doc.setTextColor(...colorWhite);
-    doc.text("Isa Materiais de Construções (A/C Lessio)", 40, 50);
+    doc.text("O presente contrato tem por objeto a prestação de serviços de marketing estratégico", 20, 90);
+    doc.text("e desenvolvimento tecnológico, visando solucionar o seguinte desafio mapeado:", 20, 95);
     
-    // Diagnóstico
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(...colorGold);
-    doc.text("1. Diagnóstico do Cenário Atual", 20, 70);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("helvetica", "italic");
     doc.setTextColor(...colorMuted);
-    const splitBottleneck = doc.splitTextToSize(bottleneck || "Não informado na plataforma.", 170);
-    doc.text(splitBottleneck, 20, 80);
+    const splitBottleneck = doc.splitTextToSize(`"${bottleneck || "Aumento do volume de orçamentos diários e atração de novos clientes."}"`, 170);
+    doc.text(splitBottleneck, 20, 105);
     
-    const yAfterBottleneck = 80 + (splitBottleneck.length * 7);
+    let currentY = 105 + (splitBottleneck.length * 6) + 10;
     
-    // Escopo do Projeto
+    // Escopo Visual (Bento Grid)
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...colorGold);
-    doc.text("2. Escopo do Projeto (Ciclo de 6 Meses)", 20, yAfterBottleneck + 10);
+    doc.text("ESCOPO DE ENTREGAS (CICLO DE 6 MESES)", 20, currentY);
+    currentY += 10;
     
-    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
     doc.setTextColor(...colorWhite);
-    doc.text("FASE 1: Tração (Mês 1 e 2)", 20, yAfterBottleneck + 20);
-    doc.setTextColor(...colorMuted);
-    doc.text("- Gestão Avançada de Meta Ads (Instagram & Facebook)", 25, yAfterBottleneck + 30);
-    doc.text("- Produção de 10 Criativos Estáticos e 2 Vídeos Profissionais", 25, yAfterBottleneck + 37);
-    doc.text("- Alinhamento Estratégico Semanal", 25, yAfterBottleneck + 44);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(...colorGold);
-    doc.text("Honorários Fase 1: R$ 1.500,00 mensais", 25, yAfterBottleneck + 54);
+    doc.text("FASE 1: Tração e Volume (Mês 1 e 2)", 20, currentY);
+    currentY += 5;
     
-    doc.setFont("helvetica", "normal");
+    const drawBox = (x: number, y: number, w: number, h: number, title: string, subtitle: string) => {
+      doc.setFillColor(...colorCard);
+      doc.setDrawColor(...colorBorder);
+      doc.roundedRect(x, y, w, h, 3, 3, "FD");
+      
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9);
+      doc.setTextColor(...colorWhite);
+      doc.text(title, x + (w/2), y + 12, { align: "center" });
+      
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(7);
+      doc.setTextColor(...colorMuted);
+      doc.text(subtitle, x + (w/2), y + 20, { align: "center" });
+    };
+
+    drawBox(20, currentY, 38, 28, "Meta Ads", "Gestão Avançada");
+    drawBox(62, currentY, 38, 28, "10 Criativos", "Alta Conversão");
+    drawBox(104, currentY, 38, 28, "2 Vídeos", "Edição Profissional");
+    drawBox(146, currentY, 38, 28, "Reuniões", "Alinhamento Semanal");
+    
+    currentY += 40;
+    
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
     doc.setTextColor(...colorWhite);
-    doc.text("FASE 2: Escala (Mês 3 ao 6)", 20, yAfterBottleneck + 74);
-    doc.setTextColor(...colorMuted);
-    doc.text("- Todos os serviços da Fase 1", 25, yAfterBottleneck + 84);
-    doc.text("- Desenvolvimento e Manutenção de Landing Page de Alta Conversão", 25, yAfterBottleneck + 91);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(...colorGold);
-    doc.text("Honorários Fase 2: R$ 2.000,00 mensais", 25, yAfterBottleneck + 101);
+    doc.text("FASE 2: Escala e Conversão (Mês 3 ao 6)", 20, currentY);
+    currentY += 5;
     
-    // Verba de Mídia
+    doc.setFillColor(30, 25, 10); 
+    doc.setDrawColor(...colorGold);
+    doc.roundedRect(20, currentY, 164, 28, 3, 3, "FD");
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
     doc.setTextColor(...colorGold);
-    doc.text("3. Verba de Mídia Obrigatória", 20, yAfterBottleneck + 121);
+    doc.text("Todos os itens da Fase 1 + Landing Page Exclusiva", 102, currentY + 12, { align: "center" });
+    
     doc.setFont("helvetica", "normal");
+    doc.setFontSize(8);
+    doc.setTextColor(...colorWhite);
+    doc.text("Desenvolvimento de página focada em altíssima conversão", 102, currentY + 20, { align: "center" });
+
+    // --- PÁGINA 2: Cláusulas ---
+    doc.addPage();
+    addDarkPage();
+    currentY = 20;
+    
+    const printClause = (title: string, lines: string[]) => {
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      doc.setTextColor(...colorGold);
+      doc.text(title, 20, currentY);
+      currentY += 8;
+      
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.setTextColor(...colorWhite);
+      
+      lines.forEach(line => {
+        const splitLine = doc.splitTextToSize(line, 170);
+        doc.text(splitLine, 20, currentY);
+        currentY += (splitLine.length * 6) + 2;
+      });
+      currentY += 8;
+    };
+
+    printClause("CLÁUSULA 2 – DAS OBRIGAÇÕES DA CONTRATADA", [
+      "a) Executar os serviços de forma autônoma, sem vínculo trabalhista;",
+      "b) Apresentar relatórios de desempenho e resultados das campanhas;",
+      "c) Manter sigilo sobre informações estratégicas e dados fornecidos pelo CONTRATANTE;",
+      "d) Realizar ajustes e otimizações necessárias para o bom andamento das campanhas."
+    ]);
+
+    printClause("CLÁUSULA 3 – DAS OBRIGAÇÕES DO CONTRATANTE", [
+      "a) Fornecer informações, materiais e conteúdos necessários para execução dos serviços (fotos, vídeos, agenda de ações etc.);",
+      "b) Efetuar o pagamento nas condições ajustadas;",
+      "c) Aprovar previamente briefings e materiais antes da veiculação;",
+      "d) Assumir os custos de eventuais serviços terceirizados quando solicitados;",
+      "e) VERBA DE MÍDIA: O CONTRATANTE compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Ex: Meta Ads) e não compõe os honorários da CONTRATADA."
+    ]);
+
+    printClause("CLÁUSULA 4 – DO VALOR E PAGAMENTO", [
+      "Pelos serviços ora contratados, o CONTRATANTE pagará à CONTRATADA:",
+      "- FASE 1 (Meses 1 e 2): O valor mensal equivalente a R$ 1.500,00 (Um mil e quinhentos reais).",
+      "- FASE 2 (Mês 3 ao 6): O valor mensal equivalente a R$ 2.000,00 (Dois mil reais), justificando-se pela implementação tecnológica adicional (Landing Page).",
+      "Os pagamentos deverão ser efetuados até o dia 5 de cada mês correspondente."
+    ]);
+
+    // --- PÁGINA 3: Vigência, Rescisão e Assinaturas ---
+    doc.addPage();
+    addDarkPage();
+    currentY = 20;
+
+    printClause("CLÁUSULA 5 – DA VIGÊNCIA", [
+      "O presente contrato terá vigência de 06 (Seis) meses, com início na data de assinatura deste instrumento, podendo ser renovado automaticamente caso as partes não se manifestem em sentido contrário, mediante reajuste pré-acordado."
+    ]);
+
+    printClause("CLÁUSULA 6 – DA RESCISÃO", [
+      "6.1. O contrato poderá ser rescindido por qualquer das partes, mediante aviso prévio de 30 (trinta) dias.",
+      "6.2. Caso haja descumprimento de cláusulas contratuais, a parte prejudicada poderá rescindir o contrato de imediato."
+    ]);
+
+    currentY += 20;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
     doc.setTextColor(...colorMuted);
-    const mediaText = "O cliente compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Meta Ads) e não compõe os honorários da KrM Corp.";
-    const splitMedia = doc.splitTextToSize(mediaText, 170);
-    doc.text(splitMedia, 20, yAfterBottleneck + 131);
+    
+    const today = new Date();
+    const dateStr = `Montes Claros/MG, ${today.getDate().toString().padStart(2, '0')} de ${['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'][today.getMonth()]} de ${today.getFullYear()}.`;
+    doc.text(dateStr, 20, currentY);
+    
+    currentY += 40;
     
     // Assinaturas
-    const yAssinatura = 260;
     doc.setLineWidth(0.5);
     doc.setDrawColor(...colorGold);
-    doc.line(20, yAssinatura, 90, yAssinatura);
+    
+    doc.line(20, currentY, 90, currentY);
     doc.setTextColor(...colorWhite);
-    doc.text("KrM Corp", 45, yAssinatura + 10, { align: "center" });
+    doc.text("CONTRATANTE", 55, currentY + 6, { align: "center" });
+    doc.setFontSize(8);
+    doc.setTextColor(...colorMuted);
+    doc.text("Isa Materiais de Construções", 55, currentY + 12, { align: "center" });
     
-    doc.line(110, yAssinatura, 190, yAssinatura);
-    doc.text("Isa Materiais de Construções", 150, yAssinatura + 10, { align: "center" });
+    doc.line(110, currentY, 190, currentY);
+    doc.setFontSize(10);
+    doc.setTextColor(...colorWhite);
+    doc.text("CONTRATADO", 150, currentY + 6, { align: "center" });
+    doc.setFontSize(8);
+    doc.setTextColor(...colorMuted);
+    doc.text("KrM Corp (Carlos E. R. Menezes)", 150, currentY + 12, { align: "center" });
     
-    doc.save("Contrato_Isa_Materiais.pdf");
+    doc.save("Contrato_Isa_Materiais_KrM.pdf");
     setPdfGenerated(true);
   };
 
