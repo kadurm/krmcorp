@@ -4,29 +4,26 @@ import logoWatermark from "@/assets/LogoKrM_Final_Extreme.png";
 const GlobalBackground = () => {
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden bg-background">
-      {/* Mountain/Interconnections Pattern Layer (Lowest) */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover opacity-[0.05] grayscale brightness-[0.2]"
-        />
-      </div>
+      {/* 1. Pattern Layer (Deepest) */}
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.03] grayscale brightness-[0.1] z-0"
+      />
 
-      {/* Watermark Logo Layer (Above Pattern) */}
-      <div className="absolute inset-0 flex items-center justify-center p-12 pointer-events-none z-10">
+      {/* 2. Logo Layer (Middle) */}
+      <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-20 pointer-events-none z-10">
         <img
           src={logoWatermark}
           alt="Logo KrM Corp"
-          className="w-full max-w-5xl object-contain opacity-[0.10]"
+          className="w-full max-w-4xl object-contain opacity-[0.15]"
         />
       </div>
 
-      {/* Darkening Gradient Overlay (Top of background) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/95 z-20" />
+      {/* 3. Gradient Overlay (Top of Background) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background z-20" />
     </div>
   );
 };
-
 
 export default GlobalBackground;
