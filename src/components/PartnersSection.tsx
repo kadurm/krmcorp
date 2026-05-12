@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const partners = [
-  "CEPEL",
+  "CEPEL ARTE DECORE",
   "ORATÓRIA DÉLIO PINHEIRO",
   "SOLUTION PLACE",
-  "FULLTIME",
+  "FULLTIME ACADEMIA",
   "DCASTRO MKT",
   "V4 COMPANY",
   "CASTELO DO AÇAÍ",
