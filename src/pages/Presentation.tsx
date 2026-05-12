@@ -108,8 +108,27 @@ const Presentation = () => {
               <p className="text-muted-foreground text-lg leading-relaxed">
                 Nossa primeira fase é dedicada à Tração. Nos meses 1 e 2, o foco será aumentar exponencialmente a visibilidade da sua empresa e dominar a atenção do seu público local através da gestão avançada de Meta Ads, suportada por 12 peças criativas e alinhamento semanal.
               </p>
+
+              <div className="bg-background/50 border border-white/5 rounded-xl p-6 text-left space-y-4 my-6">
+                <h4 className="text-primary font-medium text-sm tracking-widest uppercase">Estratégia de Mídia (Mín. R$30/dia)</h4>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <p><strong className="text-foreground font-medium">1 Campanha de Seguidores:</strong> Para aumentar a base e qualificar o público da região (R$10/dia).</p>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <p><strong className="text-foreground font-medium">1 Campanha de Alcance:</strong> Para dominar a presença local e estar sempre visível (R$10/dia).</p>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <p><strong className="text-foreground font-medium">1 Campanha de Mensagens:</strong> Focada na geração ativa de orçamentos e receita no WhatsApp (R$10/dia).</p>
+                  </li>
+                </ul>
+              </div>
+
               <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
-                <p className="text-primary font-medium text-sm">Investimento: R$ 1.500,00 mensais</p>
+                <p className="text-primary font-medium text-sm">Investimento do Ecossistema: R$ 1.500,00 mensais</p>
               </div>
               <p className="text-primary font-medium text-lg px-4">
                 Essa estrutura inicial foi desenhada exatamente para garantir o aumento imediato de orçamentos diários no seu WhatsApp. Faz sentido iniciarmos a parceria atacando esse gargalo?
