@@ -112,14 +112,14 @@ const Presentation = () => {
                 <p className="text-primary font-medium text-sm">Investimento: R$ 1.500,00 mensais</p>
               </div>
               <p className="text-primary font-medium text-lg px-4">
-                Essa estrutura inicial resolve a necessidade de aumentar o volume de orçamentos diários no seu WhatsApp?
+                Essa estrutura inicial foi desenhada exatamente para garantir o aumento imediato de orçamentos diários no seu WhatsApp. Faz sentido iniciarmos a parceria atacando esse gargalo?
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                 <Button onClick={nextStep} variant="hero" size="lg" className="w-full sm:w-auto">
-                  Sim, exatamente isso
+                  Faz sentido, é o que preciso
                 </Button>
                 <Button onClick={nextStep} variant="hero-outline" size="lg" className="w-full sm:w-auto">
-                  Preciso de mais volume
+                  Gostaria de escalar ainda mais rápido
                 </Button>
               </div>
             </div>
