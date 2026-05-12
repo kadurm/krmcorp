@@ -106,7 +106,7 @@ const Presentation = () => {
 
             <div className="bg-card/30 border border-white/5 p-8 rounded-2xl max-w-2xl text-center space-y-8">
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Nossa primeira fase é dedicada à Tração. Nos meses 1 e 2, o foco será atrair compradores reais através da gestão avançada de Meta Ads, suportada por 12 peças criativas e alinhamento semanal. 
+                Nossa primeira fase é dedicada à Tração. Nos meses 1 e 2, o foco será aumentar exponencialmente a visibilidade da sua empresa e dominar a atenção do seu público local através da gestão avançada de Meta Ads, suportada por 12 peças criativas e alinhamento semanal.
               </p>
               <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
                 <p className="text-primary font-medium text-sm">Investimento: R$ 1.500,00 mensais</p>
