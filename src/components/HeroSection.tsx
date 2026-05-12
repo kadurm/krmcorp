@@ -56,7 +56,7 @@ const HeroSection = () => {
           
           <motion.h1 
             variants={itemVariants}
-            className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-semibold leading-[1.1] mb-8"
+            className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-8"
           >
             Transformamos <span className="text-gradient-gold">influência</span> em
             <br />
