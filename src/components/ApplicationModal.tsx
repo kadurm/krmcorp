@@ -169,7 +169,7 @@ O que faz atualmente: ${data.descricao}`;
                     <FormLabel className="text-xs uppercase tracking-wider opacity-70">Descreva o momento da sua empresa/projeto</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Ex: Somos uma empresa buscando um CRM próprio e uma operação de e-commerce..." 
+                        placeholder="Ex: Preciso integrar toda minha operação, ou apenas tráfego pago, lading page, e-commerce e CRM..." 
                         className="min-h-[100px] bg-muted/30 border-white/5 focus:border-primary/50 transition-colors resize-none" 
                         {...field} 
                       />
