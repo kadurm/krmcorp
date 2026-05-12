@@ -50,25 +50,25 @@ const HeroSection = () => {
           
           <motion.p 
             variants={itemVariants}
-            className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
+            className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed px-2 md:px-0"
           >
             Da infraestrutura tecnológica à estratégia de aquisição. Construímos sistemas exclusivos (CRMs, E-commerces, Landing Pages) e orquestramos as operações de marketing para transformar audiência em receita previsível.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <MagneticWrapper>
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full px-4 sm:px-0">
+            <MagneticWrapper className="w-full sm:w-auto">
               <ApplicationModal
                 trigger={
-                  <Button variant="hero" size="lg" className="px-10 py-7 text-base uppercase tracking-widest">
+                  <Button variant="hero" size="lg" className="px-10 py-7 text-base uppercase tracking-widest w-full">
                     Agendar Conversa
                   </Button>
                 }
               />
             </MagneticWrapper>
             
-            <MagneticWrapper strength={0.2}>
-              <a href="#metodo">
-                <Button variant="hero-outline" size="lg" className="px-10 py-7 text-base uppercase tracking-widest">
+            <MagneticWrapper strength={0.2} className="w-full sm:w-auto">
+              <a href="#metodo" className="w-full block">
+                <Button variant="hero-outline" size="lg" className="px-10 py-7 text-base uppercase tracking-widest w-full">
                   Conheça o Método
                 </Button>
               </a>

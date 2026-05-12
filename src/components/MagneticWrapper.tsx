@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 interface MagneticWrapperProps {
   children: ReactNode;
   strength?: number;
+  className?: string;
 }
 
-const MagneticWrapper = ({ children, strength = 0.35 }: MagneticWrapperProps) => {
+const MagneticWrapper = ({ children, strength = 0.35, className }: MagneticWrapperProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -35,6 +36,7 @@ const MagneticWrapper = ({ children, strength = 0.35 }: MagneticWrapperProps) =>
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      className={className}
     >
       {children}
     </motion.div>
