@@ -14,11 +14,11 @@ const GlobalBackground = () => {
       </div>
 
       {/* Watermark Logo Layer */}
-      <div className="absolute inset-0 flex items-center justify-center p-12">
+      <div className="absolute inset-0 flex items-center justify-center p-12 pointer-events-none">
         <img
           src={logoWatermark}
           alt=""
-          className="w-full max-w-5xl object-contain opacity-[0.04] mix-blend-screen pointer-events-none"
+          className="w-full max-w-5xl object-contain opacity-[0.12]"
         />
       </div>
 

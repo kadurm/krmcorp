@@ -27,7 +27,7 @@ const formSchema = z.object({
   instagram: z.string().min(2, "Instagram inválido"),
   telefone: z.string().min(10, "Telefone inválido (mínimo 10 dígitos)"),
   email: z.string().email("E-mail inválido"),
-  descricao: z.string().min(10, "Conte-nos um pouco mais sobre você"),
+  descricao: z.string().min(10, "Conte-nos um pouco mais sobre você ou sua empresa"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -166,10 +166,10 @@ O que faz atualmente: ${data.descricao}`;
                 name="descricao"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">Descreva sua atuação atual</FormLabel>
+                    <FormLabel className="text-xs uppercase tracking-wider opacity-70">Descreva o momento da sua empresa/projeto</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Ex: Sou mentor de executivos e busco estruturar meu ecossistema digital..." 
+                        placeholder="Ex: Somos uma empresa buscando um CRM próprio e uma operação de e-commerce..." 
                         className="min-h-[100px] bg-muted/30 border-white/5 focus:border-primary/50 transition-colors resize-none" 
                         {...field} 
                       />

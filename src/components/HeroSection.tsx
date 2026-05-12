@@ -38,23 +38,23 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-primary font-display tracking-[0.3em] uppercase text-xs sm:text-sm mb-6"
           >
-            Arquitetura de Ecossistemas & Articulação Corporativa
+            Arquitetura de Ecossistemas & Desenvolvimento Full Stack
           </motion.p>
           
           <motion.h1 
             variants={itemVariants}
             className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] mb-8"
           >
-            Transformamos <span className="text-gradient-gold">influência</span> em
+            Projetamos e operamos o <span className="text-gradient-gold">ecossistema</span> do
             <br />
-            estrutura lucrativa
+            seu negócio
           </motion.h1>
           
           <motion.p 
             variants={itemVariants}
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Estratégia, articulação e execução para quem precisa converter autoridade em resultados financeiros reais. Sem ruído. Sem improviso.
+            Da arquitetura da marca à implementação tecnológica. Construímos plataformas de e-commerce, CRMs personalizados e operações de marketing full stack para escalar autoridades e empresas.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center">

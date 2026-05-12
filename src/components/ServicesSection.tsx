@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
-import { Target, Network, TrendingUp } from "lucide-react";
+import { Target, Database, Rocket } from "lucide-react";
 
 const services = [
   {
+    icon: Database,
+    title: "Infraestrutura & Tecnologia",
+    subtitle: "Para empresas que precisam escalar com solidez.",
+    description:
+      "Desenvolvimento de soluções sob medida. Criamos e integramos CRMs White Label, E-commerces de alta conversão e sistemas operacionais que sustentam o crescimento da sua empresa, sem depender de plataformas engessadas.",
+  },
+  {
     icon: Target,
-    title: "Posicionamento Estratégico",
-    subtitle: "Para quem é visto, mas não é percebido com profundidade.",
+    title: "Estratégia & Posicionamento",
+    subtitle: "Para quem busca virar autoridade incontestável.",
     description:
-      "Redesenhamos a narrativa e o posicionamento de figuras públicas e empresas para que a percepção de mercado esteja alinhada com o valor real entregue. Autoridade não se constrói com volume — se constrói com precisão.",
+      "Redesenhamos a narrativa e o posicionamento de figuras públicas e corporações. Arquitetamos sua autoridade para que a percepção de mercado esteja perfeitamente alinhada com o valor real das suas soluções.",
   },
   {
-    icon: Network,
-    title: "Arquitetura de Ecossistemas",
-    subtitle: "Para quem tem audiência, mas não tem estrutura.",
+    icon: Rocket,
+    title: "Operação Full Stack & Articulação",
+    subtitle: "Para quem precisa focar no que importa.",
     description:
-      "Projetamos e construimos ecossistemas de negócio que conectam produtos, serviços e parcerias de forma integrada. Cada peça gera receita e reforça as demais — sem dependência de uma única fonte.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Articulação de Negócios",
-    subtitle: "Para quem precisa de resultados, não de reuniões.",
-    description:
-      "Conectamos pessoas, oportunidades e capitais com foco em execução. Atuamos como articuladores entre as partes para viabilizar parcerias, acordos e operações que geram valor mensurável.",
+      "Fazemos a engrenagem girar. Desde a concepção de criativos de alta performance e marketing básico até a articulação de parcerias estratégicas B2B. Uma operação fim-a-fim focada em resultados mensuráveis.",
   },
 ];
 
