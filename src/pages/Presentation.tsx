@@ -53,7 +53,7 @@ const Presentation = () => {
             <h1 className="font-display text-4xl md:text-5xl font-semibold">
               Olá, <span className="text-gradient-gold">Lessio</span>.
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               O comportamento de compra no setor de materiais de construção mudou, e a atenção do seu público hoje está no digital. Preparamos este ambiente exclusivo para estruturarmos juntos o crescimento da <span className="text-primary font-medium">Isa Materiais de Construções</span> nos próximos 6 meses.
             </p>
             <div className="w-full bg-card/30 backdrop-blur-md border border-white/5 p-8 rounded-2xl text-left space-y-6">
@@ -119,7 +119,7 @@ const Presentation = () => {
             </div>
 
             <div className="bg-card/30 border border-white/5 p-8 rounded-2xl max-w-2xl text-center space-y-8">
-              <p className="text-muted-foreground text-lg leading-relaxed">
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                 Nossa primeira fase é dedicada à Tração. Nos meses 1 e 2, o foco será aumentar exponencialmente a visibilidade da sua empresa e dominar a atenção do seu público local através da gestão avançada de Meta Ads, suportada por 12 peças criativas e alinhamento semanal.
               </p>
 
@@ -201,7 +201,7 @@ const Presentation = () => {
             </div>
 
             <div className="bg-card/30 border border-white/5 p-8 rounded-2xl max-w-2xl text-center space-y-8">
-              <p className="text-muted-foreground text-lg leading-relaxed">
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                 Com a base validada, entramos na fase de Escala a partir do 3º mês. Aqui, implementamos uma Landing Page focada em conversão, centralizando a atenção do cliente e qualificando o lead.
               </p>
               <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
@@ -266,7 +266,7 @@ const Presentation = () => {
             </div>
 
             <div className="space-y-8 bg-card/30 p-8 rounded-2xl border border-white/5">
-              <p className="text-muted-foreground text-lg leading-relaxed">
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                 Para que os algoritmos trabalhem a favor do seu caixa e o desenvolvimento web atinja seu potencial máximo, nossa parceria é firmada em um ciclo de <span className="text-primary font-medium">6 meses</span>. Esse tempo é vital para transformar dados brutos em lucro previsível.
               </p>
               <p className="text-primary font-medium text-lg px-4">
@@ -303,7 +303,7 @@ const Presentation = () => {
               Estratégia <span className="text-gradient-gold">Validada</span>
             </h2>
 
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               A estratégia está mapeada e o roteiro para escalar a <span className="text-primary font-medium">Isa Materiais de Construções</span> está claro. Com o plano de ação validado, podemos confirmar o início do projeto agora mesmo para iniciarmos a construção desse ecossistema e liberarmos o cronograma de integração?
             </p>
 
