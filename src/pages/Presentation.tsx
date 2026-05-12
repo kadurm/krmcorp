@@ -245,19 +245,19 @@ const Presentation = () => {
             </div>
 
             {/* Timeline Visual */}
-            <div className="w-full relative py-8 px-4">
-              <div className="absolute top-1/2 left-0 right-0 h-1 bg-white/5 -translate-y-1/2 rounded-full" />
-              <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-primary/40 via-primary to-primary -translate-y-1/2 rounded-full" />
+            <div className="w-full relative py-12 px-4">
+              <div className="absolute top-[60px] left-0 right-0 h-0.5 bg-white/5 rounded-full" />
+              <div className="absolute top-[60px] left-0 w-full h-0.5 bg-gradient-to-r from-primary/40 via-primary to-primary rounded-full" />
               
-              <div className="relative flex justify-between items-center w-full">
+              <div className="relative flex justify-between items-start w-full">
                 {[1, 2, 3, 4, 5, 6].map((month) => (
-                  <div key={month} className="flex flex-col items-center gap-3">
+                  <div key={month} className="flex flex-col items-center gap-6">
                     <motion.div 
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: month * 0.1 }}
-                      className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                        month <= 2 ? 'bg-primary/20 text-primary border border-primary/50' : 'bg-primary text-primary-foreground shadow-[0_0_15px_rgba(212,175,55,0.5)]'
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold z-10 ${
+                        month <= 2 ? 'bg-background border-2 border-primary/50 text-primary' : 'bg-primary text-primary-foreground shadow-[0_0_15px_rgba(212,175,55,0.5)]'
                       }`}
                     >
                       {month}
