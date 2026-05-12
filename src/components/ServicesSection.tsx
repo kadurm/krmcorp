@@ -4,10 +4,10 @@ import { Target, Database, Rocket } from "lucide-react";
 const services = [
   {
     icon: Database,
-    title: "Infraestrutura & Tecnologia",
-    subtitle: "Para empresas que precisam escalar com solidez.",
+    title: "Desenvolvimento Full Stack",
+    subtitle: "Sistemas construídos de ponta a ponta.",
     description:
-      "Desenvolvimento de soluções sob medida. Criamos e integramos CRMs White Label, E-commerces de alta conversão e sistemas operacionais que sustentam o crescimento da sua empresa, sem depender de plataformas engessadas.",
+      "Construção completa da sua infraestrutura tecnológica. Desenvolvemos desde Landing Pages de alta conversão e E-commerces até CRMs personalizados White Label para gerenciamento de operações internas.",
   },
   {
     icon: Target,
@@ -18,10 +18,10 @@ const services = [
   },
   {
     icon: Rocket,
-    title: "Operação Full Stack & Articulação",
-    subtitle: "Para quem precisa focar no que importa.",
+    title: "Tráfego & Gestão de Marketing",
+    subtitle: "Operação contínua para escala de vendas.",
     description:
-      "Fazemos a engrenagem girar. Desde a concepção de criativos de alta performance e marketing básico até a articulação de parcerias estratégicas B2B. Uma operação fim-a-fim focada em resultados mensuráveis.",
+      "Aceleramos o seu ecossistema. Assumimos a gestão do tráfego pago, concepção de criativos de alta performance e ações de marketing contínuas para gerar fluxo constante de leads e vendas.",
   },
 ];
 

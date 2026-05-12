@@ -45,7 +45,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] mb-8"
           >
-            Projetamos e operamos o <span className="text-gradient-gold">ecossistema</span> do
+            Projetamos e construímos o <span className="text-gradient-gold">ecossistema</span> do
             <br />
             seu negócio
           </motion.h1>
@@ -54,7 +54,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Da arquitetura da marca à implementação tecnológica. Construímos plataformas de e-commerce, CRMs personalizados e operações de marketing full stack para escalar autoridades e empresas.
+            Da arquitetura da marca à implementação tecnológica. Desenvolvimento de sistemas Full Stack (CRMs, E-commerces, Landing Pages) e gestão de operações de marketing e tráfego pago para escalar resultados.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
