@@ -76,30 +76,31 @@ const Presentation = () => {
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colorMuted);
     
-    doc.text("CONTRATANTE: ISA MATERIAIS DE CONSTRUÇÕES", 20, 45);
-    doc.text("(A/C Lessio Barbosa)", 20, 50);
+    doc.text("CONTRATANTE: ISA EMPREENDIMENTOS LTDA", 20, 45);
+    doc.text("CNPJ: 61.190.990/0001-62", 20, 50);
+    doc.text("Responsável: Lessio Barbosa", 20, 55);
     
-    doc.text("CONTRATADO: CARLOS EDUARDO RIBEIRO MENEZES (KrM Corp)", 20, 60);
-    doc.text("CNPJ: 41.390.829/0001-25", 20, 65);
+    doc.text("CONTRATADO: CARLOS EDUARDO RIBEIRO MENEZES (KrM Corp)", 20, 65);
+    doc.text("CNPJ: 41.390.829/0001-25", 20, 70);
     
     // Objeto e Diagnóstico
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...colorGold);
-    doc.text("CLÁUSULA 1 - DO OBJETO", 20, 80);
+    doc.text("CLÁUSULA 1 - DO OBJETO", 20, 85);
     
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     doc.setTextColor(...colorWhite);
-    doc.text("O presente contrato tem por objeto a prestação de serviços de marketing estratégico", 20, 90);
-    doc.text("e desenvolvimento tecnológico, visando solucionar o seguinte desafio mapeado:", 20, 95);
+    doc.text("O presente contrato tem por objeto a prestação de serviços de marketing estratégico", 20, 95);
+    doc.text("e desenvolvimento tecnológico, visando solucionar o seguinte desafio mapeado:", 20, 100);
     
     doc.setFont("helvetica", "italic");
     doc.setTextColor(...colorMuted);
     const splitBottleneck = doc.splitTextToSize(`"${bottleneck || "Aumento do volume de orçamentos diários e atração de novos clientes."}"`, 170);
-    doc.text(splitBottleneck, 20, 105);
+    doc.text(splitBottleneck, 20, 110);
     
-    let currentY = 105 + (splitBottleneck.length * 6) + 10;
+    let currentY = 110 + (splitBottleneck.length * 6) + 10;
     
     // Escopo Visual (Bento Grid)
     doc.setFont("helvetica", "bold");
@@ -179,7 +180,7 @@ const Presentation = () => {
       currentY += 8;
     };
 
-    printClause("CLÁUSULA 2 – DAS OBRIGAÇÕES DA CONTRATADA", [
+    printClause("CLÁUSULA 2 – DAS OBRIGAÇÕES DO CONTRATADO", [
       "a) Executar os serviços de forma autônoma, sem vínculo trabalhista;",
       "b) Apresentar relatórios de desempenho e resultados das campanhas;",
       "c) Manter sigilo sobre informações estratégicas e dados fornecidos pelo CONTRATANTE;",
@@ -191,23 +192,20 @@ const Presentation = () => {
       "b) Efetuar o pagamento nas condições ajustadas;",
       "c) Aprovar previamente briefings e materiais antes da veiculação;",
       "d) Assumir os custos de eventuais serviços terceirizados quando solicitados;",
-      "e) VERBA DE MÍDIA: O CONTRATANTE compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Ex: Meta Ads) e não compõe os honorários da CONTRATADA."
+      "e) VERBA DE MÍDIA: O CONTRATANTE compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Ex: Meta Ads) e não compõe os honorários do CONTRATADO."
     ]);
 
     printClause("CLÁUSULA 4 – DO VALOR E PAGAMENTO", [
-      "Pelos serviços ora contratados, o CONTRATANTE pagará à CONTRATADA:",
+      "Pelos serviços ora contratados, o CONTRATANTE pagará ao CONTRATADO:",
       "- FASE 1 (Meses 1 e 2): O valor mensal equivalente a R$ 1.500,00 (Um mil e quinhentos reais).",
       "- FASE 2 (Mês 3 ao 6): O valor mensal equivalente a R$ 2.000,00 (Dois mil reais), justificando-se pela implementação tecnológica adicional (Landing Page).",
-      "Os pagamentos deverão ser efetuados até o dia 5 de cada mês correspondente."
+      "O primeiro pagamento deverá ser efetuado na data de assinatura deste contrato, servindo como condição para o início dos serviços. Os pagamentos subsequentes deverão ser realizados mensalmente, no mesmo dia dos meses subsequentes."
     ]);
 
-    // --- PÁGINA 3: Vigência, Rescisão e Assinaturas ---
-    doc.addPage();
-    addDarkPage();
-    currentY = 20;
+    // --- PÁGINA 2: Cláusulas e Assinaturas ---
 
     printClause("CLÁUSULA 5 – DA VIGÊNCIA", [
-      "O presente contrato terá vigência de 06 (Seis) meses, com início na data de assinatura deste instrumento, podendo ser renovado automaticamente caso as partes não se manifestem em sentido contrário, mediante reajuste pré-acordado."
+      "O presente contrato terá vigência de 06 (Seis) meses, com início na data de assinatura deste instrumento. Fica acordado que a prestação do serviço continuará automaticamente por prazo indeterminado caso nenhuma das partes se manifeste em sentido contrário com aviso prévio de 30 (trinta) dias, sujeito a reajuste pré-acordado."
     ]);
 
     printClause("CLÁUSULA 6 – DA RESCISÃO", [
@@ -235,7 +233,7 @@ const Presentation = () => {
     doc.text("CONTRATANTE", 55, currentY + 6, { align: "center" });
     doc.setFontSize(8);
     doc.setTextColor(...colorMuted);
-    doc.text("Isa Materiais de Construções", 55, currentY + 12, { align: "center" });
+    doc.text("Isa Empreendimentos LTDA", 55, currentY + 12, { align: "center" });
     
     doc.line(110, currentY, 190, currentY);
     doc.setFontSize(10);
@@ -245,7 +243,7 @@ const Presentation = () => {
     doc.setTextColor(...colorMuted);
     doc.text("KrM Corp (Carlos E. R. Menezes)", 150, currentY + 12, { align: "center" });
     
-    doc.save("Contrato_Isa_Materiais_KrM.pdf");
+    doc.save("Contrato_Isa_Empreendimentos_KrM.pdf");
     setPdfGenerated(true);
   };
 
@@ -268,7 +266,7 @@ const Presentation = () => {
                 Olá, <span className="text-gradient-gold">Lessio</span>.
               </h1>
               <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
-                O comportamento de compra no setor de materiais de construção mudou, e a atenção do seu público hoje está no digital. Preparamos este ambiente exclusivo para estruturarmos juntos o crescimento da <span className="text-primary">Isa Materiais de Construções</span> nos próximos 6 meses.
+                O comportamento de compra no setor de materiais de construção mudou, e a atenção do seu público hoje está no digital. Preparamos este ambiente exclusivo para estruturarmos juntos o crescimento da <span className="text-primary">Isa Empreendimentos LTDA</span> nos próximos 6 meses.
               </p>
             </div>
 
@@ -429,7 +427,7 @@ const Presentation = () => {
                 </div>
                 <p className="text-[10px] text-muted-foreground uppercase tracking-widest">† Verba de mídia (ads) paga diretamente às plataformas</p>
                 <p className="text-primary font-medium text-base sm:text-lg px-4 leading-relaxed">
-                  Você concorda que ter um ativo digital rodando 24 horas por dia, exclusivo para a Isa Materiais, é o diferencial que falta contra a concorrência?
+                  Você concorda que ter um ativo digital rodando 24 horas por dia, exclusivo para a Isa Empreendimentos, é o diferencial que falta contra a concorrência?
                 </p>
               </div>
               <div className="flex justify-center mt-6">
@@ -526,7 +524,7 @@ const Presentation = () => {
             </h2>
 
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              A estratégia está mapeada e o roteiro para escalar a <span className="text-primary font-medium">Isa Materiais de Construções</span> está claro. Com o plano de ação validado, podemos confirmar o início do projeto agora mesmo para iniciarmos a construção desse ecossistema e liberarmos o cronograma de integração?
+              A estratégia está mapeada e o roteiro para escalar a <span className="text-primary font-medium">Isa Empreendimentos LTDA</span> está claro. Com o plano de ação validado, podemos confirmar o início do projeto agora mesmo para iniciarmos a construção desse ecossistema e liberarmos o cronograma de integração?
             </p>
 
             {!pdfGenerated ? (
@@ -542,7 +540,7 @@ const Presentation = () => {
               >
                 <p className="text-sm text-primary font-medium">Contrato gerado com sucesso!</p>
                 <a 
-                  href="https://wa.me/5538988450377?text=Ol%C3%A1%2C%20baixei%20o%20contrato%20da%20Isa%20Materiais%20e%20estou%20de%20acordo%20com%20a%20proposta.%20Segue%20o%20documento%20assinado%20em%20anexo." 
+                  href="https://wa.me/5538988450377?text=Ol%C3%A1%2C%20baixei%20o%20contrato%20da%20Isa%20Empreendimentos%20e%20estou%20de%20acordo%20com%20a%20proposta.%20Segue%20o%20documento%20assinado%20em%20anexo." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto"
