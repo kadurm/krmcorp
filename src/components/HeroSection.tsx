@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ApplicationModal from "@/components/ApplicationModal";
 import MagneticWrapper from "@/components/MagneticWrapper";
-import heroBg from "@/assets/hero-bg.webp";
-
 const HeroSection = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -27,17 +25,6 @@ const HeroSection = () => {
 
   return (
     <section id="sobre" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img 
-          src={heroBg} 
-          alt="" 
-          className="w-full h-full object-cover opacity-40" 
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 container max-w-5xl mx-auto px-6 text-center">
         <motion.div

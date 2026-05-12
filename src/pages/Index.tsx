@@ -5,10 +5,12 @@ import ServicesSection from "@/components/ServicesSection";
 import MethodologySection from "@/components/MethodologySection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import GlobalBackground from "@/components/GlobalBackground";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <GlobalBackground />
       <Header />
       <main>
         <HeroSection />
