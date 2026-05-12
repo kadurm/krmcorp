@@ -18,8 +18,11 @@ const CTASection = () => {
             <br />
             <span className="text-gradient-gold">autoridade em lucratividade?</span>
           </h2>
-          <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto leading-relaxed">
-            O primeiro passo é uma conversa estratégica. Sem compromisso, sem script — apenas uma análise direta do seu cenário atual e das oportunidades que você ainda não está capturando.
+          <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+            O primeiro passo é uma análise direta e sem scripts do seu cenário atual, focada exclusivamente em destravar as oportunidades que você ainda não está capturando.
+          </p>
+          <p className="text-primary font-medium text-lg mb-8">
+            Qual é o principal gargalo estratégico ou tecnológico que impede o seu negócio de escalar hoje?
           </p>
 
           <ApplicationModal

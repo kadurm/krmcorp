@@ -38,23 +38,21 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-primary font-display tracking-[0.3em] uppercase text-xs sm:text-sm mb-6"
           >
-            Arquitetura de Ecossistemas & Desenvolvimento Full Stack
+            Arquitetura Digital & Desenvolvimento Full Stack
           </motion.p>
           
           <motion.h1 
             variants={itemVariants}
             className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] mb-8"
           >
-            Projetamos e construímos o <span className="text-gradient-gold">ecossistema</span> do
-            <br />
-            seu negócio
+            Projetamos o <span className="text-gradient-gold">ecossistema</span> que consolida a sua autoridade e escala o seu negócio.
           </motion.h1>
           
           <motion.p 
             variants={itemVariants}
             className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Da arquitetura da marca à implementação tecnológica. Desenvolvimento de sistemas Full Stack (CRMs, E-commerces, Landing Pages) e gestão de operações de marketing e tráfego pago para escalar resultados.
+            Da infraestrutura tecnológica à estratégia de aquisição. Construímos sistemas exclusivos (CRMs, E-commerces, Landing Pages) e orquestramos as operações de marketing para transformar audiência em receita previsível.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center">

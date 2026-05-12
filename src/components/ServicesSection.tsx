@@ -5,23 +5,23 @@ const services = [
   {
     icon: Database,
     title: "Desenvolvimento Full Stack",
-    subtitle: "Sistemas construídos de ponta a ponta.",
+    subtitle: "Infraestrutura tecnológica de ponta a ponta.",
     description:
-      "Construção completa da sua infraestrutura tecnológica. Desenvolvemos desde Landing Pages de alta conversão e E-commerces até CRMs personalizados White Label para gerenciamento de operações internas.",
+      "Construímos a base sólida da sua operação. Desde Landing Pages de altíssima conversão e E-commerces sofisticados até CRMs personalizados sob medida (White Label) para o controle absoluto do seu negócio.",
   },
   {
     icon: Target,
     title: "Estratégia & Posicionamento",
-    subtitle: "Para quem busca virar autoridade incontestável.",
+    subtitle: "Para quem exige autoridade incontestável.",
     description:
-      "Redesenhamos a narrativa e o posicionamento de figuras públicas e corporações. Arquitetamos sua autoridade para que a percepção de mercado esteja perfeitamente alinhada com o valor real das suas soluções.",
+      "Redesenhamos a sua narrativa de mercado. Alinhamos a percepção do seu público ao real valor das suas soluções, criando um posicionamento high-end que atrai e converte o cliente ideal.",
   },
   {
     icon: Rocket,
     title: "Tráfego & Gestão de Marketing",
-    subtitle: "Operação contínua para escala de vendas.",
+    subtitle: "O motor de tração do seu ecossistema.",
     description:
-      "Aceleramos o seu ecossistema. Assumimos a gestão do tráfego pago, concepção de criativos de alta performance e ações de marketing contínuas para gerar fluxo constante de leads e vendas.",
+      "Assumimos a gestão estratégica de anúncios e a concepção de criativos de alta performance. Operação contínua e orientada a dados para gerar um fluxo qualificado e previsível de vendas.",
   },
 ];
 

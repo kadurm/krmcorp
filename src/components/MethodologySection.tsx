@@ -4,22 +4,22 @@ const steps = [
   {
     number: "01",
     title: "Diagnóstico",
-    description: "Análise profunda do ecossistema atual: posicionamento, receita, audiência, estrutura e pontos de alavancagem.",
+    description: "Mapeamento profundo do seu cenário atual. Identificamos gargalos técnicos, posicionamento de marca, qualidade da audiência e oportunidades imediatas de alavancagem.",
   },
   {
     number: "02",
     title: "Arquitetura",
-    description: "Desenho do ecossistema ideal com rotas de monetização, parcerias estratégicas e narrativa de mercado.",
+    description: "Desenho do ecossistema perfeito. Estruturamos as rotas de monetização, definimos a infraestrutura ideal e construímos a narrativa que o seu mercado precisa ouvir.",
   },
   {
     number: "03",
     title: "Articulação",
-    description: "Ativação das conexões certas, negociação de acordos e viabilização das operações planejadas.",
+    description: "Conexão das pontas soltas. Negociação de acordos estratégicos, validação de parceiros e viabilização técnica para que o projeto saia do papel com precisão.",
   },
   {
     number: "04",
     title: "Execução & Escala",
-    description: "Implementação com acompanhamento próximo, ajustes em tempo real e expansão sustentável dos resultados.",
+    description: "Implementação rigorosa. Acompanhamento em tempo real, ajustes de performance contínuos e expansão sustentável da sua margem de lucro.",
   },
 ];
 
