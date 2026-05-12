@@ -24,9 +24,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="sobre" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="sobre" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 sm:py-0">
       {/* Content */}
-      <div className="relative z-10 container max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 container max-w-5xl mx-auto px-4 sm:px-6 text-center mt-12 sm:mt-0">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -36,21 +36,21 @@ const HeroSection = () => {
           
           <motion.p 
             variants={itemVariants}
-            className="text-primary font-display tracking-[0.3em] uppercase text-xs sm:text-sm mb-6"
+            className="text-primary font-display tracking-widest sm:tracking-[0.3em] uppercase text-[10px] sm:text-sm mb-4 sm:mb-6 px-4 sm:px-0"
           >
             Arquitetura Digital & Desenvolvimento Full Stack
           </motion.p>
           
           <motion.h1 
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.1] mb-8"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-semibold leading-[1.15] sm:leading-[1.1] mb-6 sm:mb-8 px-2 sm:px-0"
           >
             Projetamos o <span className="text-gradient-gold">ecossistema</span> que consolida a sua autoridade e escala o seu negócio.
           </motion.h1>
           
           <motion.p 
             variants={itemVariants}
-            className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed px-2 md:px-0"
+            className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed px-4 sm:px-0"
           >
             Da infraestrutura tecnológica à estratégia de aquisição. Construímos sistemas exclusivos (CRMs, E-commerces, Landing Pages) e orquestramos as operações de marketing para transformar audiência em receita previsível.
           </motion.p>
