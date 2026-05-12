@@ -145,9 +145,10 @@ const Presentation = () => {
               </div>
 
               <div className="space-y-6">
-                <div className="inline-block px-5 py-2 bg-primary/10 border border-primary/20 rounded-full">
-                  <p className="text-primary font-medium text-[10px] uppercase tracking-widest">Investimento do Ecossistema: R$ 1.500,00 mensais</p>
+                <div className="inline-block px-5 py-3 bg-primary/10 border border-primary/20 rounded-full">
+                  <p className="text-primary font-bold text-[10px] sm:text-xs uppercase tracking-widest">Honorários KrM: R$ 1.500,00 /mês</p>
                 </div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">† Verba de mídia (ads) paga diretamente às plataformas</p>
                 <p className="text-primary font-medium text-base sm:text-lg px-4 leading-relaxed">
                   Essa estrutura inicial foi desenhada exatamente para garantir o aumento imediato de orçamentos diários no seu WhatsApp. Faz sentido iniciarmos a parceria atacando esse gargalo?
                 </p>
@@ -210,9 +211,10 @@ const Presentation = () => {
                 Com a base validada, entramos na fase de Escala a partir do 3º mês. Aqui, implementamos uma Landing Page focada em conversão, centralizando a atenção do cliente e qualificando o lead.
               </p>
               <div className="space-y-6">
-                <div className="inline-block px-5 py-2 bg-primary/10 border border-primary/20 rounded-full">
-                  <p className="text-primary font-medium text-[10px] uppercase tracking-widest">Investimento do Ecossistema: R$ 2.000,00 mensais</p>
+                <div className="inline-block px-5 py-3 bg-primary/10 border border-primary/20 rounded-full">
+                  <p className="text-primary font-bold text-[10px] sm:text-xs uppercase tracking-widest">Honorários KrM: R$ 2.000,00 /mês</p>
                 </div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">† Verba de mídia (ads) paga diretamente às plataformas</p>
                 <p className="text-primary font-medium text-base sm:text-lg px-4 leading-relaxed">
                   Você concorda que ter um ativo digital rodando 24 horas por dia, exclusivo para a Isa Materiais, é o diferencial que falta contra a concorrência?
                 </p>
