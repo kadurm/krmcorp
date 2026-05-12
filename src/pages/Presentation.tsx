@@ -47,24 +47,27 @@ const Presentation = () => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center max-w-2xl mx-auto text-center space-y-8"
+            className="flex flex-col items-center max-w-xl mx-auto text-center space-y-12 pt-8 sm:pt-0"
           >
-            <div className="line-gold mx-auto mb-4" />
-            <h1 className="font-display text-4xl md:text-5xl font-semibold">
-              Olá, <span className="text-gradient-gold">Lessio</span>.
-            </h1>
-            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              O comportamento de compra no setor de materiais de construção mudou, e a atenção do seu público hoje está no digital. Preparamos este ambiente exclusivo para estruturarmos juntos o crescimento da <span className="text-primary font-medium">Isa Materiais de Construções</span> nos próximos 6 meses.
-            </p>
-            <div className="w-full bg-card/30 backdrop-blur-md border border-white/5 p-8 rounded-2xl text-left space-y-6">
-              <p className="text-primary font-medium text-lg">
+            <div className="space-y-4">
+              <div className="line-gold mx-auto mb-6" />
+              <h1 className="font-display text-4xl md:text-5xl font-semibold mb-2">
+                Olá, <span className="text-gradient-gold">Lessio</span>.
+              </h1>
+              <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
+                O comportamento de compra no setor de materiais de construção mudou, e a atenção do seu público hoje está no digital. Preparamos este ambiente exclusivo para estruturarmos juntos o crescimento da <span className="text-primary">Isa Materiais de Construções</span> nos próximos 6 meses.
+              </p>
+            </div>
+
+            <div className="w-full bg-card/20 backdrop-blur-xl border border-white/5 p-6 sm:p-10 rounded-3xl text-left space-y-8 shadow-2xl">
+              <p className="text-primary font-medium text-base sm:text-lg leading-relaxed">
                 Para que nosso planejamento seja o mais afiado possível, qual é hoje o principal gargalo que você observa nas vendas da loja física?
               </p>
               <Textarea
                 value={bottleneck}
                 onChange={(e) => setBottleneck(e.target.value)}
                 placeholder="Ex: Falta de orçamentos diários, dificuldade em atrair clientes novos..."
-                className="min-h-[120px] bg-background/50 border-white/10 focus:border-primary/50 text-base"
+                className="min-h-[140px] bg-background/40 border-white/10 focus:border-primary/50 text-sm sm:text-base p-4"
               />
               <div className="flex justify-end">
                 <Button 
@@ -90,14 +93,14 @@ const Presentation = () => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center max-w-4xl mx-auto space-y-10"
+            className="flex flex-col items-center max-w-4xl mx-auto space-y-12 pt-8 sm:pt-0"
           >
             <div className="text-center space-y-4">
-              <p className="text-primary font-display tracking-widest uppercase text-xs">Fase 1: Tração (Mês 1 e 2)</p>
+              <p className="text-primary font-display tracking-[0.3em] uppercase text-[10px]">Fase 1: Tração (Mês 1 e 2)</p>
               <h2 className="font-display text-3xl font-semibold">Atração e <span className="text-gradient-gold">Volume</span></h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full px-2 sm:px-0">
               {[
                 { icon: MetaIcon, title: "Meta Ads", desc: "Instagram & Facebook" },
                 { icon: ImageIcon, title: "10 Criativos", desc: "Estáticos Alta Conversão" },
@@ -109,44 +112,46 @@ const Presentation = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-card/40 backdrop-blur-xl border border-white/5 rounded-xl p-6 flex flex-col items-center text-center hover:border-primary/30 transition-all"
+                  className="bg-card/40 backdrop-blur-xl border border-white/5 rounded-2xl p-4 sm:p-6 flex flex-col items-center text-center hover:border-primary/30 transition-all"
                 >
-                  <item.icon className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-                  <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                  <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mb-3 sm:mb-4" strokeWidth={1.5} />
+                  <h3 className="font-semibold text-xs sm:text-sm mb-1">{item.title}</h3>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="bg-card/30 border border-white/5 p-8 rounded-2xl max-w-2xl text-center space-y-8">
-              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <div className="bg-card/20 border border-white/5 p-6 sm:p-10 rounded-3xl max-w-2xl text-center space-y-10">
+              <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
                 Nossa primeira fase é dedicada à Tração. Nos meses 1 e 2, o foco será aumentar exponencialmente a visibilidade da sua empresa e dominar a atenção do seu público local através da gestão avançada de Meta Ads, suportada por 12 peças criativas e alinhamento semanal.
               </p>
 
-              <div className="bg-background/50 border border-white/5 rounded-xl p-6 text-left space-y-4 my-6">
-                <h4 className="text-primary font-medium text-sm tracking-widest uppercase">Estratégia de Mídia (Mín. R$30/dia)</h4>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
+              <div className="bg-background/40 border border-white/5 rounded-2xl p-6 text-left space-y-5 my-8">
+                <h4 className="text-primary font-medium text-[10px] tracking-[0.3em] uppercase">Estratégia de Mídia (Mín. R$30/dia)</h4>
+                <ul className="space-y-4 text-xs sm:text-sm text-muted-foreground/80">
+                  <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                     <p><strong className="text-foreground font-medium">1 Campanha de Seguidores:</strong> Para aumentar a base e qualificar o público da região (R$10/dia).</p>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                     <p><strong className="text-foreground font-medium">1 Campanha de Alcance:</strong> Para dominar a presença local e estar sempre visível (R$10/dia).</p>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                     <p><strong className="text-foreground font-medium">1 Campanha de Mensagens:</strong> Focada na geração ativa de orçamentos e receita no WhatsApp (R$10/dia).</p>
                   </li>
                 </ul>
               </div>
 
-              <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
-                <p className="text-primary font-medium text-sm">Investimento do Ecossistema: R$ 1.500,00 mensais</p>
+              <div className="space-y-6">
+                <div className="inline-block px-5 py-2 bg-primary/10 border border-primary/20 rounded-full">
+                  <p className="text-primary font-medium text-[10px] uppercase tracking-widest">Investimento do Ecossistema: R$ 1.500,00 mensais</p>
+                </div>
+                <p className="text-primary font-medium text-base sm:text-lg px-4 leading-relaxed">
+                  Essa estrutura inicial foi desenhada exatamente para garantir o aumento imediato de orçamentos diários no seu WhatsApp. Faz sentido iniciarmos a parceria atacando esse gargalo?
+                </p>
               </div>
-              <p className="text-primary font-medium text-lg px-4">
-                Essa estrutura inicial foi desenhada exatamente para garantir o aumento imediato de orçamentos diários no seu WhatsApp. Faz sentido iniciarmos a parceria atacando esse gargalo?
-              </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                 <Button onClick={nextStep} variant="hero" size="lg" className="w-full sm:w-auto">
                   Faz sentido, é o que preciso
@@ -168,48 +173,50 @@ const Presentation = () => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center max-w-4xl mx-auto space-y-10"
+            className="flex flex-col items-center max-w-4xl mx-auto space-y-12 pt-8 sm:pt-0"
           >
             <div className="text-center space-y-4">
-              <p className="text-primary font-display tracking-widest uppercase text-xs">Fase 2: Escala (Mês 3 a 6)</p>
+              <p className="text-primary font-display tracking-[0.3em] uppercase text-[10px]">Fase 2: Escala (Mês 3 a 6)</p>
               <h2 className="font-display text-3xl font-semibold">Centralização e <span className="text-gradient-gold">Conversão</span></h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 w-full items-stretch">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 w-full items-stretch px-2 sm:px-0">
               {[
                 { icon: MetaIcon, title: "Meta Ads" },
                 { icon: ImageIcon, title: "10 Criativos" },
                 { icon: Video, title: "2 Vídeos" },
                 { icon: Calendar, title: "Reuniões" },
               ].map((item, i) => (
-                <div key={i} className="bg-card/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center text-center opacity-70">
-                  <item.icon className="w-6 h-6 text-primary mb-2" strokeWidth={1.5} />
-                  <h3 className="font-medium text-xs">{item.title}</h3>
+                <div key={i} className="bg-card/20 border border-white/5 rounded-2xl p-4 flex flex-col items-center justify-center text-center opacity-70">
+                  <item.icon className="w-5 h-5 text-primary mb-2" strokeWidth={1.5} />
+                  <h3 className="font-medium text-[10px]">{item.title}</h3>
                 </div>
               ))}
               <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                className="col-span-2 md:col-span-1 bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/40 rounded-xl p-4 flex flex-col items-center justify-center text-center relative overflow-hidden glow-gold"
+                className="col-span-2 md:col-span-1 bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/40 rounded-2xl p-4 flex flex-col items-center justify-center text-center relative overflow-hidden glow-gold"
               >
                 <div className="absolute inset-0 bg-primary/10 animate-pulse" />
-                <Layout className="w-8 h-8 text-primary mb-3 relative z-10" strokeWidth={1.5} />
-                <h3 className="font-semibold text-sm mb-1 relative z-10">Landing Page</h3>
-                <p className="text-[10px] text-primary/80 uppercase tracking-widest relative z-10">Alta Conversão</p>
+                <Layout className="w-8 h-8 text-primary mb-2 relative z-10" strokeWidth={1.5} />
+                <h3 className="font-semibold text-xs mb-1 relative z-10">Landing Page</h3>
+                <p className="text-[8px] text-primary/80 uppercase tracking-widest relative z-10">Alta Conversão</p>
               </motion.div>
             </div>
 
-            <div className="bg-card/30 border border-white/5 p-8 rounded-2xl max-w-2xl text-center space-y-8">
-              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <div className="bg-card/20 border border-white/5 p-6 sm:p-10 rounded-3xl max-w-2xl text-center space-y-10">
+              <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
                 Com a base validada, entramos na fase de Escala a partir do 3º mês. Aqui, implementamos uma Landing Page focada em conversão, centralizando a atenção do cliente e qualificando o lead.
               </p>
-              <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
-                <p className="text-primary font-medium text-sm">Investimento: R$ 2.000,00 mensais</p>
+              <div className="space-y-6">
+                <div className="inline-block px-5 py-2 bg-primary/10 border border-primary/20 rounded-full">
+                  <p className="text-primary font-medium text-[10px] uppercase tracking-widest">Investimento do Ecossistema: R$ 2.000,00 mensais</p>
+                </div>
+                <p className="text-primary font-medium text-base sm:text-lg px-4 leading-relaxed">
+                  Você concorda que ter um ativo digital rodando 24 horas por dia, exclusivo para a Isa Materiais, é o diferencial que falta contra a concorrência?
+                </p>
               </div>
-              <p className="text-primary font-medium text-lg px-4">
-                Você concorda que ter um ativo digital rodando 24 horas por dia, exclusivo para a Isa Materiais, é o diferencial que falta contra a concorrência?
-              </p>
               <div className="flex justify-center mt-6">
                 <Button onClick={nextStep} variant="hero" size="lg" className="px-10">
                   Concordo, é o próximo passo
