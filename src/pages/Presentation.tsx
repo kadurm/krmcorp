@@ -156,11 +156,6 @@ const Presentation = () => {
     doc.setTextColor(...colorWhite);
     doc.text("Desenvolvimento de página focada em altíssima conversão", 102, currentY + 20, { align: "center" });
 
-    // --- PÁGINA 2: Cláusulas ---
-    doc.addPage();
-    addDarkPage();
-    currentY = 20;
-    
     const printClause = (title: string, lines: string[]) => {
       doc.setFont("helvetica", "bold");
       doc.setFontSize(12);
@@ -180,12 +175,21 @@ const Presentation = () => {
       currentY += 8;
     };
 
+    currentY += 35; // Espaço após o Bento Grid
+
     printClause("CLÁUSULA 2 – DAS OBRIGAÇÕES DO CONTRATADO", [
       "a) Executar os serviços de forma autônoma, sem vínculo trabalhista;",
       "b) Apresentar relatórios de desempenho e resultados das campanhas;",
       "c) Manter sigilo sobre informações estratégicas e dados fornecidos pelo CONTRATANTE;",
       "d) Realizar ajustes e otimizações necessárias para o bom andamento das campanhas."
     ]);
+
+    // --- PÁGINA 2: Cláusulas e Assinaturas ---
+    doc.addPage();
+    addDarkPage();
+    currentY = 20;
+
+
 
     printClause("CLÁUSULA 3 – DAS OBRIGAÇÕES DO CONTRATANTE", [
       "a) Fornecer informações, materiais e conteúdos necessários para execução dos serviços (fotos, vídeos, agenda de ações etc.);",
@@ -202,7 +206,6 @@ const Presentation = () => {
       "O primeiro pagamento deverá ser efetuado na data de assinatura deste contrato, servindo como condição para o início dos serviços. Os pagamentos subsequentes deverão ser realizados mensalmente, no mesmo dia dos meses subsequentes."
     ]);
 
-    // --- PÁGINA 2: Cláusulas e Assinaturas ---
 
     printClause("CLÁUSULA 5 – DA VIGÊNCIA", [
       "O presente contrato terá vigência de 06 (Seis) meses, com início na data de assinatura deste instrumento. Fica acordado que a prestação do serviço continuará automaticamente por prazo indeterminado caso nenhuma das partes se manifeste em sentido contrário com aviso prévio de 30 (trinta) dias, sujeito a reajuste pré-acordado."
