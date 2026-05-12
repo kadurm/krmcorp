@@ -4,6 +4,20 @@ import { Target, Image as ImageIcon, Video, Calendar, Layout, CheckCircle2 } fro
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
+const MetaIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="1.5" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M8.5 9.5c-1.5 0-3 1.25-3 2.5s1.5 2.5 3 2.5 2.5-1.25 3.5-2.5 2-2.5 3.5-2.5 3 1.25 3 2.5-1.5 2.5-3 2.5-2.5-1.25-3.5-2.5-2-2.5-3.5-2.5z" />
+  </svg>
+);
+
 const Presentation = () => {
   const [step, setStep] = useState(0);
   const [bottleneck, setBottleneck] = useState("");
@@ -85,7 +99,7 @@ const Presentation = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
               {[
-                { icon: Target, title: "Meta Ads", desc: "Gestão Avançada" },
+                { icon: MetaIcon, title: "Meta Ads", desc: "Instagram & Facebook" },
                 { icon: ImageIcon, title: "10 Criativos", desc: "Estáticos Alta Conversão" },
                 { icon: Video, title: "2 Vídeos", desc: "Edição Profissional" },
                 { icon: Calendar, title: "Reuniões", desc: "Alinhamento Semanal" },
@@ -163,7 +177,7 @@ const Presentation = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 w-full items-stretch">
               {[
-                { icon: Target, title: "Meta Ads" },
+                { icon: MetaIcon, title: "Meta Ads" },
                 { icon: ImageIcon, title: "10 Criativos" },
                 { icon: Video, title: "2 Vídeos" },
                 { icon: Calendar, title: "Reuniões" },
