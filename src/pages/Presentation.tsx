@@ -267,11 +267,11 @@ const Presentation = () => {
             </motion.div>
 
             <h2 className="font-display text-4xl font-semibold">
-              Ecossistema <span className="text-gradient-gold">Pronto</span>
+              Estratégia <span className="text-gradient-gold">Validada</span>
             </h2>
 
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Todo o ecossistema está desenhado e os processos estão prontos para escalar a <span className="text-primary font-medium">Isa Materiais de Construções</span>. Com a estratégia validada e o plano de ação nas suas mãos, podemos confirmar o início do projeto agora mesmo para que eu libere o acesso ao pagamento e o nosso cronograma de integração?
+              A estratégia está mapeada e o roteiro para escalar a <span className="text-primary font-medium">Isa Materiais de Construções</span> está claro. Com o plano de ação validado, podemos confirmar o início do projeto agora mesmo para iniciarmos a construção desse ecossistema e liberarmos o cronograma de integração?
             </p>
 
             <a 
