@@ -9,7 +9,7 @@ import GlobalBackground from "@/components/GlobalBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <GlobalBackground />
       <Header />
       <main>

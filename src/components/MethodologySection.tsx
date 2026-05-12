@@ -25,7 +25,7 @@ const steps = [
 
 const MethodologySection = () => {
   return (
-    <section id="metodo" className="py-32 bg-card/30 backdrop-blur-sm relative">
+    <section id="metodo" className="py-32 bg-transparent backdrop-blur-sm relative">
       <div className="container max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

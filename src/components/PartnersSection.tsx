@@ -20,7 +20,7 @@ const repeatedPartners = [...partners, ...partners];
 
 const PartnersSection = () => {
   return (
-    <section className="py-20 bg-card/20 border-y border-white/5 overflow-hidden flex flex-col items-center">
+    <section className="py-20 bg-transparent border-y border-white/5 overflow-hidden flex flex-col items-center">
       <div className="container px-6 text-center mb-12">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
