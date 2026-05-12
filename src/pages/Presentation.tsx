@@ -158,21 +158,21 @@ const Presentation = () => {
 
     const printClause = (title: string, lines: string[]) => {
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(12);
+      doc.setFontSize(11);
       doc.setTextColor(...colorGold);
       doc.text(title, 20, currentY);
-      currentY += 8;
+      currentY += 6;
       
       doc.setFont("helvetica", "normal");
-      doc.setFontSize(10);
+      doc.setFontSize(9);
       doc.setTextColor(...colorWhite);
       
       lines.forEach(line => {
         const splitLine = doc.splitTextToSize(line, 170);
         doc.text(splitLine, 20, currentY);
-        currentY += (splitLine.length * 6) + 2;
+        currentY += (splitLine.length * 5) + 1;
       });
-      currentY += 8;
+      currentY += 4;
     };
 
     currentY += 35; // Espaço após o Bento Grid
@@ -187,11 +187,7 @@ const Presentation = () => {
     // --- PÁGINA 2: Cláusulas e Assinaturas ---
     doc.addPage();
     addDarkPage();
-    currentY = 20;
-
-
-
-    printClause("CLÁUSULA 3 – DAS OBRIGAÇÕES DO CONTRATANTE", [
+    currentY = 15;    printClause("CLÁUSULA 3 – DAS OBRIGAÇÕES DO CONTRATANTE", [
       "a) Fornecer informações, materiais e conteúdos necessários para execução dos serviços (fotos, vídeos, agenda de ações etc.);",
       "b) Efetuar o pagamento nas condições ajustadas;",
       "c) Aprovar previamente briefings e materiais antes da veiculação;",
@@ -216,16 +212,16 @@ const Presentation = () => {
       "6.2. Caso haja descumprimento de cláusulas contratuais, a parte prejudicada poderá rescindir o contrato de imediato."
     ]);
 
-    currentY += 20;
+    currentY += 10;
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setTextColor(...colorMuted);
     
     const today = new Date();
     const dateStr = `Montes Claros/MG, ${today.getDate().toString().padStart(2, '0')} de ${['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'][today.getMonth()]} de ${today.getFullYear()}.`;
     doc.text(dateStr, 20, currentY);
     
-    currentY += 40;
+    currentY += 25;
     
     // Assinaturas
     doc.setLineWidth(0.5);
