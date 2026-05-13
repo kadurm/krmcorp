@@ -1,5 +1,4 @@
 import heroBg from "@/assets/hero-bg.webp";
-import logoWatermark from "@/assets/LogoKrM_Final_Extreme.png";
 
 const GlobalBackground = () => {
   return (
@@ -14,7 +13,7 @@ const GlobalBackground = () => {
       {/* 2. Logo Layer (Middle) */}
       <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-20 pointer-events-none z-10">
         <img
-          src={logoWatermark}
+          src="/LogoKrM.PNG"
           alt="Logo KrM Corp"
           className="w-full max-w-4xl object-contain opacity-[0.15]"
         />
