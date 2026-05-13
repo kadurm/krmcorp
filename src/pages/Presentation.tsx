@@ -78,7 +78,7 @@ const Presentation = () => {
     
     doc.text("CONTRATANTE: ISA EMPREENDIMENTOS LTDA", 20, 45);
     doc.text("CNPJ: 61.190.990/0001-62", 20, 50);
-    doc.text("Responsável: Lessio Barbosa", 20, 55);
+    doc.text("Responsável: Sra. Lessia Barbosa", 20, 55);
     
     doc.text("CONTRATADO: CARLOS EDUARDO RIBEIRO MENEZES (KrM Corp)", 20, 65);
     doc.text("CNPJ: 41.390.829/0001-25", 20, 70);
@@ -180,23 +180,23 @@ const Presentation = () => {
     printClause("CLÁUSULA 2 – DAS OBRIGAÇÕES DO CONTRATADO", [
       "a) Executar os serviços de forma autônoma, sem vínculo trabalhista;",
       "b) Apresentar relatórios de desempenho e resultados das campanhas;",
-      "c) Manter sigilo sobre informações estratégicas e dados fornecidos pelo CONTRATANTE;",
+      "c) Manter sigilo sobre informações estratégicas e dados fornecidos pela CONTRATANTE;",
       "d) Realizar ajustes e otimizações necessárias para o bom andamento das campanhas."
     ]);
 
     // --- PÁGINA 2: Cláusulas e Assinaturas ---
     doc.addPage();
     addDarkPage();
-    currentY = 15;    printClause("CLÁUSULA 3 – DAS OBRIGAÇÕES DO CONTRATANTE", [
+    currentY = 15;    printClause("CLÁUSULA 3 – DAS OBRIGAÇÕES DA CONTRATANTE", [
       "a) Fornecer informações, materiais e conteúdos necessários para execução dos serviços (fotos, vídeos, agenda de ações etc.);",
       "b) Efetuar o pagamento nas condições ajustadas;",
       "c) Aprovar previamente briefings e materiais antes da veiculação;",
       "d) Assumir os custos de eventuais serviços terceirizados quando solicitados;",
-      "e) VERBA DE MÍDIA: O CONTRATANTE compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Ex: Meta Ads) e não compõe os honorários do CONTRATADO."
+      "e) VERBA DE MÍDIA: A CONTRATANTE compromete-se a investir um valor mínimo de R$ 30,00 diários em mídia paga. Este valor é repassado diretamente às plataformas (Ex: Meta Ads) e não compõe os honorários do CONTRATADO."
     ]);
 
     printClause("CLÁUSULA 4 – DO VALOR E PAGAMENTO", [
-      "Pelos serviços ora contratados, o CONTRATANTE pagará ao CONTRATADO:",
+      "Pelos serviços ora contratados, a CONTRATANTE pagará ao CONTRATADO:",
       "- FASE 1 (Meses 1 e 2): O valor mensal equivalente a R$ 1.500,00 (Um mil e quinhentos reais).",
       "- FASE 2 (Mês 3 ao 6): O valor mensal equivalente a R$ 2.000,00 (Dois mil reais), justificando-se pela implementação tecnológica adicional (Landing Page).",
       "O primeiro pagamento deverá ser efetuado na data de assinatura deste contrato, servindo como condição para o início dos serviços. Os pagamentos subsequentes deverão ser realizados mensalmente, no mesmo dia dos meses subsequentes."
@@ -229,7 +229,7 @@ const Presentation = () => {
     
     doc.line(20, currentY, 90, currentY);
     doc.setTextColor(...colorWhite);
-    doc.text("CONTRATANTE", 55, currentY + 6, { align: "center" });
+    doc.text("A CONTRATANTE", 55, currentY + 6, { align: "center" });
     doc.setFontSize(8);
     doc.setTextColor(...colorMuted);
     doc.text("Isa Empreendimentos LTDA", 55, currentY + 12, { align: "center" });
@@ -262,7 +262,7 @@ const Presentation = () => {
             <div className="space-y-4">
               <div className="line-gold mx-auto mb-6" />
               <h1 className="font-display text-4xl md:text-5xl font-semibold mb-2">
-                Olá, <span className="text-gradient-gold">Lessio</span>.
+                Olá, <span className="text-gradient-gold">Lessia</span>.
               </h1>
               <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
                 O comportamento de compra no setor de materiais de construção mudou, e a atenção do seu público hoje está no digital. Preparamos este ambiente exclusivo para estruturarmos juntos o crescimento da <span className="text-primary">Isa Empreendimentos LTDA</span> nos próximos 6 meses.
