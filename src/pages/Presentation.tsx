@@ -310,7 +310,7 @@ const Presentation = () => {
               <h2 className="font-display text-3xl font-semibold">Atração e <span className="text-gradient-gold">Volume</span></h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full px-2 sm:px-0">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full sm:px-0">
               {[
                 { icon: MetaIcon, title: "Meta Ads", desc: "Instagram & Facebook" },
                 { icon: ImageIcon, title: "10 Criativos", desc: "Estáticos Alta Conversão" },
@@ -331,7 +331,7 @@ const Presentation = () => {
               ))}
             </div>
 
-            <div className="bg-card/20 border border-white/5 p-6 sm:p-10 rounded-3xl max-w-2xl text-center space-y-10">
+            <div className="w-full bg-card/20 border border-white/5 p-6 sm:p-10 rounded-3xl max-w-2xl text-center space-y-10">
               <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
                 Nossa primeira fase é dedicada à Tração. Nos meses 1 e 2, o foco será aumentar exponencialmente a visibilidade da sua empresa e dominar a atenção do seu público local através da gestão avançada de Meta Ads, suportada por 12 peças criativas e alinhamento semanal.
               </p>
@@ -391,7 +391,7 @@ const Presentation = () => {
               <h2 className="font-display text-3xl font-semibold">Centralização e <span className="text-gradient-gold">Conversão</span></h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 w-full items-stretch px-2 sm:px-0">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 w-full items-stretch sm:px-0">
               {[
                 { icon: MetaIcon, title: "Meta Ads" },
                 { icon: ImageIcon, title: "10 Criativos" },
@@ -416,7 +416,7 @@ const Presentation = () => {
               </motion.div>
             </div>
 
-            <div className="bg-card/20 border border-white/5 p-6 sm:p-10 rounded-3xl max-w-2xl text-center space-y-10">
+            <div className="w-full bg-card/20 border border-white/5 p-6 sm:p-10 rounded-3xl max-w-2xl text-center space-y-10">
               <p className="text-muted-foreground text-sm sm:text-base leading-[1.8] font-light">
                 Com a base validada, entramos na fase de Escala a partir do 3º mês. Aqui, implementamos uma Landing Page focada em conversão, centralizando a atenção do cliente e qualificando o lead.
               </p>
@@ -484,7 +484,7 @@ const Presentation = () => {
               </div>
             </div>
 
-            <div className="space-y-8 bg-card/30 p-8 rounded-2xl border border-white/5">
+            <div className="w-full space-y-8 bg-card/30 p-8 rounded-2xl border border-white/5">
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                 Para que os algoritmos trabalhem a favor do seu caixa e o desenvolvimento web atinja seu potencial máximo, nossa parceria é firmada em um ciclo de <span className="text-primary font-medium">6 meses</span>. Esse tempo é vital para transformar dados brutos em lucro previsível.
               </p>
