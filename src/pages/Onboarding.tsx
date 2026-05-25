@@ -49,9 +49,9 @@ export default function Onboarding() {
       colorClass: "from-blue-500/20 to-indigo-500/5 text-blue-400 border-blue-500/20",
       borderClass: "border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
       icon: Inbox,
-      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um carro específico ou perguntando sobre veículos blindados em estoque.",
-      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão, coletando dados críticos (modelo, ano e urgência da cotação).",
-      message: "Olá! Seja muito bem-vindo(a) à Solution Place, referência em blindagem de alta performance para veículos premium no Rio de Janeiro. \n\nMe chamo [Seu Nome] e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do veículo que deseja blindar?"
+      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um Land Rover específico ou perguntando sobre veículos blindados homologados em estoque.",
+      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão, coletando dados críticos (modelo Land Rover, ano e urgência da cotação).",
+      message: "Olá! Seja muito bem-vindo(a) à Solution Place, blindadora oficial homologada pela Land Rover no Rio de Janeiro. \n\nMe chamo [Seu Nome] e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do seu Land Rover?"
     },
     {
       title: "2. Lead Qualificado",
@@ -60,9 +60,9 @@ export default function Onboarding() {
       colorClass: "from-amber-500/20 to-yellow-500/5 text-primary border-primary/20",
       borderClass: "border-primary/30 shadow-[0_0_15px_rgba(217,119,6,0.1)]",
       icon: UserCheck,
-      criteria: "O cliente forneceu as informações do veículo (ex: Porsche Cayenne, Volvo XC90, SW4, Hilux), demonstrou real interesse na blindagem Nível III-A e aceitou receber uma proposta comercial técnica ou agendar uma visita à fábrica.",
-      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a cotação estruturada para o consultor de contas premium.",
-      message: "Excelente, [Nome do Cliente]! O [Modelo do Veículo] é um veículo espetacular e merece o máximo padrão de engenharia de segurança e acabamento acústico que oferecemos aqui na Solution Place. \n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e tirar qualquer dúvida sobre a nossa tecnologia de proteção certificada. \n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
+      criteria: "O cliente confirmou o modelo do Land Rover (ex: Defender 110, Range Rover Sport, Discovery 5, Range Rover Vogue), demonstrou real interesse na blindagem Nível III-A homologada e aceitou receber uma proposta comercial técnica ou agendar uma visita à fábrica.",
+      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a ficha técnica do Land Rover para o consultor de contas premium.",
+      message: "Excelente, [Nome do Cliente]! O [Modelo Land Rover] é um veículo extraordinário e merece o mais alto padrão de blindagem com homologação oficial Land Rover que oferecemos aqui na Solution Place. \n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e tirar qualquer dúvida sobre a nossa tecnologia de proteção certificada. \n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
     },
     {
       title: "3. Lead Convertido (Fechou Contrato)",
@@ -71,9 +71,9 @@ export default function Onboarding() {
       colorClass: "from-emerald-500/20 to-teal-500/5 text-emerald-400 border-emerald-500/20",
       borderClass: "border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]",
       icon: DollarSign,
-      criteria: "O cliente de alto padrão aprovou o orçamento da blindagem, assinou o contrato de prestação de serviços e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
+      criteria: "O cliente aprovou o orçamento da blindagem do seu Land Rover, assinou o contrato de prestação de serviços e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
       action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde) no WhatsApp. Remover o contato da lista comercial, inseri-lo na lista de clientes ativos da fábrica e notificar imediatamente os times de Engenharia, Compras de Materiais (vidros balísticos/aramida) e Planejamento de Produção.",
-      message: "Parabéns e seja muito bem-vindo(a) à Solution Place! 🎉 \n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso. \n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu [Modelo do Veículo]. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército. \n\nEstamos à sua total disposição!"
+      message: "Parabéns e seja muito bem-vindo(a) à Solution Place! 🎉 \n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso. \n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu [Modelo Land Rover]. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército. \n\nEstamos à sua total disposição!"
     }
   ];
 
@@ -89,15 +89,15 @@ export default function Onboarding() {
   const simulatorScenarios = [
     {
       id: "new_lead",
-      question: "O cliente acabou de mandar no WhatsApp: 'Gostaria de saber o valor para blindar uma Hilux GR-Sport 2026'.",
+      question: "O cliente acabou de mandar no WhatsApp: 'Gostaria de saber o valor para blindar um Defender 110 2024'.",
       state: "Lead Recém-Chegado",
       label: "Sem Etiqueta",
-      tip: "Inicie o protocolo de atendimento acolhedor e premium. O foco é obter o nome e confirmar o ano/modelo exato antes de encaminhar.",
+      tip: "Inicie o protocolo de atendimento acolhedor e premium. O foco é obter o nome e confirmar o ano/modelo exato do Land Rover antes de encaminhar.",
       scriptIndex: 0
     },
     {
       id: "qualified_lead",
-      question: "O cliente informou que deseja blindar um Porsche Macan, confirmou que busca a blindagem com vidros de 19mm e eu agendei o envio da cotação formal pelo consultor.",
+      question: "O cliente confirmou que quer blindar um Range Rover Sport 2023, solicitou blindagem Nível III-A com vidros de 19mm e eu agendei o envio da cotação formal.",
       state: "Lead Qualificado",
       label: "Novo cliente (Adicionar à Lista)",
       tip: "Adicione à lista comercial e marque a etiqueta 'Novo cliente'. Isso avisa o consultor especialista a entrar em contato com urgência e aciona a régua de acompanhamento comercial.",
@@ -105,10 +105,10 @@ export default function Onboarding() {
     },
     {
       id: "paid_lead",
-      question: "O cliente aprovou o orçamento de R$ 95 mil para blindar a SW4, assinou o contrato digital e enviou o comprovante do sinal de 50%.",
+      question: "O cliente aprovou o orçamento para blindar um Discovery 5 2022, assinou o contrato digital e enviou o comprovante do sinal de 50%.",
       state: "Lead Convertido (Pago)",
       label: "Pago",
-      tip: "Altere a etiqueta para 'Pago'. Notifique IMEDIATAMENTE a Engenharia e o PCP da fábrica de blindagem no RJ para dar início à compra de materiais (vidros, aramida, aço) e agendar o veículo.",
+      tip: "Altere a etiqueta para 'Pago'. Notifique IMEDIATAMENTE a Engenharia e o PCP da fábrica de blindagem homologada Land Rover no RJ para iniciar a compra dos materiais e agendar o recebimento do veículo.",
       scriptIndex: 2
     }
   ];
@@ -255,8 +255,8 @@ export default function Onboarding() {
                 <DialogTrigger asChild>
                   <div className="relative">
                     <img 
-                      src="/whatsapp_business_labels_guide.png" 
-                      alt="Guia Visual de Etiquetas no WhatsApp Business - Solution Place" 
+                      src="/whatsapp_iphone_macbook_land_rover.png" 
+                      alt="Guia Visual de Etiquetas no WhatsApp Business - iPhone e MacBook" 
                       className="w-full h-auto rounded object-cover transition-transform duration-500 group-hover:scale-[1.01] print-mindmap"
                     />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print">
@@ -268,9 +268,9 @@ export default function Onboarding() {
                   </div>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl bg-background/95 border-white/10 p-2">
-                  <img 
-                    src="/whatsapp_business_labels_guide.png" 
-                    alt="Guia Visual de Etiquetas no WhatsApp Business - Tela Cheia" 
+                    <img 
+                    src="/whatsapp_iphone_macbook_land_rover.png" 
+                    alt="Guia Visual de Etiquetas - iPhone e MacBook Tela Cheia" 
                     className="w-full h-auto rounded"
                   />
                 </DialogContent>
