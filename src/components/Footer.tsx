@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="border-t border-border py-12">
@@ -6,6 +8,12 @@ const Footer = () => {
           © {new Date().getFullYear()} · Todos os direitos reservados
         </span>
         <div className="flex gap-6">
+          <Link
+            to="/onboarding/whatsapp"
+            className="text-muted-foreground hover:text-primary text-xs tracking-wider uppercase transition-colors"
+          >
+            Manual de Onboarding
+          </Link>
           <a
             href="https://www.instagram.com/krm.corp/"
             target="_blank"
