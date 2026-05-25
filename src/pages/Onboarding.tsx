@@ -217,7 +217,7 @@ export default function Onboarding() {
             <div className="flex items-start gap-3 max-w-xl">
               <Info className="text-primary shrink-0 mt-1" size={18} />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Protocolo Premium:</strong> Veículos de alto padrão exigem atendimento impecável. A etiquetagem precisa evita falhas de segurança no follow-up e garante agilidade com a Engenharia e Fábrica.
+                <strong className="text-foreground">Protocolo Premium:</strong> Veículos de alto padrão exigem atendimento impecável. A etiquetagem precisa auxilia no treinamento do algoritmo para qualificação crescendo dos leads de entrada.
               </p>
             </div>
             <div className="text-xs font-bold text-muted-foreground/60 uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded">
