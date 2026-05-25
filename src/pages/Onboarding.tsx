@@ -255,8 +255,8 @@ export default function Onboarding() {
                 <DialogTrigger asChild>
                   <div className="relative">
                     <img 
-                      src="/whatsapp_onboarding_map.png" 
-                      alt="Mapa Mental de Etiquetagem WhatsApp Solution Place" 
+                      src="/whatsapp_business_labels_guide.png" 
+                      alt="Guia Visual de Etiquetas no WhatsApp Business - Solution Place" 
                       className="w-full h-auto rounded object-cover transition-transform duration-500 group-hover:scale-[1.01] print-mindmap"
                     />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print">
@@ -269,8 +269,8 @@ export default function Onboarding() {
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl bg-background/95 border-white/10 p-2">
                   <img 
-                    src="/whatsapp_onboarding_map.png" 
-                    alt="Mapa Mental de Etiquetagem WhatsApp Solution Place - Tela Cheia" 
+                    src="/whatsapp_business_labels_guide.png" 
+                    alt="Guia Visual de Etiquetas no WhatsApp Business - Tela Cheia" 
                     className="w-full h-auto rounded"
                   />
                 </DialogContent>
@@ -280,11 +280,11 @@ export default function Onboarding() {
             {/* Resumo do Fluxo */}
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                <span className="text-primary">✦</span> Fluxo de Proteção Premium
+                <span className="text-primary">✦</span> Fluxo de etiquetagem:
               </h3>
               
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Assegura o rastreamento perfeito de cada projeto de blindagem (SW4, Defender, Porsche, etc.) na fábrica do Rio de Janeiro.
+                Auxilia no rastreamento do Lead ideal.
               </p>
 
               <div className="space-y-3 pt-2 text-xs">
@@ -300,7 +300,7 @@ export default function Onboarding() {
                   <span className="w-2.5 h-2.5 rounded-full bg-primary block shrink-0" />
                   <div>
                     <p className="font-bold text-foreground">Novo cliente</p>
-                    <p className="text-muted-foreground text-[10px]">Cotação III-A ativa com o consultor</p>
+                    <p className="text-muted-foreground text-[10px]">Lead enviado para consultor (pré-qualificado)</p>
                   </div>
                 </div>
 
@@ -308,7 +308,7 @@ export default function Onboarding() {
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block shrink-0" />
                   <div>
                     <p className="font-bold text-foreground">Pago</p>
-                    <p className="text-muted-foreground text-[10px]">Contrato assinado + Sinal ➡️ Engenharia</p>
+                    <p className="text-muted-foreground text-[10px]">Contrato assinado</p>
                   </div>
                 </div>
               </div>
