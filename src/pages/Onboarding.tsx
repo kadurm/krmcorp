@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowLeft, 
@@ -17,7 +17,22 @@ import {
   Sparkles,
   Info,
   ShieldCheck,
-  Car
+  Car,
+  Smartphone,
+  Laptop,
+  Send,
+  Paperclip,
+  Smile,
+  Phone,
+  Video,
+  MoreVertical,
+  Search,
+  CheckCheck,
+  Wifi,
+  Battery,
+  Shield,
+  Layers,
+  ArrowRight
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
@@ -38,7 +53,23 @@ interface ScriptTemplate {
 
 export default function Onboarding() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-  const [simulatorStep, setSimulatorStep] = useState<string>("init");
+  const [simulatorStep, setSimulatorStep] = useState<string>("new_lead");
+  const [deviceType, setDeviceType] = useState<"iphone" | "macbook">("iphone");
+  const [simulatedMessages, setSimulatedMessages] = useState<any[]>([]);
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [hasSentResponse, setHasSentResponse] = useState<boolean>(false);
+
+  // Novos estados para o modo Prática e Treinamento Interativo
+  const [onboardMode, setOnboardMode] = useState<"guide" | "practice">("guide");
+  const [practiceStep, setPracticeStep] = useState<number>(0); // 0 = new_lead, 1 = qualified_lead, 2 = paid_lead
+  const [practiceStage, setPracticeStage] = useState<"label" | "chat" | "done">("label");
+  const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
+  const [chatInputValue, setChatInputValue] = useState<string>("");
+  const [showTermForm, setShowTermForm] = useState<boolean>(false);
+  const [showTermDoc, setShowTermDoc] = useState<boolean>(false);
+  const [advisorName, setAdvisorName] = useState<string>("");
+  const [advisorSurname, setAdvisorSurname] = useState<string>("");
+  const [signedTime, setSignedTime] = useState<string>("");
 
   // Scripts de Mensagens Padrão - Alinhados com a Solution Place (Blindadora Premium RJ)
   const scripts: ScriptTemplate[] = [
@@ -49,9 +80,9 @@ export default function Onboarding() {
       colorClass: "from-blue-500/20 to-indigo-500/5 text-blue-400 border-blue-500/20",
       borderClass: "border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
       icon: Inbox,
-      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um Land Rover específico ou perguntando sobre veículos blindados homologados em estoque.",
-      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão, coletando dados críticos (modelo Land Rover, ano e urgência da cotação).",
-      message: "Olá! Seja muito bem-vindo(a) à Solution Place, blindadora oficial homologada pela Land Rover no Rio de Janeiro. \n\nMe chamo [Seu Nome] e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do seu Land Rover?"
+      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um Land Rover específico (ex: Defender 110, Range Rover Sport, Discovery 5) ou perguntando sobre veículos blindados homologados em estoque.",
+      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão da Solution Place, coletando dados críticos (modelo do Land Rover, ano de fabricação, nível de blindagem desejado e urgência da cotação).",
+      message: "Olá! Seja muito bem-vindo(a) à Solution Place, blindadora oficial homologada pela Land Rover no Rio de Janeiro. 🛡️\n\nMe chamo Carlos Eduardo e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do seu Land Rover?"
     },
     {
       title: "2. Lead Qualificado",
@@ -60,9 +91,9 @@ export default function Onboarding() {
       colorClass: "from-amber-500/20 to-yellow-500/5 text-primary border-primary/20",
       borderClass: "border-primary/30 shadow-[0_0_15px_rgba(217,119,6,0.1)]",
       icon: UserCheck,
-      criteria: "O cliente confirmou o modelo do Land Rover (ex: Defender 110, Range Rover Sport, Discovery 5, Range Rover Vogue), demonstrou real interesse na blindagem Nível III-A homologada e aceitou receber uma proposta comercial técnica ou agendar uma visita à fábrica.",
-      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a ficha técnica do Land Rover para o consultor de contas premium.",
-      message: "Excelente, [Nome do Cliente]! O [Modelo Land Rover] é um veículo extraordinário e merece o mais alto padrão de blindagem com homologação oficial Land Rover que oferecemos aqui na Solution Place. \n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e tirar qualquer dúvida sobre a nossa tecnologia de proteção certificada. \n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
+      criteria: "O cliente confirmou o modelo do Land Rover (ex: Defender 110, Range Rover Sport, Discovery 5, Range Rover Vogue, Velar, Evoque), demonstrou real interesse na blindagem Nível III-A homologada e aceitou receber uma proposta comercial técnica ou agendar uma visita ao showroom.",
+      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados Land Rover') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a ficha técnica e a cotação inicial do Land Rover para o consultor de contas premium da Solution Place.",
+      message: "Excelente, Lessia! O Range Rover Sport é um veículo extraordinário e merece o mais alto padrão de blindagem com homologação oficial Land Rover que oferecemos aqui na Solution Place. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e agendar sua visita ao nosso showroom.\n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
     },
     {
       title: "3. Lead Convertido (Fechou Contrato)",
@@ -71,11 +102,187 @@ export default function Onboarding() {
       colorClass: "from-emerald-500/20 to-teal-500/5 text-emerald-400 border-emerald-500/20",
       borderClass: "border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]",
       icon: DollarSign,
-      criteria: "O cliente aprovou o orçamento da blindagem do seu Land Rover, assinou o contrato de prestação de serviços e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
-      action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde) no WhatsApp. Remover o contato da lista comercial, inseri-lo na lista de clientes ativos da fábrica e notificar imediatamente os times de Engenharia, Compras de Materiais (vidros balísticos/aramida) e Planejamento de Produção.",
-      message: "Parabéns e seja muito bem-vindo(a) à Solution Place! 🎉 \n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso. \n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu [Modelo Land Rover]. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército. \n\nEstamos à sua total disposição!"
+      criteria: "O cliente aprovou o orçamento da blindagem do seu Land Rover, assinou o contrato digital de prestação de serviços da Solution Place e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
+      action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde) no WhatsApp. Remover o contato da lista comercial, inseri-lo na lista de clientes ativos da fábrica e notificar imediatamente os times de Engenharia de Blindagem, Compras de Materiais (vidros balísticos AGP Glass / mantas de aramida DuPont) e Planejamento de Produção.",
+      message: "Parabéns, Dr. Roberto, e seja muito bem-vindo à Solution Place! 🎉\n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso.\n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu Discovery 5. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército.\n\nEstamos à sua total disposição!"
     }
   ];
+
+  // Cenários do Simulador - Alinhados com a Solution Place & Land Rover
+  const simulatorScenarios = [
+    {
+      id: "new_lead",
+      question: "O cliente acabou de mandar no WhatsApp: 'Gostaria de saber o valor para blindar um Defender 110 2024. Vocês são homologados Land Rover?'",
+      state: "Lead Recém-Chegado",
+      label: "Sem Etiqueta",
+      tip: "Inicie o protocolo de atendimento de altíssimo padrão. Identifique-se e dê as boas-vindas formais da Solution Place. O foco é obter o nome do cliente e confirmar os detalhes do Land Rover antes de direcionar.",
+      scriptIndex: 0,
+      clientName: "Dr. André Santos",
+      carModel: "Defender 110 2024",
+      avatar: "A",
+      avatarColor: "bg-blue-600",
+      clientMessage: "Olá! Gostaria de saber o valor para blindar um Defender 110 2024. Vocês são homologados Land Rover?",
+      clientTime: "18:15"
+    },
+    {
+      id: "qualified_lead",
+      question: "Lessia Barbosa informou que deseja blindar um Range Rover Sport 2023 com vidros de 19mm e solicitou a proposta formalizada por WhatsApp.",
+      state: "Lead Qualificado",
+      label: "Novo cliente",
+      tip: "Adicione o contato à lista de transmissão e marque com a etiqueta 'Novo cliente'. Isso aciona o time comercial especialista para fazer o envio e acompanhamento da cotação formal Nível III-A.",
+      scriptIndex: 1,
+      clientName: "Lessia Barbosa",
+      carModel: "Range Rover Sport 2023",
+      avatar: "L",
+      avatarColor: "bg-amber-600",
+      clientMessage: "Sou a Lessia. Gostaria de blindar meu Range Rover Sport 2023 com vidros de 19mm. Consegue me enviar a proposta formalizada por aqui?",
+      clientTime: "17:42"
+    },
+    {
+      id: "paid_lead",
+      question: "Dr. Roberto Medeiros assinou o contrato digital e enviou o comprovante de Pix do sinal para blindagem de um Discovery 5 2022.",
+      state: "Lead Convertido (Pago)",
+      label: "Pago",
+      tip: "Altere a etiqueta para 'Pago'. Notifique a Engenharia e o PCP da fábrica de blindagem da Solution Place imediatamente para a reserva de slot de produção e compra dos insumos (vidros balísticos/aramida).",
+      scriptIndex: 2,
+      clientName: "Dr. Roberto Medeiros",
+      carModel: "Discovery 5 2022",
+      avatar: "R",
+      avatarColor: "bg-emerald-600",
+      clientMessage: "Contrato assinado digitalmente e o sinal de 50% enviado via Pix! Segue o comprovante de pagamento.",
+      clientTime: "15:20"
+    }
+  ];
+
+  const currentScenario = simulatorScenarios.find(s => s.id === simulatorStep) || simulatorScenarios[0];
+
+  // Efeito para sincronizar o cenário com a etapa de Prática/Treinamento
+  useEffect(() => {
+    if (onboardMode === "practice") {
+      let scenarioId = "new_lead";
+      if (practiceStep === 0) scenarioId = "new_lead";
+      else if (practiceStep === 1) scenarioId = "qualified_lead";
+      else if (practiceStep === 2) scenarioId = "paid_lead";
+      setSimulatorStep(scenarioId);
+    }
+  }, [practiceStep, onboardMode]);
+
+  // Efeito para resetar e carregar a conversa quando mudar de cenário
+  useEffect(() => {
+    setSimulatedMessages([
+      { sender: "client", text: currentScenario.clientMessage, time: currentScenario.clientTime }
+    ]);
+    setHasSentResponse(false);
+    setIsTyping(false);
+    setChatInputValue("");
+    setSelectedLabel(null);
+    if (onboardMode === "practice") {
+      setPracticeStage("label");
+    }
+  }, [simulatorStep]);
+
+  // Função para enviar mensagem customizada pelo consultor no chat do simulador
+  const handleSendCustomMessage = () => {
+    const textToSend = chatInputValue.trim();
+    if (!textToSend || hasSentResponse || isTyping) return;
+
+    // Adiciona a mensagem do consultor
+    setSimulatedMessages(prev => [
+      ...prev,
+      {
+        sender: "agent",
+        text: textToSend,
+        time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
+      }
+    ]);
+    setHasSentResponse(true);
+    setChatInputValue("");
+    setIsTyping(true);
+
+    // Respostas automáticas do cliente após digitação
+    setTimeout(() => {
+      setIsTyping(false);
+      let replyText = "Entendido, obrigado!";
+      if (currentScenario.id === "new_lead") {
+        replyText = "Olá! Meu nome é André Santos. É um Defender 110 ano 2024 sim. Tenho bastante pressa no orçamento, vocês conseguem me enviar uma prévia dos valores ainda hoje?";
+      } else if (currentScenario.id === "qualified_lead") {
+        replyText = "Perfeito, Carlos Eduardo! Fico no aguardo do contato do consultor com a cotação formal Nível III-A da Solution Place. Muito obrigada pela agilidade!";
+      } else if (currentScenario.id === "paid_lead") {
+        replyText = "Excelente, Carlos! Já fiz o Pix do sinal também. Fico no aguardo do contato do PCP da fábrica para agendarmos o recebimento do Discovery 5. Um abraço!";
+      }
+
+      setSimulatedMessages(prev => [
+        ...prev,
+        {
+          sender: "client",
+          text: replyText,
+          time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
+        }
+      ]);
+
+      if (onboardMode === "practice") {
+        setPracticeStage("done");
+      }
+      toast.success("Mensagem recebida do cliente!");
+    }, 1800);
+  };
+
+  // Preencher campo de entrada de chat com o script oficial
+  const handleUseOfficialScript = () => {
+    setChatInputValue(scripts[currentScenario.scriptIndex].message);
+    toast.info("Script preenchido no chat! Pressione enviar para simular.");
+  };
+
+  // Função para Simular Envio de Resposta Premium
+  const triggerSimulatedResponse = () => {
+    if (hasSentResponse || isTyping) return;
+    
+    setIsTyping(true);
+    
+    // Simula tempo de digitação de 1.8 segundos
+    setTimeout(() => {
+      setIsTyping(false);
+      setSimulatedMessages(prev => [
+        ...prev,
+        { 
+          sender: "agent", 
+          text: scripts[currentScenario.scriptIndex].message, 
+          time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) 
+        }
+      ]);
+      setHasSentResponse(true);
+      toast.success("Mensagem da Solution Place enviada com sucesso no simulador!");
+
+      // Dispara a réplica automática do cliente
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        let replyText = "Entendido, obrigado!";
+        if (currentScenario.id === "new_lead") {
+          replyText = "Olá! Meu nome é André Santos. É um Defender 110 ano 2024 sim. Tenho bastante pressa no orçamento, vocês conseguem me enviar uma prévia dos valores ainda hoje?";
+        } else if (currentScenario.id === "qualified_lead") {
+          replyText = "Perfeito, Carlos Eduardo! Fico no aguardo do contato do consultor com a cotação formal Nível III-A da Solution Place. Muito obrigada pela agilidade!";
+        } else if (currentScenario.id === "paid_lead") {
+          replyText = "Excelente, Carlos! Já fiz o Pix do sinal também. Fico no aguardo do contato do PCP da fábrica para agendarmos o recebimento do Discovery 5. Um abraço!";
+        }
+
+        setSimulatedMessages(prev => [
+          ...prev,
+          {
+            sender: "client",
+            text: replyText,
+            time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
+          }
+        ]);
+
+        if (onboardMode === "practice") {
+          setPracticeStage("done");
+        }
+        toast.success("Mensagem recebida do cliente!");
+      }, 1500);
+
+    }, 1800);
+  };
 
   // Função para Copiar Texto
   const handleCopyText = (text: string, index: number) => {
@@ -84,36 +291,6 @@ export default function Onboarding() {
     toast.success("Mensagem copiada para a área de transferência!");
     setTimeout(() => setCopiedIndex(null), 2500);
   };
-
-  // Cenários do Simulador - Alinhados com a Solution Place
-  const simulatorScenarios = [
-    {
-      id: "new_lead",
-      question: "O cliente acabou de mandar no WhatsApp: 'Gostaria de saber o valor para blindar um Defender 110 2024'.",
-      state: "Lead Recém-Chegado",
-      label: "Sem Etiqueta",
-      tip: "Inicie o protocolo de atendimento acolhedor e premium. O foco é obter o nome e confirmar o ano/modelo exato do Land Rover antes de encaminhar.",
-      scriptIndex: 0
-    },
-    {
-      id: "qualified_lead",
-      question: "O cliente confirmou que quer blindar um Range Rover Sport 2023, solicitou blindagem Nível III-A com vidros de 19mm e eu agendei o envio da cotação formal.",
-      state: "Lead Qualificado",
-      label: "Novo cliente (Adicionar à Lista)",
-      tip: "Adicione à lista comercial e marque a etiqueta 'Novo cliente'. Isso avisa o consultor especialista a entrar em contato com urgência e aciona a régua de acompanhamento comercial.",
-      scriptIndex: 1
-    },
-    {
-      id: "paid_lead",
-      question: "O cliente aprovou o orçamento para blindar um Discovery 5 2022, assinou o contrato digital e enviou o comprovante do sinal de 50%.",
-      state: "Lead Convertido (Pago)",
-      label: "Pago",
-      tip: "Altere a etiqueta para 'Pago'. Notifique IMEDIATAMENTE a Engenharia e o PCP da fábrica de blindagem homologada Land Rover no RJ para iniciar a compra dos materiais e agendar o recebimento do veículo.",
-      scriptIndex: 2
-    }
-  ];
-
-  const currentScenario = simulatorScenarios.find(s => s.id === simulatorStep);
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden font-body pb-24">
@@ -183,7 +360,11 @@ export default function Onboarding() {
 
       {/* Navegação / Topbar */}
       <div className="border-b border-white/5 bg-background/50 backdrop-blur-md sticky top-0 z-40 no-print">
-        <div className="container max-w-7xl mx-auto px-6 py-4 flex items-center justify-end">
+        <div className="container max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 text-xs font-bold text-muted-foreground hover:text-white transition-all">
+            <ArrowLeft size={14} />
+            Voltar ao Início
+          </Link>
           <button 
             onClick={() => window.print()}
             className="flex items-center gap-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 text-foreground hover:text-white px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 glow-gold"
@@ -195,7 +376,7 @@ export default function Onboarding() {
       </div>
 
       {/* Conteúdo Principal */}
-      <div className="container max-w-5xl mx-auto px-6 pt-12 print-container">
+      <div className="container max-w-6xl mx-auto px-6 pt-12 print-container">
         
         {/* Header da Página */}
         <motion.div 
@@ -206,22 +387,22 @@ export default function Onboarding() {
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-4 no-print">
             <ShieldCheck size={12} className="text-primary" />
-            Solution Place · Blindados de Alto Padrão
+            Solution Place · Blindadora Homologada Land Rover
           </div>
           
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold tracking-tight mb-2 print-title whitespace-nowrap">
-            Onboard - Qualificação Comercial de <span className="text-gradient-gold">Leads WhatsApp</span>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold tracking-tight mb-2 print-title">
+            Onboard - Atendimento & <span className="text-gradient-gold">Etiquetagem WhatsApp</span>
           </h1>
 
           <div className="mt-4 flex flex-wrap gap-4 items-center justify-between bg-card/40 border border-white/5 p-4 rounded-lg no-print">
             <div className="flex items-start gap-3 max-w-xl">
               <Info className="text-primary shrink-0 mt-1" size={18} />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Protocolo Premium:</strong> Veículos de alto padrão exigem atendimento impecável. A etiquetagem precisa auxilia no treinamento do algoritmo para qualificação crescendo dos leads de entrada.
+                <strong className="text-foreground">Protocolo Land Rover:</strong> Veículos de altíssimo luxo demandam processos de etiquetagem precisos no WhatsApp Business. Esse alinhamento garante o treinamento correto do algoritmo comercial e controle de slots da fábrica.
               </p>
             </div>
             <div className="text-xs font-bold text-muted-foreground/60 uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded">
-              Solution Place RJ
+              Homologação Oficial RJ
             </div>
           </div>
         </motion.div>
@@ -280,35 +461,35 @@ export default function Onboarding() {
             {/* Resumo do Fluxo */}
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                <span className="text-primary">✦</span> Fluxo de etiquetagem:
+                <span className="text-primary">✦</span> Funil de Atendimento:
               </h3>
               
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Auxilia no rastreamento do Lead ideal.
+                As três etiquetas principais que regem o ecossistema de blindagem homologada Land Rover na Solution Place:
               </p>
 
               <div className="space-y-3 pt-2 text-xs">
-                <div className="flex items-center gap-3 bg-white/5 p-2 rounded">
-                  <span className="w-2.5 h-2.5 rounded-full bg-blue-400 block shrink-0" />
+                <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5">
+                  <span className="w-3 h-3 rounded-full bg-blue-400 block shrink-0" />
                   <div>
-                    <p className="font-bold text-foreground">Entrada (Sem Etiqueta)</p>
-                    <p className="text-muted-foreground text-[10px]">Identificação do veículo/ano</p>
+                    <p className="font-bold text-foreground">1. Sem Etiqueta</p>
+                    <p className="text-muted-foreground text-[10px]">Identificação do Land Rover / Boas-vindas</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-white/5 p-2 rounded">
-                  <span className="w-2.5 h-2.5 rounded-full bg-primary block shrink-0" />
+                <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5">
+                  <span className="w-3 h-3 rounded-full bg-amber-400 block shrink-0" />
                   <div>
-                    <p className="font-bold text-foreground">Novo cliente</p>
-                    <p className="text-muted-foreground text-[10px]">Lead enviado para consultor (pré-qualificado)</p>
+                    <p className="font-bold text-foreground">2. Novo cliente</p>
+                    <p className="text-muted-foreground text-[10px]">Lead qualificado / Envio de cotação formal</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-white/5 p-2 rounded">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block shrink-0" />
+                <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5">
+                  <span className="w-3 h-3 rounded-full bg-emerald-400 block shrink-0" />
                   <div>
-                    <p className="font-bold text-foreground">Pago</p>
-                    <p className="text-muted-foreground text-[10px]">Contrato assinado</p>
+                    <p className="font-bold text-foreground">3. Pago</p>
+                    <p className="text-muted-foreground text-[10px]">Sinal validado / PCP e Engenharia acionados</p>
                   </div>
                 </div>
               </div>
@@ -329,7 +510,7 @@ export default function Onboarding() {
             <div className="bg-primary/10 p-2 rounded-lg border border-primary/20 text-primary">
               <FileText size={20} />
             </div>
-            <h2 className="text-2xl font-display font-bold text-foreground">2. Ações de Etiquetagem & Scripts de Mensagem</h2>
+            <h2 className="text-2xl font-display font-bold text-foreground">2. Ações de Etiquetagem & Scripts Oficiais</h2>
           </div>
 
           <div className="space-y-8">
@@ -409,7 +590,7 @@ export default function Onboarding() {
 
         <div className="print-page-break" />
 
-        {/* 3. SIMULADOR INTERATIVO DE AÇÕES */}
+        {/* 3. SIMULADOR INTERATIVO DE AÇÕES COM MOCKUPS HIGH-FIDELITY */}
         <motion.section 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -417,101 +598,482 @@ export default function Onboarding() {
           className="mb-16 no-print"
         >
           <div className="bg-gradient-to-br from-primary/10 via-card/80 to-background border border-primary/20 rounded-2xl p-6 md:p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-primary/20 p-2 rounded-lg text-primary border border-primary/30">
-                <HelpCircle size={20} />
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 pb-6 border-b border-white/5">
+              <div className="flex items-center gap-3">
+                <div className="bg-primary/20 p-2.5 rounded-lg text-primary border border-primary/30 shadow-[0_0_10px_rgba(217,119,6,0.1)]">
+                  <HelpCircle size={24} />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-display font-bold text-foreground">3. Treinamento e Simulador Interativo</h2>
+                  <p className="text-xs text-muted-foreground mt-0.5">Visualize a interface exata do WhatsApp Business operando no iPhone e MacBook.</p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-2xl font-display font-bold text-foreground">3. Treinamento e Simulador de Etiquetas</h2>
-                <p className="text-xs text-muted-foreground mt-0.5">Clique em uma situação real de blindagem premium abaixo para receber a orientação.</p>
-              </div>
-            </div>
 
-            {/* Botões dos Cenários */}
-            <div className="grid md:grid-cols-3 gap-3 mb-8">
-              {simulatorScenarios.map((sc, i) => (
+              {/* Toggles de Dispositivo */}
+              <div className="flex items-center bg-black/40 p-1.5 rounded-xl border border-white/10 self-start lg:self-center">
                 <button
-                  key={sc.id}
-                  onClick={() => setSimulatorStep(sc.id)}
-                  className={`text-left p-4 rounded-xl border text-xs font-medium transition-all duration-300 ${
-                    simulatorStep === sc.id 
-                      ? "bg-primary/20 border-primary text-foreground shadow-[0_0_15px_rgba(217,119,6,0.15)]"
-                      : "bg-card/40 border-white/5 text-muted-foreground hover:bg-card/80 hover:border-white/10 hover:text-foreground"
+                  onClick={() => setDeviceType("iphone")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
+                    deviceType === "iphone"
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  <p className="font-bold text-[10px] uppercase tracking-wider mb-1 text-primary opacity-80">Situação {i + 1}:</p>
-                  <p className="line-clamp-2 leading-relaxed">{sc.question}</p>
+                  <Smartphone size={14} />
+                  iPhone (iOS)
                 </button>
-              ))}
+                <button
+                  onClick={() => setDeviceType("macbook")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
+                    deviceType === "macbook"
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <Laptop size={14} />
+                  MacBook (Web)
+                </button>
+              </div>
             </div>
 
-            {/* Resultado da Simulação */}
-            <AnimatePresence mode="wait">
-              {simulatorStep !== "init" ? (
+            {/* Grid Principal: Seletor & Ficha Técnica vs Mockup do WhatsApp */}
+            <div className="grid lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Coluna da Esquerda: Cenários e Orientações Técnicas (5 cols) */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="space-y-3">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-primary font-display block">Escolha uma Situação Real:</span>
+                  <div className="flex flex-col gap-3">
+                    {simulatorScenarios.map((sc, i) => (
+                      <button
+                        key={sc.id}
+                        onClick={() => setSimulatorStep(sc.id)}
+                        className={`text-left p-4 rounded-xl border text-xs font-medium transition-all duration-300 flex items-start gap-3 relative overflow-hidden ${
+                          simulatorStep === sc.id 
+                            ? "bg-primary/10 border-primary text-foreground shadow-[0_0_15px_rgba(217,119,6,0.1)]"
+                            : "bg-card/40 border-white/5 text-muted-foreground hover:bg-card/80 hover:border-white/10 hover:text-foreground"
+                        }`}
+                      >
+                        <div className={`p-2 rounded-lg shrink-0 mt-0.5 ${
+                          simulatorStep === sc.id ? "bg-primary text-primary-foreground" : "bg-white/5"
+                        }`}>
+                          <Car size={14} />
+                        </div>
+                        <div className="space-y-1">
+                          <p className="font-bold text-[10px] uppercase tracking-wider text-primary">Cenário {i + 1}: {sc.clientName}</p>
+                          <p className="font-semibold text-foreground text-[11px]">{sc.carModel}</p>
+                          <p className="line-clamp-2 leading-relaxed text-muted-foreground text-[10px]">{sc.question}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Painel de Instruções de Etiquetagem */}
                 <motion.div
                   key={simulatorStep}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-black/40 border border-white/15 p-6 rounded-xl relative overflow-hidden"
+                  transition={{ duration: 0.3 }}
+                  className="bg-black/30 border border-white/10 p-5 rounded-xl space-y-4"
                 >
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl" />
-                  
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 border-b border-white/5 pb-4">
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
                     <div>
-                      <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground">Estado Identificado:</p>
-                      <h4 className="text-lg font-bold text-foreground flex items-center gap-2 mt-0.5">
-                        {currentScenario?.state}
-                      </h4>
+                      <p className="text-[9px] uppercase font-bold tracking-widest text-muted-foreground">Estado do Lead:</p>
+                      <p className="text-sm font-bold text-foreground">{currentScenario.state}</p>
                     </div>
-
-                    <div className="bg-primary/10 border border-primary/30 px-3 py-1.5 rounded-lg">
-                      <p className="text-[9px] uppercase font-bold tracking-widest text-primary/70">A etiqueta correta é:</p>
-                      <p className="text-xs font-bold text-foreground flex items-center gap-1.5 mt-0.5">
-                        <span className="w-2 h-2 rounded-full bg-primary inline-block" />
-                        {currentScenario?.label}
-                      </p>
+                    
+                    <div className="text-right">
+                      <p className="text-[9px] uppercase font-bold tracking-widest text-primary">Etiqueta Recomendada:</p>
+                      <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded border mt-1 ${
+                        currentScenario.id === "new_lead" ? "text-blue-400 border-blue-500/20 bg-blue-500/10" :
+                        currentScenario.id === "qualified_lead" ? "text-amber-400 border-amber-500/20 bg-amber-500/10" :
+                        "text-emerald-400 border-emerald-500/20 bg-emerald-500/10"
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${
+                          currentScenario.id === "new_lead" ? "bg-blue-400" :
+                          currentScenario.id === "qualified_lead" ? "bg-amber-400" :
+                          "bg-emerald-400"
+                        }`} />
+                        {currentScenario.label}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 text-xs">
                     <div>
-                      <h5 className="text-[10px] uppercase font-bold tracking-widest text-primary">Instrução Prática Solution Place:</h5>
-                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{currentScenario?.tip}</p>
+                      <h4 className="font-bold text-primary flex items-center gap-1.5 text-[10px] uppercase tracking-wider">
+                        <Shield size={12} /> Diretriz da Blindadora:
+                      </h4>
+                      <p className="text-muted-foreground leading-relaxed mt-1 text-[11px]">{currentScenario.tip}</p>
                     </div>
 
-                    <div className="bg-card/60 p-4 rounded-lg border border-white/5">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-[9px] uppercase font-bold tracking-widest text-muted-foreground flex items-center gap-1">
-                          <MessageSquare size={10} />
-                          Script pronto:
-                        </span>
+                    <div className="bg-white/5 p-3.5 rounded-lg border border-white/5 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-foreground text-[10px] uppercase tracking-wider">Script de Atendimento:</span>
                         <button
-                          onClick={() => {
-                            if (currentScenario) {
-                              handleCopyText(scripts[currentScenario.scriptIndex].message, 99);
-                            }
-                          }}
-                          className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider text-primary hover:text-white px-2 py-0.5 rounded border border-primary/20 hover:bg-primary/20 transition-all"
+                          onClick={() => handleCopyText(scripts[currentScenario.scriptIndex].message, 99)}
+                          className="text-[9px] font-bold text-primary hover:text-white uppercase tracking-wider flex items-center gap-1"
                         >
                           {copiedIndex === 99 ? <Check size={10} /> : <Copy size={10} />}
                           Copiar Mensagem
                         </button>
                       </div>
-                      <p className="text-xs text-foreground italic leading-relaxed whitespace-pre-wrap">
-                        {currentScenario && scripts[currentScenario.scriptIndex].message}
+                      <p className="text-[11px] text-muted-foreground italic leading-relaxed line-clamp-3">
+                        "{scripts[currentScenario.scriptIndex].message}"
                       </p>
                     </div>
+
+                    {!hasSentResponse && (
+                      <button
+                        onClick={triggerSimulatedResponse}
+                        disabled={isTyping}
+                        className="w-full bg-primary hover:bg-primary/95 text-primary-foreground font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all duration-300 glow-gold uppercase tracking-wider"
+                      >
+                        {isTyping ? (
+                          <>
+                            <span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                            Carlos Eduardo Digitando...
+                          </>
+                        ) : (
+                          <>
+                            <Send size={12} />
+                            Simular Resposta no Aparelho
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
                 </motion.div>
-              ) : (
-                <div className="bg-black/20 border border-dashed border-white/10 rounded-xl p-8 text-center text-muted-foreground">
-                  <Info size={32} className="mx-auto mb-3 text-muted-foreground/40" />
-                  <p className="text-sm">Selecione uma das situações de blindagem de alto padrão acima para ver a simulação.</p>
-                </div>
-              )}
-            </AnimatePresence>
+              </div>
+
+              {/* Coluna da Direita: Mockup Físico de Aparelho (7 cols) */}
+              <div className="lg:col-span-7 flex justify-center items-center">
+                <AnimatePresence mode="wait">
+                  {deviceType === "iphone" ? (
+                    /* ================= IPHONE MOCKUP ================= */
+                    <motion.div
+                      key="iphone-device"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-[340px] h-[670px] rounded-[52px] border-[10px] border-zinc-800 bg-zinc-950 shadow-2xl relative flex flex-col overflow-hidden border-t-[12px] border-b-[12px] shadow-black/80"
+                    >
+                      {/* Dynamic Island / Notch do iPhone */}
+                      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50 flex items-center justify-between px-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                        <div className="w-10 h-1 bg-zinc-900 rounded-full" />
+                      </div>
+
+                      {/* iPhone Status Bar */}
+                      <div className="h-10 bg-zinc-900 flex items-end justify-between px-6 pb-1 text-[11px] font-semibold text-zinc-300 z-40 shrink-0">
+                        <span>18:20</span>
+                        <div className="flex items-center gap-1.5">
+                          <Wifi size={11} />
+                          <span className="text-[9px]">5G</span>
+                          <Battery size={13} className="text-zinc-300" />
+                        </div>
+                      </div>
+
+                      {/* WhatsApp iOS Header */}
+                      <div className="bg-zinc-900 border-b border-white/5 py-2 px-3 flex items-center justify-between z-30 shrink-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-primary font-medium hover:opacity-80 transition-all flex items-center cursor-pointer">
+                            <ChevronRight size={16} className="rotate-180 text-primary" />
+                            Atrás
+                          </span>
+                          
+                          {/* Avatar */}
+                          <div className={`w-9 h-9 rounded-full ${currentScenario.avatarColor} flex items-center justify-center font-bold text-sm text-white shadow-inner relative`}>
+                            {currentScenario.avatar}
+                            {/* Etiqueta na Foto */}
+                            {currentScenario.id !== "new_lead" && (
+                              <span className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border border-zinc-950 flex items-center justify-center ${
+                                currentScenario.id === "qualified_lead" ? "bg-amber-400" : "bg-emerald-400"
+                              }`} />
+                            )}
+                          </div>
+
+                          {/* Nome e Status */}
+                          <div className="text-left">
+                            <h4 className="text-xs font-bold text-foreground leading-tight">{currentScenario.clientName}</h4>
+                            <p className="text-[10px] text-emerald-400 leading-none flex items-center gap-1 mt-0.5">
+                              {isTyping ? (
+                                <span className="animate-pulse">digitando...</span>
+                              ) : (
+                                <>
+                                  <span className="w-1 h-1 rounded-full bg-emerald-400 inline-block" />
+                                  online
+                                </>
+                              )}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Ações Rápidas Header */}
+                        <div className="flex items-center gap-3 text-primary">
+                          <Phone size={14} className="cursor-pointer hover:opacity-80" />
+                          <Video size={15} className="cursor-pointer hover:opacity-80" />
+                          <MoreVertical size={14} className="text-zinc-400 cursor-pointer" />
+                        </div>
+                      </div>
+
+                      {/* Corpo do Chat (Wallpaper Clássico WhatsApp Dark) */}
+                      <div className="flex-1 bg-zinc-950 p-4 flex flex-col gap-4 overflow-y-auto relative bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:16px_16px]">
+                        
+                        {/* Indicador de Categoria / Tag flutuante */}
+                        <div className="self-center bg-zinc-900/90 border border-white/5 py-1 px-3 rounded-full text-[9px] font-bold text-muted-foreground uppercase tracking-wider backdrop-blur-sm shadow flex items-center gap-1.5">
+                          <span className={`w-1.5 h-1.5 rounded-full ${
+                            currentScenario.id === "new_lead" ? "bg-blue-400" :
+                            currentScenario.id === "qualified_lead" ? "bg-amber-400" :
+                            "bg-emerald-400"
+                          }`} />
+                          Etiqueta: {currentScenario.label}
+                        </div>
+
+                        {/* Mensagem Informativa de Veículo */}
+                        <div className="self-center bg-primary/10 border border-primary/20 text-primary py-1 px-2.5 rounded-lg text-[9px] font-medium max-w-[240px] text-center leading-normal">
+                          Modelo: <span className="font-bold">{currentScenario.carModel}</span>
+                        </div>
+
+                        {/* Mensagens Simulares */}
+                        {simulatedMessages.map((msg, i) => (
+                          <div
+                            key={i}
+                            className={`max-w-[80%] rounded-2xl p-3 text-xs leading-relaxed relative flex flex-col ${
+                              msg.sender === "client"
+                                ? "bg-zinc-800 text-zinc-100 self-start rounded-tl-none border border-zinc-700/50"
+                                : "bg-primary/20 border border-primary/30 text-foreground self-end rounded-tr-none shadow-[0_0_10px_rgba(217,119,6,0.05)]"
+                            }`}
+                          >
+                            <p className="whitespace-pre-wrap">{msg.text}</p>
+                            <span className="text-[8px] text-muted-foreground/60 self-end mt-1.5 flex items-center gap-0.5">
+                              {msg.time}
+                              {msg.sender === "agent" && <CheckCheck size={10} className="text-primary" />}
+                            </span>
+                          </div>
+                        ))}
+
+                        {/* Indicador Visual de Digitação */}
+                        {isTyping && (
+                          <div className="bg-zinc-800 border border-zinc-700/50 text-zinc-300 max-w-[60px] rounded-xl p-2.5 self-start rounded-tl-none flex items-center justify-center gap-1 shrink-0">
+                            <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '0ms' }} />
+                            <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '150ms' }} />
+                            <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '300ms' }} />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* iPhone WhatsApp Input Bar */}
+                      <div className="bg-zinc-900 border-t border-white/5 p-3 flex items-center gap-2 z-30 shrink-0">
+                        <Paperclip size={16} className="text-primary cursor-pointer hover:opacity-85 shrink-0" />
+                        <div className="flex-1 bg-zinc-950 border border-white/5 rounded-full px-4 py-1.5 flex items-center justify-between text-xs text-foreground">
+                          <input
+                            type="text"
+                            value={chatInputValue}
+                            onChange={(e) => setChatInputValue(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") handleSendCustomMessage();
+                            }}
+                            placeholder={hasSentResponse ? "Mensagem enviada" : "Digite uma mensagem..."}
+                            disabled={hasSentResponse || isTyping}
+                            className="bg-transparent border-none outline-none w-full text-xs text-foreground placeholder-zinc-500"
+                          />
+                          <Smile size={15} className="text-zinc-500 cursor-pointer hover:text-zinc-300 shrink-0 ml-1" />
+                        </div>
+                        <button 
+                          onClick={handleSendCustomMessage} 
+                          disabled={hasSentResponse || isTyping || !chatInputValue.trim()}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                            hasSentResponse || !chatInputValue.trim()
+                              ? "bg-zinc-800 text-zinc-600" 
+                              : "bg-primary text-primary-foreground hover:scale-105"
+                          }`}
+                        >
+                          <Send size={12} className={hasSentResponse ? "" : "translate-x-[1px]"} />
+                        </button>
+                      </div>
+
+                      {/* iPhone Home Indicator bar */}
+                      <div className="h-5 bg-zinc-900 flex items-center justify-center z-30 shrink-0">
+                        <div className="w-28 h-1 bg-zinc-700 rounded-full" />
+                      </div>
+                    </motion.div>
+                  ) : (
+                    /* ================= MACBOOK / WHATSAPP WEB MOCKUP ================= */
+                    <motion.div
+                      key="macbook-device"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full max-w-[620px] h-[480px] bg-zinc-950 rounded-xl border border-white/10 shadow-2xl relative flex flex-col overflow-hidden shadow-black/80"
+                    >
+                      {/* Top macOS Style Bar */}
+                      <div className="h-10 bg-zinc-900 border-b border-white/5 px-4 flex items-center justify-between shrink-0">
+                        {/* Red, Yellow, Green window controls */}
+                        <div className="flex items-center gap-2">
+                          <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block border border-red-600/20" />
+                          <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block border border-yellow-600/20" />
+                          <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block border border-green-600/20" />
+                        </div>
+                        
+                        <div className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
+                          <Layers size={11} className="text-primary" />
+                          Solution Place RJ · WhatsApp Web
+                        </div>
+                        
+                        <div className="w-12" /> {/* Spacer */}
+                      </div>
+
+                      {/* Main Application Body */}
+                      <div className="flex-1 flex overflow-hidden">
+                        
+                        {/* Left Sidebar: Active Chats (35%) */}
+                        <div className="w-[38%] border-r border-white/5 bg-zinc-900/50 flex flex-col overflow-hidden shrink-0">
+                          {/* Sidebar Header & Search */}
+                          <div className="p-3 border-b border-white/5 space-y-3 shrink-0">
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-bold text-foreground">Conversas Recentes</span>
+                              <div className="bg-white/5 p-1 rounded hover:bg-white/10 cursor-pointer">
+                                <Search size={12} className="text-zinc-400" />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Chat List (Exclusivo Land Rover) */}
+                          <div className="flex-1 overflow-y-auto space-y-0.5 p-1.5">
+                            {simulatorScenarios.map(sc => (
+                              <button
+                                key={sc.id}
+                                onClick={() => setSimulatorStep(sc.id)}
+                                className={`w-full text-left p-2.5 rounded-lg transition-all duration-200 flex items-center gap-2.5 ${
+                                  simulatorStep === sc.id 
+                                    ? "bg-primary/10 border border-primary/20 text-foreground" 
+                                    : "border border-transparent hover:bg-white/5 text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                <div className={`w-8 h-8 rounded-full ${sc.avatarColor} text-white font-bold flex items-center justify-center text-xs shrink-0 relative`}>
+                                  {sc.avatar}
+                                  {sc.id !== "new_lead" && (
+                                    <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border border-zinc-900 ${
+                                      sc.id === "qualified_lead" ? "bg-amber-400" : "bg-emerald-400"
+                                    }`} />
+                                  )}
+                                </div>
+                                <div className="min-w-0 flex-1 space-y-0.5">
+                                  <div className="flex items-center justify-between">
+                                    <h4 className="text-[10px] font-bold text-foreground truncate">{sc.clientName}</h4>
+                                    <span className="text-[8px] text-muted-foreground shrink-0">{sc.clientTime}</span>
+                                  </div>
+                                  <p className="text-[9px] text-primary font-medium truncate leading-none">{sc.carModel}</p>
+                                  <p className="text-[9px] text-muted-foreground truncate leading-normal italic">
+                                    {sc.id === simulatorStep && hasSentResponse ? "Você respondeu..." : sc.clientMessage}
+                                  </p>
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Right Chat Pane: Active Conversation (65%) */}
+                        <div className="flex-1 bg-zinc-950 flex flex-col overflow-hidden relative">
+                          
+                          {/* Active Chat Header */}
+                          <div className="bg-zinc-900 border-b border-white/5 p-3 flex items-center justify-between shrink-0">
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <div className={`w-8 h-8 rounded-full ${currentScenario.avatarColor} text-white font-bold flex items-center justify-center text-xs shrink-0`}>
+                                {currentScenario.avatar}
+                              </div>
+                              <div className="text-left min-w-0">
+                                <h4 className="text-xs font-bold text-foreground leading-tight truncate">{currentScenario.clientName}</h4>
+                                <p className="text-[9px] text-muted-foreground leading-none mt-1 truncate">
+                                  Interesse: <span className="font-semibold text-primary">{currentScenario.carModel}</span>
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Active Tag indicator */}
+                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded border ${
+                              currentScenario.id === "new_lead" ? "text-blue-400 border-blue-500/20 bg-blue-500/10" :
+                              currentScenario.id === "qualified_lead" ? "text-amber-400 border-amber-500/20 bg-amber-500/10" :
+                              "text-emerald-400 border-emerald-500/20 bg-emerald-500/10"
+                            }`}>
+                              {currentScenario.label}
+                            </span>
+                          </div>
+
+                          {/* Chat Wallpaper Log */}
+                          <div className="flex-1 p-4 overflow-y-auto space-y-4 flex flex-col relative bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:16px_16px]">
+                            
+                            {/* Conversas */}
+                            {simulatedMessages.map((msg, i) => (
+                              <div
+                                key={i}
+                                className={`max-w-[70%] rounded-xl p-3 text-[11px] leading-relaxed flex flex-col shadow-md ${
+                                  msg.sender === "client"
+                                    ? "bg-zinc-800 text-zinc-100 self-start rounded-tl-none border border-zinc-700/50"
+                                    : "bg-primary/20 border border-primary/30 text-foreground self-end rounded-tr-none"
+                                }`}
+                              >
+                                <p className="whitespace-pre-wrap">{msg.text}</p>
+                                <span className="text-[8px] text-muted-foreground/60 self-end mt-1.5 flex items-center gap-0.5">
+                                  {msg.time}
+                                  {msg.sender === "agent" && <CheckCheck size={10} className="text-primary" />}
+                                </span>
+                              </div>
+                            ))}
+
+                            {/* Digitação */}
+                            {isTyping && (
+                              <div className="bg-zinc-800 border border-zinc-700/50 text-zinc-300 max-w-[60px] rounded-xl p-2.5 self-start rounded-tl-none flex items-center justify-center gap-1 shrink-0">
+                                <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '0ms' }} />
+                                <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '150ms' }} />
+                                <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '300ms' }} />
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Chat Web Bottom Input */}
+                          <div className="bg-zinc-900 border-t border-white/5 p-3 flex items-center gap-3 shrink-0">
+                            <Smile size={16} className="text-zinc-400 cursor-pointer hover:text-zinc-200" />
+                            <Paperclip size={16} className="text-zinc-400 cursor-pointer hover:text-zinc-200" />
+                            
+                            <div className="flex-1 bg-zinc-950 border border-white/5 rounded-lg px-3 py-2 text-xs text-foreground flex items-center justify-between">
+                              <input
+                                type="text"
+                                value={chatInputValue}
+                                onChange={(e) => setChatInputValue(e.target.value)}
+                                onKeyDown={(e) => {
+                                  if (e.key === "Enter") handleSendCustomMessage();
+                                }}
+                                placeholder={hasSentResponse ? "Resposta enviada" : "Digite a mensagem de boas-vindas..."}
+                                disabled={hasSentResponse || isTyping}
+                                className="bg-transparent border-none outline-none w-full text-xs text-foreground placeholder-zinc-500"
+                              />
+                            </div>
+
+                            <button 
+                              onClick={handleSendCustomMessage}
+                              disabled={hasSentResponse || isTyping || !chatInputValue.trim()}
+                              className={`p-2 rounded-lg transition-all ${
+                                hasSentResponse || !chatInputValue.trim()
+                                  ? "bg-zinc-800 text-zinc-600" 
+                                  : "bg-primary text-primary-foreground hover:scale-105"
+                              }`}
+                            >
+                              <Send size={13} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+            </div>
           </div>
         </motion.section>
 
@@ -529,18 +1091,212 @@ export default function Onboarding() {
           
           <div className="grid md:grid-cols-2 gap-6 text-xs text-muted-foreground">
             <ul className="space-y-3 list-disc pl-4 leading-relaxed">
-              <li><strong className="text-foreground">Atendimento Alto Padrão (Exclusividade):</strong> Clientes premium exigem máxima formalidade, pontuação correta e atenção absoluta aos detalhes técnicos do veículo.</li>
-              <li><strong className="text-foreground">Ficha Técnica Completa:</strong> Nunca envie o lead para a equipe comercial sem coletar o **Modelo exato do Carro**, **Ano de fabricação** e a urgência da blindagem.</li>
-              <li><strong className="text-foreground">Sincronia com PCP e Engenharia:</strong> Ao marcar como <span className="text-emerald-400 font-semibold">Pago</span>, o comprovante deve ser anexado no ERP comercial imediatamente e o PCP acionado para reservar o slot do veículo na linha de blindagem do Rio de Janeiro.</li>
+              <li><strong className="text-foreground">Atendimento de Altíssimo Padrão (Land Rover):</strong> Proprietários de Land Rover exigem máxima formalidade, vocabulário impecável e clareza nos aspectos de engenharia balística.</li>
+              <li><strong className="text-foreground">Ficha Técnica Indispensável:</strong> Nunca direcione o lead para a equipe comercial especializada sem colher o **Modelo exato** (ex: Defender 110, Evoque, Velar, Sport), **Ano** e o **tipo de blindagem desejado** (geralmente Nível III-A homologada).</li>
+              <li><strong className="text-foreground">Sincronia Operacional (PCP):</strong> Ao marcar como <span className="text-emerald-400 font-semibold">Pago</span>, o sinal deve ser validado pelo financeiro e a engenharia notificada imediatamente para compras de vidros de alta tecnologia (AGP Glass).</li>
             </ul>
 
             <ul className="space-y-3 list-disc pl-4 leading-relaxed">
-              <li><strong className="text-foreground">Velocidade sob Medida:</strong> O retorno de cotações para blindagem nível III-A deve ser tratado com altíssima prioridade (meta menor que 10 minutos).</li>
-              <li><strong className="text-foreground">Limpeza Periódica de Leads:</strong> leads frios sem interação há mais de 10 dias devem ser limpos para manter a higiene do funil comercial ativa.</li>
-              <li><strong className="text-foreground">Organização Documental Exército:</strong> Ao marcar como 'Novo cliente', certifique-se de perguntar se o cliente já possui o Certificado de Registro (CR) no Exército para agilizar o processo burocrático de blindagem.</li>
+              <li><strong className="text-foreground">Velocidade no SLA:</strong> O tempo limite para envio do primeiro contato aos leads de cotação de blindagem Nível III-A é de **10 minutos**.</li>
+              <li><strong className="text-foreground">Processos com o Exército:</strong> Ao qualificar o cliente como 'Novo cliente', verifique se o mesmo já possui o Certificado de Registro (CR) ativo para facilitar a documentação da blindagem junto ao Exército.</li>
+              <li><strong className="text-foreground">Manutenção do Funil:</strong> Higienize semanalmente os contatos, enviando leads que não responderam por mais de 7 dias para réguas automáticas de reengajamento comercial.</li>
             </ul>
           </div>
+
+          {!showTermForm && !showTermDoc && (
+            <div className="flex justify-center pt-4 no-print">
+              <button
+                onClick={() => {
+                  setShowTermForm(true);
+                  setTimeout(() => {
+                    document.getElementById('term-form-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 px-8 rounded-xl text-sm flex items-center gap-3 transition-all duration-300 shadow-[0_0_20px_rgba(217,119,6,0.3)] hover:scale-105 uppercase tracking-widest"
+              >
+                <ShieldCheck size={20} />
+                Finalizar Treinamento & Assinar Termo
+              </button>
+            </div>
+          )}
         </motion.section>
+
+        {/* 5. SEÇÃO DO TERMO DE COMPROMISSO (DINÂMICO) */}
+        <AnimatePresence>
+          {showTermForm && (
+            <motion.section
+              id="term-form-section"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="mb-24 max-w-2xl mx-auto no-print"
+            >
+              <div className="bg-card/40 border border-primary/30 p-8 rounded-2xl backdrop-blur-md shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <Shield size={120} className="text-primary" />
+                </div>
+                
+                <h2 className="text-2xl font-display font-bold text-foreground mb-2 flex items-center gap-3">
+                  <FileText className="text-primary" />
+                  Assinatura do Termo de Compromisso
+                </h2>
+                <p className="text-xs text-muted-foreground mb-8">
+                  Para concluir seu onboard e validar seu acesso como Consultor Solution Place, preencha seus dados para geração do certificado digital de excelência.
+                </p>
+
+                <div className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground ml-1">Nome</label>
+                      <input 
+                        type="text" 
+                        value={advisorName}
+                        onChange={(e) => setAdvisorName(e.target.value)}
+                        placeholder="Ex: Carlos"
+                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm focus:border-primary/50 outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground ml-1">Sobrenome</label>
+                      <input 
+                        type="text" 
+                        value={advisorSurname}
+                        onChange={(e) => setAdvisorSurname(e.target.value)}
+                        placeholder="Ex: Eduardo"
+                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm focus:border-primary/50 outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-primary/5 border border-primary/10 p-4 rounded-xl flex items-start gap-3">
+                    <div className="mt-0.5">
+                      <input 
+                        type="checkbox" 
+                        id="agree-term"
+                        className="w-4 h-4 rounded border-primary text-primary focus:ring-primary accent-primary cursor-pointer"
+                      />
+                    </div>
+                    <label htmlFor="agree-term" className="text-[11px] text-muted-foreground leading-relaxed cursor-pointer select-none">
+                      Eu li e concordo com os protocolos de atendimento de altíssimo padrão da Solution Place e comprometo-me a aplicar rigorosamente a etiquetagem conforme o treinamento.
+                    </label>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      if (!advisorName || !advisorSurname) {
+                        toast.error("Por favor, preencha seu nome e sobrenome.");
+                        return;
+                      }
+                      const checkbox = document.getElementById('agree-term') as HTMLInputElement;
+                      if (!checkbox.checked) {
+                        toast.error("Você precisa concordar com os termos para prosseguir.");
+                        return;
+                      }
+                      
+                      setSignedTime(new Date().toLocaleString('pt-BR'));
+                      setShowTermForm(false);
+                      setShowTermDoc(true);
+                      toast.success("Termo de Compromisso assinado com sucesso!");
+                    }}
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 glow-gold"
+                  >
+                    Gerar Certificado & Finalizar
+                  </button>
+                </div>
+              </div>
+            </motion.section>
+          )}
+
+          {showTermDoc && (
+            <motion.section
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="mb-24 print-container"
+            >
+              <div className="max-w-3xl mx-auto bg-white text-zinc-900 p-8 md:p-16 rounded-sm shadow-2xl relative border-[12px] border-zinc-100 print:border-none">
+                {/* Cabeçalho do Documento */}
+                <div className="flex flex-col items-center text-center mb-10 border-b-2 border-zinc-200 pb-8">
+                  <div className="w-20 h-20 bg-zinc-900 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                    <ShieldCheck size={40} className="text-[#d97706]" />
+                  </div>
+                  <h2 className="text-2xl font-serif font-bold uppercase tracking-tight text-zinc-900">Termo de Compromisso de Excelência</h2>
+                  <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest mt-1">Solution Place · Blindagem Homologada Land Rover</p>
+                </div>
+
+                {/* Corpo do Texto */}
+                <div className="space-y-6 text-sm leading-relaxed text-zinc-800 text-justify">
+                  <p>
+                    Eu, <strong className="text-zinc-950 underline underline-offset-4">{advisorName} {advisorSurname}</strong>, doravante designado como Consultor(a) de Atendimento Premium, comprometo-me formalmente perante a <strong className="text-zinc-950">Solution Place</strong> a seguir os protocolos de atendimento de altíssimo padrão estabelecidos para a marca Land Rover no Rio de Janeiro.
+                  </p>
+
+                  <div className="space-y-4 pt-2">
+                    <div className="flex gap-4">
+                      <span className="font-bold text-zinc-400">01.</span>
+                      <p><strong className="text-zinc-950">Excelência na Comunicação:</strong> Utilizar vocabulário adequado ao público de altíssimo luxo, mantendo a formalidade, clareza técnica e cordialidade em todos os pontos de contato via WhatsApp Business.</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <span className="font-bold text-zinc-400">02.</span>
+                      <p><strong className="text-zinc-950">Precisão na Etiquetagem:</strong> Aplicar rigorosamente as etiquetas (Sem Etiqueta, Novo cliente, Pago) conforme o estado real do lead, visando a integridade do CRM e o treinamento correto dos algoritmos comerciais.</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <span className="font-bold text-zinc-400">03.</span>
+                      <p><strong className="text-zinc-950">Compromisso com o SLA:</strong> Priorizar o primeiro contato com novos leads em um prazo máximo de 10 minutos, compreendendo a urgência e exclusividade demandadas por proprietários de Land Rover.</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <span className="font-bold text-zinc-400">04.</span>
+                      <p><strong className="text-zinc-950">Sigilo e Proteção:</strong> Zelar pela total confidencialidade das informações e documentos de nossos clientes, em conformidade com as normas do Exército Brasileiro e políticas internas de segurança balística.</p>
+                    </div>
+                  </div>
+
+                  <p className="pt-6">
+                    Por estar de pleno acordo com os termos acima citados, firmo este compromisso digital para validação imediata de minhas atividades operacionais.
+                  </p>
+                </div>
+
+                {/* Rodapé e Assinatura */}
+                <div className="mt-16 flex flex-col items-center">
+                  <div className="w-full max-w-xs border-b border-zinc-400 mb-2" />
+                  <p className="text-xs font-bold uppercase tracking-widest">{advisorName} {advisorSurname}</p>
+                  <p className="text-[10px] text-zinc-500 mt-1">Consultor Homologado Solution Place</p>
+                  
+                  <div className="mt-10 pt-6 border-t border-zinc-100 w-full flex justify-between items-end">
+                    <div className="text-[9px] text-zinc-400 uppercase tracking-tighter">
+                      <p>Protocolo Digital: SP-{Math.floor(Math.random() * 900000 + 100000)}</p>
+                      <p>Data de Assinatura: {signedTime}</p>
+                    </div>
+                    <div className="bg-zinc-50 border border-zinc-200 p-2 rounded flex items-center gap-2">
+                      <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                        <Check size={14} className="text-white" />
+                      </div>
+                      <span className="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">Verificado</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Selo de Água / Decorativo */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+                  <Car size={400} />
+                </div>
+              </div>
+
+              <div className="mt-8 flex justify-center gap-4 no-print">
+                <button
+                  onClick={() => window.print()}
+                  className="bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-3 px-8 rounded-xl text-xs uppercase tracking-widest transition-all flex items-center gap-2"
+                >
+                  <Printer size={16} />
+                  Imprimir Comprovante
+                </button>
+                <Link
+                  to="/"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-8 rounded-xl text-xs uppercase tracking-widest transition-all"
+                >
+                  Concluir & Ir para a Home
+                </Link>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>
