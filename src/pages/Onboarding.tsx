@@ -50,7 +50,7 @@ export default function Onboarding() {
       icon: Inbox,
       criteria: "O lead acabou de enviar a primeira mensagem no WhatsApp. Ele ainda não passou pela triagem ou perguntas de qualificação.",
       action: "NÃO aplicar nenhuma etiqueta. Deixar sem etiqueta para sinalizar que o lead está na caixa de entrada e precisa de recepção imediata.",
-      message: "Olá! Seja muito bem-vindo(a) à KrM Corp. Me chamo [Seu Nome] e estou aqui para te dar as boas-vindas. Para que eu possa entender o seu perfil e te direcionar para a pessoa certa, poderia me informar o seu nome e qual o principal desafio ou projeto da sua empresa hoje?"
+      message: "Olá! Seja muito bem-vindo(a). Me chamo [Seu Nome] e estou aqui para te dar as boas-vindas. Para que eu possa entender o seu perfil e te direcionar para a pessoa certa, poderia me informar o seu nome e qual o principal desafio ou projeto da sua empresa hoje?"
     },
     {
       title: "2. Lead Qualificado",
@@ -61,7 +61,7 @@ export default function Onboarding() {
       icon: UserCheck,
       criteria: "O lead respondeu às perguntas de qualificação, foi identificado que possui fit com nossos serviços e foi enviado para o comercial realizar a proposta.",
       action: "Adicionar o contato na Lista de Transmissão comercial do WhatsApp e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada).",
-      message: "Excelente, [Nome do Lead]! Com base no que me passou, o seu perfil se encaixa perfeitamente nas soluções da KrM Corp. Acabei de repassar as informações para o nosso time comercial especializado. Um dos nossos consultores entrará em contato em breve para apresentar nossa proposta personalizada. \n\nAdicionei você à nossa lista de 'Novos Clientes' prioritários para garantir que você receba um acompanhamento VIP a partir de agora!"
+      message: "Excelente, [Nome do Lead]! Com base no que me passou, o seu perfil se encaixa perfeitamente nas nossas soluções. Acabei de repassar as informações para o nosso time comercial especializado. Um dos nossos consultores entrará em contato em breve para apresentar nossa proposta personalizada. \n\nAdicionei você à nossa lista de 'Novos Clientes' prioritários para garantir que você receba um acompanhamento VIP a partir de agora!"
     },
     {
       title: "3. Lead Convertido (Comprou)",
@@ -72,7 +72,7 @@ export default function Onboarding() {
       icon: DollarSign,
       criteria: "O cliente aceitou a proposta, realizou o pagamento e enviou o comprovante de PIX, boleto pago ou transferência aprovada.",
       action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde). Remover o contato da lista de transmissão comercial, adicionar à lista de clientes ativos e notificar imediatamente o time de implantação/onboarding de projeto.",
-      message: "Parabéns e seja muito bem-vindo(a) oficialmente à família KrM Corp! 🎉 Recebemos o seu comprovante e o pagamento foi confirmado com sucesso. \n\nA partir deste momento, nosso time de onboarding e implantação já foi acionado e está preparando o seu ambiente. Você receberá um e-mail com as primeiras instruções e entraremos em contato nas próximas horas para agendar nossa Reunião de Kick-off e alinhamento!"
+      message: "Parabéns e seja muito bem-vindo(a) oficialmente! 🎉 Recebemos o seu comprovante e o pagamento foi confirmado com sucesso. \n\nA partir deste momento, nosso time de onboarding e implantação já foi acionado e está preparando o seu ambiente. Você receberá um e-mail com as primeiras instruções e entraremos em contato nas próximas horas para agendar nossa Reunião de Kick-off e alinhamento!"
     }
   ];
 
@@ -191,12 +191,7 @@ export default function Onboarding() {
 
       {/* Navegação / Topbar */}
       <div className="border-b border-white/5 bg-background/50 backdrop-blur-md sticky top-0 z-40 no-print">
-        <div className="container max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 group">
-            <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-            <span className="text-xs font-bold uppercase tracking-wider">Voltar ao Site</span>
-          </Link>
-          
+        <div className="container max-w-7xl mx-auto px-6 py-4 flex items-center justify-end">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => window.print()}
@@ -225,11 +220,11 @@ export default function Onboarding() {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4 print-title">
-            Manual de Etiquetagem & Onboarding de <span className="text-gradient-gold">Leads no WhatsApp</span>
+            Onboard - Qualificação Comercial de <span className="text-gradient-gold">Leads WhatsApp</span>
           </h1>
           
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl leading-relaxed print-subtitle">
-            Instruções estratégicas para Atendentes e SDRs. Saiba como identificar, registrar e etiquetar leads de acordo com o momento da qualificação na KrM Corp.
+            Instruções estratégicas para Atendentes e SDRs. Saiba como identificar, registrar e etiquetar leads de acordo com o momento da qualificação.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-4 items-center justify-between bg-card/40 border border-white/5 p-4 rounded-lg no-print">
