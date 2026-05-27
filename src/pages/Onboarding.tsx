@@ -92,7 +92,7 @@ export default function Onboarding() {
       borderClass: "border-primary/30 shadow-[0_0_15px_rgba(217,119,6,0.1)]",
       icon: UserCheck,
       criteria: "O cliente confirmou o modelo do veículo, demonstrou interesse em algum veículo pronta-entrega e aceitou receber uma proposta comercial técnica ou agendar uma visita ao showroom.",
-      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a ficha técnica e a cotação inicial para o consultor de contas premium da Solution.",
+      action: "Adicionar à Lista/Aplicar a etiqueta 'Novo cliente'. Encaminhar a ficha técnica para o Comercial.",
       message: "Excelente! O seu veículo é extraordinário e merece o mais alto padrão de blindagem boutique que oferecemos aqui na Solution. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e agendar sua visita ao nosso showroom.\n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
     },
     {
