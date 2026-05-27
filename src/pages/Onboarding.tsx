@@ -71,7 +71,7 @@ export default function Onboarding() {
   const [advisorSurname, setAdvisorSurname] = useState<string>("");
   const [signedTime, setSignedTime] = useState<string>("");
 
-  // Scripts de Mensagens Padrão - Alinhados com a Solution Place (Blindadora Premium RJ)
+  // Scripts de Mensagens Padrão - Alinhados com a Solution (Blindadora Boutique)
   const scripts: ScriptTemplate[] = [
     {
       title: "1. Lead Recém-Chegado",
@@ -80,9 +80,9 @@ export default function Onboarding() {
       colorClass: "from-blue-500/20 to-indigo-500/5 text-blue-400 border-blue-500/20",
       borderClass: "border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
       icon: Inbox,
-      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um Land Rover específico (ex: Defender 110, Range Rover Sport, Discovery 5) ou perguntando sobre veículos blindados homologados em estoque.",
-      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão da Solution Place, coletando dados críticos (modelo do Land Rover, ano de fabricação, nível de blindagem desejado e urgência da cotação).",
-      message: "Olá! Seja muito bem-vindo(a) à Solution Place, blindadora oficial homologada pela Land Rover no Rio de Janeiro. 🛡️\n\nMe chamo Carlos Eduardo e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do seu Land Rover?"
+      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um veículo premium ou perguntando sobre veículos blindados em estoque.",
+      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão da Solution, coletando dados críticos (modelo do veículo, ano de fabricação, nível de blindagem desejado e urgência da cotação).",
+      message: "Olá! Seja muito bem-vindo(a) à Solution, a primeira blindadora boutique do mundo. 🛡️\n\nMe chamo Carlos Eduardo e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do seu veículo?"
     },
     {
       title: "2. Lead Qualificado",
@@ -91,9 +91,9 @@ export default function Onboarding() {
       colorClass: "from-amber-500/20 to-yellow-500/5 text-primary border-primary/20",
       borderClass: "border-primary/30 shadow-[0_0_15px_rgba(217,119,6,0.1)]",
       icon: UserCheck,
-      criteria: "O cliente confirmou o modelo do Land Rover (ex: Defender 110, Range Rover Sport, Discovery 5, Range Rover Vogue, Velar, Evoque), demonstrou real interesse na blindagem Nível III-A homologada e aceitou receber uma proposta comercial técnica ou agendar uma visita ao showroom.",
-      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados Land Rover') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a ficha técnica e a cotação inicial do Land Rover para o consultor de contas premium da Solution Place.",
-      message: "Excelente, Lessia! O Range Rover Sport é um veículo extraordinário e merece o mais alto padrão de blindagem com homologação oficial Land Rover que oferecemos aqui na Solution Place. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e agendar sua visita ao nosso showroom.\n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
+      criteria: "O cliente confirmou o modelo do veículo, demonstrou real interesse na blindagem Nível III-A e aceitou receber uma proposta comercial técnica ou agendar uma visita ao showroom.",
+      action: "Adicionar o contato à Lista de Transmissão comercial ('Leads Qualificados') e aplicar a etiqueta 'Novo cliente' (cor amarela/dourada). Encaminhar a ficha técnica e a cotação inicial para o consultor de contas premium da Solution.",
+      message: "Excelente! O seu veículo é extraordinário e merece o mais alto padrão de blindagem boutique que oferecemos aqui na Solution. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e agendar sua visita ao nosso showroom.\n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
     },
     {
       title: "3. Lead Convertido (Fechou Contrato)",
@@ -102,54 +102,54 @@ export default function Onboarding() {
       colorClass: "from-emerald-500/20 to-teal-500/5 text-emerald-400 border-emerald-500/20",
       borderClass: "border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]",
       icon: DollarSign,
-      criteria: "O cliente aprovou o orçamento da blindagem do seu Land Rover, assinou o contrato digital de prestação de serviços da Solution Place e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
-      action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde) no WhatsApp. Remover o contato da lista comercial, inseri-lo na lista de clientes ativos da fábrica e notificar imediatamente os times de Engenharia de Blindagem, Compras de Materiais (vidros balísticos AGP Glass / mantas de aramida DuPont) e Planejamento de Produção.",
-      message: "Parabéns, Dr. Roberto, e seja muito bem-vindo à Solution Place! 🎉\n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso.\n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu Discovery 5. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército.\n\nEstamos à sua total disposição!"
+      criteria: "O cliente aprovou o orçamento da blindagem, assinou o contrato digital de prestação de serviços da Solution e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
+      action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde) no WhatsApp. Remover o contato da lista comercial, inseri-lo na lista de clientes ativos da fábrica e notificar imediatamente os times de Engenharia de Blindagem, Compras de Materiais (vidros balísticos AGP / mantas de aramida) e Planejamento de Produção.",
+      message: "Parabéns e seja muito bem-vindo à Solution! 🎉\n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso.\n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu veículo. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército.\n\nEstamos à sua total disposição!"
     }
   ];
 
-  // Cenários do Simulador - Alinhados com a Solution Place & Land Rover
+  // Cenários do Simulador - Alinhados com a Solution
   const simulatorScenarios = [
     {
       id: "new_lead",
-      question: "O cliente acabou de mandar no WhatsApp: 'Gostaria de saber o valor para blindar um Defender 110 2024. Vocês são homologados Land Rover?'",
+      question: "O cliente acabou de mandar no WhatsApp: 'Gostaria de saber o valor para blindar um sedã premium 2024. Vocês trabalham com pronta entrega?'",
       state: "Lead Recém-Chegado",
       label: "Sem Etiqueta",
-      tip: "Inicie o protocolo de atendimento de altíssimo padrão. Identifique-se e dê as boas-vindas formais da Solution Place. O foco é obter o nome do cliente e confirmar os detalhes do Land Rover antes de direcionar.",
+      tip: "Inicie o protocolo de atendimento de altíssimo padrão. Identifique-se e dê as boas-vindas formais da Solution. O foco é obter o nome do cliente e confirmar os detalhes do veículo antes de direcionar.",
       scriptIndex: 0,
       clientName: "Dr. André Santos",
-      carModel: "Defender 110 2024",
+      carModel: "Sedã Premium 2024",
       avatar: "A",
       avatarColor: "bg-blue-600",
-      clientMessage: "Olá! Gostaria de saber o valor para blindar um Defender 110 2024. Vocês são homologados Land Rover?",
+      clientMessage: "Olá! Gostaria de saber o valor para blindar um sedã premium 2024. Vocês trabalham com pronta entrega?",
       clientTime: "18:15"
     },
     {
       id: "qualified_lead",
-      question: "Lessia Barbosa informou que deseja blindar um Range Rover Sport 2023 com vidros de 19mm e solicitou a proposta formalizada por WhatsApp.",
+      question: "O cliente informou que deseja blindar um SUV de Luxo 2023 com vidros de 19mm e solicitou a proposta formalizada por WhatsApp.",
       state: "Lead Qualificado",
       label: "Novo cliente",
       tip: "Adicione o contato à lista de transmissão e marque com a etiqueta 'Novo cliente'. Isso aciona o time comercial especialista para fazer o envio e acompanhamento da cotação formal Nível III-A.",
       scriptIndex: 1,
-      clientName: "Lessia Barbosa",
-      carModel: "Range Rover Sport 2023",
-      avatar: "L",
+      clientName: "Sra. Helena Meirelles",
+      carModel: "SUV de Luxo 2023",
+      avatar: "H",
       avatarColor: "bg-amber-600",
-      clientMessage: "Sou a Lessia. Gostaria de blindar meu Range Rover Sport 2023 com vidros de 19mm. Consegue me enviar a proposta formalizada por aqui?",
+      clientMessage: "Sou a Helena. Gostaria de blindar meu SUV com vidros de 19mm. Consegue me enviar a proposta formalizada por aqui?",
       clientTime: "17:42"
     },
     {
       id: "paid_lead",
-      question: "Dr. Roberto Medeiros assinou o contrato digital e enviou o comprovante de Pix do sinal para blindagem de um Discovery 5 2022.",
+      question: "O cliente assinou o contrato digital e enviou o comprovante de Pix do sinal para blindagem de um esportivo premium 2022.",
       state: "Lead Convertido (Pago)",
       label: "Pago",
-      tip: "Altere a etiqueta para 'Pago'. Notifique a Engenharia e o PCP da fábrica de blindagem da Solution Place imediatamente para a reserva de slot de produção e compra dos insumos (vidros balísticos/aramida).",
+      tip: "Altere a etiqueta para 'Pago'. Notifique a Engenharia e o PCP da fábrica da Solution imediatamente para a reserva de slot de produção e compra dos insumos (vidros balísticos/aramida).",
       scriptIndex: 2,
       clientName: "Dr. Roberto Medeiros",
-      carModel: "Discovery 5 2022",
+      carModel: "Esportivo Premium 2022",
       avatar: "R",
       avatarColor: "bg-emerald-600",
-      clientMessage: "Contrato assinado digitalmente e o sinal de 50% enviado via Pix! Segue o comprovante de pagamento.",
+      clientMessage: "Contrato assinado digitalmente e o sinal enviado via Pix! Segue o comprovante.",
       clientTime: "15:20"
     }
   ];
@@ -204,11 +204,11 @@ export default function Onboarding() {
       setIsTyping(false);
       let replyText = "Entendido, obrigado!";
       if (currentScenario.id === "new_lead") {
-        replyText = "Olá! Meu nome é André Santos. É um Defender 110 ano 2024 sim. Tenho bastante pressa no orçamento, vocês conseguem me enviar uma prévia dos valores ainda hoje?";
+        replyText = "Olá! Meu nome é André Santos. É um sedã premium ano 2024 sim. Tenho bastante pressa no orçamento, vocês conseguem me enviar uma prévia dos valores ainda hoje?";
       } else if (currentScenario.id === "qualified_lead") {
-        replyText = "Perfeito, Carlos Eduardo! Fico no aguardo do contato do consultor com a cotação formal Nível III-A da Solution Place. Muito obrigada pela agilidade!";
+        replyText = "Perfeito, Carlos Eduardo! Fico no aguardo do contato do consultor com a cotação formal Nível III-A da Solution. Muito obrigada pela agilidade!";
       } else if (currentScenario.id === "paid_lead") {
-        replyText = "Excelente, Carlos! Já fiz o Pix do sinal também. Fico no aguardo do contato do PCP da fábrica para agendarmos o recebimento do Discovery 5. Um abraço!";
+        replyText = "Excelente, Carlos! Já fiz o Pix do sinal também. Fico no aguardo do contato do PCP da fábrica para agendarmos o recebimento do veículo. Um abraço!";
       }
 
       setSimulatedMessages(prev => [
@@ -251,7 +251,7 @@ export default function Onboarding() {
         }
       ]);
       setHasSentResponse(true);
-      toast.success("Mensagem da Solution Place enviada com sucesso no simulador!");
+      toast.success("Mensagem da Solution enviada com sucesso no simulador!");
 
       // Dispara a réplica automática do cliente
       setIsTyping(true);
@@ -259,11 +259,11 @@ export default function Onboarding() {
         setIsTyping(false);
         let replyText = "Entendido, obrigado!";
         if (currentScenario.id === "new_lead") {
-          replyText = "Olá! Meu nome é André Santos. É um Defender 110 ano 2024 sim. Tenho bastante pressa no orçamento, vocês conseguem me enviar uma prévia dos valores ainda hoje?";
+          replyText = "Olá! Meu nome é André Santos. É um sedã premium ano 2024 sim. Tenho bastante pressa no orçamento, vocês conseguem me enviar uma prévia dos valores ainda hoje?";
         } else if (currentScenario.id === "qualified_lead") {
-          replyText = "Perfeito, Carlos Eduardo! Fico no aguardo do contato do consultor com a cotação formal Nível III-A da Solution Place. Muito obrigada pela agilidade!";
+          replyText = "Perfeito, Carlos Eduardo! Fico no aguardo do contato do consultor com a cotação formal Nível III-A da Solution. Muito obrigada pela agilidade!";
         } else if (currentScenario.id === "paid_lead") {
-          replyText = "Excelente, Carlos! Já fiz o Pix do sinal também. Fico no aguardo do contato do PCP da fábrica para agendarmos o recebimento do Discovery 5. Um abraço!";
+          replyText = "Excelente, Carlos! Já fiz o Pix do sinal também. Fico no aguardo do contato do PCP da fábrica para agendarmos o recebimento do veículo. Um abraço!";
         }
 
         setSimulatedMessages(prev => [
@@ -387,7 +387,7 @@ export default function Onboarding() {
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-4 no-print">
             <ShieldCheck size={12} className="text-primary" />
-            Solution Place · Blindadora Homologada Land Rover
+            Solution · Primeira Blindadora Boutique do Mundo
           </div>
           
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold tracking-tight mb-2 print-title">
@@ -398,11 +398,11 @@ export default function Onboarding() {
             <div className="flex items-start gap-3 max-w-xl">
               <Info className="text-primary shrink-0 mt-1" size={18} />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Protocolo Land Rover:</strong> Veículos de altíssimo luxo demandam processos de etiquetagem precisos no WhatsApp Business. Esse alinhamento garante o treinamento correto do algoritmo comercial e controle de slots da fábrica.
+                <strong className="text-foreground">Protocolo Boutique:</strong> Veículos de altíssimo luxo demandam processos de etiquetagem precisos no WhatsApp Business. Esse alinhamento garante o treinamento correto do algoritmo comercial e controle de slots da fábrica.
               </p>
             </div>
             <div className="text-xs font-bold text-muted-foreground/60 uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded">
-              Homologação Oficial RJ
+              Boutique de Blindagem RJ
             </div>
           </div>
         </motion.div>
@@ -421,75 +421,136 @@ export default function Onboarding() {
               </div>
               <h2 className="text-2xl font-display font-bold text-foreground">1. Fluxograma e Mapa Mental de Decisão</h2>
             </div>
-            
-            <div className="text-xs text-muted-foreground flex items-center gap-1.5 no-print">
-              <Eye size={12} />
-              Clique para expandir
-            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 items-center bg-card/30 border border-white/5 p-6 md:p-8 rounded-xl backdrop-blur-sm print-card">
+          <div className="grid md:grid-cols-12 gap-8 items-start bg-card/30 border border-white/5 p-6 md:p-8 rounded-xl backdrop-blur-sm print-card">
             
-            {/* Imagem do Mapa Mental com Dialog de Zoom */}
-            <div className="md:col-span-2 relative group overflow-hidden rounded-lg border border-white/10 bg-black/40 p-2 cursor-pointer transition-all duration-300 hover:border-primary/50">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div className="relative">
-                    <img 
-                      src="/whatsapp_iphone_macbook_land_rover.png" 
-                      alt="Guia Visual de Etiquetas no WhatsApp Business - iPhone e MacBook" 
-                      className="w-full h-auto rounded object-cover transition-transform duration-500 group-hover:scale-[1.01] print-mindmap"
-                    />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center no-print">
-                      <span className="bg-primary text-primary-foreground font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
-                        <Eye size={14} />
-                        Visualizar em Tela Cheia
-                      </span>
+            {/* Visualização de Conversas Etiquetadas */}
+            <div className="md:col-span-8 space-y-4">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Exemplo de Visualização no WhatsApp Business</h3>
+                <span className="text-[10px] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded border border-primary/20 uppercase">Sem Mockup</span>
+              </div>
+
+              <div className="space-y-3">
+                {/* Contato 1: Sem Etiqueta */}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center gap-4 transition-all hover:bg-white/10">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                    A
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-bold text-sm text-foreground">Dr. André Santos</h4>
+                      <span className="text-[10px] text-muted-foreground">18:15</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground truncate italic">"Olá! Gostaria de saber o valor para blindar um sedã premium..."</p>
+                  </div>
+                  <div className="shrink-0 flex flex-col items-end gap-2">
+                    <span className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20 uppercase tracking-tighter">Sem Etiqueta</span>
+                    <CheckCheck size={14} className="text-muted-foreground/30" />
+                  </div>
+                </div>
+
+                {/* Contato 2: Novo cliente */}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center gap-4 transition-all hover:bg-white/10">
+                  <div className="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                    H
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-bold text-sm text-foreground">Sra. Helena Meirelles</h4>
+                      <span className="text-[10px] text-muted-foreground">17:42</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground truncate">"Sou a Helena. Gostaria de blindar meu SUV com vidros de 19mm..."</p>
+                  </div>
+                  <div className="shrink-0 flex flex-col items-end gap-2">
+                    <span className="text-[9px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 uppercase tracking-tighter">Novo cliente</span>
+                    <div className="flex items-center gap-1">
+                      <CheckCheck size={14} className="text-primary" />
                     </div>
                   </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl bg-background/95 border-white/10 p-2">
-                    <img 
-                    src="/whatsapp_iphone_macbook_land_rover.png" 
-                    alt="Guia Visual de Etiquetas - iPhone e MacBook Tela Cheia" 
-                    className="w-full h-auto rounded"
-                  />
-                </DialogContent>
-              </Dialog>
+                </div>
+
+                {/* Contato 3: Pago */}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center gap-4 transition-all hover:bg-white/10">
+                  <div className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                    R
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-bold text-sm text-foreground">Dr. Roberto Medeiros</h4>
+                      <span className="text-[10px] text-muted-foreground">15:20</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground truncate">"Contrato assinado digitalmente e o sinal enviado via Pix!"</p>
+                  </div>
+                  <div className="shrink-0 flex flex-col items-end gap-2">
+                    <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 uppercase tracking-tighter">Pago</span>
+                    <CheckCheck size={14} className="text-emerald-400" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Legenda de Listas */}
+              <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-xl">
+                <div className="flex items-center gap-2 mb-3">
+                  <Layers size={14} className="text-primary" />
+                  <h4 className="text-[11px] font-bold text-foreground uppercase tracking-widest">Sincronização com Listas de Transmissão</h4>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-[10px] text-muted-foreground leading-relaxed">
+                    <strong className="text-amber-400">Lista: Leads Qualificados</strong>
+                    <p>Contatos com a etiqueta <span className="text-amber-400">Novo cliente</span> são inseridos na lista de nutrição comercial.</p>
+                  </div>
+                  <div className="text-[10px] text-muted-foreground leading-relaxed">
+                    <strong className="text-emerald-400">Lista: Produção Ativa</strong>
+                    <p>Contatos com a etiqueta <span className="text-emerald-400">Pago</span> são removidos do comercial e inseridos na lista da fábrica.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Resumo do Fluxo */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                <span className="text-primary">✦</span> Funil de Atendimento:
-              </h3>
-              
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                As três etiquetas principais que regem o ecossistema de blindagem homologada Land Rover na Solution Place:
-              </p>
+            {/* Resumo do Fluxo Lateral */}
+            <div className="md:col-span-4 space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <span className="text-primary">✦</span> Funil Boutique:
+                </h3>
+                
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  As três etiquetas principais que regem o ecossistema de blindagem boutique na Solution:
+                </p>
 
-              <div className="space-y-3 pt-2 text-xs">
-                <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5">
-                  <span className="w-3 h-3 rounded-full bg-blue-400 block shrink-0" />
-                  <div>
-                    <p className="font-bold text-foreground">1. Sem Etiqueta</p>
-                    <p className="text-muted-foreground text-[10px]">Identificação do Land Rover / Boas-vindas</p>
+                <div className="space-y-3 pt-2 text-xs">
+                  <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5 hover:border-blue-500/30 transition-all group">
+                    <span className="w-3 h-3 rounded-full bg-blue-400 block shrink-0 shadow-[0_0_8px_rgba(96,165,250,0.4)]" />
+                    <div>
+                      <p className="font-bold text-foreground group-hover:text-blue-400 transition-colors">1. Sem Etiqueta</p>
+                      <p className="text-muted-foreground text-[10px]">Identificação do Veículo / Boas-vindas</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5 hover:border-amber-500/30 transition-all group">
+                    <span className="w-3 h-3 rounded-full bg-amber-400 block shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.4)]" />
+                    <div>
+                      <p className="font-bold text-foreground group-hover:text-amber-400 transition-colors">2. Novo cliente</p>
+                      <p className="text-muted-foreground text-[10px]">Lead qualificado / Envio de cotação</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5 hover:border-emerald-500/30 transition-all group">
+                    <span className="w-3 h-3 rounded-full bg-emerald-400 block shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.4)]" />
+                    <div>
+                      <p className="font-bold text-foreground group-hover:text-emerald-400 transition-colors">3. Pago</p>
+                      <p className="text-muted-foreground text-[10px]">Sinal validado / PCP e Engenharia</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5">
-                  <span className="w-3 h-3 rounded-full bg-amber-400 block shrink-0" />
-                  <div>
-                    <p className="font-bold text-foreground">2. Novo cliente</p>
-                    <p className="text-muted-foreground text-[10px]">Lead qualificado / Envio de cotação formal</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5">
-                  <span className="w-3 h-3 rounded-full bg-emerald-400 block shrink-0" />
-                  <div>
-                    <p className="font-bold text-foreground">3. Pago</p>
-                    <p className="text-muted-foreground text-[10px]">Sinal validado / PCP e Engenharia acionados</p>
+                <div className="pt-4 border-t border-white/5">
+                  <div className="bg-black/40 p-3 rounded-lg border border-white/5">
+                    <p className="text-[10px] text-muted-foreground leading-relaxed">
+                      <span className="text-primary font-bold">Dica:</span> O segredo da blindadora boutique é a personalização. A etiqueta ajuda a equipe a saber exatamente em qual estágio do "atendimento de joalheria" o cliente se encontra.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -921,7 +982,7 @@ export default function Onboarding() {
                         
                         <div className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
                           <Layers size={11} className="text-primary" />
-                          Solution Place RJ · WhatsApp Web
+                          Solution RJ · WhatsApp Web
                         </div>
                         
                         <div className="w-12" /> {/* Spacer */}
@@ -942,7 +1003,7 @@ export default function Onboarding() {
                             </div>
                           </div>
 
-                          {/* Chat List (Exclusivo Land Rover) */}
+                          {/* Chat List (Veículos Premium) */}
                           <div className="flex-1 overflow-y-auto space-y-0.5 p-1.5">
                             {simulatorScenarios.map(sc => (
                               <button
@@ -1086,13 +1147,13 @@ export default function Onboarding() {
         >
           <h2 className="text-xl font-display font-bold text-foreground mb-4 flex items-center gap-2">
             <Car size={18} className="text-primary" />
-            Regras de Ouro no Atendimento Solution Place
+            Regras de Ouro no Atendimento Solution
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6 text-xs text-muted-foreground">
             <ul className="space-y-3 list-disc pl-4 leading-relaxed">
-              <li><strong className="text-foreground">Atendimento de Altíssimo Padrão (Land Rover):</strong> Proprietários de Land Rover exigem máxima formalidade, vocabulário impecável e clareza nos aspectos de engenharia balística.</li>
-              <li><strong className="text-foreground">Ficha Técnica Indispensável:</strong> Nunca direcione o lead para a equipe comercial especializada sem colher o **Modelo exato** (ex: Defender 110, Evoque, Velar, Sport), **Ano** e o **tipo de blindagem desejado** (geralmente Nível III-A homologada).</li>
+              <li><strong className="text-foreground">Atendimento Boutique (Solution):</strong> Clientes do segmento premium exigem máxima formalidade, vocabulário impecável e clareza nos aspectos de engenharia balística.</li>
+              <li><strong className="text-foreground">Ficha Técnica Indispensável:</strong> Nunca direcione o lead para a equipe comercial especializada sem colher o **Modelo exato** (ex: SUV, Sedã, Esportivo), **Ano** e o **tipo de blindagem desejado** (geralmente Nível III-A).</li>
               <li><strong className="text-foreground">Sincronia Operacional (PCP):</strong> Ao marcar como <span className="text-emerald-400 font-semibold">Pago</span>, o sinal deve ser validado pelo financeiro e a engenharia notificada imediatamente para compras de vidros de alta tecnologia (AGP Glass).</li>
             </ul>
 
@@ -1141,7 +1202,7 @@ export default function Onboarding() {
                   Assinatura do Termo de Compromisso
                 </h2>
                 <p className="text-xs text-muted-foreground mb-8">
-                  Para concluir seu onboard e validar seu acesso como Consultor Solution Place, preencha seus dados para geração do certificado digital de excelência.
+                  Para concluir seu onboard e validar seu acesso como Consultor Solution, preencha seus dados para geração do certificado digital de excelência.
                 </p>
 
                 <div className="space-y-6">
@@ -1177,7 +1238,7 @@ export default function Onboarding() {
                       />
                     </div>
                     <label htmlFor="agree-term" className="text-[11px] text-muted-foreground leading-relaxed cursor-pointer select-none">
-                      Eu li e concordo com os protocolos de atendimento de altíssimo padrão da Solution Place e comprometo-me a aplicar rigorosamente a etiquetagem conforme o treinamento.
+                      Eu li e concordo com os protocolos de atendimento de altíssimo padrão da Solution e comprometo-me a aplicar rigorosamente a etiquetagem conforme o treinamento.
                     </label>
                   </div>
 
@@ -1220,13 +1281,13 @@ export default function Onboarding() {
                     <ShieldCheck size={40} className="text-[#d97706]" />
                   </div>
                   <h2 className="text-2xl font-serif font-bold uppercase tracking-tight text-zinc-900">Termo de Compromisso de Excelência</h2>
-                  <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest mt-1">Solution Place · Blindagem Homologada Land Rover</p>
+                  <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest mt-1">Solution · Blindagem Boutique</p>
                 </div>
 
                 {/* Corpo do Texto */}
                 <div className="space-y-6 text-sm leading-relaxed text-zinc-800 text-justify">
                   <p>
-                    Eu, <strong className="text-zinc-950 underline underline-offset-4">{advisorName} {advisorSurname}</strong>, doravante designado como Consultor(a) de Atendimento Premium, comprometo-me formalmente perante a <strong className="text-zinc-950">Solution Place</strong> a seguir os protocolos de atendimento de altíssimo padrão estabelecidos para a marca Land Rover no Rio de Janeiro.
+                    Eu, <strong className="text-zinc-950 underline underline-offset-4">{advisorName} {advisorSurname}</strong>, doravante designado como Consultor(a) de Atendimento Premium, comprometo-me formalmente perante a <strong className="text-zinc-950">Solution</strong> a seguir os protocolos de atendimento de altíssimo padrão estabelecidos para o segmento boutique no Rio de Janeiro.
                   </p>
 
                   <div className="space-y-4 pt-2">
@@ -1240,7 +1301,7 @@ export default function Onboarding() {
                     </div>
                     <div className="flex gap-4">
                       <span className="font-bold text-zinc-400">03.</span>
-                      <p><strong className="text-zinc-950">Compromisso com o SLA:</strong> Priorizar o primeiro contato com novos leads em um prazo máximo de 10 minutos, compreendendo a urgência e exclusividade demandadas por proprietários de Land Rover.</p>
+                      <p><strong className="text-zinc-950">Compromisso com o SLA:</strong> Priorizar o primeiro contato com novos leads em um prazo máximo de 10 minutos, compreendendo a urgência e exclusividade demandadas por clientes de alto padrão.</p>
                     </div>
                     <div className="flex gap-4">
                       <span className="font-bold text-zinc-400">04.</span>
@@ -1257,7 +1318,7 @@ export default function Onboarding() {
                 <div className="mt-16 flex flex-col items-center">
                   <div className="w-full max-w-xs border-b border-zinc-400 mb-2" />
                   <p className="text-xs font-bold uppercase tracking-widest">{advisorName} {advisorSurname}</p>
-                  <p className="text-[10px] text-zinc-500 mt-1">Consultor Homologado Solution Place</p>
+                  <p className="text-[10px] text-zinc-500 mt-1">Consultor Homologado Solution</p>
                   
                   <div className="mt-10 pt-6 border-t border-zinc-100 w-full flex justify-between items-end">
                     <div className="text-[9px] text-zinc-400 uppercase tracking-tighter">
