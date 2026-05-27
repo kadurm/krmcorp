@@ -510,12 +510,10 @@ export default function Onboarding() {
             <ul className="space-y-3 list-disc pl-4 leading-relaxed">
               <li><strong className="text-foreground">Atendimento Boutique (Solution):</strong> Clientes do segmento premium exigem máxima formalidade, vocabulário impecável e clareza nos detalhes/informações do produto.</li>
               <li><strong className="text-foreground">Ficha Técnica Indispensável:</strong> Nunca direcione o lead para a equipe comercial especializada sem colher o nome do Lead, Modelo e Ano de Veículo.</li>
-              <li><strong className="text-foreground">Sincronia Operacional (PCP):</strong> Ao marcar como <span className="text-emerald-400 font-semibold">Pago</span>, o sinal deve ser validado pelo financeiro e a engenharia notificada imediatamente para compras de vidros de alta tecnologia (AGP Glass).</li>
             </ul>
 
             <ul className="space-y-3 list-disc pl-4 leading-relaxed">
               <li><strong className="text-foreground">Velocidade no SLA:</strong> O tempo limite para envio do primeiro contato aos leads de cotação de blindagem Nível III-A é de **10 minutos**.</li>
-              <li><strong className="text-foreground">Processos com o Exército:</strong> Ao qualificar o cliente como 'Novo cliente', verifique se o mesmo já possui o Certificado de Registro (CR) ativo para facilitar a documentação da blindagem junto ao Exército.</li>
               <li><strong className="text-foreground">Manutenção do Funil:</strong> Higienize semanalmente os contatos, enviando leads que não responderam por mais de 7 dias para réguas automáticas de reengajamento comercial.</li>
             </ul>
           </div>
