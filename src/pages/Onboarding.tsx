@@ -53,18 +53,8 @@ interface ScriptTemplate {
 
 export default function Onboarding() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-  const [simulatorStep, setSimulatorStep] = useState<string>("new_lead");
-  const [deviceType, setDeviceType] = useState<"iphone" | "macbook">("iphone");
-  const [simulatedMessages, setSimulatedMessages] = useState<any[]>([]);
-  const [isTyping, setIsTyping] = useState<boolean>(false);
-  const [hasSentResponse, setHasSentResponse] = useState<boolean>(false);
 
   // Novos estados para o modo Prática e Treinamento Interativo
-  const [onboardMode, setOnboardMode] = useState<"guide" | "practice">("guide");
-  const [practiceStep, setPracticeStep] = useState<number>(0); // 0 = new_lead, 1 = qualified_lead, 2 = paid_lead
-  const [practiceStage, setPracticeStage] = useState<"label" | "chat" | "done">("label");
-  const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
-  const [chatInputValue, setChatInputValue] = useState<string>("");
   const [showTermForm, setShowTermForm] = useState<boolean>(false);
   const [showTermDoc, setShowTermDoc] = useState<boolean>(false);
   const [advisorName, setAdvisorName] = useState<string>("");
@@ -590,489 +580,78 @@ export default function Onboarding() {
 
         <div className="print-page-break" />
 
-        {/* 3. SIMULADOR INTERATIVO DE AÇÕES COM MOCKUPS HIGH-FIDELITY */}
+        {/* 3. ORIENTAÇÕES PARA CONVERSAS FLEXÍVEIS */}
         <motion.section 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-16 no-print"
+          className="mb-16"
         >
-          <div className="bg-gradient-to-br from-primary/10 via-card/80 to-background border border-primary/20 rounded-2xl p-6 md:p-8">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 pb-6 border-b border-white/5">
-              <div className="flex items-center gap-3">
-                <div className="bg-primary/20 p-2.5 rounded-lg text-primary border border-primary/30 shadow-[0_0_10px_rgba(217,119,6,0.1)]">
-                  <HelpCircle size={24} />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-display font-bold text-foreground">3. Treinamento e Simulador Interativo</h2>
-                  <p className="text-xs text-muted-foreground mt-0.5">Visualize a interface exata do WhatsApp Business operando no iPhone e MacBook.</p>
-                </div>
+          <div className="bg-gradient-to-br from-primary/10 via-card/80 to-background border border-primary/20 rounded-2xl p-6 md:p-10 shadow-xl">
+            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/5">
+              <div className="bg-primary/20 p-3 rounded-xl text-primary border border-primary/30">
+                <MessageSquare size={28} />
               </div>
-
-              {/* Toggles de Dispositivo */}
-              <div className="flex items-center bg-black/40 p-1.5 rounded-xl border border-white/10 self-start lg:self-center">
-                <button
-                  onClick={() => setDeviceType("iphone")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
-                    deviceType === "iphone"
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Smartphone size={14} />
-                  iPhone (iOS)
-                </button>
-                <button
-                  onClick={() => setDeviceType("macbook")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
-                    deviceType === "macbook"
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Laptop size={14} />
-                  MacBook (Web)
-                </button>
+              <div>
+                <h2 className="text-2xl font-display font-bold text-foreground">3. Flexibilidade no Atendimento</h2>
+                <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider font-medium">Como contornar situações fora do script padrão</p>
               </div>
             </div>
 
-            {/* Grid Principal: Seletor & Ficha Técnica vs Mockup do WhatsApp */}
-            <div className="grid lg:grid-cols-12 gap-8 items-start">
-              
-              {/* Coluna da Esquerda: Cenários e Orientações Técnicas (5 cols) */}
-              <div className="lg:col-span-5 space-y-6">
-                <div className="space-y-3">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-primary font-display block">Escolha uma Situação Real:</span>
-                  <div className="flex flex-col gap-3">
-                    {simulatorScenarios.map((sc, i) => (
-                      <button
-                        key={sc.id}
-                        onClick={() => setSimulatorStep(sc.id)}
-                        className={`text-left p-4 rounded-xl border text-xs font-medium transition-all duration-300 flex items-start gap-3 relative overflow-hidden ${
-                          simulatorStep === sc.id 
-                            ? "bg-primary/10 border-primary text-foreground shadow-[0_0_15px_rgba(217,119,6,0.1)]"
-                            : "bg-card/40 border-white/5 text-muted-foreground hover:bg-card/80 hover:border-white/10 hover:text-foreground"
-                        }`}
-                      >
-                        <div className={`p-2 rounded-lg shrink-0 mt-0.5 ${
-                          simulatorStep === sc.id ? "bg-primary text-primary-foreground" : "bg-white/5"
-                        }`}>
-                          <Car size={14} />
-                        </div>
-                        <div className="space-y-1">
-                          <p className="font-bold text-[10px] uppercase tracking-wider text-primary">Cenário {i + 1}: {sc.clientName}</p>
-                          <p className="font-semibold text-foreground text-[11px]">{sc.carModel}</p>
-                          <p className="line-clamp-2 leading-relaxed text-muted-foreground text-[10px]">{sc.question}</p>
-                        </div>
-                      </button>
-                    ))}
+            <div className="grid md:grid-cols-2 gap-10">
+              <div className="space-y-6">
+                <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <Sparkles size={18} className="text-primary" />
+                  A Realidade Além do Script
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Embora os scripts oficiais sejam a base do nosso padrão boutique, o cliente de alto padrão muitas vezes traz dúvidas específicas ou mensagens que fogem da sequência linear. **A conversa não será sempre travada.**
+                </p>
+                
+                <div className="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
+                  <h4 className="text-xs font-bold text-primary uppercase tracking-widest">Princípios de Adaptação:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex gap-3 text-xs leading-relaxed">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <span><strong className="text-foreground">Escuta Ativa:</strong> Priorize responder a dúvida imediata do cliente antes de tentar retornar ao fluxo do script.</span>
+                    </li>
+                    <li className="flex gap-3 text-xs leading-relaxed">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <span><strong className="text-foreground">Mantenha o Tom:</strong> Mesmo que o cliente seja informal, mantenha a elegância e a formalidade boutique da Solution.</span>
+                    </li>
+                    <li className="flex gap-3 text-xs leading-relaxed">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <span><strong className="text-foreground">Objetivo Final:</strong> Independentemente do desvio, o foco permanece em colher a **Ficha Técnica** ou confirmar o **Pagamento/Assinatura**.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <Shield size={18} className="text-primary" />
+                  Táticas de Contorno
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="bg-black/40 border border-white/5 p-4 rounded-xl">
+                    <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">Desvio: O cliente pergunta o preço antes de se identificar</p>
+                    <p className="text-xs text-muted-foreground italic">"Entendo perfeitamente sua busca pelo melhor custo-benefício. Como cada projeto na Solution é único e artesanal, o valor varia conforme o modelo e nível de proteção. Para ser preciso na sua cotação, como posso lhe chamar e qual o veículo?"</p>
+                  </div>
+
+                  <div className="bg-black/40 border border-white/5 p-4 rounded-xl">
+                    <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">Desvio: O cliente envia áudio ou fotos do veículo</p>
+                    <p className="text-xs text-muted-foreground italic">"Agradeço o envio das imagens! Já encaminhei para nosso time de engenharia avaliar os detalhes. Enquanto isso, para oficializarmos seu cadastro na nossa lista de atendimento prioritário, poderia confirmar seu nome?"</p>
+                  </div>
+
+                  <div className="bg-primary/5 border border-primary/20 p-4 rounded-xl flex items-start gap-3">
+                    <Info className="text-primary shrink-0 mt-0.5" size={16} />
+                    <p className="text-[11px] text-muted-foreground leading-normal">
+                      <strong className="text-foreground">Lembre-se:</strong> A etiqueta no WhatsApp deve ser atualizada com base na **intenção** e no **estágio real**, mesmo que a conversa tenha sido atípica.
+                    </p>
                   </div>
                 </div>
-
-                {/* Painel de Instruções de Etiquetagem */}
-                <motion.div
-                  key={simulatorStep}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-black/30 border border-white/10 p-5 rounded-xl space-y-4"
-                >
-                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
-                    <div>
-                      <p className="text-[9px] uppercase font-bold tracking-widest text-muted-foreground">Estado do Lead:</p>
-                      <p className="text-sm font-bold text-foreground">{currentScenario.state}</p>
-                    </div>
-                    
-                    <div className="text-right">
-                      <p className="text-[9px] uppercase font-bold tracking-widest text-primary">Etiqueta Recomendada:</p>
-                      <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded border mt-1 ${
-                        currentScenario.id === "new_lead" ? "text-blue-400 border-blue-500/20 bg-blue-500/10" :
-                        currentScenario.id === "qualified_lead" ? "text-amber-400 border-amber-500/20 bg-amber-500/10" :
-                        "text-emerald-400 border-emerald-500/20 bg-emerald-500/10"
-                      }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${
-                          currentScenario.id === "new_lead" ? "bg-blue-400" :
-                          currentScenario.id === "qualified_lead" ? "bg-amber-400" :
-                          "bg-emerald-400"
-                        }`} />
-                        {currentScenario.label}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 text-xs">
-                    <div>
-                      <h4 className="font-bold text-primary flex items-center gap-1.5 text-[10px] uppercase tracking-wider">
-                        <Shield size={12} /> Diretriz da Blindadora:
-                      </h4>
-                      <p className="text-muted-foreground leading-relaxed mt-1 text-[11px]">{currentScenario.tip}</p>
-                    </div>
-
-                    <div className="bg-white/5 p-3.5 rounded-lg border border-white/5 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-foreground text-[10px] uppercase tracking-wider">Script de Atendimento:</span>
-                        <button
-                          onClick={() => handleCopyText(scripts[currentScenario.scriptIndex].message, 99)}
-                          className="text-[9px] font-bold text-primary hover:text-white uppercase tracking-wider flex items-center gap-1"
-                        >
-                          {copiedIndex === 99 ? <Check size={10} /> : <Copy size={10} />}
-                          Copiar Mensagem
-                        </button>
-                      </div>
-                      <p className="text-[11px] text-muted-foreground italic leading-relaxed line-clamp-3">
-                        "{scripts[currentScenario.scriptIndex].message}"
-                      </p>
-                    </div>
-
-                    {!hasSentResponse && (
-                      <button
-                        onClick={triggerSimulatedResponse}
-                        disabled={isTyping}
-                        className="w-full bg-primary hover:bg-primary/95 text-primary-foreground font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition-all duration-300 glow-gold uppercase tracking-wider"
-                      >
-                        {isTyping ? (
-                          <>
-                            <span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                            Carlos Eduardo Digitando...
-                          </>
-                        ) : (
-                          <>
-                            <Send size={12} />
-                            Simular Resposta no Aparelho
-                          </>
-                        )}
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
               </div>
-
-              {/* Coluna da Direita: Mockup Físico de Aparelho (7 cols) */}
-              <div className="lg:col-span-7 flex justify-center items-center">
-                <AnimatePresence mode="wait">
-                  {deviceType === "iphone" ? (
-                    /* ================= IPHONE MOCKUP ================= */
-                    <motion.div
-                      key="iphone-device"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-[340px] h-[670px] rounded-[52px] border-[10px] border-zinc-800 bg-zinc-950 shadow-2xl relative flex flex-col overflow-hidden border-t-[12px] border-b-[12px] shadow-black/80"
-                    >
-                      {/* Dynamic Island / Notch do iPhone */}
-                      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50 flex items-center justify-between px-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-                        <div className="w-10 h-1 bg-zinc-900 rounded-full" />
-                      </div>
-
-                      {/* iPhone Status Bar */}
-                      <div className="h-10 bg-zinc-900 flex items-end justify-between px-6 pb-1 text-[11px] font-semibold text-zinc-300 z-40 shrink-0">
-                        <span>18:20</span>
-                        <div className="flex items-center gap-1.5">
-                          <Wifi size={11} />
-                          <span className="text-[9px]">5G</span>
-                          <Battery size={13} className="text-zinc-300" />
-                        </div>
-                      </div>
-
-                      {/* WhatsApp iOS Header */}
-                      <div className="bg-zinc-900 border-b border-white/5 py-2 px-3 flex items-center justify-between z-30 shrink-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-primary font-medium hover:opacity-80 transition-all flex items-center cursor-pointer">
-                            <ChevronRight size={16} className="rotate-180 text-primary" />
-                            Atrás
-                          </span>
-                          
-                          {/* Avatar */}
-                          <div className={`w-9 h-9 rounded-full ${currentScenario.avatarColor} flex items-center justify-center font-bold text-sm text-white shadow-inner relative`}>
-                            {currentScenario.avatar}
-                            {/* Etiqueta na Foto */}
-                            {currentScenario.id !== "new_lead" && (
-                              <span className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border border-zinc-950 flex items-center justify-center ${
-                                currentScenario.id === "qualified_lead" ? "bg-amber-400" : "bg-emerald-400"
-                              }`} />
-                            )}
-                          </div>
-
-                          {/* Nome e Status */}
-                          <div className="text-left">
-                            <h4 className="text-xs font-bold text-foreground leading-tight">{currentScenario.clientName}</h4>
-                            <p className="text-[10px] text-emerald-400 leading-none flex items-center gap-1 mt-0.5">
-                              {isTyping ? (
-                                <span className="animate-pulse">digitando...</span>
-                              ) : (
-                                <>
-                                  <span className="w-1 h-1 rounded-full bg-emerald-400 inline-block" />
-                                  online
-                                </>
-                              )}
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Ações Rápidas Header */}
-                        <div className="flex items-center gap-3 text-primary">
-                          <Phone size={14} className="cursor-pointer hover:opacity-80" />
-                          <Video size={15} className="cursor-pointer hover:opacity-80" />
-                          <MoreVertical size={14} className="text-zinc-400 cursor-pointer" />
-                        </div>
-                      </div>
-
-                      {/* Corpo do Chat (Wallpaper Clássico WhatsApp Dark) */}
-                      <div className="flex-1 bg-zinc-950 p-4 flex flex-col gap-4 overflow-y-auto relative bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:16px_16px]">
-                        
-                        {/* Indicador de Categoria / Tag flutuante */}
-                        <div className="self-center bg-zinc-900/90 border border-white/5 py-1 px-3 rounded-full text-[9px] font-bold text-muted-foreground uppercase tracking-wider backdrop-blur-sm shadow flex items-center gap-1.5">
-                          <span className={`w-1.5 h-1.5 rounded-full ${
-                            currentScenario.id === "new_lead" ? "bg-blue-400" :
-                            currentScenario.id === "qualified_lead" ? "bg-amber-400" :
-                            "bg-emerald-400"
-                          }`} />
-                          Etiqueta: {currentScenario.label}
-                        </div>
-
-                        {/* Mensagem Informativa de Veículo */}
-                        <div className="self-center bg-primary/10 border border-primary/20 text-primary py-1 px-2.5 rounded-lg text-[9px] font-medium max-w-[240px] text-center leading-normal">
-                          Modelo: <span className="font-bold">{currentScenario.carModel}</span>
-                        </div>
-
-                        {/* Mensagens Simulares */}
-                        {simulatedMessages.map((msg, i) => (
-                          <div
-                            key={i}
-                            className={`max-w-[80%] rounded-2xl p-3 text-xs leading-relaxed relative flex flex-col ${
-                              msg.sender === "client"
-                                ? "bg-zinc-800 text-zinc-100 self-start rounded-tl-none border border-zinc-700/50"
-                                : "bg-primary/20 border border-primary/30 text-foreground self-end rounded-tr-none shadow-[0_0_10px_rgba(217,119,6,0.05)]"
-                            }`}
-                          >
-                            <p className="whitespace-pre-wrap">{msg.text}</p>
-                            <span className="text-[8px] text-muted-foreground/60 self-end mt-1.5 flex items-center gap-0.5">
-                              {msg.time}
-                              {msg.sender === "agent" && <CheckCheck size={10} className="text-primary" />}
-                            </span>
-                          </div>
-                        ))}
-
-                        {/* Indicador Visual de Digitação */}
-                        {isTyping && (
-                          <div className="bg-zinc-800 border border-zinc-700/50 text-zinc-300 max-w-[60px] rounded-xl p-2.5 self-start rounded-tl-none flex items-center justify-center gap-1 shrink-0">
-                            <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '0ms' }} />
-                            <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '150ms' }} />
-                            <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '300ms' }} />
-                          </div>
-                        )}
-                      </div>
-
-                      {/* iPhone WhatsApp Input Bar */}
-                      <div className="bg-zinc-900 border-t border-white/5 p-3 flex items-center gap-2 z-30 shrink-0">
-                        <Paperclip size={16} className="text-primary cursor-pointer hover:opacity-85 shrink-0" />
-                        <div className="flex-1 bg-zinc-950 border border-white/5 rounded-full px-4 py-1.5 flex items-center justify-between text-xs text-foreground">
-                          <input
-                            type="text"
-                            value={chatInputValue}
-                            onChange={(e) => setChatInputValue(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") handleSendCustomMessage();
-                            }}
-                            placeholder={hasSentResponse ? "Mensagem enviada" : "Digite uma mensagem..."}
-                            disabled={hasSentResponse || isTyping}
-                            className="bg-transparent border-none outline-none w-full text-xs text-foreground placeholder-zinc-500"
-                          />
-                          <Smile size={15} className="text-zinc-500 cursor-pointer hover:text-zinc-300 shrink-0 ml-1" />
-                        </div>
-                        <button 
-                          onClick={handleSendCustomMessage} 
-                          disabled={hasSentResponse || isTyping || !chatInputValue.trim()}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                            hasSentResponse || !chatInputValue.trim()
-                              ? "bg-zinc-800 text-zinc-600" 
-                              : "bg-primary text-primary-foreground hover:scale-105"
-                          }`}
-                        >
-                          <Send size={12} className={hasSentResponse ? "" : "translate-x-[1px]"} />
-                        </button>
-                      </div>
-
-                      {/* iPhone Home Indicator bar */}
-                      <div className="h-5 bg-zinc-900 flex items-center justify-center z-30 shrink-0">
-                        <div className="w-28 h-1 bg-zinc-700 rounded-full" />
-                      </div>
-                    </motion.div>
-                  ) : (
-                    /* ================= MACBOOK / WHATSAPP WEB MOCKUP ================= */
-                    <motion.div
-                      key="macbook-device"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-full max-w-[620px] h-[480px] bg-zinc-950 rounded-xl border border-white/10 shadow-2xl relative flex flex-col overflow-hidden shadow-black/80"
-                    >
-                      {/* Top macOS Style Bar */}
-                      <div className="h-10 bg-zinc-900 border-b border-white/5 px-4 flex items-center justify-between shrink-0">
-                        {/* Red, Yellow, Green window controls */}
-                        <div className="flex items-center gap-2">
-                          <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block border border-red-600/20" />
-                          <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block border border-yellow-600/20" />
-                          <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block border border-green-600/20" />
-                        </div>
-                        
-                        <div className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
-                          <Layers size={11} className="text-primary" />
-                          Solution RJ · WhatsApp Web
-                        </div>
-                        
-                        <div className="w-12" /> {/* Spacer */}
-                      </div>
-
-                      {/* Main Application Body */}
-                      <div className="flex-1 flex overflow-hidden">
-                        
-                        {/* Left Sidebar: Active Chats (35%) */}
-                        <div className="w-[38%] border-r border-white/5 bg-zinc-900/50 flex flex-col overflow-hidden shrink-0">
-                          {/* Sidebar Header & Search */}
-                          <div className="p-3 border-b border-white/5 space-y-3 shrink-0">
-                            <div className="flex items-center justify-between">
-                              <span className="text-xs font-bold text-foreground">Conversas Recentes</span>
-                              <div className="bg-white/5 p-1 rounded hover:bg-white/10 cursor-pointer">
-                                <Search size={12} className="text-zinc-400" />
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Chat List (Veículos Premium) */}
-                          <div className="flex-1 overflow-y-auto space-y-0.5 p-1.5">
-                            {simulatorScenarios.map(sc => (
-                              <button
-                                key={sc.id}
-                                onClick={() => setSimulatorStep(sc.id)}
-                                className={`w-full text-left p-2.5 rounded-lg transition-all duration-200 flex items-center gap-2.5 ${
-                                  simulatorStep === sc.id 
-                                    ? "bg-primary/10 border border-primary/20 text-foreground" 
-                                    : "border border-transparent hover:bg-white/5 text-muted-foreground hover:text-foreground"
-                                }`}
-                              >
-                                <div className={`w-8 h-8 rounded-full ${sc.avatarColor} text-white font-bold flex items-center justify-center text-xs shrink-0 relative`}>
-                                  {sc.avatar}
-                                  {sc.id !== "new_lead" && (
-                                    <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border border-zinc-900 ${
-                                      sc.id === "qualified_lead" ? "bg-amber-400" : "bg-emerald-400"
-                                    }`} />
-                                  )}
-                                </div>
-                                <div className="min-w-0 flex-1 space-y-0.5">
-                                  <div className="flex items-center justify-between">
-                                    <h4 className="text-[10px] font-bold text-foreground truncate">{sc.clientName}</h4>
-                                    <span className="text-[8px] text-muted-foreground shrink-0">{sc.clientTime}</span>
-                                  </div>
-                                  <p className="text-[9px] text-primary font-medium truncate leading-none">{sc.carModel}</p>
-                                  <p className="text-[9px] text-muted-foreground truncate leading-normal italic">
-                                    {sc.id === simulatorStep && hasSentResponse ? "Você respondeu..." : sc.clientMessage}
-                                  </p>
-                                </div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Right Chat Pane: Active Conversation (65%) */}
-                        <div className="flex-1 bg-zinc-950 flex flex-col overflow-hidden relative">
-                          
-                          {/* Active Chat Header */}
-                          <div className="bg-zinc-900 border-b border-white/5 p-3 flex items-center justify-between shrink-0">
-                            <div className="flex items-center gap-2.5 min-w-0">
-                              <div className={`w-8 h-8 rounded-full ${currentScenario.avatarColor} text-white font-bold flex items-center justify-center text-xs shrink-0`}>
-                                {currentScenario.avatar}
-                              </div>
-                              <div className="text-left min-w-0">
-                                <h4 className="text-xs font-bold text-foreground leading-tight truncate">{currentScenario.clientName}</h4>
-                                <p className="text-[9px] text-muted-foreground leading-none mt-1 truncate">
-                                  Interesse: <span className="font-semibold text-primary">{currentScenario.carModel}</span>
-                                </p>
-                              </div>
-                            </div>
-
-                            {/* Active Tag indicator */}
-                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded border ${
-                              currentScenario.id === "new_lead" ? "text-blue-400 border-blue-500/20 bg-blue-500/10" :
-                              currentScenario.id === "qualified_lead" ? "text-amber-400 border-amber-500/20 bg-amber-500/10" :
-                              "text-emerald-400 border-emerald-500/20 bg-emerald-500/10"
-                            }`}>
-                              {currentScenario.label}
-                            </span>
-                          </div>
-
-                          {/* Chat Wallpaper Log */}
-                          <div className="flex-1 p-4 overflow-y-auto space-y-4 flex flex-col relative bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-[size:16px_16px]">
-                            
-                            {/* Conversas */}
-                            {simulatedMessages.map((msg, i) => (
-                              <div
-                                key={i}
-                                className={`max-w-[70%] rounded-xl p-3 text-[11px] leading-relaxed flex flex-col shadow-md ${
-                                  msg.sender === "client"
-                                    ? "bg-zinc-800 text-zinc-100 self-start rounded-tl-none border border-zinc-700/50"
-                                    : "bg-primary/20 border border-primary/30 text-foreground self-end rounded-tr-none"
-                                }`}
-                              >
-                                <p className="whitespace-pre-wrap">{msg.text}</p>
-                                <span className="text-[8px] text-muted-foreground/60 self-end mt-1.5 flex items-center gap-0.5">
-                                  {msg.time}
-                                  {msg.sender === "agent" && <CheckCheck size={10} className="text-primary" />}
-                                </span>
-                              </div>
-                            ))}
-
-                            {/* Digitação */}
-                            {isTyping && (
-                              <div className="bg-zinc-800 border border-zinc-700/50 text-zinc-300 max-w-[60px] rounded-xl p-2.5 self-start rounded-tl-none flex items-center justify-center gap-1 shrink-0">
-                                <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '0ms' }} />
-                                <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '150ms' }} />
-                                <span className="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-bounce shrink-0" style={{ animationDelay: '300ms' }} />
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Chat Web Bottom Input */}
-                          <div className="bg-zinc-900 border-t border-white/5 p-3 flex items-center gap-3 shrink-0">
-                            <Smile size={16} className="text-zinc-400 cursor-pointer hover:text-zinc-200" />
-                            <Paperclip size={16} className="text-zinc-400 cursor-pointer hover:text-zinc-200" />
-                            
-                            <div className="flex-1 bg-zinc-950 border border-white/5 rounded-lg px-3 py-2 text-xs text-foreground flex items-center justify-between">
-                              <input
-                                type="text"
-                                value={chatInputValue}
-                                onChange={(e) => setChatInputValue(e.target.value)}
-                                onKeyDown={(e) => {
-                                  if (e.key === "Enter") handleSendCustomMessage();
-                                }}
-                                placeholder={hasSentResponse ? "Resposta enviada" : "Digite a mensagem de boas-vindas..."}
-                                disabled={hasSentResponse || isTyping}
-                                className="bg-transparent border-none outline-none w-full text-xs text-foreground placeholder-zinc-500"
-                              />
-                            </div>
-
-                            <button 
-                              onClick={handleSendCustomMessage}
-                              disabled={hasSentResponse || isTyping || !chatInputValue.trim()}
-                              className={`p-2 rounded-lg transition-all ${
-                                hasSentResponse || !chatInputValue.trim()
-                                  ? "bg-zinc-800 text-zinc-600" 
-                                  : "bg-primary text-primary-foreground hover:scale-105"
-                              }`}
-                            >
-                              <Send size={13} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
             </div>
           </div>
         </motion.section>
