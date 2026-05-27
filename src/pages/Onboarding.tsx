@@ -81,7 +81,7 @@ export default function Onboarding() {
       borderClass: "border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
       icon: Inbox,
       criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um veículo premium ou perguntando sobre veículos blindados em estoque.",
-      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de altíssimo padrão da Solution, coletando dados críticos (modelo do veículo, ano de fabricação, nível de blindagem desejado e urgência da cotação).",
+      action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de alto padrão da Solution, coletando dados (nome do Lead, modelo do veículo, ano de fabricação e urgência da cotação).",
       message: "Olá! Seja muito bem-vindo(a) à Solution, a primeira blindadora boutique do mundo. 🛡️\n\nMe chamo Carlos Eduardo e será uma honra conduzir o seu atendimento personalizado. Para que eu possa entender melhor a sua necessidade de segurança e apresentar o projeto ideal para a sua proteção, poderia me informar o seu nome e qual o modelo e o ano do seu veículo?"
     },
     {
