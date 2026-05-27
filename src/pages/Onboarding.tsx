@@ -100,9 +100,15 @@ export default function Onboarding() {
       {/* Estilos CSS Embutidos para Impressão PDF */}
       <style>{`
         @media print {
+          @page {
+            size: auto;
+            margin: 0mm;
+          }
           body {
-            background: #ffffff !important;
-            color: #000000 !important;
+            background-color: #030712 !important;
+            color: #ffffff !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
           .no-print {
             display: none !important;
@@ -110,46 +116,50 @@ export default function Onboarding() {
           .print-container {
             width: 100% !important;
             max-width: 100% !important;
-            padding: 0 !important;
+            padding: 20mm !important;
             margin: 0 !important;
+            background-color: #030712 !important;
           }
           .print-card {
-            border: 2px solid #e2e8f0 !important;
-            background: #ffffff !important;
-            color: #000000 !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background-color: rgba(30, 41, 59, 0.4) !important;
+            color: #ffffff !important;
             box-shadow: none !important;
             break-inside: avoid;
             page-break-inside: avoid;
-            border-radius: 8px !important;
+            border-radius: 12px !important;
             margin-bottom: 20px !important;
             padding: 20px !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          .bg-card\/30, .bg-card\/40, .bg-white\/5, .bg-black\/30, .bg-primary\/5, .bg-primary\/10 {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          .text-muted-foreground {
+            color: #94a3b8 !important;
+          }
+          .text-primary {
+            color: #d97706 !important;
           }
           .print-title {
-            color: #0d1527 !important;
-            font-size: 20pt !important;
+            color: #ffffff !important;
+            font-size: 24pt !important;
             font-weight: bold !important;
           }
-          .print-subtitle {
-            color: #475569 !important;
-            font-size: 12pt !important;
-          }
-          .print-badge {
-            border: 1px solid #94a3b8 !important;
-            color: #0f172a !important;
-            background: #f1f5f9 !important;
-            font-weight: bold !important;
+          .text-gradient-gold {
+            background: linear-gradient(to right, #f59e0b, #d97706, #b45309) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: #d97706 !important;
           }
           .print-page-break {
             page-break-before: always;
             height: 0;
             margin: 0;
             border: none;
-          }
-          .print-mindmap {
-            max-width: 100% !important;
-            border: 1px solid #cbd5e1 !important;
-            margin: 20px 0 !important;
-            page-break-inside: avoid;
           }
         }
       `}</style>
