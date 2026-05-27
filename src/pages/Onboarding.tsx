@@ -76,7 +76,7 @@ export default function Onboarding() {
     {
       title: "1. Lead Recém-Chegado",
       badge: "Entrada de Lead",
-      label: "Sem Etiqueta / Sem Rótulo",
+      label: "Sem Etiqueta / Sem Lista",
       colorClass: "from-blue-500/20 to-indigo-500/5 text-blue-400 border-blue-500/20",
       borderClass: "border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
       icon: Inbox,
@@ -539,7 +539,7 @@ export default function Onboarding() {
             <div className="bg-primary/10 p-2 rounded-lg border border-primary/20 text-primary">
               <FileText size={20} />
             </div>
-            <h2 className="text-2xl font-display font-bold text-foreground">2. Ações de Etiquetagem & Scripts Oficiais</h2>
+            <h2 className="text-2xl font-display font-bold text-foreground">Mensagens de atendimento</h2>
           </div>
 
           <div className="space-y-8">
