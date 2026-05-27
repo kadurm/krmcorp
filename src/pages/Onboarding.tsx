@@ -248,7 +248,7 @@ export default function Onboarding() {
                       <h4 className="font-bold text-xs md:text-sm text-foreground truncate">Dr. André Santos</h4>
                       <span className="text-[8px] md:text-[10px] text-muted-foreground ml-2">18:15</span>
                     </div>
-                    <p className="text-[10px] md:text-xs text-muted-foreground truncate italic">"Olá! Gostaria de saber o valor para blindar..."</p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground italic line-clamp-2">"Olá! Gostaria de saber o valor para blindar um sedã premium 2024..."</p>
                   </div>
                   <div className="shrink-0 flex flex-col items-end gap-1.5 md:gap-2">
                     <span className="text-[7px] md:text-[9px] font-bold text-blue-400 bg-blue-500/10 px-1.5 md:px-2 py-0.5 rounded border border-blue-500/20 uppercase tracking-tighter">Sem Etiqueta</span>
@@ -266,7 +266,7 @@ export default function Onboarding() {
                       <h4 className="font-bold text-xs md:text-sm text-foreground truncate">Sra. Helena Meirelles</h4>
                       <span className="text-[8px] md:text-[10px] text-muted-foreground ml-2">17:42</span>
                     </div>
-                    <p className="text-[10px] md:text-xs text-muted-foreground truncate">"Sou a Helena. Gostaria de blindar meu SUV..."</p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2">"Sou a Helena. Gostaria de blindar meu SUV com vidros de 19mm..."</p>
                   </div>
                   <div className="shrink-0 flex flex-col items-end gap-1.5 md:gap-2">
                     <span className="text-[7px] md:text-[9px] font-bold text-amber-400 bg-amber-500/10 px-1.5 md:px-2 py-0.5 rounded border border-amber-500/20 uppercase tracking-tighter">Novo cliente</span>
@@ -286,7 +286,7 @@ export default function Onboarding() {
                       <h4 className="font-bold text-xs md:text-sm text-foreground truncate">Dr. Roberto Medeiros</h4>
                       <span className="text-[8px] md:text-[10px] text-muted-foreground ml-2">15:20</span>
                     </div>
-                    <p className="text-[10px] md:text-xs text-muted-foreground truncate">"Contrato assinado digitalmente e o sinal..."</p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2">"Contrato assinado digitalmente e o sinal enviado via Pix!"</p>
                   </div>
                   <div className="shrink-0 flex flex-col items-end gap-1.5 md:gap-2">
                     <span className="text-[7px] md:text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-1.5 md:px-2 py-0.5 rounded border border-emerald-500/20 uppercase tracking-tighter">Pago</span>
