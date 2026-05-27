@@ -443,7 +443,7 @@ export default function Onboarding() {
                   A Realidade Além do Script
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Embora os scripts oficiais sejam a base do nosso padrão boutique, o cliente de alto padrão muitas vezes traz dúvidas específicas ou mensagens que fogem da sequência linear. **A conversa não será sempre travada.**
+                  Embora os scripts oficiais sejam a base do nosso padrão, o Lead muitas vezes traz dúvidas específicas ou mensagens que fogem da sequência linear. A conversa não será sempre travada.
                 </p>
                 
                 <div className="bg-white/5 border border-white/10 rounded-xl p-5 space-y-4">
