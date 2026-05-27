@@ -416,7 +416,7 @@ export default function Onboarding() {
               <div className="bg-primary/10 p-2 rounded-lg border border-primary/20 text-primary">
                 <BookOpen size={20} />
               </div>
-              <h2 className="text-2xl font-display font-bold text-foreground">1. Fluxograma e Mapa Mental de Decisão</h2>
+              <h2 className="text-2xl font-display font-bold text-foreground">Adicionar à lista</h2>
             </div>
           </div>
 
