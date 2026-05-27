@@ -85,8 +85,8 @@ export default function Onboarding() {
       message: "Olá! Seja muito bem-vindo(a) à Solution Place.\\nSou Viviane, especialista em segurança automotiva. Para que eu possa te auxiliar da melhor forma possível, qual é o modelo e o ano do seu veículo?"
     },
     {
-      title: "2. Lead Qualificado",
-      badge: "Direcionado ao Comercial",
+      title: "2. Lead Pré-Qualificado",
+      badge: "Direcionando ao Comercial",
       label: "Adicionar à Lista / Etiqueta: Novo cliente",
       colorClass: "from-amber-500/20 to-yellow-500/5 text-primary border-primary/20",
       borderClass: "border-primary/30 shadow-[0_0_15px_rgba(217,119,6,0.1)]",
