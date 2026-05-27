@@ -398,7 +398,7 @@ export default function Onboarding() {
             <div className="flex items-start gap-3 max-w-xl">
               <Info className="text-primary shrink-0 mt-1" size={18} />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Protocolo Boutique:</strong> Esse alinhamento garante o treinamento correto do algoritmo do Meta Ads e a organização do fluxo de atendimento.
+                Esse alinhamento garante o treinamento correto do algoritmo do Meta Ads e a organização do fluxo de atendimento.
               </p>
             </div>
           </div>
