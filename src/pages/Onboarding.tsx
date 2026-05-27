@@ -486,23 +486,6 @@ export default function Onboarding() {
                 </div>
               </div>
 
-              {/* Legenda de Listas */}
-              <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-xl">
-                <div className="flex items-center gap-2 mb-3">
-                  <Layers size={14} className="text-primary" />
-                  <h4 className="text-[11px] font-bold text-foreground uppercase tracking-widest">Sincronização com Listas de Transmissão</h4>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-[10px] text-muted-foreground leading-relaxed">
-                    <strong className="text-amber-400">Lista: Leads Qualificados</strong>
-                    <p>Contatos com a etiqueta <span className="text-amber-400">Novo cliente</span> são inseridos na lista de nutrição comercial.</p>
-                  </div>
-                  <div className="text-[10px] text-muted-foreground leading-relaxed">
-                    <strong className="text-emerald-400">Lista: Produção Ativa</strong>
-                    <p>Contatos com a etiqueta <span className="text-emerald-400">Pago</span> são removidos do comercial e inseridos na lista da fábrica.</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Resumo do Fluxo Lateral */}
