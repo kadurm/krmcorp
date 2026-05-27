@@ -509,19 +509,15 @@ export default function Onboarding() {
             <div className="md:col-span-4 space-y-6">
               <div className="space-y-4">
                 <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                  <span className="text-primary">✦</span> Funil Boutique:
+                  <span className="text-primary">✦</span> Funil:
                 </h3>
-                
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  As três etiquetas principais que regem o ecossistema de blindagem boutique na Solution:
-                </p>
 
                 <div className="space-y-3 pt-2 text-xs">
                   <div className="flex items-center gap-3 bg-white/5 p-2.5 rounded border border-white/5 hover:border-blue-500/30 transition-all group">
                     <span className="w-3 h-3 rounded-full bg-blue-400 block shrink-0 shadow-[0_0_8px_rgba(96,165,250,0.4)]" />
                     <div>
                       <p className="font-bold text-foreground group-hover:text-blue-400 transition-colors">1. Sem Etiqueta</p>
-                      <p className="text-muted-foreground text-[10px]">Identificação do Veículo / Boas-vindas</p>
+                      <p className="text-muted-foreground text-[10px]">Boas-vindas / Identificação do Veículo</p>
                     </div>
                   </div>
 
@@ -529,7 +525,7 @@ export default function Onboarding() {
                     <span className="w-3 h-3 rounded-full bg-amber-400 block shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.4)]" />
                     <div>
                       <p className="font-bold text-foreground group-hover:text-amber-400 transition-colors">2. Novo cliente</p>
-                      <p className="text-muted-foreground text-[10px]">Lead qualificado / Envio de cotação</p>
+                      <p className="text-muted-foreground text-[10px]">Lead qualificado / Enviar para o comercial</p>
                     </div>
                   </div>
 
@@ -537,18 +533,11 @@ export default function Onboarding() {
                     <span className="w-3 h-3 rounded-full bg-emerald-400 block shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.4)]" />
                     <div>
                       <p className="font-bold text-foreground group-hover:text-emerald-400 transition-colors">3. Pago</p>
-                      <p className="text-muted-foreground text-[10px]">Sinal validado / PCP e Engenharia</p>
+                      <p className="text-muted-foreground text-[10px]">Contrato assinado</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/5">
-                  <div className="bg-black/40 p-3 rounded-lg border border-white/5">
-                    <p className="text-[10px] text-muted-foreground leading-relaxed">
-                      <span className="text-primary font-bold">Dica:</span> O segredo da blindadora boutique é a personalização. A etiqueta ajuda a equipe a saber exatamente em qual estágio do "atendimento de joalheria" o cliente se encontra.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
