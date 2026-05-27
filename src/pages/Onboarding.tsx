@@ -426,7 +426,6 @@ export default function Onboarding() {
             <div className="md:col-span-8 space-y-4">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Exemplo de Visualização no WhatsApp Business</h3>
-                <span className="text-[10px] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded border border-primary/20 uppercase">Sem Mockup</span>
               </div>
 
               <div className="space-y-3">
