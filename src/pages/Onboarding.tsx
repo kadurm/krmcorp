@@ -387,7 +387,7 @@ export default function Onboarding() {
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-4 no-print">
             <ShieldCheck size={12} className="text-primary" />
-            Solution · Primeira Blindadora Boutique do Mundo
+            Solution Place
           </div>
           
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold tracking-tight mb-2 print-title">
