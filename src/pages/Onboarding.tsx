@@ -517,23 +517,6 @@ export default function Onboarding() {
               <li><strong className="text-foreground">Manutenção do Funil:</strong> Revise semanalmente os contatos, enviando mensagem para leads que não responderam por mais de 7 dias.</li>
             </ul>
           </div>
-
-          {!showTermForm && !showTermDoc && (
-            <div className="flex justify-center pt-4 no-print">
-              <button
-                onClick={() => {
-                  setShowTermForm(true);
-                  setTimeout(() => {
-                    document.getElementById('term-form-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 px-8 rounded-xl text-sm flex items-center gap-3 transition-all duration-300 shadow-[0_0_20px_rgba(217,119,6,0.3)] hover:scale-105 uppercase tracking-widest"
-              >
-                <ShieldCheck size={20} />
-                Finalizar Treinamento & Assinar Termo
-              </button>
-            </div>
-          )}
         </motion.section>
 
         {/* 5. SEÇÃO DO TERMO DE COMPROMISSO (DINÂMICO) */}
