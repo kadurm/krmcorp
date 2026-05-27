@@ -72,7 +72,7 @@ export default function Onboarding() {
       icon: Inbox,
       criteria: "O Lead entrou em contato via WhatsApp solicitando cotação de blindagem para um veículo premium ou perguntando sobre veículos blindados em estoque. = pré-qualificado para o comercial.",
       action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de alto padrão da Solution, coletando dados (nome do Lead, modelo do veículo, ano de fabricação e urgência da cotação).",
-      message: "Olá! Seja muito bem-vindo(a) à Solution Place.\\nSou Viviane, especialista em segurança automotiva. Para que eu possa te auxiliar da melhor forma possível, qual é o modelo e o ano do seu veículo?"
+      message: "Olá! Seja muito bem-vindo(a) à Solution Place. Sou Viviane, especialista em segurança automotiva. Para que eu possa te auxiliar da melhor forma possível, qual é o modelo e o ano do seu veículo?"
     },
     {
       title: "2. Lead Pré-Qualificado",
