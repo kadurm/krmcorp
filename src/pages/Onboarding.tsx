@@ -80,7 +80,7 @@ export default function Onboarding() {
       colorClass: "from-blue-500/20 to-indigo-500/5 text-blue-400 border-blue-500/20",
       borderClass: "border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
       icon: Inbox,
-      criteria: "O cliente de alto padrão entrou em contato via WhatsApp solicitando cotação de blindagem para um veículo premium ou perguntando sobre veículos blindados em estoque.",
+      criteria: "O Lead entrou em contato via WhatsApp solicitando cotação de blindagem para um veículo premium ou perguntando sobre veículos blindados em estoque. = pré-qualificado para o comercial.",
       action: "NÃO aplicar nenhuma etiqueta. Iniciar imediatamente o protocolo de recepção de alto padrão da Solution, coletando dados (nome do Lead, modelo do veículo, ano de fabricação e urgência da cotação).",
       message: "Olá! Seja muito bem-vindo(a) à Solution Place.\\nSou Viviane, especialista em segurança automotiva. Para que eu possa te auxiliar da melhor forma possível, qual é o modelo e o ano do seu veículo?"
     },
