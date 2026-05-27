@@ -459,7 +459,7 @@ export default function Onboarding() {
                     </li>
                     <li className="flex gap-3 text-xs leading-relaxed">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                      <span><strong className="text-foreground">Objetivo Final:</strong> Independentemente do desvio, o foco permanece em colher a **Ficha Técnica** ou confirmar o **Pagamento/Assinatura**.</span>
+                      <span><strong className="text-foreground">Objetivo Final:</strong> Independentemente do desvio, o foco permanece em colher a Ficha Técnica e encaminhar para o time Comercial.</span>
                     </li>
                   </ul>
                 </div>
