@@ -508,7 +508,7 @@ export default function Onboarding() {
           
           <div className="grid md:grid-cols-2 gap-6 text-xs text-muted-foreground">
             <ul className="space-y-3 list-disc pl-4 leading-relaxed">
-              <li><strong className="text-foreground">Atendimento Boutique (Solution):</strong> Clientes do segmento premium exigem máxima formalidade, vocabulário impecável e clareza nos aspectos de engenharia balística.</li>
+              <li><strong className="text-foreground">Atendimento Boutique (Solution):</strong> Clientes do segmento premium exigem máxima formalidade, vocabulário impecável e clareza nos detalhes/informações do produto.</li>
               <li><strong className="text-foreground">Ficha Técnica Indispensável:</strong> Nunca direcione o lead para a equipe comercial especializada sem colher o **Modelo exato** (ex: SUV, Sedã, Esportivo), **Ano** e o **tipo de blindagem desejado** (geralmente Nível III-A).</li>
               <li><strong className="text-foreground">Sincronia Operacional (PCP):</strong> Ao marcar como <span className="text-emerald-400 font-semibold">Pago</span>, o sinal deve ser validado pelo financeiro e a engenharia notificada imediatamente para compras de vidros de alta tecnologia (AGP Glass).</li>
             </ul>
