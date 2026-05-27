@@ -94,17 +94,6 @@ export default function Onboarding() {
       criteria: "O cliente confirmou o modelo do veículo, demonstrou interesse em algum veículo pronta-entrega e aceitou receber uma proposta comercial técnica ou agendar uma visita ao showroom.",
       action: "Adicionar à Lista/Aplicar a etiqueta 'Novo cliente'. Encaminhar a ficha técnica para o Comercial.",
       message: "Excelente, obrigado pelas informações! [Nome do Leads], o seu veículo é extraordinário e merece o alto padrão de blindagem que oferecemos aqui na Solution. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto. A nossa comercial [Nome da Gerente] entrará em contato para lhe enviar um orçamento."
-    },
-    {
-      title: "3. Lead Convertido (Fechou Contrato)",
-      badge: "Venda Concluída",
-      label: "Etiqueta: Pago",
-      colorClass: "from-emerald-500/20 to-teal-500/5 text-emerald-400 border-emerald-500/20",
-      borderClass: "border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]",
-      icon: DollarSign,
-      criteria: "O cliente aprovou o orçamento da blindagem, assinou o contrato digital de prestação de serviços da Solution e enviou o comprovante de pagamento de sinal, Pix ou entrada de faturamento.",
-      action: "MUDAR a etiqueta de 'Novo cliente' para 'Pago' (cor verde) no WhatsApp. Remover o contato da lista comercial, inseri-lo na lista de clientes ativos da fábrica e notificar imediatamente os times de Engenharia de Blindagem, Compras de Materiais (vidros balísticos AGP / mantas de aramida) e Planejamento de Produção.",
-      message: "Parabéns e seja muito bem-vindo à Solution! 🎉\n\nÉ um privilégio e uma grande responsabilidade cuidar da sua proteção e da sua família. Confirmamos o recebimento e o seu pagamento foi validado com sucesso.\n\nA partir deste momento, nosso departamento de Engenharia e Produção já foi acionado e está preparando o cronograma sob medida do seu veículo. Entraremos em contato nas próximas horas para alinhar a data de recebimento do veículo na fábrica e a emissão da documentação junto ao Exército.\n\nEstamos à sua total disposição!"
     }
   ];
 
@@ -137,20 +126,6 @@ export default function Onboarding() {
       avatarColor: "bg-amber-600",
       clientMessage: "Sou a Helena. Gostaria de blindar meu SUV com vidros de 19mm. Consegue me enviar a proposta formalizada por aqui?",
       clientTime: "17:42"
-    },
-    {
-      id: "paid_lead",
-      question: "O cliente assinou o contrato digital e enviou o comprovante de Pix do sinal para blindagem de um esportivo premium 2022.",
-      state: "Lead Convertido (Pago)",
-      label: "Pago",
-      tip: "Altere a etiqueta para 'Pago'. Notifique a Engenharia e o PCP da fábrica da Solution imediatamente para a reserva de slot de produção e compra dos insumos (vidros balísticos/aramida).",
-      scriptIndex: 2,
-      clientName: "Dr. Roberto Medeiros",
-      carModel: "Esportivo Premium 2022",
-      avatar: "R",
-      avatarColor: "bg-emerald-600",
-      clientMessage: "Contrato assinado digitalmente e o sinal enviado via Pix! Segue o comprovante.",
-      clientTime: "15:20"
     }
   ];
 
@@ -360,12 +335,8 @@ export default function Onboarding() {
 
       {/* Navegação / Topbar */}
       <div className="border-b border-white/5 bg-background/50 backdrop-blur-md sticky top-0 z-40 no-print">
-        <div className="container max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-xs font-bold text-muted-foreground hover:text-white transition-all">
-            <ArrowLeft size={14} />
-            Voltar ao Início
-          </Link>
-          <button 
+        <div className="container max-w-7xl mx-auto px-6 py-4 flex items-center justify-end">
+          <button
             onClick={() => window.print()}
             className="flex items-center gap-2 bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 text-foreground hover:text-white px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 glow-gold"
           >
@@ -391,14 +362,14 @@ export default function Onboarding() {
           </div>
           
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold tracking-tight mb-2 print-title">
-            Onboard - Atendimento & <span className="text-gradient-gold">Etiquetagem WhatsApp</span>
+            Onboarding - Atendimento & <span className="text-gradient-gold">Etiquetagem WhatsApp</span>
           </h1>
 
           <div className="mt-4 flex flex-wrap gap-4 items-center justify-between bg-card/40 border border-white/5 p-4 rounded-lg no-print">
             <div className="flex items-start gap-3 max-w-xl">
               <Info className="text-primary shrink-0 mt-1" size={18} />
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Esse alinhamento garante o treinamento correto do algoritmo do Meta Ads e a organização do fluxo de atendimento.
+                Esse alinhamento auxilia no treinamento correto do algoritmo do Meta Ads e a organização do fluxo de atendimento.
               </p>
             </div>
           </div>
