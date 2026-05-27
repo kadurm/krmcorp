@@ -93,7 +93,7 @@ export default function Onboarding() {
       icon: UserCheck,
       criteria: "O cliente confirmou o modelo do veículo, demonstrou interesse em algum veículo pronta-entrega e aceitou receber uma proposta comercial técnica ou agendar uma visita ao showroom.",
       action: "Adicionar à Lista/Aplicar a etiqueta 'Novo cliente'. Encaminhar a ficha técnica para o Comercial.",
-      message: "Excelente! O seu veículo é extraordinário e merece o mais alto padrão de blindagem boutique que oferecemos aqui na Solution. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto para o nosso consultor especialista. Ele entrará em contato em breve para apresentar a sua cotação formalizada Nível III-A e agendar sua visita ao nosso showroom.\n\nAdicionei seu contato à nossa lista exclusiva de novos clientes prioritários para garantir que você receba um atendimento com a máxima agilidade!"
+      message: "Excelente, obrigado pelas informações! [Nome do Leads], o seu veículo é extraordinário e merece o alto padrão de blindagem que oferecemos aqui na Solution. 💎\n\nAcabei de direcionar a ficha técnica do seu projeto. A nossa comercial [Nome da Gerente] entrará em contato para lhe enviar um orçamento."
     },
     {
       title: "3. Lead Convertido (Fechou Contrato)",
