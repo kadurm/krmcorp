@@ -52,7 +52,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed px-4 sm:px-0"
           >
-            Da infraestrutura tecnológica à estratégia de aquisição. Construímos sistemas exclusivos (CRMs, E-commerces, Landing Pages) e orquestramos as operações de marketing para transformar audiência em receita previsível.
+            Da infraestrutura tecnológica à estratégia de aquisição. Construímos sistemas exclusivos, modernizamos operações engessadas (planilhas e softwares rígidos) e orquestramos as operações de marketing para transformar audiência em receita previsível.
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full px-4 sm:px-0">

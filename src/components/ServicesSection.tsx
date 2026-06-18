@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, Database, Rocket } from "lucide-react";
+import { Target, Database, Rocket, Cpu } from "lucide-react";
 
 const services = [
   {
@@ -8,6 +8,13 @@ const services = [
     subtitle: "Infraestrutura tecnológica de ponta a ponta.",
     description:
       "Construímos a base sólida da sua operação. Desde Landing Pages de altíssima conversão e E-commerces sofisticados até CRMs personalizados sob medida (White Label) para o controle absoluto do seu negócio.",
+  },
+  {
+    icon: Cpu,
+    title: "Modernização de Sistemas",
+    subtitle: "Liberte sua operação de sistemas rígidos e planilhas.",
+    description:
+      "Substituímos planilhas complexas e softwares legados lentos por sistemas web modernos, fluidos e integrados. Preservamos a inteligência e as regras de negócio da sua empresa, eliminando gargalos operacionais.",
   },
   {
     icon: Target,
@@ -46,7 +53,7 @@ const ServicesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
