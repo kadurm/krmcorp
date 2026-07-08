@@ -271,25 +271,21 @@ const RifasPresentation = () => {
     
     currentY += 20;
     
-    // Assinaturas
-    doc.setLineWidth(0.5);
+    // Aceite Digital Box
+    doc.setFillColor(...colorCard);
     doc.setDrawColor(...colorGold);
-    
-    doc.line(20, currentY, 90, currentY);
+    doc.roundedRect(20, currentY, 170, 24, 2, 2, "FD");
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9.5);
+    doc.setTextColor(...colorGold);
+    doc.text("VALIDAÇÃO CONTRATUAL ELETRÔNICA", 25, currentY + 8);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8.5);
     doc.setTextColor(...colorWhite);
-    doc.setFontSize(10);
-    doc.text("O CONTRATANTE", 55, currentY + 6, { align: "center" });
-    doc.setFontSize(8);
-    doc.setTextColor(...colorMuted);
-    doc.text(clientName || "Responsável pelo Projeto", 55, currentY + 12, { align: "center" });
-    
-    doc.line(110, currentY, 190, currentY);
-    doc.setFontSize(10);
-    doc.setTextColor(...colorWhite);
-    doc.text("CONTRATADO", 150, currentY + 6, { align: "center" });
-    doc.setFontSize(8);
-    doc.setTextColor(...colorMuted);
-    doc.text("KrM Corp (Carlos E. R. Menezes)", 150, currentY + 12, { align: "center" });
+    doc.text(`Este documento comercial é formalizado e validado através do aceite digital do contratante,`, 25, currentY + 15);
+    doc.text(`encaminhado e registrado via WhatsApp para o contato oficial da KrM Corp (+55 38 98845-0377).`, 25, currentY + 19);
     
     doc.save(`Orcamento_KrM_Rifas_${clientName.replace(/\s+/g, '_') || "Resultados"}.pdf`);
     setPdfGenerated(true);
@@ -909,23 +905,23 @@ const RifasPresentation = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mt-4">
-              <Button onClick={generateContractPDF} variant="hero-outline" size="lg" className="w-full py-6 flex gap-2 items-center text-xs font-semibold">
-                <Download className="w-4 h-4" />
-                Baixar Contrato em PDF
-              </Button>
-              
+            <div className="flex flex-col gap-3 justify-center w-full max-w-md mt-4">
               <a 
                 href={`https://wa.me/5538988450377?text=Ol%C3%A1%2C%20Carlos%20Eduardo.%20Gostei%20do%20or%C3%A7amento%20da%20Plataforma%20de%20Resultados%20para%20o%20projeto%20${encodeURIComponent(brandName)}%20(${encodeURIComponent(clientName)}).%20Gostaria%20de%20fechar%20no%20Plano%20${encodeURIComponent(selectedPlan.toUpperCase())}.%20Como%20damos%20o%20start%3F`} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full"
               >
-                <Button size="lg" className="w-full py-6 bg-[#25D366] hover:bg-[#20bd5a] text-white border-none shadow-[0_0_20px_rgba(37,211,102,0.3)] flex gap-2 items-center text-xs font-bold">
-                  Fechar no WhatsApp
+                <Button size="lg" className="w-full py-7 text-sm bg-[#25D366] hover:bg-[#20bd5a] text-white border-none shadow-[0_0_20px_rgba(37,211,102,0.3)] flex gap-2 items-center justify-center font-bold">
+                  Aceitar Proposta & Iniciar Projeto
                   <ExternalLink className="w-4 h-4" />
                 </Button>
               </a>
+
+              <Button onClick={generateContractPDF} variant="hero-outline" size="sm" className="w-full py-4 flex gap-2 items-center justify-center text-xs font-semibold border-white/10 hover:bg-white/5 text-muted-foreground hover:text-white">
+                <Download className="w-3.5 h-3.5" />
+                Baixar Cópia da Proposta em PDF
+              </Button>
             </div>
             
             <div className="w-full flex justify-start pt-4">

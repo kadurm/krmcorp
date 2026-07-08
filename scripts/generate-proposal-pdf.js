@@ -271,7 +271,7 @@ doc.text([
 doc.setFont("helvetica", "bold");
 doc.setFontSize(11);
 doc.setTextColor(colorGold[0], colorGold[1], colorGold[2]);
-doc.text("4. DE ACORDO E ASSINATURA", 20, 180);
+doc.text("4. VALIDAÇÃO E ACEITE DIGITAL", 20, 180);
 
 doc.setFont("helvetica", "normal");
 doc.setFontSize(9);
@@ -280,30 +280,21 @@ const today = new Date();
 const dateStr = `Montes Claros/MG, ${today.getDate().toString().padStart(2, '0')} de ${['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'][today.getMonth()]} de ${today.getFullYear()}.`;
 doc.text(dateStr, 20, 190);
 
-doc.setLineWidth(0.5);
+// Aceite Digital Box
+doc.setFillColor(colorCard[0], colorCard[1], colorCard[2]);
 doc.setDrawColor(colorGold[0], colorGold[1], colorGold[2]);
+doc.roundedRect(20, 205, 170, 24, 2, 2, "FD");
 
-// Contratante Line
-doc.line(20, 225, 90, 225);
 doc.setFont("helvetica", "bold");
 doc.setFontSize(9.5);
-doc.setTextColor(colorWhite[0], colorWhite[1], colorWhite[2]);
-doc.text("O CONTRATANTE", 55, 231, { align: "center" });
-doc.setFont("helvetica", "normal");
-doc.setFontSize(8.5);
-doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
-doc.text(clientName, 55, 237, { align: "center" });
+doc.setTextColor(colorGold[0], colorGold[1], colorGold[2]);
+doc.text("VALIDAÇÃO CONTRATUAL ELETRÔNICA", 25, 213);
 
-// Contratado Line
-doc.line(110, 225, 190, 225);
-doc.setFont("helvetica", "bold");
-doc.setFontSize(9.5);
-doc.setTextColor(colorWhite[0], colorWhite[1], colorWhite[2]);
-doc.text("CONTRATADO", 150, 231, { align: "center" });
 doc.setFont("helvetica", "normal");
 doc.setFontSize(8.5);
-doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
-doc.text("KrM Corp (Carlos E. R. Menezes)", 150, 237, { align: "center" });
+doc.setTextColor(colorWhite[0], colorWhite[1], colorWhite[2]);
+doc.text(`Este documento comercial é formalizado e validado através do aceite digital do contratante,`, 25, 220);
+doc.text(`encaminhado e registrado via WhatsApp para o contato oficial da KrM Corp (+55 38 98845-0377).`, 25, 224);
 
 // Output
 const filename = `Proposta_KrM_Rifas_${clientName.replace(/\s+/g, '_')}.pdf`;
