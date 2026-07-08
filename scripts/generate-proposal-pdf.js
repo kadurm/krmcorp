@@ -182,7 +182,6 @@ drawEscopoItem("Painel Admin", "Área restrita e segura para cadastrar sorteios 
 
 if (planType === "pro") {
   drawEscopoItem("Busca Premiada", "Campo para o usuário buscar seu bilhete e ver se foi sorteado.", 218);
-  drawEscopoItem("Card de Vitória", "Geração automática de imagem de parabéns para compartilhar.", 238);
 } else {
   doc.setFont("helvetica", "italic");
   doc.setFontSize(9);
@@ -210,7 +209,7 @@ doc.roundedRect(20, 35, 170, 48, 2, 2, "FD");
 const devPrice = planType === "pro" ? "R$ 1.900,00" : "R$ 1.300,00";
 const monthlyPrice = planType === "pro" ? "R$ 119,00" : "R$ 89,00";
 const detailsText = planType === "pro" 
-  ? "Plano Pro (Inclui Busca Inteligente, Banners e Card de Vitória do Ganhador)"
+  ? "Plano Pro (Inclui Busca Inteligente e Banners)"
   : "Plano Start (Design Padrão com as 2 abas e Painel Administrativo básico)";
 
 doc.setFont("helvetica", "bold");

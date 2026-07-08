@@ -161,8 +161,6 @@ const RifasPresentation = () => {
     if (selectedPlan === "pro") {
       drawItem("Busca de Bilhete Premiado", "Módulo de consulta rápida por telefone ou número de bilhete.", itemY);
       itemY += 14;
-      drawItem("Compartilhamento Rápido", "Geração de card de vitória para status de WhatsApp do ganhador.", itemY);
-      itemY += 14;
       drawItem("Banners de Destaque", "Banners editáveis para promover novos sorteios e direcionar vendas.", itemY);
       itemY += 14;
     } else {
@@ -219,7 +217,7 @@ const RifasPresentation = () => {
 
     const devPrice = selectedPlan === "pro" ? "R$ 1.900,00" : "R$ 1.300,00";
     const devDesc = selectedPlan === "pro" 
-      ? "Desenvolvimento completo + Sistema de busca por bilhete + Painel admin + Card de vitória"
+      ? "Desenvolvimento completo + Sistema de busca por bilhete + Painel admin"
       : "Desenvolvimento padrão (Resultados + Ganhadores) + Painel admin simples";
       
     setupBox("VALOR DE DESENVOLVIMENTO (Taxa Única)", devPrice, devDesc, currentY);
@@ -811,10 +809,6 @@ const RifasPresentation = () => {
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-primary shrink-0" />
                     <span className="text-white"><strong>Busca Inteligente:</strong> Pesquisa por bilhete ou telefone</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span><strong>Card de Vitória:</strong> Ganhador compartilha no status do WhatsApp</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-primary shrink-0" />
