@@ -65,12 +65,7 @@ doc.text("PROPOSTA DE DESENVOLVIMENTO WEB", 105, 125, { align: "center" });
 doc.setFont("helvetica", "bold");
 doc.setFontSize(20);
 doc.setTextColor(colorGold[0], colorGold[1], colorGold[2]);
-doc.text("PLATAFORMA DE RESULTADOS", 105, 137, { align: "center" });
-
-doc.setFont("helvetica", "normal");
-doc.setFontSize(12);
-doc.setTextColor(colorWhite[0], colorWhite[1], colorWhite[2]);
-doc.text(`Projeto: ${brandName}`, 105, 147, { align: "center" });
+doc.text(brandName.toUpperCase(), 105, 140, { align: "center" });
 
 // Target Client Box
 doc.setFillColor(colorCard[0], colorCard[1], colorCard[2]);
