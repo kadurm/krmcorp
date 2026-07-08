@@ -1,6 +1,26 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "apresentacao.krmcorp.com.br"
+        }
+      ],
+      "destination": "/apresentacao/rifas"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "proposta.krmcorp.com.br"
+        }
+      ],
+      "destination": "/apresentacao/rifas"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
