@@ -181,6 +181,12 @@ drawEscopoItem("Aba 2: Premiados", "Listagem e tabela de bilhetes sorteados, pr�
 drawEscopoItem("Painel Admin", "Área para cadastro ágil de novos resultados (celular e desktop).", 218);
 drawEscopoItem("Suporte & Manut.", "Suporte técnico contínuo e manutenção da infraestrutura inclusos.", 238);
 
+doc.setFont("helvetica", "italic");
+doc.setFontSize(8.5);
+doc.setTextColor(colorGold[0], colorGold[1], colorGold[2]);
+doc.text("* Observação: Toda a interface do site será 100% personalizada de acordo", 20, 262);
+doc.text("  com a identidade visual (logotipo, cores e fontes) e preferências do cliente.", 20, 267);
+
 
 // ==========================================
 // PÁGINA 3: INVESTIMENTO E CONTRATAÇÃO

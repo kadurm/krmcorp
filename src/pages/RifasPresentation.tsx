@@ -160,6 +160,13 @@ const RifasPresentation = () => {
     drawItem("Suporte & Manut.", "Suporte técnico contínuo e manutenção de infraestrutura inclusos.", itemY);
     itemY += 14;
 
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(8.5);
+    doc.setTextColor(...colorGold);
+    doc.text("* Observação: Toda a interface do site será 100% personalizada de acordo", 20, itemY + 5);
+    doc.text("  com a identidade visual (logotipo, cores e fontes) e preferências do cliente.", 20, itemY + 10);
+    itemY += 16;
+
     // Cronograma
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
@@ -451,8 +458,8 @@ const RifasPresentation = () => {
             <div className="text-center space-y-2">
               <p className="text-primary font-display tracking-[0.3em] uppercase text-[10px]">Demonstração Interativa</p>
               <h2 className="font-display text-2xl sm:text-3xl font-semibold">Interface Simples e Prática</h2>
-              <p className="text-muted-foreground text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
-                Veja uma simulação de como ficará o site {brandName} com as 2 abas funcionando.
+              <p className="text-muted-foreground text-xs sm:text-sm max-w-2xl mx-auto font-light leading-relaxed">
+                Veja uma simulação de como ficará o site {brandName} com as 2 abas funcionando. <span className="text-primary font-medium">Toda a interface (logotipo, cores e fontes) será 100% personalizada de acordo com a sua identidade visual e preferências.</span>
               </p>
             </div>
 
