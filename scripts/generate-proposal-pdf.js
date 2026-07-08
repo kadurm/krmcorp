@@ -3,16 +3,15 @@ import * as fs from "fs";
 import * as path from "path";
 
 // Get arguments from command line
-// Usage: node scripts/generate-proposal-pdf.js "Nome do Cliente" "Nome da Marca" "pro|essencial"
+// Usage: node scripts/generate-proposal-pdf.js "Nome do Cliente" "Nome da Marca"
 const args = process.argv.slice(2);
 const clientName = args[0] || "Cliente de Rifas";
 const brandName = args[1] || "Plataforma de Resultados";
-const planType = (args[2] || "pro").toLowerCase() === "essencial" ? "essencial" : "pro";
 
 console.log(`Gerando PDF de proposta para:`);
 console.log(`- Cliente: ${clientName}`);
 console.log(`- Marca: ${brandName}`);
-console.log(`- Plano: ${planType.toUpperCase()}`);
+console.log(`- Preço Único: R$ 1.900,00 + R$ 119,00/mês`);
 
 const doc = new jsPDF();
 
@@ -176,18 +175,11 @@ const drawEscopoItem = (title, description, y) => {
   doc.text(description, 70, y + 10);
 };
 
-drawEscopoItem("1ª Aba: Resultados", "Exibição limpa de vídeos de sorteios passados (links diretos).", 158);
-drawEscopoItem("2ª Aba: Premiados", "Tabela dinâmica listando ganhador, prêmio e número do bilhete.", 178);
-drawEscopoItem("Painel Admin", "Área restrita e segura para cadastrar sorteios pelo celular.", 198);
-
-if (planType === "pro") {
-  drawEscopoItem("Busca Premiada", "Campo para o usuário buscar seu bilhete e ver se foi sorteado.", 218);
-} else {
-  doc.setFont("helvetica", "italic");
-  doc.setFontSize(9);
-  doc.setTextColor(colorMuted[0], colorMuted[1], colorMuted[2]);
-  doc.text("* Solução simples, extremamente rápida e focada em resultados objetivos.", 20, 222);
-}
+drawEscopoItem("Site Customizado", `Design com sua marca e domínio próprio: ${brandName}`, 158);
+drawEscopoItem("Aba 1: Resultados", "Vídeos de Resultados dos Sorteios passados (links de exibição).", 178);
+drawEscopoItem("Aba 2: Premiados", "Listagem e tabela de bilhetes sorteados, prêmios e ganhadores.", 198);
+drawEscopoItem("Painel Admin", "Área para cadastro ágil de novos resultados (celular e desktop).", 218);
+drawEscopoItem("Suporte & Manut.", "Suporte técnico contínuo e manutenção da infraestrutura inclusos.", 238);
 
 
 // ==========================================
@@ -206,11 +198,9 @@ doc.setFillColor(colorCard[0], colorCard[1], colorCard[2]);
 doc.setDrawColor(colorGold[0], colorGold[1], colorGold[2]);
 doc.roundedRect(20, 35, 170, 48, 2, 2, "FD");
 
-const devPrice = planType === "pro" ? "R$ 1.900,00" : "R$ 1.300,00";
-const monthlyPrice = planType === "pro" ? "R$ 119,00" : "R$ 89,00";
-const detailsText = planType === "pro" 
-  ? "Plano Pro (Inclui Busca Inteligente e Banners)"
-  : "Plano Start (Design Padrão com as 2 abas e Painel Administrativo básico)";
+const devPrice = "R$ 1.900,00";
+const monthlyPrice = "R$ 119,00";
+const detailsText = "Site Customizado com 2 Abas (Resultados e Ganhadores) + Painel Administrativo + Hospedagem & Suporte";
 
 doc.setFont("helvetica", "bold");
 doc.setFontSize(10);
@@ -248,7 +238,7 @@ doc.setFontSize(9.5);
 doc.setTextColor(colorWhite[0], colorWhite[1], colorWhite[2]);
 doc.text([
   "• Pagamento: 50% de entrada para início e 50% na entrega e homologação do site.",
-  `• Prazo de Entrega: ${planType === "pro" ? "Até 10 (dez) dias úteis" : "Até 7 (sete) dias úteis"} após envio do logotipo e informações básicas.`
+  "• Prazo de Entrega: De 7 a 10 dias úteis após envio do logotipo e informações básicas."
 ], 20, 105);
 
 // Cláusulas de Manutenção

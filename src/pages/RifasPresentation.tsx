@@ -149,24 +149,16 @@ const RifasPresentation = () => {
     };
 
     let itemY = 115;
-    drawItem("Site com Marca Própria", `Design moderno e personalizado como "${brandName || "Resultados"}"`, itemY);
+    drawItem("Site Customizado", `Design com sua marca e domínio próprio: ${brandName || "Resultados"}`, itemY);
     itemY += 14;
-    drawItem("Aba de Vídeos de Resultados", "Grid para exibição prática de vídeos dos sorteios passados.", itemY);
+    drawItem("Aba 1: Resultados", "Vídeos de Resultados dos Sorteios passados (links de exibição).", itemY);
     itemY += 14;
-    drawItem("Aba de Bilhetes Premiados", "Tabela limpa de bilhetes sorteados, prêmios e ganhadores.", itemY);
+    drawItem("Aba 2: Premiados", "Listagem e tabela de bilhetes sorteados, prêmios e ganhadores.", itemY);
     itemY += 14;
-    drawItem("Painel Administrativo", "Área para cadastro ágil de novos resultados direto pelo celular.", itemY);
+    drawItem("Painel Admin", "Área para cadastro ágil de novos resultados (celular e desktop).", itemY);
     itemY += 14;
-    
-    if (selectedPlan === "pro") {
-      drawItem("Busca de Bilhete Premiado", "Módulo de consulta rápida por telefone ou número de bilhete.", itemY);
-      itemY += 14;
-      drawItem("Banners de Destaque", "Banners editáveis para promover novos sorteios e direcionar vendas.", itemY);
-      itemY += 14;
-    } else {
-      drawItem("Infraestrutura Padrão", "Hospedagem estável com segurança SSL e alta performance.", itemY);
-      itemY += 14;
-    }
+    drawItem("Suporte & Manut.", "Suporte técnico contínuo e manutenção de infraestrutura inclusos.", itemY);
+    itemY += 14;
 
     // Cronograma
     doc.setFont("helvetica", "bold");
@@ -180,8 +172,8 @@ const RifasPresentation = () => {
     doc.text("A entrega da plataforma configurada e em funcionamento será realizada em:", 20, itemY + 12);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...colorGold);
-    doc.text(selectedPlan === "pro" ? "Até 10 (dez) dias úteis" : "Até 7 (sete) dias úteis", 100, itemY + 12);
-    doc.text(" a partir do envio das informações básicas (Logotipo e Nome).", 137, itemY + 12);
+    doc.text("De 7 a 10 dias úteis", 100, itemY + 12);
+    doc.text(" a partir do envio do logotipo e nome.", 132, itemY + 12);
 
     // --- PÁGINA 2: Valores, Manutenção e Aceite ---
     doc.addPage();
@@ -215,15 +207,13 @@ const RifasPresentation = () => {
       doc.text(desc, 90, y + 13);
     };
 
-    const devPrice = selectedPlan === "pro" ? "R$ 1.900,00" : "R$ 1.300,00";
-    const devDesc = selectedPlan === "pro" 
-      ? "Desenvolvimento completo + Sistema de busca por bilhete + Painel admin"
-      : "Desenvolvimento padrão (Resultados + Ganhadores) + Painel admin simples";
+    const devPrice = "R$ 1.900,00";
+    const devDesc = "Site Customizado com 2 Abas (Resultados e Ganhadores) + Painel Administrativo + Hospedagem & Suporte";
       
     setupBox("VALOR DE DESENVOLVIMENTO (Taxa Única)", devPrice, devDesc, currentY);
     currentY += 30;
 
-    const monthlyPrice = selectedPlan === "pro" ? "R$ 119,00 /mês" : "R$ 89,00 /mês";
+    const monthlyPrice = "R$ 119,00 /mês";
     const monthlyDesc = "Hospedagem dedicada na nuvem + Domínio próprio incluído + Backups + Suporte KrM Corp";
     setupBox("HOSPEDAGEM, MANUTENÇÃO & SUPORTE", monthlyPrice, monthlyDesc, currentY);
     currentY += 32;
@@ -592,31 +582,6 @@ const RifasPresentation = () => {
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      {/* Busca Exclusiva Plano Pro */}
-                      <div className="bg-[#151821] rounded-xl border border-primary/20 p-3 space-y-2">
-                        <div className="text-[9px] uppercase tracking-wider text-primary font-bold flex justify-between">
-                          <span>Módulo de Busca Premiada</span>
-                          <span className="text-white/60">Recurso do Plano Pro</span>
-                        </div>
-                        <div className="flex gap-2">
-                          <Input 
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Digite seu bilhete (Ex: 123456)" 
-                            className="bg-black/40 border-white/5 text-[10px] h-7 px-2"
-                          />
-                          <Button onClick={handleDemoSearch} className="h-7 text-[10px] px-3 bg-primary text-black hover:bg-primary/80">
-                            Buscar
-                          </Button>
-                        </div>
-                        {searchResult && (
-                          <div className={`text-[9px] font-medium p-1.5 rounded ${
-                            searchResult.startsWith("🎉") ? "bg-emerald-500/10 text-emerald-400" : "bg-destructive/10 text-destructive-foreground"
-                          }`}>
-                            {searchResult}
-                          </div>
-                        )}
-                      </div>
 
                       {/* Lista de Premiados */}
                       <div className="space-y-2">
@@ -718,101 +683,51 @@ const RifasPresentation = () => {
               </p>
             </div>
 
-            {/* Planos Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl pt-4">
-              {/* Plano Essencial */}
-              <div 
-                onClick={() => setSelectedPlan("essencial")}
-                className={`bg-card/20 border rounded-3xl p-6 sm:p-8 space-y-6 text-left cursor-pointer transition-all duration-300 relative ${
-                  selectedPlan === "essencial" 
-                    ? "border-primary/60 bg-[#161821]/80 ring-2 ring-primary/20 scale-[1.02]" 
-                    : "border-white/5 hover:border-white/20 opacity-70 hover:opacity-100"
-                }`}
-              >
-                {selectedPlan === "essencial" && (
-                  <div className="absolute top-4 right-4 bg-primary/10 border border-primary/30 text-primary text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full font-bold">
-                    Selecionado
-                  </div>
-                )}
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold font-display">Plano Start</h3>
-                  <p className="text-xs text-muted-foreground">O essencial para manter os resultados seguros e acessíveis sem bloqueios.</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-xs text-muted-foreground font-light">Valor de Desenvolvimento:</div>
-                  <div className="text-3xl font-bold text-white font-display">R$ 1.300,00</div>
-                  <div className="text-xs text-primary font-semibold">Hospedagem & Suporte: R$ 89,00 /mês</div>
-                </div>
-
-                <div className="line-gold" />
-
-                <ul className="space-y-3 text-xs text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>Site customizado no seu domínio próprio</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>Aba 1: Vídeos de Resultados dos Sorteios</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>Aba 2: Listagem de Ganhadores e Prêmios</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>Painel Administrativo para celular e desktop</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>Suporte e Manutenção da KrM Corp</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Plano Pro */}
-              <div 
-                onClick={() => setSelectedPlan("pro")}
-                className={`bg-[#161821]/30 border rounded-3xl p-6 sm:p-8 space-y-6 text-left cursor-pointer transition-all duration-300 relative overflow-hidden ${
-                  selectedPlan === "pro" 
-                    ? "border-primary bg-[#161821]/80 ring-2 ring-primary/30 scale-[1.02] glow-gold" 
-                    : "border-white/5 hover:border-white/20 opacity-70 hover:opacity-100"
-                }`}
-              >
-                <div className="absolute top-4 right-4 bg-primary text-black text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full font-bold">
-                  Mais Recomendado
+            {/* Plano Único Card */}
+            <div className="w-full max-w-xl pt-4">
+              <div className="bg-[#161821]/80 border border-primary/50 rounded-3xl p-6 sm:p-10 space-y-6 text-left glow-gold relative overflow-hidden">
+                <div className="absolute top-4 right-4 bg-primary/10 border border-primary/30 text-primary text-[10px] uppercase tracking-wider px-3 py-1 rounded-full font-bold">
+                  Proposta Exclusiva
                 </div>
                 
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold font-display text-primary flex items-center gap-1.5">
-                    Plano Pro
-                  </h3>
-                  <p className="text-xs text-muted-foreground">A experiência completa de busca interativa, mais profissional e voltada a fechar vendas.</p>
+                  <h3 className="text-2xl font-bold font-display text-primary">Plano Comercial Único</h3>
+                  <p className="text-sm text-muted-foreground font-light">Uma solução profissional, robusta e independente para {brandName}, eliminando a dependência do Instagram.</p>
                 </div>
-                <div className="space-y-1">
-                  <div className="text-xs text-muted-foreground font-light">Valor de Desenvolvimento:</div>
-                  <div className="text-3xl font-bold text-white font-display">R$ 1.900,00</div>
-                  <div className="text-xs text-primary font-semibold">Hospedagem & Suporte: R$ 119,00 /mês</div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-background/50 border border-white/5 rounded-2xl p-4">
+                  <div className="space-y-1">
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Desenvolvimento (Taxa Única):</div>
+                    <div className="text-3xl font-bold text-white font-display">R$ 1.900,00</div>
+                  </div>
+                  <div className="space-y-1 border-t sm:border-t-0 sm:border-l border-white/5 pt-2 sm:pt-0 sm:pl-4">
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Hospedagem & Suporte:</div>
+                    <div className="text-3xl font-bold text-primary font-display">R$ 119,00<span className="text-xs text-muted-foreground font-normal">/mês</span></div>
+                  </div>
                 </div>
 
                 <div className="line-gold" />
 
-                <ul className="space-y-3 text-xs text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span className="text-white">Tudo do Plano Start</span>
+                <ul className="space-y-3.5 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={3} />
+                    <span className="text-white"><strong>Site customizado</strong> no seu domínio próprio</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span className="text-white"><strong>Busca Inteligente:</strong> Pesquisa por bilhete ou telefone</span>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={3} />
+                    <span><strong>Aba 1:</strong> Vídeos de Resultados dos Sorteios</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span><strong>Banners de Destaque:</strong> Para direcionar clientes a novas compras</span>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={3} />
+                    <span><strong>Aba 2:</strong> Listagem de Ganhadores e Prêmios</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span><strong>Servidor Dedicado:</strong> Resposta ultra rápida e segura</span>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={3} />
+                    <span><strong>Painel Administrativo</strong> para celular e desktop</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={3} />
+                    <span className="text-white"><strong>Suporte e Manutenção</strong> contínuos da KrM Corp</span>
                   </li>
                 </ul>
               </div>
@@ -890,24 +805,20 @@ const RifasPresentation = () => {
                 <span className="text-muted-foreground">Projeto:</span>
                 <span className="font-semibold text-white">{brandName}</span>
               </div>
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-muted-foreground">Plano Selecionado:</span>
-                <span className="font-semibold text-primary uppercase">{selectedPlan}</span>
-              </div>
               <div className="h-px bg-white/5" />
               <div className="flex justify-between items-center text-xs">
                 <span className="text-muted-foreground">Custo de Desenvolvimento:</span>
-                <span className="font-bold text-white text-sm">{selectedPlan === "pro" ? "R$ 1.900,00" : "R$ 1.300,00"}</span>
+                <span className="font-bold text-white text-sm">R$ 1.900,00</span>
               </div>
               <div className="flex justify-between items-center text-xs">
-                <span className="text-muted-foreground">Mensalidade:</span>
-                <span className="font-bold text-primary">{selectedPlan === "pro" ? "R$ 119,00/mês" : "R$ 89,00/mês"}</span>
+                <span className="text-muted-foreground">Hospedagem & Suporte:</span>
+                <span className="font-bold text-primary text-sm">R$ 119,00/mês</span>
               </div>
             </div>
 
             <div className="flex flex-col gap-3 justify-center w-full max-w-md mt-4">
               <a 
-                href={`https://wa.me/5538988450377?text=Ol%C3%A1%2C%20Carlos%20Eduardo.%20Gostei%20do%20or%C3%A7amento%20da%20Plataforma%20de%20Resultados%20para%20o%20projeto%20${encodeURIComponent(brandName)}%20(${encodeURIComponent(clientName)}).%20Gostaria%20de%20fechar%20no%20Plano%20${encodeURIComponent(selectedPlan.toUpperCase())}.%20Como%20damos%20o%20start%3F`} 
+                href={`https://wa.me/5538988450377?text=Ol%C3%A1%2C%20Carlos%20Eduardo.%20Gostei%20do%20or%C3%A7amento%20da%20Plataforma%20de%20Resultados%20para%20o%20projeto%20${encodeURIComponent(brandName)}%20(${encodeURIComponent(clientName)}).%20Gostaria%20de%20fechar%20a%20contrata%C3%A7%C3%A3o%20no%20valor%20de%20R%24%201.900%2C00%20com%20mensalidade%20de%20R%24%20119%2C00.%20Como%20damos%20o%20start%3F`} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full"
