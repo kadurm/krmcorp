@@ -191,18 +191,19 @@ def build_pdf(filename="Contrato_Michel_Juliano_Santos_Lima.pdf"):
         "1.1. O presente contrato tem por objeto a prestação de serviços técnicos e especializados de tecnologia da informação e marketing digital pelo <b>CONTRATADO</b> em favor do <b>CONTRATANTE</b>, englobando:<br/>"
         "&nbsp;&nbsp;&nbsp;&nbsp;<b>a)</b> Criação e implementação da 1ª (primeira) <b>Landing Page</b> focada na oferta e conversão do produto <i>Low-Ticket</i> do CONTRATANTE;<br/>"
         "&nbsp;&nbsp;&nbsp;&nbsp;<b>b)</b> Serviços contínuos de <b>manutenção técnica</b>, suporte e otimização da referida Landing Page;<br/>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;<b>c)</b> Desenvolvimento e criação de <b>Sistema Web/Plataforma personalizada</b> para a operação do CONTRATANTE, cuja execução e pagamento estão condicionados à validação e primeira etapa de vendas da Landing Page.",
+        "&nbsp;&nbsp;&nbsp;&nbsp;<b>c)</b> Desenvolvimento e criação do <b>Sistema Web/Plataforma personalizada</b> do CONTRATANTE.",
         body_style
     ))
 
     # Cláusula 2
-    story.append(Paragraph("CLÁUSULA SEGUNDA - DO ESCOPO DAS ETAPAS E ENTREGAS", clause_title_style))
+    story.append(Paragraph("CLÁUSULA SEGUNDA - DO ESCOPO DAS ETAPAS E CRONOGRAMA", clause_title_style))
     story.append(Paragraph(
         "2.1. <b>ETAPA 1 – LANDING PAGE E MANUTENÇÃO:</b><br/>"
         "• Design, desenvolvimento front-end, integração de formulários/checkout e publicação da primeira Landing Page destinada ao produto <i>Low-Ticket</i>.<br/>"
         "• Manutenção mensal preventiva e corretiva, garantindo estabilidade, segurança e pleno funcionamento da página.<br/><br/>"
         "2.2. <b>ETAPA 2 – DESENVOLVIMENTO DO SISTEMA:</b><br/>"
-        "• O início do desenvolvimento da estrutura completa do Sistema personalizado dar-se-á conforme alinhamento prévio entre as partes, sendo o aceite final e a parcela principal devidos imediatamente após a conclusão da 1ª (primeira) etapa de vendas do produto <i>Low-Ticket</i> geradas a partir da primeira Landing Page.",
+        "• O início da produção/desenvolvimento da estrutura do Sistema dará-se <b>após a conclusão da primeira etapa</b> (entrega da primeira Landing Page / primeira etapa de vendas do produto <i>Low-Ticket</i>).<br/>"
+        "• A produção da Etapa 2 não está condicionada a metas de desempenho ou aprovações adicionais, bastando o encerramento da Etapa 1 para autorizar o seu início.",
         body_style
     ))
 
@@ -218,11 +219,11 @@ def build_pdf(filename="Contrato_Michel_Juliano_Santos_Lima.pdf"):
         ],
         [
             Paragraph("<b>Desenvolvimento do Sistema Completo</b>", party_value_style),
-            Paragraph("<b>R$ 2.000,00</b> devidos e pagos imediatamente <b>após a 1ª etapa/ciclo de vendas</b> do produto <i>Low-Ticket</i> na Landing Page.", party_value_style)
+            Paragraph("<b>R$ 2.000,00</b> pagos pelo CONTRATANTE <b>no ato de início da produção do Sistema</b> (após a conclusão da 1ª etapa).", party_value_style)
         ],
         [
             Paragraph("<b>Comissionamento de Vendas</b>", party_value_style),
-            Paragraph("<b>10% (dez por cento)</b> sobre a receita total/lucro dos produtos vendidos através da estrutura desenvolvida, repassados periodicamente após relatório.", party_value_style)
+            Paragraph("<b>10% (dez por cento)</b> sobre o valor total dos produtos vendidos na estrutura desenvolvida, repassados periodicamente após relatório.", party_value_style)
         ]
     ]
 
@@ -256,8 +257,8 @@ def build_pdf(filename="Contrato_Michel_Juliano_Santos_Lima.pdf"):
     story.append(Paragraph("CLÁUSULA QUINTA - DAS OBRIGAÇÕES DO CONTRATANTE", clause_title_style))
     story.append(Paragraph(
         "5.1. Fornecer tempestivamente todos os textos, imagens, dados, acessos e informações necessários para a criação da Landing Page e do Sistema.<br/>"
-        "5.2. Efetuar pontualmente os pagamentos dos valores fixos e da manutenção estipulados na Cláusula Terceira.<br/>"
-        "5.3. Fornecer com transparência os relatórios de vendas e acessos às plataformas de pagamento para cálculo da comissão de 10% e confirmação do marco de pagamento do Sistema.<br/>"
+        "5.2. Efetuar pontualmente os pagamentos dos valores fixos, da manutenção e do valor de início da produção do Sistema estipulados na Cláusula Terceira.<br/>"
+        "5.3. Fornecer com transparência os relatórios de vendas e acessos às plataformas de pagamento para cálculo da comissão de 10%.<br/>"
         "5.4. Não alterar, sem prévia concordância do CONTRATADO, códigos-fonte ou estruturas técnicas.",
         body_style
     ))
@@ -283,7 +284,7 @@ def build_pdf(filename="Contrato_Michel_Juliano_Santos_Lima.pdf"):
     story.append(Paragraph(
         "8.1. O presente contrato vigora por prazo indeterminado a partir da data de sua assinatura.<br/>"
         "8.2. Qualquer das partes poderá rescindir o contrato mediante comunicação por escrito com antecedência mínima de <b>30 (trinta) dias</b>.<br/>"
-        "8.3. A rescisão antes da apuração da primeira etapa de vendas não isenta o CONTRATANTE do pagamento das mensalidades de manutenção vencidas e da apuração proporcional das vendas realizadas até a data do encerramento.<br/>"
+        "8.3. A rescisão não isenta o CONTRATANTE do pagamento das mensalidades de manutenção vencidas, das parcelas do Sistema em produção e da apuração proporcional das comissões de vendas realizadas até a data do encerramento.<br/>"
         "8.4. O descumprimento injustificado de qualquer das cláusulas faculta à parte inocente rescindir o presente contrato de imediato.",
         body_style
     ))
