@@ -1,4 +1,4 @@
-# CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE DESENVOLVIMENTO TECNOLÓGICO, MANUTENÇÃO E COMISSIONAMENTO DE VENDAS
+# CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE DESENVOLVIMENTO TECNOLÓGICO, MANUTENÇÃO, GESTÃO DE TRÁFEGO PAGO E COMISSIONAMENTO DE VENDAS
 
 Pelo presente instrumento particular de CONTRATO DE PRESTAÇÃO DE SERVIÇOS, de um lado:
 
@@ -16,18 +16,21 @@ As partes acima qualificadas têm, entre si, justo e acordado o presente Contrat
 
 ## CLÁUSULA PRIMEIRA - DO OBJETO
 
-1.1. O presente contrato tem por objeto a prestação de serviços técnicos e especializados de tecnologia da informação e marketing digital pelo **CONTRATADO** em favor do **CONTRATANTE**, englobando:
+1.1. O presente contrato tem por objeto a prestação de serviços técnicos e especializados de tecnologia da informação, marketing digital e tráfego pago pelo **CONTRATADO** em favor do **CONTRATANTE**, englobando:
   - **a)** Criação e implementação da 1ª (primeira) **Landing Page** focada na oferta e conversão do produto *Low-Ticket* do CONTRATANTE;
   - **b)** Serviços contínuos de **manutenção técnica**, suporte e otimização da referida Landing Page;
-  - **c)** Desenvolvimento e criação do **Sistema Web/Plataforma personalizada** do CONTRATANTE.
+  - **c)** Gestão contínua de **Tráfego Pago** (gerenciamento e otimização de campanhas de anúncios online) para promoção constante das vendas do produto *Low-Ticket* e demais soluções do CONTRATANTE;
+  - **d)** Desenvolvimento e criação do **Sistema Web/Plataforma personalizada** do CONTRATANTE.
 
 ---
 
-## CLÁUSULA SEGUNDA - DO ESCOPO DAS ETAPAS E CRONOGRAMA
+## CLÁUSULA SEGUNDA - DO ESCOPO DAS ETAPAS E TRÁFEGO PAGO
 
-2.1. **ETAPA 1 – LANDING PAGE E MANUTENÇÃO:**
+2.1. **ETAPA 1 – LANDING PAGE, MANUTENÇÃO E TRÁFEGO PAGO:**
   - Design, desenvolvimento front-end, integração de formulários/checkout e publicação da primeira Landing Page destinada ao produto *Low-Ticket*.
   - Manutenção mensal preventiva e corretiva, garantindo estabilidade, segurança e pleno funcionamento da página.
+  - **Gestão Contínua de Tráfego Pago:** Criação, veiculação, análise e otimização de campanhas de anúncios estratégicos para atração e conversão contínua de vendas.
+  - *Parágrafo Único:* O orçamento/verba de mídia a ser investido diretamente nas plataformas de anúncios (ex: Meta Ads, Google Ads) é de responsabilidade financeira exclusiva do **CONTRATANTE**.
 
 2.2. **ETAPA 2 – DESENVOLVIMENTO DO SISTEMA:**
   - O início da produção/desenvolvimento da estrutura do Sistema dará-se **após a conclusão da primeira etapa** (entrega da primeira Landing Page / primeira etapa de vendas do produto *Low-Ticket*).
@@ -39,17 +42,17 @@ As partes acima qualificadas têm, entre si, justo e acordado o presente Contrat
 
 Como contraprestação pelos serviços prestados, o **CONTRATANTE** pagará ao **CONTRATADO** os seguintes valores:
 
-3.1. **MANUTENÇÃO E CRIAÇÃO DA PRIMEIRA LANDING PAGE:**
+3.1. **MANUTENÇÃO, GESTÃO DE TRÁFEGO E 1ª LANDING PAGE:**
   - **Valor Inicial (Taxa de Setup/Desenvolvimento da 1ª Landing Page):** **R$ 600,00 (seiscentos reais)**, devidos no ato da assinatura deste contrato ou data de início dos trabalhos.
-  - **Mensalidade de Manutenção:** **R$ 600,00 (seiscentos reais)** recorrentes a cada 30 (trinta) dias, contados a partir do primeiro mês subsequente ao pagamento inicial.
+  - **Mensalidade Recorrente (Manutenção & Tráfego):** **R$ 600,00 (seiscentos reais)** mensais recorrentes a cada 30 (trinta) dias, contados a partir do primeiro mês subsequente ao pagamento inicial.
 
 3.2. **DESENVOLVIMENTO DO SISTEMA COMPLETO:**
   - **Valor Fixo do Sistema:** **R$ 2.000,00 (dois mil reais)**.
   - **Condição de Pagamento:** O valor de R$ 2.000,00 será pago pelo CONTRATANTE ao CONTRATADO **no ato de início da produção do Sistema** (após a conclusão da primeira etapa).
 
-3.3. **REMUNERAÇÃO VARIÁVEL (COMISSIONAMENTO / PARTICIPAÇÃO SOBRE VENDAS):**
-  - O CONTRATADO fará jus ao percentual de **10% (dez por cento)** sobre o valor total bruto/lucro obtido com a venda de produtos (incluindo o produto *Low-Ticket* e demais produtos vendidos na estrutura desenvolvida pelo CONTRATADO).
-  - A apuração da comissão de 10% será realizada mensalmente (ou ao término de cada ciclo de vendas), devendo o CONTRATANTE fornecer o relatório da plataforma de pagamentos e efetuar o repasse em até 5 (cinco) dias úteis.
+3.3. **REMUNERAÇÃO VARIÁVEL (10% DOS LUCROS DAS VENDAS):**
+  - O CONTRATADO fará jus ao percentual de **10% (dez por cento)** incidente diretamente sobre os **lucros obtidos com as vendas** de todos os produtos comercializados na estrutura (Landing Page / Sistema) desenvolvida e promovida pelo CONTRATADO.
+  - A apuração dos 10% do lucro das vendas será realizada mensalmente (ou ao término de cada ciclo de vendas), devendo o CONTRATANTE fornecer os relatórios financeiros e efetuar o repasse em até 5 (cinco) dias úteis após a apuração.
 
 3.4. Os pagamentos deverão ser realizados via transferência PIX ou depósito em conta bancária indicada pelo CONTRATADO.
 
@@ -57,19 +60,21 @@ Como contraprestação pelos serviços prestados, o **CONTRATANTE** pagará ao *
 
 ## CLÁUSULA QUARTA - DAS OBRIGAÇÕES DO CONTRATADO
 
-4.1. Prestar os serviços com qualidade técnica, zelando pela pontualidade e bom desempenho das ferramentas desenvolvidas.  
-4.2. Manter a Landing Page no ar, realizando correções de bugs ou falhas técnicas decorrentes da infraestrutura sob sua responsabilidade.  
-4.3. Prestar suporte técnico e esclarecer dúvidas do CONTRATANTE sobre a utilização da página e do sistema no horário comercial.  
-4.4. Manter sigilo sobre os dados e estratégias de vendas do CONTRATANTE.
+4.1. Prestar os serviços com qualidade técnica, zelando pela pontualidade, bom desempenho das páginas/sistemas e eficiência das campanhas de tráfego pago.  
+4.2. Manter a Landing Page no ar, realizando correções de bugs ou falhas técnicas sob sua responsabilidade.  
+4.3. Gerenciar e otimizar constantemente as campanhas de tráfego pago para buscar a melhor performance de vendas.  
+4.4. Prestar suporte técnico e esclarecer dúvidas do CONTRATANTE.  
+4.5. Manter sigilo sobre os dados e estratégias do CONTRATANTE.
 
 ---
 
 ## CLÁUSULA QUINTA - DAS OBRIGAÇÕES DO CONTRATANTE
 
-5.1. Fornecer tempestivamente todos os textos, imagens, dados, acessos e informações necessários para a criação da Landing Page e do Sistema.  
-5.2. Efetuar pontualmente os pagamentos dos valores fixos, da manutenção e do valor de início da produção do Sistema estipulados na Cláusula Terceira.  
-5.3. Fornecer com transparência os relatórios de vendas e acessos aos gateways de pagamento para cálculo e validação da comissão de 10% (dez por cento).  
-5.4. Não alterar, sem prévia concordância do CONTRATADO, códigos-fonte ou estruturas técnicas.
+5.1. Fornecer tempestivamente todos os textos, imagens, dados, acessos e informações necessários para a criação da Landing Page, Sistema e anúncios.  
+5.2. Prover o orçamento/verba financeira necessária para o saldo de anúncios nas plataformas de tráfego pago.  
+5.3. Efetuar pontualmente os pagamentos dos valores fixos, da manutenção/gestão de tráfego e do valor de início da produção do Sistema estipulados na Cláusula Terceira.  
+5.4. Fornecer com transparência os relatórios financeiros de vendas e lucros para cálculo exato do repasse de 10% (dez por cento) dos lucros.  
+5.5. Não alterar, sem prévia concordância do CONTRATADO, códigos-fonte ou estruturas técnicas.
 
 ---
 
@@ -91,7 +96,7 @@ Como contraprestação pelos serviços prestados, o **CONTRATANTE** pagará ao *
 
 8.1. O presente contrato vigora por prazo indeterminado a partir da data de sua assinatura.  
 8.2. Qualquer das partes poderá rescindir o contrato mediante comunicação por escrito com antecedência mínima de **30 (trinta) dias**.  
-8.3. A rescisão não isenta o CONTRATANTE do pagamento das mensalidades de manutenção vencidas, das parcelas do Sistema em produção e da apuração proporcional das comissões de vendas realizadas até a data do encerramento.  
+8.3. A rescisão não isenta o CONTRATANTE do pagamento das mensalidades vencidas, das parcelas do Sistema em produção e da apuração proporcional dos 10% dos lucros das vendas realizadas até a data do encerramento.  
 8.4. O descumprimento injustificado de qualquer das cláusulas faculta à parte inocente rescindir o presente contrato de imediato.
 
 ---
