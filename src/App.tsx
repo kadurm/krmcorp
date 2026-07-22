@@ -10,6 +10,9 @@ import Onboarding from "./pages/Onboarding.tsx";
 import RifasPresentation from "./pages/RifasPresentation.tsx";
 
 
+import BriefingPMMG from "./pages/BriefingPMMG.tsx";
+
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/apresentacao/isa-materiais" element={<Presentation />} />
           <Route path="/apresentacao/rifas" element={<RifasPresentation />} />
           <Route path="/onboarding/whatsapp" element={<Onboarding />} />
+          <Route path="/briefing/pmmg" element={<BriefingPMMG />} />
+          <Route path="/briefing" element={<BriefingPMMG />} />
+          <Route path="/onboarding/michel-lima" element={<BriefingPMMG />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
