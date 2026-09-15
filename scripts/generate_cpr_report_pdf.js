@@ -4,8 +4,11 @@ import * as path from "path";
 
 const rootDir = process.cwd();
 
-// Carregar imagens das evidências para base64
-const docsDir = path.join(rootDir, "Documentos", "Elevação do CPR");
+// Localizar a pasta de documentos (com suporte ao novo nome da pasta)
+const docsDir = fs.existsSync(path.join(rootDir, "Documentos", "Elevação do CPR - Solution"))
+  ? path.join(rootDir, "Documentos", "Elevação do CPR - Solution")
+  : path.join(rootDir, "Documentos", "Elevação do CPR");
+
 const getImageBase64 = (filename) => {
   const filePath = path.join(docsDir, filename);
   if (fs.existsSync(filePath)) {
@@ -14,35 +17,20 @@ const getImageBase64 = (filename) => {
   return "";
 };
 
+const logoSolutionBase64 = getImageBase64("LogoSolution.jpeg");
 const imgFlavio = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.25.jpeg");
 const imgLula = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.24 (2).jpeg");
 const imgCury = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.24 (1).jpeg");
 const imgRenan = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.25 (1).jpeg");
 
-// Ícone vetorial estilizado da Solution (Escudo Boutique com detalhe em ouro lapidado)
-const solutionShieldSvg = `
-<svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M24 4L7 11V23C7 33.5 14.3 43.1 24 46C33.7 43.1 41 33.5 41 23V11L24 4Z" fill="url(#solutionGrad)" stroke="#d4af37" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M24 10L12 15.5V23C12 30.5 17.1 37.5 24 39.8C30.9 37.5 36 30.5 36 23V15.5L24 10Z" fill="#121319" stroke="#f59e0b" stroke-width="1.2"/>
-  <path d="M20 24L23 27L29 20" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <defs>
-    <linearGradient id="solutionGrad" x1="7" y1="4" x2="41" y2="46" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1f2330"/>
-      <stop offset="0.5" stop-color="#141722"/>
-      <stop offset="1" stop-color="#0b0d13"/>
-    </linearGradient>
-  </defs>
-</svg>
-`;
-
 const htmlContent = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Solution - Relatório Interno: Redução de Leads e Elevação de Custos no Período Eleitoral</title>
+  <title>Solution Place - Relatório Interno: Redução de Leads e Elevação de Custos no Período Eleitoral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     @page {
       size: A4 portrait;
@@ -57,7 +45,7 @@ const htmlContent = `<!DOCTYPE html>
     }
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background-color: #090a0f;
+      background-color: #08090d;
       color: #e2e8f0;
       line-height: 1.48;
       font-size: 12px;
@@ -67,7 +55,7 @@ const htmlContent = `<!DOCTYPE html>
       width: 210mm;
       height: 297mm;
       position: relative;
-      background: radial-gradient(circle at 85% 15%, #151824 0%, #0c0e15 55%, #07080c 100%);
+      background: radial-gradient(circle at 85% 15%, #181b28 0%, #0c0e16 55%, #07080c 100%);
       padding: 16mm 18mm;
       page-break-after: always;
       page-break-inside: avoid;
@@ -77,14 +65,14 @@ const htmlContent = `<!DOCTYPE html>
       justify-content: space-between;
     }
 
-    /* Moldura elegante Solution Boutique */
+    /* Moldura técnica Solution Place (Aço e Rubi) */
     .page-border-frame {
       position: absolute;
       top: 8mm;
       left: 8mm;
       right: 8mm;
       bottom: 8mm;
-      border: 1px solid rgba(212, 175, 55, 0.22);
+      border: 1px solid rgba(185, 28, 28, 0.28);
       pointer-events: none;
       z-index: 1;
     }
@@ -92,7 +80,7 @@ const htmlContent = `<!DOCTYPE html>
       position: absolute;
       width: 14px;
       height: 14px;
-      border-color: #d4af37;
+      border-color: #b91c1c;
       border-style: solid;
       pointer-events: none;
       z-index: 2;
@@ -102,18 +90,23 @@ const htmlContent = `<!DOCTYPE html>
     .corner-bl { bottom: 7mm; left: 7mm; border-width: 0 0 2.5px 2.5px; }
     .corner-br { bottom: 7mm; right: 7mm; border-width: 0 2.5px 2.5px 0; }
 
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #fff7d6 0%, #d4af37 50%, #9c7820 100%);
+    .brand-red-text {
+      background: linear-gradient(135deg, #ffffff 0%, #fca5a5 45%, #dc2626 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .steel-gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* Headers e Rodapés Solution */
+    /* Headers e Rodapés Solution Place */
     .page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      border-bottom: 1px solid rgba(185, 28, 28, 0.35);
       padding-bottom: 8px;
       margin-bottom: 12px;
       z-index: 2;
@@ -121,24 +114,34 @@ const htmlContent = `<!DOCTYPE html>
     .header-logo-wrap {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+    }
+    .header-logo-img {
+      height: 32px;
+      width: 32px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid rgba(185, 28, 28, 0.5);
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(185, 28, 28, 0.25);
     }
     .brand-header-text {
-      font-family: 'Cinzel', serif;
-      font-size: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       color: #ffffff;
     }
     .brand-header-text span {
-      color: #d4af37;
+      color: #ef4444;
+      font-weight: 900;
     }
     .brand-header-tag {
       font-size: 8px;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: #94a3b8;
-      border-left: 1px solid rgba(212, 175, 55, 0.4);
+      border-left: 1px solid rgba(185, 28, 28, 0.4);
       padding-left: 8px;
       margin-left: 4px;
     }
@@ -150,7 +153,7 @@ const htmlContent = `<!DOCTYPE html>
       color: #94a3b8;
     }
     .header-meta span {
-      color: #d4af37;
+      color: #ef4444;
       font-weight: 700;
     }
 
@@ -178,30 +181,31 @@ const htmlContent = `<!DOCTYPE html>
 
     /* Tipografia */
     h1, h2, h3 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Montserrat', 'Inter', sans-serif;
     }
     .section-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(212, 175, 55, 0.12);
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: rgba(185, 28, 28, 0.14);
+      border: 1px solid rgba(220, 38, 38, 0.4);
       padding: 3px 8px;
       border-radius: 4px;
       font-size: 8px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #e5c07b;
+      color: #fca5a5;
       margin-bottom: 6px;
       align-self: flex-start;
     }
     .section-title {
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
       color: #f8fafc;
       margin-bottom: 4px;
       line-height: 1.25;
+      letter-spacing: -0.3px;
     }
     .section-subtitle {
       font-size: 10.5px;
@@ -219,8 +223,8 @@ const htmlContent = `<!DOCTYPE html>
       margin-bottom: 10px;
     }
     .card-highlight {
-      background: linear-gradient(135deg, rgba(26, 30, 44, 0.85) 0%, rgba(16, 19, 28, 0.95) 100%);
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: linear-gradient(135deg, rgba(28, 32, 46, 0.85) 0%, rgba(18, 20, 30, 0.95) 100%);
+      border: 1px solid rgba(185, 28, 28, 0.4);
       position: relative;
     }
     .card-highlight::before {
@@ -230,7 +234,7 @@ const htmlContent = `<!DOCTYPE html>
       left: 0;
       width: 3.5px;
       height: 100%;
-      background: #d4af37;
+      background: #dc2626;
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
     }
@@ -252,7 +256,7 @@ const htmlContent = `<!DOCTYPE html>
       gap: 8px;
     }
 
-    /* Capa */
+    /* Capa Solution */
     .cover-body {
       display: flex;
       flex-direction: column;
@@ -269,41 +273,58 @@ const htmlContent = `<!DOCTYPE html>
     .cover-brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+    }
+    .cover-logo-badge {
+      padding: 4px;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1.5px solid #b91c1c;
+      box-shadow: 0 0 20px rgba(185, 28, 28, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover-logo-img {
+      height: 54px;
+      width: 54px;
+      object-fit: cover;
+      border-radius: 4px;
     }
     .cover-brand-titles {
       display: flex;
       flex-direction: column;
     }
     .cover-brand-name {
-      font-family: 'Cinzel', serif;
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
       color: #ffffff;
       line-height: 1.1;
     }
     .cover-brand-name span {
-      color: #d4af37;
+      color: #ef4444;
     }
     .cover-brand-sub {
       font-size: 9px;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: #94a3b8;
+      color: #cbd5e1;
       margin-top: 3px;
+      font-weight: 600;
     }
     .cover-badge {
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: rgba(185, 28, 28, 0.12);
+      border: 1px solid rgba(220, 38, 38, 0.4);
       padding: 8px 16px;
       border-radius: 4px;
       text-align: right;
     }
     .cover-badge .badge-title {
       font-size: 9.5px;
-      font-weight: 700;
-      color: #d4af37;
+      font-weight: 800;
+      color: #ef4444;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -319,26 +340,28 @@ const htmlContent = `<!DOCTYPE html>
     }
     .cover-tagline {
       display: inline-block;
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: #d4af37;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      color: #ef4444;
       text-transform: uppercase;
       margin-bottom: 14px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+      border-bottom: 1px solid rgba(185, 28, 28, 0.45);
       padding-bottom: 4px;
     }
     .cover-main-title {
-      font-size: 34px;
+      font-size: 33px;
       line-height: 1.18;
-      font-weight: 700;
+      font-weight: 900;
       margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
     .cover-description {
       font-size: 13px;
       line-height: 1.6;
       color: #cbd5e1;
-      max-width: 530px;
+      max-width: 540px;
       margin-bottom: 22px;
     }
 
@@ -347,15 +370,15 @@ const htmlContent = `<!DOCTYPE html>
       align-items: center;
       gap: 12px;
       background: rgba(22, 27, 40, 0.85);
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(185, 28, 28, 0.35);
       padding: 10px 18px;
       border-radius: 8px;
     }
     .stat-pill .num {
       font-size: 24px;
-      font-weight: 800;
+      font-weight: 900;
       color: #ef4444;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
     .stat-pill .label {
       font-size: 9.5px;
@@ -366,7 +389,7 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     .cover-bottom {
-      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      border-top: 1px solid rgba(185, 28, 28, 0.3);
       padding-top: 14px;
       display: flex;
       justify-content: space-between;
@@ -387,7 +410,7 @@ const htmlContent = `<!DOCTYPE html>
 
     /* Metric Boxes */
     .metric-box {
-      background: rgba(15, 18, 27, 0.8);
+      background: rgba(16, 19, 29, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 6px;
       padding: 9px;
@@ -399,7 +422,7 @@ const htmlContent = `<!DOCTYPE html>
     }
     .metric-val {
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.2;
       margin-bottom: 3px;
     }
@@ -419,14 +442,14 @@ const htmlContent = `<!DOCTYPE html>
       font-size: 9.5px;
     }
     .exec-table th {
-      background: rgba(24, 29, 43, 0.9);
-      color: #d4af37;
+      background: rgba(28, 33, 48, 0.95);
+      color: #fca5a5;
       text-transform: uppercase;
       font-size: 8px;
       letter-spacing: 1px;
       padding: 7px 9px;
       text-align: left;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      border-bottom: 1px solid rgba(185, 28, 28, 0.4);
     }
     .exec-table td {
       padding: 6px 9px;
@@ -449,8 +472,8 @@ const htmlContent = `<!DOCTYPE html>
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #d4af37;
-      color: #090a0f;
+      background: #b91c1c;
+      color: #ffffff;
       font-weight: bold;
       font-size: 9.5px;
       display: flex;
@@ -475,7 +498,7 @@ const htmlContent = `<!DOCTYPE html>
       height: 44px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid #d4af37;
+      border: 2px solid #ef4444;
       margin-bottom: 5px;
       background: #111;
     }
@@ -507,8 +530,8 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     .didactic-box {
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px dashed rgba(212, 175, 55, 0.4);
+      background: rgba(185, 28, 28, 0.08);
+      border: 1px dashed rgba(220, 38, 38, 0.4);
       border-radius: 6px;
       padding: 10px 12px;
       margin: 8px 0;
@@ -516,7 +539,7 @@ const htmlContent = `<!DOCTYPE html>
     .didactic-title {
       font-size: 11px;
       font-weight: 700;
-      color: #e5c07b;
+      color: #fca5a5;
       margin-bottom: 4px;
       display: flex;
       align-items: center;
@@ -532,7 +555,7 @@ const htmlContent = `<!DOCTYPE html>
 <body>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 1: CAPA EXECUTIVA (SOLUTION) -->
+  <!-- PÁGINA 1: CAPA EXECUTIVA (SOLUTION PLACE) -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -544,10 +567,12 @@ const htmlContent = `<!DOCTYPE html>
     <div class="cover-body">
       <div class="cover-top">
         <div class="cover-brand-wrap">
-          ${solutionShieldSvg}
+          <div class="cover-logo-badge">
+            <img class="cover-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
+          </div>
           <div class="cover-brand-titles">
-            <div class="cover-brand-name">SOLUTION <span>PLACE</span></div>
-            <div class="cover-brand-sub">Blindagem Boutique • Excelência & Segurança</div>
+            <div class="cover-brand-name">SOLUTION<span>PLACE</span></div>
+            <div class="cover-brand-sub">BLINDAGEM BOUTIQUE • SEGURANÇA & ALTO PADRÃO</div>
           </div>
         </div>
         <div class="cover-badge">
@@ -557,13 +582,13 @@ const htmlContent = `<!DOCTYPE html>
       </div>
 
       <div class="cover-center">
-        <div class="cover-tagline">Alinhamento Interno Especial • Q3/Q4 2026</div>
+        <div class="cover-tagline">Alinhamento Técnico & Estratégico • Q3/Q4 2026</div>
         <h1 class="cover-main-title">
-          POR QUE OS <span class="gold-gradient-text">LEADS REDUZIRAM</span><br>
+          POR QUE OS <span class="brand-red-text">LEADS REDUZIRAM</span><br>
           NAS ÚLTIMAS SEMANAS?
         </h1>
         <p class="cover-description">
-          Um esclarecimento direto e transparente da nossa equipe interna de tráfego explicando como o <strong>Período Eleitoral</strong> inflaciona o leilão de anúncios no Brasil, por que isso é um fenômeno <strong>100% externo e temporário</strong>, e as medidas técnicas que a Solution já aplicou para proteger o investimento e o caixa da nossa operação.
+          Um esclarecimento direto e transparente da nossa equipe interna de tráfego explicando como o <strong>Período Eleitoral</strong> inflaciona o leilão de anúncios no Brasil, por que isso é um fenômeno <strong>100% externo e temporário</strong>, e as medidas técnicas que a Solution Place já aplicou para proteger o investimento e o caixa da nossa operação.
         </p>
 
         <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
@@ -581,7 +606,7 @@ const htmlContent = `<!DOCTYPE html>
       <div class="cover-bottom">
         <div class="meta-col">
           <div class="label">Emissor Interno</div>
-          <div class="value">Equipe de Tráfego & Inteligência • Solution</div>
+          <div class="value">Equipe de Tráfego & Inteligência • Solution Place</div>
         </div>
         <div class="meta-col">
           <div class="label">Destinatários</div>
@@ -589,7 +614,7 @@ const htmlContent = `<!DOCTYPE html>
         </div>
         <div class="meta-col" style="text-align: right;">
           <div class="label">Vigência</div>
-          <div class="value" style="color: #d4af37;">Período Eleitoral 2026</div>
+          <div class="value" style="color: #ef4444;">Período Eleitoral 2026</div>
         </div>
       </div>
     </div>
@@ -607,8 +632,8 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        ${solutionShieldSvg}
-        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
+        <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
         <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>01: O Cenário Geral</span></div>
@@ -618,11 +643,11 @@ const htmlContent = `<!DOCTYPE html>
       <div class="section-tag">Diagnóstico Interno da Operação</div>
       <h2 class="section-title">"Se nosso produto é impecável, por que chegam menos mensagens?"</h2>
       <p class="section-subtitle">
-        Como membro interno da equipe, quero começar tranquilizando todos: <strong>não há falha no posicionamento da Solution, nem erro técnico nas nossas contas de anúncio.</strong>
+        Como membro interno da equipe, quero começar tranquilizando todos: <strong>não há falha no posicionamento da Solution Place, nem erro técnico nas nossas contas de anúncio.</strong>
       </p>
 
       <div class="didactic-box">
-        <div class="didactic-title">💡 A Analogia dos Outdoors na Avenida:</div>
+        <div class="didactic-title">💡 A Analogia dos Outdoors na Avenida Nobre:</div>
         <div class="didactic-text">
           Imagine que o Instagram e o Facebook são como uma avenida nobre por onde passam motoristas e potenciais compradores de veículos premium. A quantidade de pessoas passando ali por dia é fixa. De repente, chegam <strong>campanhas políticas com milhões de reais em verba pública</strong> e dizem ao dono dos outdoors: <em>"Eu cubro qualquer valor que qualquer empresa pagar para estampar meu candidato aqui agora."</em><br>
           O que acontece com o preço do espaço para todas as empresas privadas? <strong>O valor dispara imediatamente.</strong>
@@ -630,15 +655,15 @@ const htmlContent = `<!DOCTYPE html>
       </div>
 
       <div class="card card-highlight">
-        <div style="font-size: 11px; font-weight: 700; color: #d4af37; margin-bottom: 3px;">
+        <div style="font-size: 11px; font-weight: 700; color: #fca5a5; margin-bottom: 3px;">
           Por que a concorrência política distorce o leilão contra nós?
         </div>
         <div style="font-size: 10px; color: #cbd5e1; line-height: 1.45;">
-          Nós, na Solution, anunciamos com responsabilidade comercial buscando retorno e sustentabilidade. Já os comitês políticos <strong>não buscam lucro</strong>: o único objetivo deles é queimar o Fundo Eleitoral antes do dia da eleição para conquistar votos. Eles aceitam pagar qualquer lance no leilão da Meta, expulsando ou encarecendo os anúncios de quem busca vendas reais.
+          Nós, na Solution Place, anunciamos com responsabilidade comercial buscando retorno e sustentabilidade. Já os comitês políticos <strong>não buscam lucro</strong>: o único objetivo deles é queimar o Fundo Eleitoral antes do dia da eleição para conquistar votos. Eles aceitam pagar qualquer lance no leilão da Meta, expulsando ou encarecendo os anúncios de quem busca vendas reais.
         </div>
       </div>
 
-      <h3 style="font-size: 11.5px; color: #d4af37; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 6px;">
+      <h3 style="font-size: 11.5px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 6px;">
         Evidências Auditadas do Volume Despejado no Leilão:
       </h3>
 
@@ -706,8 +731,8 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        ${solutionShieldSvg}
-        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
+        <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
         <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>02: A Matemática dos Dados</span></div>
@@ -740,7 +765,7 @@ const htmlContent = `<!DOCTYPE html>
 
       <div class="card card-highlight">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span style="font-size: 10.5px; font-weight: 700; color: #d4af37; text-transform: uppercase;">
+          <span style="font-size: 10.5px; font-weight: 700; color: #fca5a5; text-transform: uppercase;">
             Simulação Interna: Comparativo Didático de Desempenho
           </span>
           <span style="font-size: 8px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
@@ -819,8 +844,8 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        ${solutionShieldSvg}
-        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
+        <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
         <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>03: Nossa Atuação Técnica</span></div>
@@ -830,16 +855,16 @@ const htmlContent = `<!DOCTYPE html>
       <div class="section-tag">Manobras de Blindagem Operacional</div>
       <h2 class="section-title">O que nós da equipe de tráfego já implementamos?</h2>
       <p class="section-subtitle">
-        Estamos agindo proativamente com 4 medidas técnicas para manter a eficiência da Solution mesmo com o leilão pressionado.
+        Estamos agindo proativamente com 4 medidas técnicas para manter a eficiência da Solution Place mesmo com o leilão pressionado.
       </p>
 
       <div class="grid-2" style="gap: 10px; margin-bottom: 10px;">
         
         <!-- Ação 1 -->
-        <div class="card" style="border-left: 3px solid #d4af37;">
+        <div class="card" style="border-left: 3px solid #b91c1c;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">01</div>
-            <strong style="font-size: 11px; color: #d4af37;">Travas de Segurança de Lance (Bid Cap)</strong>
+            <strong style="font-size: 11px; color: #fca5a5;">Travas de Segurança de Lance (Bid Cap)</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
             Limitamos o valor máximo que a Meta pode cobrar por resultado. Se em determinado dia os candidatos inundarem a rede com lances astronômicos, o algoritmo freia a compra e não queima nosso orçamento a preços abusivos.
@@ -850,10 +875,10 @@ const htmlContent = `<!DOCTYPE html>
         </div>
 
         <!-- Ação 2 -->
-        <div class="card" style="border-left: 3px solid #d4af37;">
+        <div class="card" style="border-left: 3px solid #b91c1c;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">02</div>
-            <strong style="font-size: 11px; color: #d4af37;">Criativos Boutique Anti-Ruído</strong>
+            <strong style="font-size: 11px; color: #fca5a5;">Criativos Boutique Anti-Ruído</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
             Criativos que parecem panfleto ou anúncio genérico são ignorados porque o cérebro do usuário confunde com política. Estamos usando detalhes artesanais da blindagem, vidros balísticos de alta transparência e carros de luxo reais em oficina boutique.
@@ -864,10 +889,10 @@ const htmlContent = `<!DOCTYPE html>
         </div>
 
         <!-- Ação 3 -->
-        <div class="card" style="border-left: 3px solid #d4af37;">
+        <div class="card" style="border-left: 3px solid #b91c1c;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">03</div>
-            <strong style="font-size: 11px; color: #d4af37;">Reforço no Google Search (Intenção Pura)</strong>
+            <strong style="font-size: 11px; color: #fca5a5;">Reforço no Google Search (Intenção Pura)</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
             Políticos não disputam termos de pesquisa no Google como <em>"blindagem de veículos RJ"</em> ou <em>"blindar Defender / Porsche"</em>. Mantemos presença máxima no Google onde o cliente pesquisa ativamente para comprar.
@@ -878,10 +903,10 @@ const htmlContent = `<!DOCTYPE html>
         </div>
 
         <!-- Ação 4 -->
-        <div class="card" style="border-left: 3px solid #d4af37;">
+        <div class="card" style="border-left: 3px solid #b91c1c;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">04</div>
-            <strong style="font-size: 11px; color: #d4af37;">Higienização e Exclusão Cirúrgica</strong>
+            <strong style="font-size: 11px; color: #fca5a5;">Higienização e Exclusão Cirúrgica</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
             Excluímos das campanhas quem já comprou, quem já é cliente e quem não possui perfil econômico para blindagem boutique, direcionando cada centavo com precisão cirúrgica.
@@ -894,11 +919,11 @@ const htmlContent = `<!DOCTYPE html>
       </div>
 
       <div class="card card-highlight" style="margin-bottom: 0;">
-        <div style="font-size: 10.5px; font-weight: 700; color: #d4af37; text-transform: uppercase; margin-bottom: 4px;">
-          Nossa Filosofia Interna Solution:
+        <div style="font-size: 10.5px; font-weight: 700; color: #fca5a5; text-transform: uppercase; margin-bottom: 4px;">
+          Nossa Filosofia Interna Solution Place:
         </div>
         <div style="font-size: 10px; color: #f1f5f9; line-height: 1.45;">
-          "Como equipe interna, nosso compromisso é com a verdade dos dados e a proteção do resultado da Solution. O mercado oscila por fatores externos, mas nossa disciplina técnica e padrão boutique permanecem inabaláveis. Estamos no controle da operação."
+          "Como equipe interna, nosso compromisso é com a verdade dos dados e a proteção do resultado da Solution Place. O mercado oscila por fatores externos, mas nossa disciplina técnica e padrão boutique permanecem inabaláveis. Estamos no controle da operação."
         </div>
       </div>
     </div>
@@ -921,8 +946,8 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        ${solutionShieldSvg}
-        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
+        <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
         <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>04: Ações em Conjunto</span></div>
@@ -958,7 +983,7 @@ const htmlContent = `<!DOCTYPE html>
             <tr>
               <td><strong>3. Rigor na Etiquetagem</strong></td>
               <td>Classificar perfeitamente cada contato (Sem Etiqueta, Novo Cliente, Pago) para alimentar a inteligência do nosso CRM e do algoritmo.</td>
-              <td><span style="color: #d4af37; font-weight: 700;">Inteligência de Dados</span></td>
+              <td><span style="color: #fca5a5; font-weight: 700;">Inteligência de Dados</span></td>
             </tr>
             <tr>
               <td><strong>4. Convite para Visita Boutique</strong></td>
@@ -974,9 +999,9 @@ const htmlContent = `<!DOCTYPE html>
           Resumo Final & Perspectiva Positiva
         </div>
         <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.45; margin-bottom: 8px;">
-          As eleições têm data final marcada. As empresas concorrentes que entram em desespero, pausam anúncios ou queimam margem sofrem as consequências. A <strong>Solution</strong> continuará operando com serenidade, excelência técnica e foco no cliente de alto luxo. Assim que o leilão político se encerrar, nossas campanhas estarão otimizadas para colher um salto massivo de resultados.
+          As eleições têm data final marcada. As empresas concorrentes que entram em desespero, pausam anúncios ou queimam margem sofrem as consequências. A <strong>Solution Place</strong> continuará operando com serenidade, excelência técnica e foco no cliente de alto luxo. Assim que o leilão político se encerrar, nossas campanhas estarão otimizadas para colher um salto massivo de resultados.
         </p>
-        <div style="display: flex; gap: 14px; font-size: 8.5px; color: #d4af37; font-weight: 600; flex-wrap: wrap;">
+        <div style="display: flex; gap: 14px; font-size: 8.5px; color: #fca5a5; font-weight: 600; flex-wrap: wrap;">
           <div>◆ Monitoramento Diário dos Indicadores</div>
           <div>◆ Proteção de Custo por Resultado</div>
           <div>◆ Atendimento Boutique de Excelência</div>
@@ -984,13 +1009,13 @@ const htmlContent = `<!DOCTYPE html>
         </div>
       </div>
 
-      <div style="background: rgba(15, 18, 27, 0.9); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="background: rgba(16, 19, 29, 0.95); border: 1px solid rgba(185, 28, 28, 0.4); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
         <div>
           <div style="font-size: 10.5px; font-weight: 700; color: #f8fafc;">Equipe de Tráfego & Inteligência de Performance</div>
           <div style="font-size: 8.5px; color: #94a3b8;">Solution Place · Blindagem Automotiva Boutique</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 10px; font-weight: 700; color: #d4af37;">Rio de Janeiro / Brasil</div>
+          <div style="font-size: 10px; font-weight: 700; color: #ef4444;">Rio de Janeiro / Brasil</div>
           <div style="font-size: 8.5px; color: #64748b;">Canal Interno de Performance</div>
         </div>
       </div>
@@ -1007,14 +1032,14 @@ const htmlContent = `<!DOCTYPE html>
 `;
 
 async function generatePDF() {
-  console.log("Gerando PDF com a identidade visual da Solution e narrativa interna...");
+  console.log("Gerando PDF oficial com a logo LogoSolution.jpeg e paleta vermelha e titânio...");
   const browser = await chromium.launch({ channel: "msedge", headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
 
   await page.setContent(htmlContent, { waitUntil: "networkidle" });
 
-  const targetDir = path.join(rootDir, "Documentos", "Elevação do CPR");
+  const targetDir = docsDir;
   const outputPathFolder = path.join(targetDir, "Relatorio_Estrategico_Elevacao_CPR_Solution.pdf");
   const outputPathRoot = path.join(rootDir, "Relatorio_Estrategico_Elevacao_CPR_Solution.pdf");
 
@@ -1033,7 +1058,7 @@ async function generatePDF() {
 
   fs.copyFileSync(outputPathFolder, outputPathRoot);
 
-  console.log(`PDF da Solution gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
+  console.log(`PDF oficial Solution gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
   await browser.close();
 }
 
