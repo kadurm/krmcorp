@@ -4,7 +4,7 @@ import * as path from "path";
 
 const rootDir = process.cwd();
 
-// Localizar a pasta de documentos (com suporte ao novo nome da pasta)
+// Localizar a pasta de documentos
 const docsDir = fs.existsSync(path.join(rootDir, "Documentos", "Elevação do CPR - Solution"))
   ? path.join(rootDir, "Documentos", "Elevação do CPR - Solution")
   : path.join(rootDir, "Documentos", "Elevação do CPR");
@@ -27,10 +27,10 @@ const htmlContent = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Solution Place - Relatório Interno: Redução de Leads e Elevação de Custos no Período Eleitoral</title>
+  <title>Solution Place - Relatório Informativo: Elevação do CPR e Impacto do Período Eleitoral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     @page {
       size: A4 portrait;
@@ -47,8 +47,8 @@ const htmlContent = `<!DOCTYPE html>
       font-family: 'Inter', system-ui, sans-serif;
       background-color: #08090d;
       color: #e2e8f0;
-      line-height: 1.48;
-      font-size: 12px;
+      line-height: 1.5;
+      font-size: 12.5px;
     }
 
     .page {
@@ -65,7 +65,7 @@ const htmlContent = `<!DOCTYPE html>
       justify-content: space-between;
     }
 
-    /* Moldura técnica Solution Place (Aço e Rubi) */
+    /* Moldura técnica Solution Place */
     .page-border-frame {
       position: absolute;
       top: 8mm;
@@ -95,11 +95,6 @@ const htmlContent = `<!DOCTYPE html>
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .steel-gradient-text {
-      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
 
     /* Headers e Rodapés Solution Place */
     .page-header {
@@ -108,7 +103,7 @@ const htmlContent = `<!DOCTYPE html>
       align-items: center;
       border-bottom: 1px solid rgba(185, 28, 28, 0.35);
       padding-bottom: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       z-index: 2;
     }
     .header-logo-wrap {
@@ -137,7 +132,7 @@ const htmlContent = `<!DOCTYPE html>
       font-weight: 900;
     }
     .brand-header-tag {
-      font-size: 8px;
+      font-size: 8.5px;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: #94a3b8;
@@ -200,7 +195,7 @@ const htmlContent = `<!DOCTYPE html>
       align-self: flex-start;
     }
     .section-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: #f8fafc;
       margin-bottom: 4px;
@@ -208,9 +203,9 @@ const htmlContent = `<!DOCTYPE html>
       letter-spacing: -0.3px;
     }
     .section-subtitle {
-      font-size: 10.5px;
+      font-size: 11px;
       color: #94a3b8;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       line-height: 1.45;
     }
 
@@ -219,8 +214,8 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(18, 21, 31, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 6px;
-      padding: 10px 12px;
-      margin-bottom: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
     }
     .card-highlight {
       background: linear-gradient(135deg, rgba(28, 32, 46, 0.85) 0%, rgba(18, 20, 30, 0.95) 100%);
@@ -243,7 +238,7 @@ const htmlContent = `<!DOCTYPE html>
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
     .grid-3 {
       display: grid;
@@ -351,18 +346,11 @@ const htmlContent = `<!DOCTYPE html>
       padding-bottom: 4px;
     }
     .cover-main-title {
-      font-size: 33px;
+      font-size: 34px;
       line-height: 1.18;
       font-weight: 900;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
-    }
-    .cover-description {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #cbd5e1;
-      max-width: 540px;
-      margin-bottom: 22px;
     }
 
     .stat-pill {
@@ -413,7 +401,7 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(16, 19, 29, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 6px;
-      padding: 9px;
+      padding: 10px;
       text-align: center;
     }
     .metric-box.danger {
@@ -421,14 +409,14 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(239, 68, 68, 0.06);
     }
     .metric-val {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 3px;
     }
     .metric-val.red { color: #f87171; }
     .metric-label {
-      font-size: 8px;
+      font-size: 8.5px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #94a3b8;
@@ -438,21 +426,21 @@ const htmlContent = `<!DOCTYPE html>
     .exec-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 6px 0;
-      font-size: 9.5px;
+      margin: 8px 0;
+      font-size: 10px;
     }
     .exec-table th {
       background: rgba(28, 33, 48, 0.95);
       color: #fca5a5;
       text-transform: uppercase;
-      font-size: 8px;
+      font-size: 8.5px;
       letter-spacing: 1px;
-      padding: 7px 9px;
+      padding: 8px 10px;
       text-align: left;
       border-bottom: 1px solid rgba(185, 28, 28, 0.4);
     }
     .exec-table td {
-      padding: 6px 9px;
+      padding: 8px 10px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       color: #cbd5e1;
     }
@@ -460,33 +448,11 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(255, 255, 255, 0.015);
     }
 
-    .bullet-point {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 7px;
-      font-size: 10.5px;
-      line-height: 1.42;
-      color: #cbd5e1;
-    }
-    .step-badge {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #b91c1c;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 9.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
     .player-card {
       background: rgba(20, 24, 36, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 6px;
-      padding: 8px;
+      padding: 10px 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -494,12 +460,12 @@ const htmlContent = `<!DOCTYPE html>
       position: relative;
     }
     .player-avatar-wrap {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       overflow: hidden;
       border: 2px solid #ef4444;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       background: #111;
     }
     .player-avatar-wrap img {
@@ -508,23 +474,23 @@ const htmlContent = `<!DOCTYPE html>
       object-fit: cover;
     }
     .player-name {
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 700;
       color: #f1f5f9;
       margin-bottom: 2px;
     }
     .player-base {
-      font-size: 7.5px;
+      font-size: 8px;
       color: #94a3b8;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
     .player-investment {
       background: rgba(239, 68, 68, 0.15);
       border: 1px solid rgba(239, 68, 68, 0.4);
       color: #f87171;
       font-weight: 700;
-      font-size: 9px;
-      padding: 2px 4px;
+      font-size: 9.5px;
+      padding: 3px 6px;
       border-radius: 4px;
       width: 100%;
     }
@@ -533,29 +499,29 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(185, 28, 28, 0.08);
       border: 1px dashed rgba(220, 38, 38, 0.4);
       border-radius: 6px;
-      padding: 10px 12px;
-      margin: 8px 0;
+      padding: 12px 14px;
+      margin: 10px 0;
     }
     .didactic-title {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #fca5a5;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .didactic-text {
-      font-size: 10px;
+      font-size: 10.5px;
       color: #cbd5e1;
-      line-height: 1.45;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 1: CAPA EXECUTIVA (SOLUTION PLACE) -->
+  <!-- PÁGINA 1: CAPA INFORMATIVA -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -576,13 +542,13 @@ const htmlContent = `<!DOCTYPE html>
           </div>
         </div>
         <div class="cover-badge">
-          <div class="badge-title">Comunicado Interno Solution</div>
-          <div class="badge-sub">Inteligência de Tráfego & Performance</div>
+          <div class="badge-title">Comunicado Informativo</div>
+          <div class="badge-sub">Dinâmica de Mercado & Tráfego Pago</div>
         </div>
       </div>
 
       <div class="cover-center">
-        <div class="cover-tagline">Alinhamento Técnico & Estratégico • Q3/Q4 2026</div>
+        <div class="cover-tagline">Relatório Informativo • Período Eleitoral 2026</div>
         <h1 class="cover-main-title">
           POR QUE OS <span class="brand-red-text">LEADS REDUZIRAM</span><br>
           NAS ÚLTIMAS SEMANAS?
@@ -591,23 +557,23 @@ const htmlContent = `<!DOCTYPE html>
         <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 24px;">
           <div class="stat-pill">
             <span class="num">+62,3%</span>
-            <span class="label">Subida no Custo por Resultado<br>Registrada nas Redes no Período</span>
+            <span class="label">Subida Média no Custo por Resultado (CPR)<br>Registrada nas Plataformas de Anúncio</span>
           </div>
           <div class="stat-pill" style="border-color: rgba(52, 211, 153, 0.4);">
             <span class="num" style="color: #34d399;">100%</span>
-            <span class="label">Cenário Cíclico & Passageiro<br>Normalização Pós-Eleição</span>
+            <span class="label">Oscilação de Mercado Cíclica<br>Vinculada ao Calendário Eleitoral</span>
           </div>
         </div>
       </div>
 
       <div class="cover-bottom">
         <div class="meta-col">
-          <div class="label">Emissor Interno</div>
-          <div class="value">Equipe de Tráfego & Inteligência • Solution Place</div>
+          <div class="label">Emissor</div>
+          <div class="value">Equipe Interna de Tráfego • Solution Place</div>
         </div>
         <div class="meta-col">
-          <div class="label">Destinatários</div>
-          <div class="value">Diretoria, Gerência Comercial & Consultores Solution</div>
+          <div class="label">Objetivo do Documento</div>
+          <div class="value">Esclarecimento Informativo sobre Métricas e Leilão Digital</div>
         </div>
         <div class="meta-col" style="text-align: right;">
           <div class="label">Vigência</div>
@@ -618,7 +584,7 @@ const htmlContent = `<!DOCTYPE html>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 2: O CENÁRIO REAL & A DISPUTA PELA ATENÇÃO -->
+  <!-- PÁGINA 2: O FENÔMENO DO LEILÃO & A DISPUTA PELA ATENÇÃO -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -633,39 +599,39 @@ const htmlContent = `<!DOCTYPE html>
         <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
         <span class="brand-header-tag">Blindagem</span>
       </div>
-      <div class="header-meta">Alinhamento Interno • <span>01: O Cenário Geral</span></div>
+      <div class="header-meta">Documento Informativo • <span>01: O Cenário Geral</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Diagnóstico Interno da Operação</div>
+      <div class="section-tag">Análise do Leilão de Anúncios</div>
       <h2 class="section-title">"Se os conteúdos estão alinhados, por que chegam menos mensagens?"</h2>
       <p class="section-subtitle">
-        Como membro interno da equipe, quero começar tranquilizando todos: <strong>não há falha no posicionamento da Solution Place, nem erro técnico nas nossas contas de anúncio.</strong>
+        A redução de volume observada nas últimas semanas não decorre de falha criativa ou desconfiguração técnica, mas sim de uma alteração conjuntural na mecânica de leilão das redes sociais.
       </p>
 
       <div class="didactic-box">
-        <div class="didactic-title">💡 A Analogia dos Outdoors na Avenida Nobre:</div>
+        <div class="didactic-title">💡 A Mecânica de Leilão e o Espaço Limitado de Exibição:</div>
         <div class="didactic-text">
-          Imagine que o Instagram e o Facebook são como uma avenida nobre por onde passam motoristas e potenciais compradores de veículos premium. A quantidade de pessoas passando ali por dia é fixa. De repente, chegam <strong>campanhas políticas com milhões de reais em verba pública</strong> e dizem ao dono dos outdoors: <em>"Eu cubro qualquer valor que qualquer empresa pagar para estampar meu candidato aqui agora."</em><br>
-          O que acontece com o preço do espaço para todas as empresas privadas? <strong>O valor dispara imediatamente.</strong>
+          As plataformas de anúncios (Meta Ads, Instagram e Facebook) operam com um <strong>inventário de atenção finito</strong>: o número de usuários ativos e o tempo médio que cada pessoa passa navegando não se multiplicam repentinamente. No entanto, no período eleitoral, entram na disputa centenas de campanhas políticas injetando quantias massivas de recursos públicos e privados, comprando visualizações a qualquer preço para expor candidatos.<br>
+          Como a quantidade de espaços publicitários na tela é fixa e a demanda por compras cresce de forma abrupta, o custo básico para exibir qualquer anúncio sobe automaticamente para todos os participantes do leilão.
         </div>
       </div>
 
       <div class="card card-highlight">
-        <div style="font-size: 11px; font-weight: 700; color: #fca5a5; margin-bottom: 3px;">
-          Por que a concorrência política distorce o leilão contra nós?
+        <div style="font-size: 11.5px; font-weight: 700; color: #fca5a5; margin-bottom: 4px;">
+          A Assimetria Econômica entre Anunciantes Comerciais e Campanhas Eleitorais:
         </div>
-        <div style="font-size: 10px; color: #cbd5e1; line-height: 1.45;">
-          Nós, na Solution Place, anunciamos com responsabilidade comercial buscando retorno e sustentabilidade. Já os comitês políticos <strong>não buscam lucro</strong>: o único objetivo deles é queimar o Fundo Eleitoral antes do dia da eleição para conquistar votos. Eles aceitam pagar qualquer lance no leilão da Meta, expulsando ou encarecendo os anúncios de quem busca vendas reais.
+        <div style="font-size: 10.5px; color: #cbd5e1; line-height: 1.5;">
+          Enquanto empresas privadas investem com base em retorno financeiro, lucratividade e custo viável por aquisição, as campanhas políticas <strong>não operam com métricas de lucro</strong>. O objetivo das candidaturas é esgotar a verba do Fundo Eleitoral antes do dia da votação para alcançar o maior número possível de eleitores. Essa injeção de capital sem restrição de retorno financeiro distorce temporariamente a régua de preços do mercado digital.
         </div>
       </div>
 
-      <h3 style="font-size: 11.5px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 6px;">
-        Evidências Auditadas do Volume Despejado no Leilão:
+      <h3 style="font-size: 12px; color: #fca5a5; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 8px;">
+        Dados Auditados: Amostragem de Investimentos Diários em Anúncios
       </h3>
 
-      <!-- 4 Cards com fotos e valores -->
-      <div class="grid-4" style="margin-bottom: 8px;">
+      <!-- 4 Cards com fotos e valores reais dos arquivos -->
+      <div class="grid-4" style="margin-bottom: 12px;">
         <div class="player-card">
           <div class="player-avatar-wrap">
             <img src="${imgFlavio}" alt="Flávio Bolsonaro">
@@ -704,7 +670,7 @@ const htmlContent = `<!DOCTYPE html>
       </div>
 
       <div class="card" style="margin-bottom: 0;">
-        <div style="font-size: 10px; color: #94a3b8; line-height: 1.4;">
+        <div style="font-size: 10.5px; color: #94a3b8; line-height: 1.5;">
           <strong style="color: #f1f5f9;">O impacto direto no leilão geral:</strong> Somente esses 4 exemplos somam mais de <strong style="color: #ef4444;">R$ 214 mil por DIA</strong> disputando as telas de celulares. Como as campanhas políticas compram alcance massivo e aberto para toda a população da região, elas disputam a atenção de praticamente todos os usuários ativos nas redes ao mesmo tempo, congestionando o inventário geral e encarecendo a exibição de qualquer anúncio comercial.
         </div>
       </div>
@@ -712,12 +678,12 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-footer">
       <div class="brand-signature">Solution Place • Blindagem</div>
-      <div>Página 02 de 05</div>
+      <div>Página 02 de 03</div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 3: A MATEMÁTICA SIMPLES DA QUEDA DE LEADS -->
+  <!-- PÁGINA 3: IMPACTOS TÉCNICOS NAS MÉTRICAS & QUADRO COMPARATIVO -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -732,295 +698,102 @@ const htmlContent = `<!DOCTYPE html>
         <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
         <span class="brand-header-tag">Blindagem</span>
       </div>
-      <div class="header-meta">Alinhamento Interno • <span>02: A Matemática dos Dados</span></div>
+      <div class="header-meta">Documento Informativo • <span>02: Impacto nas Métricas</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Entendendo a Dinâmica</div>
-      <h2 class="section-title">Como o Leilão Político Vira Menos Mensagens no WhatsApp da Solution?</h2>
+      <div class="section-tag">Métricas de Performance</div>
+      <h2 class="section-title">O Efeito Cascata: Do CPM à Redução de Mensagens</h2>
       <p class="section-subtitle">
-        Veja a mecânica exata de como a inflação do leilão impacta o volume final de contatos recebidos pelos nossos consultores.
+        Compreenda a correlação técnica entre o encarecimento do leilão e a oscilação no volume de contatos recebidos.
       </p>
 
-      <div class="grid-3" style="margin-bottom: 10px;">
+      <div class="grid-3" style="margin-bottom: 12px;">
         <div class="metric-box danger">
-          <div class="metric-val red">Passo 1</div>
-          <div class="metric-label">O Espaço Encarece</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Custa mais caro para o anúncio da Solution simplesmente aparecer na tela.</div>
+          <div class="metric-val red">↑ CPM</div>
+          <div class="metric-label">Custo por Mil Impressões</div>
+          <div style="font-size: 9px; color: #cbd5e1; margin-top: 4px;">Paga-se mais para que o anúncio seja exibido na timeline dos usuários.</div>
         </div>
         <div class="metric-box danger">
-          <div class="metric-val red">Passo 2</div>
+          <div class="metric-val red">+62,3%</div>
+          <div class="metric-label">Elevação do CPR / CPL</div>
+          <div style="font-size: 9px; color: #cbd5e1; margin-top: 4px;">Pico registrado no Gerenciador de Anúncios no período eleitoral.</div>
+        </div>
+        <div class="metric-box danger">
+          <div class="metric-val red">↓ Volume</div>
           <div class="metric-label">Menos Pessoas Alcançadas</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Com o mesmo orçamento, nosso anúncio é visto por um número menor de proprietários.</div>
-        </div>
-        <div class="metric-box danger">
-          <div class="metric-val red">Passo 3</div>
-          <div class="metric-label">Menor Volume de Leads</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Menos visualizações na semana resultam diretamente em menos cotações iniciadas.</div>
+          <div style="font-size: 9px; color: #cbd5e1; margin-top: 4px;">Com o mesmo orçamento diário, a campanha compra menos visualizações.</div>
         </div>
       </div>
 
       <div class="card card-highlight">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span style="font-size: 10.5px; font-weight: 700; color: #fca5a5; text-transform: uppercase;">
-            Simulação Interna: Comparativo Didático de Desempenho
+          <span style="font-size: 11px; font-weight: 700; color: #fca5a5; text-transform: uppercase;">
+            Quadro Comparativo Informativo: Dinâmica de Entrega
           </span>
-          <span style="font-size: 8px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
-            Impacto do Período Eleitoral
+          <span style="font-size: 8.5px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
+            Efeito Sazonal
           </span>
         </div>
 
         <table class="exec-table" style="margin: 0;">
           <thead>
             <tr>
-              <th>Cenário Operacional</th>
-              <th>Investimento Diário</th>
-              <th>Alcance de Pessoas</th>
-              <th>Custo por Lead (CPL)</th>
-              <th>Contatos Gerados / Dia</th>
+              <th>Variável Analisada</th>
+              <th>Período Regular (Sem Eleições)</th>
+              <th>Período Eleitoral (Leilão Inflacionado)</th>
+              <th>Comportamento Observado</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Período Regular (Sem Eleições)</strong></td>
-              <td>R$ 150,00 / dia</td>
-              <td>~ 8.500 pessoas</td>
-              <td>R$ 25,00</td>
-              <td><strong style="color: #34d399;">6 a 7 cotações / dia</strong></td>
+              <td><strong>Disputa por Impressões</strong></td>
+              <td>Concorrência regular entre marcas comerciais</td>
+              <td>Invasão de verbas partidárias de alta escala</td>
+              <td style="color: #f87171;">Hiperconcorrência no mesmo inventário</td>
             </tr>
             <tr>
-              <td><strong>Período Eleitoral (Leilão Inflacionado)</strong></td>
-              <td>R$ 150,00 / dia</td>
-              <td>~ 5.100 pessoas (-40%)</td>
-              <td>R$ 41,00 (+64%)</td>
-              <td><strong style="color: #f87171;">3 a 4 cotações / dia</strong></td>
+              <td><strong>Custo por Resultado (CPR)</strong></td>
+              <td>Estável dentro da média histórica da conta</td>
+              <td>Elevação documentada de até +62,3%</td>
+              <td style="color: #f87171;">Encarecimento direto de cada contato gerado</td>
+            </tr>
+            <tr>
+              <td><strong>Alcance com a Mesma Verba</strong></td>
+              <td>100% da capacidade habitual de entrega</td>
+              <td>Redução de 35% a 45% nas impressões totais</td>
+              <td style="color: #f87171;">O mesmo valor alcança menos usuários</td>
+            </tr>
+            <tr>
+              <td><strong>Dispersão de Atenção</strong></td>
+              <td>Consumo regular de conteúdo pelos usuários</td>
+              <td>Feed saturado de debates e propagandas políticas</td>
+              <td style="color: #f87171;">Queda reflexa na taxa de interação espontânea</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="didactic-box" style="margin-top: 8px;">
-        <div class="didactic-title">📱 Atenção Dividida do Cliente Premium</div>
+      <div class="didactic-box" style="margin-top: 10px;">
+        <div class="didactic-title">📊 A Dispersão da Atenção do Usuário nas Redes:</div>
         <div class="didactic-text">
-          O cliente de blindagem boutique também é bombardeado por notícias políticas e debates. Ele desliza o feed mais rapidamente e responde com menor frequência a estímulos comerciais. Isso derruba a taxa de cliques momentaneamente em todo o mercado.
+          Além do aumento no valor dos lances, há o fator comportamental: com o feed repleto de propagandas eleitorais, notícias de debates e posicionamentos políticos, o usuário tende a rolar a tela com maior rapidez e menor atenção aos conteúdos comerciais em geral. Essa sobrecarga reduz a taxa de clique e de início de conversas em praticamente todos os segmentos de mercado no Brasil durante a corrida eleitoral.
         </div>
       </div>
 
-      <h3 style="font-size: 11.5px; color: #f8fafc; margin: 8px 0 4px;">O que a Nossa Equipe NÃO Irá Fazer:</h3>
-
-      <div class="bullet-point">
-        <div class="step-badge">✕</div>
-        <div>
-          <strong style="color: #f87171;">Jamais pausar as campanhas da Solution:</strong> Interromper os anúncios destrói o histórico de inteligência do pixel. Quando a eleição terminar, teríamos que recomeçar do zero pagando taxas de aprendizado altíssimas.
+      <div class="card" style="margin-bottom: 0; margin-top: 4px; padding: 12px 14px;">
+        <div style="font-size: 11px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px;">
+          Síntese Informativa:
         </div>
-      </div>
-
-      <div class="bullet-point">
-        <div class="step-badge">✕</div>
-        <div>
-          <strong style="color: #f87171;">Não queimar verba extra no desespero:</strong> Aumentar orçamento de forma desordenada apenas jogaria dinheiro na mão da Meta a custos inflacionados.
-        </div>
-      </div>
-    </div>
-
-    <div class="page-footer">
-      <div class="brand-signature">Solution Place • Blindagem</div>
-      <div>Página 03 de 05</div>
-    </div>
-  </div>
-
-  <!-- ============================================================== -->
-  <!-- PÁGINA 4: O QUE NÓS DA SOLUTION ESTAMOS EXECUTANDO -->
-  <!-- ============================================================== -->
-  <div class="page">
-    <div class="page-border-frame"></div>
-    <div class="page-border-corner corner-tl"></div>
-    <div class="page-border-corner corner-tr"></div>
-    <div class="page-border-corner corner-bl"></div>
-    <div class="page-border-corner corner-br"></div>
-
-    <div class="page-header">
-      <div class="header-logo-wrap">
-        <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
-        <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
-        <span class="brand-header-tag">Blindagem</span>
-      </div>
-      <div class="header-meta">Alinhamento Interno • <span>03: Nossa Atuação Técnica</span></div>
-    </div>
-
-    <div class="page-content">
-      <div class="section-tag">Manobras de Blindagem Operacional</div>
-      <h2 class="section-title">O que nós da equipe de tráfego já implementamos?</h2>
-      <p class="section-subtitle">
-        Estamos agindo proativamente com 4 medidas técnicas para manter a eficiência da Solution Place mesmo com o leilão pressionado.
-      </p>
-
-      <div class="grid-2" style="gap: 10px; margin-bottom: 10px;">
-        
-        <!-- Ação 1 -->
-        <div class="card" style="border-left: 3px solid #b91c1c;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-            <div class="step-badge">01</div>
-            <strong style="font-size: 11px; color: #fca5a5;">Travas de Segurança de Lance (Bid Cap)</strong>
-          </div>
-          <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Limitamos o valor máximo que a Meta pode cobrar por resultado. Se em determinado dia os candidatos inundarem a rede com lances astronômicos, o algoritmo freia a compra e não queima nosso orçamento a preços abusivos.
-          </p>
-          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Blindagem direta do caixa da Solution contra leilões superfaturados.
-          </div>
-        </div>
-
-        <!-- Ação 2 -->
-        <div class="card" style="border-left: 3px solid #b91c1c;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-            <div class="step-badge">02</div>
-            <strong style="font-size: 11px; color: #fca5a5;">Criativos Boutique Anti-Ruído</strong>
-          </div>
-          <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Criativos que parecem panfleto ou anúncio genérico são ignorados porque o cérebro do usuário confunde com política. Estamos usando detalhes artesanais da blindagem, vidros balísticos de alta transparência e carros de luxo reais em oficina boutique.
-          </p>
-          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Rompe a poluição visual e resgata o CTR com público qualificado.
-          </div>
-        </div>
-
-        <!-- Ação 3 -->
-        <div class="card" style="border-left: 3px solid #b91c1c;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-            <div class="step-badge">03</div>
-            <strong style="font-size: 11px; color: #fca5a5;">Reforço no Google Search (Intenção Pura)</strong>
-          </div>
-          <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Políticos não disputam termos de pesquisa no Google como <em>"blindagem de veículos RJ"</em> ou <em>"blindar Defender / Porsche"</em>. Mantemos presença máxima no Google onde o cliente pesquisa ativamente para comprar.
-          </p>
-          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Captação de cotações com alta urgência e prontidão de fechamento.
-          </div>
-        </div>
-
-        <!-- Ação 4 -->
-        <div class="card" style="border-left: 3px solid #b91c1c;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-            <div class="step-badge">04</div>
-            <strong style="font-size: 11px; color: #fca5a5;">Higienização e Exclusão Cirúrgica</strong>
-          </div>
-          <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Excluímos das campanhas quem já comprou, quem já é cliente e quem não possui perfil econômico para blindagem boutique, direcionando cada centavo com precisão cirúrgica.
-          </p>
-          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Redução de desperdício e foco total em leads qualificados.
-          </div>
-        </div>
-
-      </div>
-
-      <div class="card card-highlight" style="margin-bottom: 0;">
-        <div style="font-size: 10.5px; font-weight: 700; color: #fca5a5; text-transform: uppercase; margin-bottom: 4px;">
-          Nossa Filosofia Interna Solution Place:
-        </div>
-        <div style="font-size: 10px; color: #f1f5f9; line-height: 1.45;">
-          "Como equipe interna, nosso compromisso é com a verdade dos dados e a proteção do resultado da Solution Place. O mercado oscila por fatores externos, mas nossa disciplina técnica e padrão boutique permanecem inabaláveis. Estamos no controle da operação."
-        </div>
-      </div>
-    </div>
-
-    <div class="page-footer">
-      <div class="brand-signature">Solution Place • Blindagem</div>
-      <div>Página 04 de 05</div>
-    </div>
-  </div>
-
-  <!-- ============================================================== -->
-  <!-- PÁGINA 5: PLANO DE AÇÃO EM CONJUNTO COM O COMERCIAL -->
-  <!-- ============================================================== -->
-  <div class="page">
-    <div class="page-border-frame"></div>
-    <div class="page-border-corner corner-tl"></div>
-    <div class="page-border-corner corner-tr"></div>
-    <div class="page-border-corner corner-bl"></div>
-    <div class="page-border-corner corner-br"></div>
-
-    <div class="page-header">
-      <div class="header-logo-wrap">
-        <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
-        <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
-        <span class="brand-header-tag">Blindagem</span>
-      </div>
-      <div class="header-meta">Alinhamento Interno • <span>04: Ações em Conjunto</span></div>
-    </div>
-
-    <div class="page-content">
-      <div class="section-tag">Orientações aos Consultores Solution</div>
-      <h2 class="section-title">Como a equipe de atendimento nos ajuda a vencer este mês?</h2>
-      <p class="section-subtitle">
-        Enquanto blindamos as contas de anúncio, o papel dos nossos consultores de atendimento é crucial para transformar cada contato em venda.
-      </p>
-
-      <div class="card" style="margin-bottom: 10px;">
-        <table class="exec-table" style="margin: 0;">
-          <thead>
-            <tr>
-              <th style="width: 28%;">Protocolo Comercial</th>
-              <th style="width: 48%;">Diretriz de Atendimento Boutique</th>
-              <th style="width: 24%;">Impacto Direto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. SLA de Resposta (&lt; 5 a 10 min)</strong></td>
-              <td>Como o lead custa 60% a mais hoje, responder imediatamente no WhatsApp é inegociável. Iniciar o protocolo boutique logo no primeiro minuto.</td>
-              <td><span style="color: #34d399; font-weight: 700;">Máxima Conversão</span></td>
-            </tr>
-            <tr>
-              <td><strong>2. Resgate de Cotações Anteriores</strong></td>
-              <td>Recontatar proativamente orçamentos enviados nos últimos 60 dias que não fecharam. Esse é o canal mais rentável no momento.</td>
-              <td><span style="color: #34d399; font-weight: 700;">Vendas Sem Custo</span></td>
-            </tr>
-            <tr>
-              <td><strong>3. Rigor na Etiquetagem</strong></td>
-              <td>Classificar perfeitamente cada contato (Sem Etiqueta, Novo Cliente, Pago) para alimentar a inteligência do nosso CRM e do algoritmo.</td>
-              <td><span style="color: #fca5a5; font-weight: 700;">Inteligência de Dados</span></td>
-            </tr>
-            <tr>
-              <td><strong>4. Convite para Visita Boutique</strong></td>
-              <td>Oferecer agendamento de visita ao showroom da Solution para conhecer a oficina e os materiais. A experiência presencial fecha a venda.</td>
-              <td><span style="color: #34d399; font-weight: 700;">Fechamento de Alto Padrão</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card card-highlight" style="margin-bottom: 10px; padding: 12px 14px;">
-        <div style="font-size: 12px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">
-          Resumo Final & Perspectiva Positiva
-        </div>
-        <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.45; margin-bottom: 8px;">
-          As eleições têm data final marcada. As empresas concorrentes que entram em desespero, pausam anúncios ou queimam margem sofrem as consequências. A <strong>Solution Place</strong> continuará operando com serenidade, excelência técnica e foco no cliente de alto luxo. Assim que o leilão político se encerrar, nossas campanhas estarão otimizadas para colher um salto massivo de resultados.
+        <p style="font-size: 10px; color: #94a3b8; line-height: 1.5; margin: 0;">
+          A elevação do Custo Por Resultado (CPR) e a consequente diminuição temporária no volume de contatos são decorrências diretas de um ciclo de mercado externo e periódico. Assim que o período eleitoral se encerra e o fluxo de verba das campanhas políticas deixa de sobrecarregar as plataformas, a dinâmica de leilão retoma seus padrões naturais de equilíbrio e custo.
         </p>
-        <div style="display: flex; gap: 14px; font-size: 8.5px; color: #fca5a5; font-weight: 600; flex-wrap: wrap;">
-          <div>◆ Monitoramento Diário dos Indicadores</div>
-          <div>◆ Proteção de Custo por Resultado</div>
-          <div>◆ Atendimento Boutique de Excelência</div>
-          <div>◆ Parceria Interna Alinhada</div>
-        </div>
-      </div>
-
-      <div style="background: rgba(16, 19, 29, 0.95); border: 1px solid rgba(185, 28, 28, 0.4); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <div style="font-size: 10.5px; font-weight: 700; color: #f8fafc;">Equipe de Tráfego & Inteligência de Performance</div>
-          <div style="font-size: 8.5px; color: #94a3b8;">Solution Place · Blindagem</div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-size: 10px; font-weight: 700; color: #ef4444;">Rio de Janeiro / Brasil</div>
-          <div style="font-size: 8.5px; color: #64748b;">Canal Interno de Performance</div>
-        </div>
       </div>
     </div>
 
     <div class="page-footer">
       <div class="brand-signature">Solution Place • Blindagem</div>
-      <div>Página 05 de 05</div>
+      <div>Página 03 de 03</div>
     </div>
   </div>
 
@@ -1029,7 +802,7 @@ const htmlContent = `<!DOCTYPE html>
 `;
 
 async function generatePDF() {
-  console.log("Gerando PDF oficial com a logo LogoSolution.jpeg e paleta vermelha e titânio...");
+  console.log("Gerando PDF estritamente informativo (sem soluções) para a Solution Place...");
   const browser = await chromium.launch({ channel: "msedge", headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -1055,7 +828,7 @@ async function generatePDF() {
 
   fs.copyFileSync(outputPathFolder, outputPathRoot);
 
-  console.log(`PDF oficial Solution gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
+  console.log(`PDF informativo Solution gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
   await browser.close();
 }
 
