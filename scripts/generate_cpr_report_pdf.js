@@ -572,7 +572,7 @@ const htmlContent = `<!DOCTYPE html>
           </div>
           <div class="cover-brand-titles">
             <div class="cover-brand-name">SOLUTION<span>PLACE</span></div>
-            <div class="cover-brand-sub">BLINDAGEM BOUTIQUE • SEGURANÇA & ALTO PADRÃO</div>
+            <div class="cover-brand-sub">BLINDAGEM</div>
           </div>
         </div>
         <div class="cover-badge">
@@ -631,7 +631,7 @@ const htmlContent = `<!DOCTYPE html>
       <div class="header-logo-wrap">
         <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
         <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
-        <span class="brand-header-tag">Blindagem Boutique</span>
+        <span class="brand-header-tag">Blindagem</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>01: O Cenário Geral</span></div>
     </div>
@@ -711,7 +711,7 @@ const htmlContent = `<!DOCTYPE html>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
+      <div class="brand-signature">Solution Place • Blindagem</div>
       <div>Página 02 de 05</div>
     </div>
   </div>
@@ -730,7 +730,7 @@ const htmlContent = `<!DOCTYPE html>
       <div class="header-logo-wrap">
         <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
         <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
-        <span class="brand-header-tag">Blindagem Boutique</span>
+        <span class="brand-header-tag">Blindagem</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>02: A Matemática dos Dados</span></div>
     </div>
@@ -824,7 +824,7 @@ const htmlContent = `<!DOCTYPE html>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
+      <div class="brand-signature">Solution Place • Blindagem</div>
       <div>Página 03 de 05</div>
     </div>
   </div>
@@ -843,7 +843,7 @@ const htmlContent = `<!DOCTYPE html>
       <div class="header-logo-wrap">
         <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
         <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
-        <span class="brand-header-tag">Blindagem Boutique</span>
+        <span class="brand-header-tag">Blindagem</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>03: Nossa Atuação Técnica</span></div>
     </div>
@@ -926,7 +926,7 @@ const htmlContent = `<!DOCTYPE html>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
+      <div class="brand-signature">Solution Place • Blindagem</div>
       <div>Página 04 de 05</div>
     </div>
   </div>
@@ -945,7 +945,7 @@ const htmlContent = `<!DOCTYPE html>
       <div class="header-logo-wrap">
         <img class="header-logo-img" src="${logoSolutionBase64}" alt="Solution Place">
         <span class="brand-header-text">SOLUTION<span>PLACE</span></span>
-        <span class="brand-header-tag">Blindagem Boutique</span>
+        <span class="brand-header-tag">Blindagem</span>
       </div>
       <div class="header-meta">Alinhamento Interno • <span>04: Ações em Conjunto</span></div>
     </div>
@@ -1009,7 +1009,7 @@ const htmlContent = `<!DOCTYPE html>
       <div style="background: rgba(16, 19, 29, 0.95); border: 1px solid rgba(185, 28, 28, 0.4); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
         <div>
           <div style="font-size: 10.5px; font-weight: 700; color: #f8fafc;">Equipe de Tráfego & Inteligência de Performance</div>
-          <div style="font-size: 8.5px; color: #94a3b8;">Solution Place · Blindagem Automotiva Boutique</div>
+          <div style="font-size: 8.5px; color: #94a3b8;">Solution Place · Blindagem</div>
         </div>
         <div style="text-align: right;">
           <div style="font-size: 10px; font-weight: 700; color: #ef4444;">Rio de Janeiro / Brasil</div>
@@ -1019,7 +1019,7 @@ const htmlContent = `<!DOCTYPE html>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
+      <div class="brand-signature">Solution Place • Blindagem</div>
       <div>Página 05 de 05</div>
     </div>
   </div>
