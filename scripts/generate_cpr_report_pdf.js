@@ -22,13 +22,12 @@ const imgFlavio = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.25.jpeg");
 const imgLula = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.24 (2).jpeg");
 const imgCury = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.24 (1).jpeg");
 const imgRenan = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.25 (1).jpeg");
-const imgMetaStats = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.49.jpeg");
 
 const htmlContent = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>KrM Corp - Relatório Estratégico: Elevação do CPR no Período Eleitoral</title>
+  <title>KrM Corp - Relatório Explicativo: Redução de Leads e Elevação de Custos no Período Eleitoral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -48,8 +47,8 @@ const htmlContent = `<!DOCTYPE html>
       font-family: 'Inter', system-ui, sans-serif;
       background-color: #080b11;
       color: #e6edf3;
-      line-height: 1.45;
-      font-size: 12.5px;
+      line-height: 1.48;
+      font-size: 12px;
     }
 
     .page {
@@ -66,7 +65,7 @@ const htmlContent = `<!DOCTYPE html>
       justify-content: space-between;
     }
 
-    /* Borda sutil de luxo */
+    /* Moldura clássica KrM */
     .page-border-frame {
       position: absolute;
       top: 8mm;
@@ -97,7 +96,7 @@ const htmlContent = `<!DOCTYPE html>
       -webkit-text-fill-color: transparent;
     }
 
-    /* Headers e Rodapés de Páginas Internas */
+    /* Headers e Rodapés */
     .page-header {
       display: flex;
       justify-content: space-between;
@@ -160,7 +159,7 @@ const htmlContent = `<!DOCTYPE html>
       flex-direction: column;
     }
 
-    /* Títulos e Tipografia */
+    /* Tipografia */
     h1, h2, h3 {
       font-family: 'Playfair Display', Georgia, serif;
     }
@@ -191,10 +190,10 @@ const htmlContent = `<!DOCTYPE html>
       font-size: 10.5px;
       color: #94a3b8;
       margin-bottom: 12px;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
-    /* Cards e Containers */
+    /* Cards */
     .card {
       background: rgba(18, 24, 38, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -212,7 +211,7 @@ const htmlContent = `<!DOCTYPE html>
       position: absolute;
       top: 0;
       left: 0;
-      width: 3px;
+      width: 3.5px;
       height: 100%;
       background: #d4a34b;
       border-top-left-radius: 6px;
@@ -236,7 +235,7 @@ const htmlContent = `<!DOCTYPE html>
       gap: 8px;
     }
 
-    /* CAPA (Page 1) */
+    /* Capa */
     .cover-body {
       display: flex;
       flex-direction: column;
@@ -304,7 +303,7 @@ const htmlContent = `<!DOCTYPE html>
     .cover-center {
       margin-top: auto;
       margin-bottom: auto;
-      padding: 18px 0;
+      padding: 16px 0;
     }
     .cover-tagline {
       display: inline-block;
@@ -318,17 +317,17 @@ const htmlContent = `<!DOCTYPE html>
       padding-bottom: 4px;
     }
     .cover-main-title {
-      font-size: 36px;
-      line-height: 1.15;
+      font-size: 34px;
+      line-height: 1.18;
       font-weight: 700;
       margin-bottom: 16px;
     }
     .cover-description {
-      font-size: 13.5px;
+      font-size: 13px;
       line-height: 1.6;
-      color: #94a3b8;
+      color: #cbd5e1;
       max-width: 530px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .stat-pill {
@@ -341,7 +340,7 @@ const htmlContent = `<!DOCTYPE html>
       border-radius: 8px;
     }
     .stat-pill .num {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       color: #ef4444;
       font-family: 'Inter', sans-serif;
@@ -356,7 +355,7 @@ const htmlContent = `<!DOCTYPE html>
 
     .cover-bottom {
       border-top: 1px solid rgba(212, 163, 75, 0.25);
-      padding-top: 16px;
+      padding-top: 14px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -369,7 +368,7 @@ const htmlContent = `<!DOCTYPE html>
       margin-bottom: 2px;
     }
     .meta-col .value {
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
       color: #cbd5e1;
     }
@@ -379,7 +378,7 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(15, 21, 33, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 6px;
-      padding: 10px;
+      padding: 9px;
       text-align: center;
     }
     .metric-box.danger {
@@ -391,7 +390,7 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(212, 163, 75, 0.06);
     }
     .metric-val {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 3px;
@@ -400,7 +399,7 @@ const htmlContent = `<!DOCTYPE html>
     .metric-val.gold { color: #d4a34b; }
     .metric-val.green { color: #34d399; }
     .metric-label {
-      font-size: 8.5px;
+      font-size: 8px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #94a3b8;
@@ -411,7 +410,7 @@ const htmlContent = `<!DOCTYPE html>
       width: 100%;
       border-collapse: collapse;
       margin: 6px 0;
-      font-size: 10px;
+      font-size: 9.5px;
     }
     .exec-table th {
       background: rgba(26, 35, 54, 0.9);
@@ -437,7 +436,7 @@ const htmlContent = `<!DOCTYPE html>
       gap: 8px;
       margin-bottom: 7px;
       font-size: 10.5px;
-      line-height: 1.4;
+      line-height: 1.42;
       color: #cbd5e1;
     }
     .step-badge {
@@ -464,15 +463,14 @@ const htmlContent = `<!DOCTYPE html>
       align-items: center;
       text-align: center;
       position: relative;
-      overflow: hidden;
     }
     .player-avatar-wrap {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       overflow: hidden;
       border: 2px solid #d4a34b;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       background: #111;
     }
     .player-avatar-wrap img {
@@ -481,13 +479,13 @@ const htmlContent = `<!DOCTYPE html>
       object-fit: cover;
     }
     .player-name {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 700;
       color: #f1f5f9;
       margin-bottom: 2px;
     }
     .player-base {
-      font-size: 8px;
+      font-size: 7.5px;
       color: #94a3b8;
       margin-bottom: 5px;
     }
@@ -496,17 +494,39 @@ const htmlContent = `<!DOCTYPE html>
       border: 1px solid rgba(239, 68, 68, 0.4);
       color: #f87171;
       font-weight: 700;
-      font-size: 9.5px;
-      padding: 2px 6px;
+      font-size: 9px;
+      padding: 2px 4px;
       border-radius: 4px;
       width: 100%;
+    }
+
+    .didactic-box {
+      background: rgba(212, 163, 75, 0.08);
+      border: 1px dashed rgba(212, 163, 75, 0.4);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin: 8px 0;
+    }
+    .didactic-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #e5c07b;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .didactic-text {
+      font-size: 10px;
+      color: #cbd5e1;
+      line-height: 1.45;
     }
   </style>
 </head>
 <body>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 1: CAPA EXECUTIVA DE LUXO -->
+  <!-- PÁGINA 1: CAPA EXECUTIVA -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -525,52 +545,52 @@ const htmlContent = `<!DOCTYPE html>
           </div>
         </div>
         <div class="cover-badge">
-          <div class="badge-title">KrM Intelligence Briefing</div>
-          <div class="badge-sub">Estratégia, Dados & Gestão de Risco Digital</div>
+          <div class="badge-title">Guia Explicativo ao Cliente</div>
+          <div class="badge-sub">Transparência & Gestão de Performance</div>
         </div>
       </div>
 
       <div class="cover-center">
-        <div class="cover-tagline">Relatório Estratégico Especial • Q3/Q4 2026</div>
+        <div class="cover-tagline">Relatório Especial ao Parceiro • Q3/Q4 2026</div>
         <h1 class="cover-main-title">
-          A ELEVAÇÃO DO <span class="gold-gradient-text">CPR</span><br>
-          NO PERÍODO ELEITORAL
+          POR QUE OS <span class="gold-gradient-text">LEADS REDUZIRAM</span><br>
+          NAS ÚLTIMAS SEMANAS?
         </h1>
         <p class="cover-description">
-          A anatomia da inflação do leilão em tráfego pago (Meta Ads & Google), a drenagem massiva do inventário publicitário por campanhas partidárias e o plano tático da KrM Corp para blindar a rentabilidade da sua operação.
+          Um documento claro, transparente e didático explicando como o <strong>Período Eleitoral</strong> inflaciona o custo dos anúncios digitais no Brasil, por que isso é um fenômeno <strong>temporário de mercado</strong> e quais medidas a KrM Corp já colocou em prática para proteger seu investimento.
         </p>
 
         <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
           <div class="stat-pill">
             <span class="num">+62,3%</span>
-            <span class="label">Pico Médio de Elevação<br>no Custo por Resultado (CPR)</span>
+            <span class="label">Subida no Custo por Resultado<br>Registrada nas Redes no Período</span>
           </div>
-          <div class="stat-pill" style="border-color: rgba(212, 163, 75, 0.4);">
-            <span class="num" style="color: #d4a34b;">R$ 214k+</span>
-            <span class="label">Injeção Diária Amostrada<br>Apenas em 4 Players Políticos</span>
+          <div class="stat-pill" style="border-color: rgba(52, 211, 153, 0.4);">
+            <span class="num" style="color: #34d399;">100%</span>
+            <span class="label">Fenômeno Externo & Passageiro<br>Normalização Pós-Eleição</span>
           </div>
         </div>
       </div>
 
       <div class="cover-bottom">
         <div class="meta-col">
-          <div class="label">Organização Emissora</div>
-          <div class="value">KrM Corp • Inteligência de Tráfego & Ecossistemas</div>
+          <div class="label">Emitido por</div>
+          <div class="value">KrM Corp • Gestão de Tráfego & Ecossistemas</div>
         </div>
         <div class="meta-col">
-          <div class="label">Tema de Análise</div>
-          <div class="value">Leilão Meta/Google • Inflação de CPM • Blindagem de ROI</div>
+          <div class="label">Objetivo do Relatório</div>
+          <div class="value">Esclarecimento Didático sobre Leads e Custos no Período Eleitoral</div>
         </div>
         <div class="meta-col" style="text-align: right;">
-          <div class="label">Classificação & Data</div>
-          <div class="value" style="color: #d4a34b;">Documento Estratégico • Setembro 2026</div>
+          <div class="label">Vigência</div>
+          <div class="value" style="color: #d4a34b;">Setembro a Outubro de 2026</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 2: O DIAGNÓSTICO & A DISPUTA PELA ATENÇÃO -->
+  <!-- PÁGINA 2: O QUE ESTÁ ACONTECENDO? (A ANALOGIA DO LEILÃO) -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -584,115 +604,79 @@ const htmlContent = `<!DOCTYPE html>
         <img src="${logoBase64}" alt="KrM Corp">
         <span class="brand-header-text">KrM <span>CORP</span></span>
       </div>
-      <div class="header-meta">KrM Intelligence • <span>Seção 01: O Diagnóstico</span></div>
+      <div class="header-meta">Explicação ao Cliente • <span>01: O Cenário Geral</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Análise de Cenário Macroeconômico</div>
-      <h2 class="section-title">Por que seu tráfego começou a performar menos?</h2>
+      <div class="section-tag">A Realidade do Mercado</div>
+      <h2 class="section-title">"Se o investimento é o mesmo, por que chegam menos contatos?"</h2>
       <p class="section-subtitle">
-        Uma queda repentina de conversão não é anomalia isolada do seu criativo — é o resultado da maior distorção periódica do mercado de anúncios digitais.
+        A primeira resposta que você precisa ter com total clareza: <strong>não houve falha no seu produto, nem erro de configuração nas suas campanhas.</strong>
       </p>
 
-      <div class="card card-highlight">
-        <div style="font-size: 11.5px; font-weight: 700; color: #d4a34b; margin-bottom: 4px;">
-          "Sentiu uma queda nos resultados do seu Tráfego Pago nas últimas semanas? Calma. Não foi só você."
-        </div>
-        <div style="font-size: 10.5px; color: #cbd5e1; line-height: 1.45;">
-          O período eleitoral altera radicalmente a dinâmica dos algoritmos de anúncios. As redes sociais operam com um <strong>inventário finito de atenção</strong>: o tempo que as pessoas passam rolando o feed não dobra milagrosamente. Contudo, o volume de capital competindo por cada segundo desse mesmo feed dispara exponencialmente.
+      <div class="didactic-box">
+        <div class="didactic-title">💡 A Analogia Simples da "Sala de Leilão e do Espaço Físico":</div>
+        <div class="didactic-text">
+          Imagine que o Instagram e o Facebook são como uma avenida movimentada com um número limitado de outdoors. As pessoas continuam passando por ali o mesmo tempo de sempre. De repente, chegam <strong>dezenas de candidatos políticos com milhões de reais em verba pública</strong> e dizem ao dono dos outdoors: <em>"Não importa o preço, eu pago o dobro do que qualquer empresa pagar para colocar minha foto aqui agora."</em><br>
+          O que acontece com o preço do outdoor para as empresas comuns? <strong>Ele sobe imediatamente para todos.</strong>
         </div>
       </div>
 
-      <h3 style="font-size: 12px; color: #d4a34b; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 8px;">
-        Evidências Reais dos Arquivos: Casos de Disputa por Atenção
+      <div class="card card-highlight">
+        <div style="font-size: 11px; font-weight: 700; color: #d4a34b; margin-bottom: 3px;">
+          Por que a concorrência política é desleal com o comércio e serviços?
+        </div>
+        <div style="font-size: 10px; color: #cbd5e1; line-height: 1.45;">
+          Empresas privadas anunciam buscando ter <strong>lucro</strong>. Elas calculam cada centavo. Já as campanhas políticas <strong>não buscam lucro</strong>: o objetivo delas é unicamente queimar o Fundo Eleitoral antes do dia da votação para conseguir votos a qualquer custo. Elas aceitam pagar qualquer lance no leilão.
+        </div>
+      </div>
+
+      <h3 style="font-size: 11.5px; color: #d4a34b; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 6px;">
+        Exemplos Reais do Volume Diário Despejado nas Redes:
       </h3>
 
-      <!-- Grid com 4 personagens analisados dos arquivos -->
-      <div class="grid-4" style="margin-bottom: 12px;">
-        <!-- Card 1: PL / Flávio Bolsonaro -->
+      <!-- 4 Cards com fotos e valores -->
+      <div class="grid-4" style="margin-bottom: 8px;">
         <div class="player-card">
           <div class="player-avatar-wrap">
             <img src="${imgFlavio}" alt="Flávio Bolsonaro">
           </div>
           <div class="player-name">PL / Flávio B.</div>
           <div class="player-base">11,4M seguidores</div>
-          <div class="player-investment">R$ 142,7 mil/dia</div>
+          <div class="player-investment">~ R$ 142,7 mil / dia</div>
         </div>
 
-        <!-- Card 2: Lula -->
         <div class="player-card">
           <div class="player-avatar-wrap">
             <img src="${imgLula}" alt="Lula">
           </div>
           <div class="player-name">Campanha Lula</div>
           <div class="player-base">14,9M seguidores</div>
-          <div class="player-investment">R$ 61,5 mil/dia</div>
+          <div class="player-investment">~ R$ 61,5 mil / dia</div>
         </div>
 
-        <!-- Card 3: Augusto Cury -->
         <div class="player-card">
           <div class="player-avatar-wrap">
             <img src="${imgCury}" alt="Augusto Cury">
           </div>
           <div class="player-name">Augusto Cury</div>
           <div class="player-base">10,7M seguidores</div>
-          <div class="player-investment" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">R$ 6,4 mil/dia</div>
+          <div class="player-investment" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">~ R$ 6,4 mil / dia</div>
         </div>
 
-        <!-- Card 4: Renan Santos -->
         <div class="player-card">
           <div class="player-avatar-wrap">
             <img src="${imgRenan}" alt="Renan Santos">
           </div>
           <div class="player-name">Renan Santos</div>
           <div class="player-base">2,5M seguidores</div>
-          <div class="player-investment" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">R$ 3,7 mil/dia</div>
+          <div class="player-investment" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">~ R$ 3,7 mil / dia</div>
         </div>
       </div>
 
-      <table class="exec-table">
-        <thead>
-          <tr>
-            <th>Origem do Recurso</th>
-            <th>Objetivo do Anunciante</th>
-            <th>Comportamento no Leilão</th>
-            <th>Impacto nos Negócios Privados</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Fundo Partidário / Eleições</strong></td>
-            <td>Alcance em massa a qualquer custo (votos)</td>
-            <td>Não visa lucro imediato; paga qualquer lance para vencer</td>
-            <td>Expulsa anúncios de menor porte do topo do feed</td>
-          </tr>
-          <tr>
-            <td><strong>Grandes Players de Mídia</strong></td>
-            <td>Captura de engajamento e debate público</td>
-            <td>Segmentações massivas em públicos genéricos (Brasil inteiro)</td>
-            <td>Inflaciona o CPM geral em todos os dados demográficos</td>
-          </tr>
-          <tr>
-            <td><strong>Pequena / Média Empresa</strong></td>
-            <td>Geração de leads com ROI positivo (sobrevivência)</td>
-            <td>Orçamento limitado e sensível a cada real gasto</td>
-            <td>Vê o Custo Por Resultado subir vertiginosamente</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="grid-2" style="margin-top: 8px;">
-        <div class="card" style="margin-bottom: 0;">
-          <div style="font-size: 10.5px; font-weight: 700; color: #e5c07b; margin-bottom: 3px;">A Assimetria de Objetivos</div>
-          <p style="font-size: 9.5px; color: #94a3b8; line-height: 1.4;">
-            Campanhas políticas não têm meta de ROAS (retorno sobre investimento em publicidade). Seu objetivo é queimar a verba antes do dia da eleição. Isso distorce completamente o equilíbrio natural do leilão da Meta e Google.
-          </p>
-        </div>
-        <div class="card" style="margin-bottom: 0;">
-          <div style="font-size: 10.5px; font-weight: 700; color: #e5c07b; margin-bottom: 3px;">A Fadiga Mental do Consumidor</div>
-          <p style="font-size: 9.5px; color: #94a3b8; line-height: 1.4;">
-            Ao ser saturado por propagandas eleitorais agressivas, o usuário desliza o feed mais rápido e rejeita peças patrocinadas, derrubando a taxa de conversão (CTR) e aumentando o custo de engajamento de marcas comerciais.
-          </p>
+      <div class="card" style="margin-bottom: 0;">
+        <div style="font-size: 10px; color: #94a3b8; line-height: 1.4;">
+          <strong style="color: #f1f5f9;">O que esses dados mostram:</strong> Apenas estes quatro exemplos somam mais de <strong style="color: #ef4444;">R$ 214 mil por DIA</strong> sendo injetados nas telas das pessoas. Quando somamos milhares de vereadores, deputados e prefeitos no país todo, o leilão é inundado de dinheiro, empurrando o custo de visualização para cima em todas as cidades.
         </div>
       </div>
     </div>
@@ -704,7 +688,7 @@ const htmlContent = `<!DOCTYPE html>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 3: O IMPACTO FINANCEIRO NAS OPERAÇÕES TRADICIONAIS -->
+  <!-- PÁGINA 3: A MATEMÁTICA SIMPLES QUE EXPLICA A QUEDA -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -718,102 +702,93 @@ const htmlContent = `<!DOCTYPE html>
         <img src="${logoBase64}" alt="KrM Corp">
         <span class="brand-header-text">KrM <span>CORP</span></span>
       </div>
-      <div class="header-meta">KrM Intelligence • <span>Seção 02: O Efeito Cascata</span></div>
+      <div class="header-meta">Explicação ao Cliente • <span>02: A Matemática Simples</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Métricas & Evidências Meta Ads</div>
-      <h2 class="section-title">O Efeito Cascata: Do CPM ao Caixa da Empresa</h2>
+      <div class="section-tag">Entendendo a Mecânica</div>
+      <h2 class="section-title">Como o Leilão Político Vira Menos Mensagens no WhatsApp?</h2>
       <p class="section-subtitle">
-        A correlação matemática entre o leilão saturado e o aumento crítico do CPR registrado nos gerenciadores.
+        Veja o passo a passo de como o encarecimento do espaço publicitário se reflete diretamente no dia a dia da sua empresa.
       </p>
 
-      <div class="grid-3" style="margin-bottom: 12px;">
+      <div class="grid-3" style="margin-bottom: 10px;">
         <div class="metric-box danger">
-          <div class="metric-val red">↑ CPM</div>
-          <div class="metric-label">Custo por Mil Impressões</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 4px;">Paga-se muito mais para simplesmente exibir seu anúncio na tela.</div>
+          <div class="metric-val red">Passo 1</div>
+          <div class="metric-label">O Espaço Encarece</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Custa mais caro para o anúncio simplesmente aparecer na tela do celular.</div>
         </div>
         <div class="metric-box danger">
-          <div class="metric-val red">+62,3%</div>
-          <div class="metric-label">Elevação do CPR / CPL</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 4px;">Pico comprovado nos prints analisados do Gerenciador de Anúncios Meta.</div>
+          <div class="metric-val red">Passo 2</div>
+          <div class="metric-label">Menos Pessoas Alcançadas</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Com o mesmo valor diário, seu anúncio é visto por menos clientes potenciais.</div>
         </div>
         <div class="metric-box danger">
-          <div class="metric-val red">↓ Volume</div>
-          <div class="metric-label">Menor Geração de Contatos</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 4px;">Com o mesmo orçamento, a empresa recebe quase 40% menos oportunidades.</div>
+          <div class="metric-val red">Passo 3</div>
+          <div class="metric-label">Menor Volume de Leads</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Menos pessoas vendo seu anúncio resulta em menos contatos gerados na semana.</div>
         </div>
       </div>
 
       <div class="card card-highlight">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span style="font-size: 10.5px; font-weight: 700; color: #d4a34b; text-transform: uppercase; letter-spacing: 1px;">
-            Simulação de Impacto Financeiro Real (Orçamento Médio de R$ 10.000 / mês)
+          <span style="font-size: 10.5px; font-weight: 700; color: #d4a34b; text-transform: uppercase;">
+            Comparativo Didático: Um Exemplo Prático com R$ 100 por dia
           </span>
-          <span style="font-size: 8.5px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
-            Cenário Inflacionado
+          <span style="font-size: 8px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
+            O Efeito da Disputa Eleitoral
           </span>
         </div>
 
         <table class="exec-table" style="margin: 0;">
           <thead>
             <tr>
-              <th>Métrica Operacional</th>
-              <th>Período Normal (Baseline)</th>
-              <th>Período Eleitoral (Inflacionado)</th>
-              <th>Impacto no Negócio</th>
+              <th>Situação</th>
+              <th>Investimento</th>
+              <th>Quantas Pessoas Viram</th>
+              <th>Custo por Contato</th>
+              <th>Total de Contatos / Leads</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>CPM Médio (Meta Ads)</td>
-              <td>R$ 18,00</td>
-              <td>R$ 29,50</td>
-              <td style="color: #f87171; font-weight: 600;">+ 63,8% no custo de exibição</td>
+              <td><strong>Mês Normal (Sem Eleições)</strong></td>
+              <td>R$ 100,00 / dia</td>
+              <td>~ 6.000 pessoas</td>
+              <td>R$ 10,00</td>
+              <td><strong style="color: #34d399;">10 contatos / dia</strong></td>
             </tr>
             <tr>
-              <td>CPL (Custo por Lead / Mensagem)</td>
-              <td>R$ 12,50</td>
-              <td>R$ 20,30</td>
-              <td style="color: #f87171; font-weight: 600;">+ 62,4% por oportunidade</td>
-            </tr>
-            <tr>
-              <td>Volume Total de Leads Recebidos</td>
-              <td>800 leads</td>
-              <td>492 leads</td>
-              <td style="color: #f87171; font-weight: 600;">- 308 oportunidades (-38,5%)</td>
-            </tr>
-            <tr>
-              <td>CAC Efetivo (Conversão a 5%)</td>
-              <td>R$ 250,00</td>
-              <td>R$ 406,50</td>
-              <td style="color: #f87171; font-weight: 600;">+ 62,6% por cliente fechado</td>
+              <td><strong>Período Eleitoral (Leilão Inflacionado)</strong></td>
+              <td>R$ 100,00 / dia</td>
+              <td>~ 3.600 pessoas (-40%)</td>
+              <td>R$ 16,50 (+65%)</td>
+              <td><strong style="color: #f87171;">6 contatos / dia</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 style="font-size: 12px; color: #f8fafc; margin: 10px 0 6px;">Os 3 Erros Fatais das Empresas Diante Desse Cenário:</h3>
+      <div class="didactic-box" style="margin-top: 8px;">
+        <div class="didactic-title">📱 Outro Fator: A "Atenção Dividida" do Usuário nas Redes</div>
+        <div class="didactic-text">
+          Durante as eleições, o feed das pessoas fica inundado de polêmicas, notícias e debates inflamados. O usuário passa o dedo mais rápido e presta menos atenção em anúncios comerciais em geral. Isso faz com que a taxa de cliques de todas as empresas diminua temporariamente no Brasil.
+        </div>
+      </div>
+
+      <h3 style="font-size: 11.5px; color: #f8fafc; margin: 8px 0 4px;">O que NUNCA Deve Ser Feito Nesse Momento:</h3>
 
       <div class="bullet-point">
-        <div class="step-badge">1</div>
+        <div class="step-badge">✕</div>
         <div>
-          <strong style="color: #f87171;">Pausar todas as campanhas em pânico:</strong> Interromper os anúncios destrói o histórico de aprendizado do Pixel e CAPI da Meta. Quando as eleições terminarem, você terá que reiniciar a fase de aprendizado a um custo triplicado.
+          <strong style="color: #f87171;">Pausar todos os anúncios:</strong> Quando você pausa, o algoritmo do Facebook/Instagram "esquece" a inteligência acumulada sobre quem são seus clientes ideais. Quando você reativar, terá que pagar o dobro para reensinar a plataforma.
         </div>
       </div>
 
       <div class="bullet-point">
-        <div class="step-badge">2</div>
+        <div class="step-badge">✕</div>
         <div>
-          <strong style="color: #f87171;">Injetar mais dinheiro desordenado para forçar o volume:</strong> Aumentar o budget em campanhas que já estão sofrendo no leilão inflacionado apenas queima a reserva financeira da empresa para enriquecer a plataforma de anúncios.
-        </div>
-      </div>
-
-      <div class="bullet-point">
-        <div class="step-badge">3</div>
-        <div>
-          <strong style="color: #f87171;">Monocultura de Canal (Depender 100% de tráfego frio):</strong> Empresas que não possuem CRM ativo, réguas de automação e listas de clientes sofrem risco existencial toda vez que o leilão das redes sociais oscila.
+          <strong style="color: #f87171;">Dobrar o investimento no desespero:</strong> Tentar manter o mesmo volume injetando mais dinheiro às cegas apenas alimenta o leilão caro e encarece sua venda final sem necessidade.
         </div>
       </div>
     </div>
@@ -825,7 +800,7 @@ const htmlContent = `<!DOCTYPE html>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 4: O PLAYBOOK KRMCORP DE RESPOSTA ESTRATÉGICA -->
+  <!-- PÁGINA 4: O QUE A KRM CORP ESTÁ FAZENDO -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -839,82 +814,82 @@ const htmlContent = `<!DOCTYPE html>
         <img src="${logoBase64}" alt="KrM Corp">
         <span class="brand-header-text">KrM <span>CORP</span></span>
       </div>
-      <div class="header-meta">KrM Intelligence • <span>Seção 03: Blindagem de ROI</span></div>
+      <div class="header-meta">Explicação ao Cliente • <span>03: Nossa Atuação</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Playbook KrM Corp</div>
-      <h2 class="section-title">As 4 Alavancas de Sobrevivência & Lucratividade</h2>
+      <div class="section-tag">Ações Práticas de Proteção</div>
+      <h2 class="section-title">O que a KrM Corp está fazendo para proteger seu caixa?</h2>
       <p class="section-subtitle">
-        Enquanto a concorrência reclama da alta do CPR, a KrM Corp implementa a arquitetura de ecossistema para transformar a crise em consolidação de mercado.
+        Não ficamos de braços cruzados esperando a eleição passar. Implementamos 4 manobras técnicas para extrair o máximo resultado possível do seu orçamento.
       </p>
 
       <div class="grid-2" style="gap: 10px; margin-bottom: 10px;">
         
-        <!-- Alavanca 1 -->
+        <!-- Ação 1 -->
         <div class="card" style="border-left: 3px solid #d4a34b;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">01</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Ativação da Base Proprietária (CRM)</strong>
+            <strong style="font-size: 11px; color: #d4a34b;">Travas de Segurança no Orçamento</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            O ativo mais barato no período eleitoral é quem já conhece sua empresa. Implementamos réguas de automação via WhatsApp Business API, resgate de orçamentos parados e fluxos de e-mail marketing personalizados.
+            Configuramos limites máximos de custo por lance. Isso impede que a inteligência da Meta gaste seu dinheiro em dias ou horários de pico onde os políticos estão disputando o leilão a preços absurdos.
           </p>
-          <div style="margin-top: 5px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Custo por mensagem de WhatsApp é centavos contra R$ 20+ por lead frio no leilão.
+          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
+            ✓ Proteção direta para seu dinheiro não ser desperdiçado no pico do leilão.
           </div>
         </div>
 
-        <!-- Alavanca 2 -->
+        <!-- Ação 2 -->
         <div class="card" style="border-left: 3px solid #d4a34b;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">02</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Criativos Anti-Ruído Político</strong>
+            <strong style="font-size: 11px; color: #d4a34b;">Criativos que Fogem do Padrão Político</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Criativos convencionais parecem "horário eleitoral" e são ignorados em fração de segundo. Adotamos criativos nativos humanizados (vídeos em primeira pessoa, provas visuais incontestáveis e histórias reais) que rompem o padrão saturado.
+            Anúncios muito formais ou tipo "santinho" são ignorados porque parecem política. Estamos priorizando formatos mais humanos, conversacionais e diretos que chamam a atenção imediatamente.
           </p>
-          <div style="margin-top: 5px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Recuperação imediata da atenção e elevação de CTR acima da média de mercado.
+          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
+            ✓ Seus anúncios se destacam visualmente no meio do barulho eleitoral.
           </div>
         </div>
 
-        <!-- Alavanca 3 -->
+        <!-- Ação 3 -->
         <div class="card" style="border-left: 3px solid #d4a34b;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">03</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Migração para Tráfego de Intenção</strong>
+            <strong style="font-size: 11px; color: #d4a34b;">Reforço em Tráfego de Busca (Google)</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Campanhas políticas compram feed de interrupção. Elas não disputam termos de busca de fundo de funil no <strong>Google Search</strong> ou Google Meu Negócio. Transferimos parte do orçamento para capturar quem já está procurando pelo seu serviço.
+            Políticos gastam dinheiro aparecendo de surpresa no feed das redes. Eles <strong>não compram</strong> a pesquisa no Google por termos como <em>"comprar [seu produto]"</em> ou <em>"contratar [seu serviço]"</em>. Redirecionamos esforços onde a intenção do cliente é 100% comercial.
           </p>
-          <div style="margin-top: 5px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Captação de clientes prontos para contratar, sem concorrência com partidos.
+          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
+            ✓ Clientes que já estão procurando pelo que você vende continuam chegando.
           </div>
         </div>
 
-        <!-- Alavanca 4 -->
+        <!-- Ação 4 -->
         <div class="card" style="border-left: 3px solid #d4a34b;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">04</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Engenharia de Oferta & Aumento de LTV</strong>
+            <strong style="font-size: 11px; color: #d4a34b;">Ativação de Contatos Anteriores (WhatsApp)</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Se o custo de aquisição (CAC) aumentou 60%, a resposta matemática imediata é vender mais para o mesmo cliente: estruturação de planos anuais, combos com valor agregado e pacotes premium com margem mais gorda.
+            O canal mais barato hoje é quem já falou com sua empresa nos últimos meses. Incentivamos réguas de recontato via WhatsApp e e-mail marketing, onde o custo de comunicação é praticamente zero.
           </p>
-          <div style="margin-top: 5px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Preservação total do lucro líquido da empresa mesmo com menos volume bruto de leads.
+          <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
+            ✓ Geração de vendas imediatas sem depender de pagar caro por novos cliques.
           </div>
         </div>
 
       </div>
 
       <div class="card card-highlight" style="margin-bottom: 0;">
-        <div style="font-size: 10.5px; font-weight: 700; color: #d4a34b; text-transform: uppercase; margin-bottom: 5px;">
-          O Princípio Fundamental da KrM Corp:
+        <div style="font-size: 10.5px; font-weight: 700; color: #d4a34b; text-transform: uppercase; margin-bottom: 4px;">
+          Nossa Postura como seu Parceiro de Ecossistema:
         </div>
-        <div style="font-size: 10.5px; color: #f1f5f9; line-height: 1.45;">
-          <strong>"Não tente ganhar uma disputa de leilão contra verbas públicas bilionárias no feed aberto.</strong> A estratégia vencedora da KrM Corp é mudar o campo de jogo: blindar o relacionamento com quem já é seu, afunilar os anúncios para públicos de altíssima conversão e construir ativos próprios que nenhum algoritmo de rede social pode tomar de você."
+        <div style="font-size: 10px; color: #f1f5f9; line-height: 1.45;">
+          "Transparência é a base do nosso trabalho. Não inventamos desculpas técnicas vazias quando o mercado oscila. Apresentamos os dados reais, explicamos a causa exata e aplicamos as estratégias certas para que o seu negócio passe por esse período com estabilidade e pronto para acelerar forte quando o leilão normalizar."
         </div>
       </div>
     </div>
@@ -926,7 +901,7 @@ const htmlContent = `<!DOCTYPE html>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 5: PLANO DE AÇÃO TÁTICO & CONCLUSÃO EXECUTIVA -->
+  <!-- PÁGINA 5: COMO SUA EQUIPE PODE AJUDAR HOJE -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -940,78 +915,73 @@ const htmlContent = `<!DOCTYPE html>
         <img src="${logoBase64}" alt="KrM Corp">
         <span class="brand-header-text">KrM <span>CORP</span></span>
       </div>
-      <div class="header-meta">KrM Intelligence • <span>Seção 04: Plano de Ação</span></div>
+      <div class="header-meta">Explicação ao Cliente • <span>04: Ações em Conjunto</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Execução Prática</div>
-      <h2 class="section-title">Checklist Operacional & Plano Tático</h2>
+      <div class="section-tag">Orientações Práticas</div>
+      <h2 class="section-title">Como a sua equipe comercial pode nos ajudar agora?</h2>
       <p class="section-subtitle">
-        Medidas que devem ser executadas a partir de agora na gestão de tráfego e no departamento de vendas.
+        Enquanto nossa equipe cuida da parte técnica dos anúncios, três atitudes simples do seu time de atendimento farão toda a diferença nas suas vendas deste mês.
       </p>
 
       <div class="card" style="margin-bottom: 10px;">
         <table class="exec-table" style="margin: 0;">
           <thead>
             <tr>
-              <th style="width: 28%;">Frente Operacional</th>
-              <th style="width: 48%;">Ação Técnica Recomendada</th>
-              <th style="width: 24%;">Prioridade</th>
+              <th style="width: 25%;">Ação da Sua Equipe</th>
+              <th style="width: 50%;">Por que isso é decisivo agora?</th>
+              <th style="width: 25%;">Impacto Esperado</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>1. Gestão de Lances Meta</strong></td>
-              <td>Configurar limites de custo (Cost Cap) para frear compras impulsivas do algoritmo em dias de pico político.</td>
-              <td><span style="color: #ef4444; font-weight: 700;">Alta • Imediato</span></td>
+              <td><strong>1. Atendimento Ultra Rápido (&lt; 5 min)</strong></td>
+              <td>Como o volume de leads é menor e mais caro, cada pessoa que manda mensagem tem que ser atendida na hora. Responder em até 5 minutos triplica a chance de fechar.</td>
+              <td><span style="color: #34d399; font-weight: 700;">Aumento de Conversão</span></td>
             </tr>
             <tr>
-              <td><strong>2. Higienização de Públicos</strong></td>
-              <td>Negativar compradores e contatos já convertidos para não desperdiçar verba repetindo anúncios caros para a mesma pessoa.</td>
-              <td><span style="color: #ef4444; font-weight: 700;">Alta • Imediato</span></td>
+              <td><strong>2. Recontato da Base Antiga</strong></td>
+              <td>Abra o WhatsApp da empresa e mande mensagem para orçamentos que esfriaram nos últimos 60 dias oferecendo uma condição especial para fechar hoje.</td>
+              <td><span style="color: #34d399; font-weight: 700;">Vendas Sem Custo</span></td>
             </tr>
             <tr>
-              <td><strong>3. Disparos no WhatsApp</strong></td>
-              <td>Ativar régua conversacional de resgate com leads que entraram nos últimos 60 dias e não fecharam negócio.</td>
-              <td><span style="color: #f59e0b; font-weight: 700;">Média • Semanal</span></td>
+              <td><strong>3. Pacotes com Mais Valor</strong></td>
+              <td>Ao invés de oferecer apenas o produto/serviço básico, crie combos ou planos com ticket mais alto para compensar o aumento pontual do custo do lead.</td>
+              <td><span style="color: #34d399; font-weight: 700;">Maior Faturamento</span></td>
             </tr>
             <tr>
-              <td><strong>4. Reforço no Google Search</strong></td>
-              <td>Manter 100% de cobertura nos termos de busca institucionais e palavras de serviço de alta intenção comercial.</td>
-              <td><span style="color: #f59e0b; font-weight: 700;">Média • Contínuo</span></td>
-            </tr>
-            <tr>
-              <td><strong>5. Velocidade Comercial</strong></td>
-              <td>Tempo de primeiro contato com o lead em menos de 5 minutos. Cada lead recebido hoje custou 60% a mais.</td>
-              <td><span style="color: #ef4444; font-weight: 700;">Crítica • Diário</span></td>
+              <td><strong>4. Manter a Calma e a Consistência</strong></td>
+              <td>Lembre-se que as eleições têm data certa para acabar. As empresas que mantêm a estrutura ativa colhem um salto enorme de vendas assim que o leilão esvazia.</td>
+              <td><span style="color: #d4a34b; font-weight: 700;">Segurança de Mercado</span></td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="card card-highlight" style="margin-bottom: 10px; padding: 12px 14px;">
-        <div style="font-size: 12.5px; font-weight: 700; color: #f8fafc; margin-bottom: 5px;">
-          Sobre a KrM Corp
+        <div style="font-size: 12px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">
+          KrM Corp: Ao Seu Lado em Todos os Ciclos de Mercado
         </div>
-        <p style="font-size: 10px; color: #cbd5e1; line-height: 1.45; margin-bottom: 8px;">
-          Fundada e liderada por <strong>Carlos Eduardo Ribeiro Menezes</strong>, a <strong>KrM Corp</strong> é uma integradora de soluções digitais de ponta. Desenvolvemos ecossistemas sob medida, CRMs proprietários, infraestruturas em nuvem e estratégias avançadas de inteligência de dados e tráfego pago para proteger e alavancar negócios corporativos.
+        <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.45; margin-bottom: 8px;">
+          Sob a liderança de <strong>Carlos Eduardo Ribeiro Menezes</strong>, a <strong>KrM Corp</strong> cuida de todo o seu ecossistema digital: sites de alta performance, CRMs, integrações de WhatsApp e inteligência de tráfego pago. Nosso compromisso não é apenas colocar anúncios no ar, mas garantir a sustentabilidade e a rentabilidade do seu negócio em qualquer cenário.
         </p>
-        <div style="display: flex; gap: 16px; font-size: 9px; color: #d4a34b; font-weight: 600; flex-wrap: wrap;">
-          <div>◆ Arquitetura de Ecossistemas</div>
-          <div>◆ Inteligência de Tráfego & Dados</div>
-          <div>◆ CRMs & Automações Avançadas</div>
-          <div>◆ Blindagem & Retenção de Lucro</div>
+        <div style="display: flex; gap: 14px; font-size: 8.5px; color: #d4a34b; font-weight: 600; flex-wrap: wrap;">
+          <div>◆ Monitoramento Diário de Custos</div>
+          <div>◆ Blindagem Contra Leilões Inflacionados</div>
+          <div>◆ Ecossistemas e CRMs Sob Medida</div>
+          <div>◆ Parceria Estratégica Transparente</div>
         </div>
       </div>
 
       <div style="background: rgba(15, 21, 33, 0.9); border: 1px solid rgba(212, 163, 75, 0.35); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
         <div>
-          <div style="font-size: 11px; font-weight: 700; color: #f8fafc;">Precisa auditar sua operação e blindar seus resultados?</div>
-          <div style="font-size: 9px; color: #94a3b8;">Entre em contato com o time de engenharia e crescimento da KrM Corp.</div>
+          <div style="font-size: 10.5px; font-weight: 700; color: #f8fafc;">Tem alguma dúvida sobre suas campanhas?</div>
+          <div style="font-size: 8.5px; color: #94a3b8;">Estamos à disposição para alinhar qualquer ajuste com você e seu time.</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 10.5px; font-weight: 700; color: #d4a34b;">KrM Corp • Montes Claros / Brasil</div>
-          <div style="font-size: 9px; color: #64748b;">WhatsApp Oficial: +55 (38) 98845-0377</div>
+          <div style="font-size: 10px; font-weight: 700; color: #d4a34b;">KrM Corp • Montes Claros / MG</div>
+          <div style="font-size: 8.5px; color: #64748b;">WhatsApp Direto: +55 (38) 98845-0377</div>
         </div>
       </div>
     </div>
@@ -1027,7 +997,7 @@ const htmlContent = `<!DOCTYPE html>
 `;
 
 async function generatePDF() {
-  console.log("Iniciando geração do PDF executivo KrM Corp...");
+  console.log("Gerando PDF com linguagem explicativa e didática para o cliente...");
   const browser = await chromium.launch({ channel: "msedge", headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -1053,7 +1023,7 @@ async function generatePDF() {
 
   fs.copyFileSync(outputPathFolder, outputPathRoot);
 
-  console.log(`PDF gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
+  console.log(`PDF didático gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
   await browser.close();
 }
 
