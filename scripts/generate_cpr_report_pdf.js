@@ -3,10 +3,6 @@ import * as fs from "fs";
 import * as path from "path";
 
 const rootDir = process.cwd();
-const logoPath = path.join(rootDir, "public", "LogoKrMCorp.png");
-const logoBase64 = fs.existsSync(logoPath)
-  ? `data:image/png;base64,${fs.readFileSync(logoPath).toString("base64")}`
-  : "";
 
 // Carregar imagens das evidências para base64
 const docsDir = path.join(rootDir, "Documentos", "Elevação do CPR");
@@ -23,11 +19,27 @@ const imgLula = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.24 (2).jpeg")
 const imgCury = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.24 (1).jpeg");
 const imgRenan = getImageBase64("WhatsApp Image 2026-09-15 at 11.50.25 (1).jpeg");
 
+// Ícone vetorial estilizado da Solution (Escudo Boutique com detalhe em ouro lapidado)
+const solutionShieldSvg = `
+<svg width="46" height="46" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M24 4L7 11V23C7 33.5 14.3 43.1 24 46C33.7 43.1 41 33.5 41 23V11L24 4Z" fill="url(#solutionGrad)" stroke="#d4af37" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M24 10L12 15.5V23C12 30.5 17.1 37.5 24 39.8C30.9 37.5 36 30.5 36 23V15.5L24 10Z" fill="#121319" stroke="#f59e0b" stroke-width="1.2"/>
+  <path d="M20 24L23 27L29 20" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="solutionGrad" x1="7" y1="4" x2="41" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1f2330"/>
+      <stop offset="0.5" stop-color="#141722"/>
+      <stop offset="1" stop-color="#0b0d13"/>
+    </linearGradient>
+  </defs>
+</svg>
+`;
+
 const htmlContent = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>KrM Corp - Relatório Explicativo: Redução de Leads e Elevação de Custos no Período Eleitoral</title>
+  <title>Solution - Relatório Interno: Redução de Leads e Elevação de Custos no Período Eleitoral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -45,8 +57,8 @@ const htmlContent = `<!DOCTYPE html>
     }
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background-color: #080b11;
-      color: #e6edf3;
+      background-color: #090a0f;
+      color: #e2e8f0;
       line-height: 1.48;
       font-size: 12px;
     }
@@ -55,7 +67,7 @@ const htmlContent = `<!DOCTYPE html>
       width: 210mm;
       height: 297mm;
       position: relative;
-      background: radial-gradient(circle at 85% 15%, #161e2f 0%, #090c13 55%, #05070a 100%);
+      background: radial-gradient(circle at 85% 15%, #151824 0%, #0c0e15 55%, #07080c 100%);
       padding: 16mm 18mm;
       page-break-after: always;
       page-break-inside: avoid;
@@ -65,14 +77,14 @@ const htmlContent = `<!DOCTYPE html>
       justify-content: space-between;
     }
 
-    /* Moldura clássica KrM */
+    /* Moldura elegante Solution Boutique */
     .page-border-frame {
       position: absolute;
       top: 8mm;
       left: 8mm;
       right: 8mm;
       bottom: 8mm;
-      border: 1px solid rgba(212, 163, 75, 0.22);
+      border: 1px solid rgba(212, 175, 55, 0.22);
       pointer-events: none;
       z-index: 1;
     }
@@ -80,7 +92,7 @@ const htmlContent = `<!DOCTYPE html>
       position: absolute;
       width: 14px;
       height: 14px;
-      border-color: #d4a34b;
+      border-color: #d4af37;
       border-style: solid;
       pointer-events: none;
       z-index: 2;
@@ -91,17 +103,17 @@ const htmlContent = `<!DOCTYPE html>
     .corner-br { bottom: 7mm; right: 7mm; border-width: 0 2.5px 2.5px 0; }
 
     .gold-gradient-text {
-      background: linear-gradient(135deg, #fff3cf 0%, #d4a34b 50%, #9c7322 100%);
+      background: linear-gradient(135deg, #fff7d6 0%, #d4af37 50%, #9c7820 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* Headers e Rodapés */
+    /* Headers e Rodapés Solution */
     .page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(212, 163, 75, 0.28);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
       padding-bottom: 8px;
       margin-bottom: 12px;
       z-index: 2;
@@ -111,19 +123,24 @@ const htmlContent = `<!DOCTYPE html>
       align-items: center;
       gap: 10px;
     }
-    .header-logo-wrap img {
-      height: 28px;
-      object-fit: contain;
-    }
     .brand-header-text {
       font-family: 'Cinzel', serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       color: #ffffff;
     }
     .brand-header-text span {
-      color: #d4a34b;
+      color: #d4af37;
+    }
+    .brand-header-tag {
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      border-left: 1px solid rgba(212, 175, 55, 0.4);
+      padding-left: 8px;
+      margin-left: 4px;
     }
     .header-meta {
       text-align: right;
@@ -133,7 +150,7 @@ const htmlContent = `<!DOCTYPE html>
       color: #94a3b8;
     }
     .header-meta span {
-      color: #d4a34b;
+      color: #d4af37;
       font-weight: 700;
     }
 
@@ -167,8 +184,8 @@ const htmlContent = `<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(212, 163, 75, 0.12);
-      border: 1px solid rgba(212, 163, 75, 0.4);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       padding: 3px 8px;
       border-radius: 4px;
       font-size: 8px;
@@ -195,15 +212,15 @@ const htmlContent = `<!DOCTYPE html>
 
     /* Cards */
     .card {
-      background: rgba(18, 24, 38, 0.7);
+      background: rgba(18, 21, 31, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 6px;
       padding: 10px 12px;
       margin-bottom: 10px;
     }
     .card-highlight {
-      background: linear-gradient(135deg, rgba(26, 35, 54, 0.8) 0%, rgba(16, 21, 33, 0.9) 100%);
-      border: 1px solid rgba(212, 163, 75, 0.3);
+      background: linear-gradient(135deg, rgba(26, 30, 44, 0.85) 0%, rgba(16, 19, 28, 0.95) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.35);
       position: relative;
     }
     .card-highlight::before {
@@ -213,7 +230,7 @@ const htmlContent = `<!DOCTYPE html>
       left: 0;
       width: 3.5px;
       height: 100%;
-      background: #d4a34b;
+      background: #d4af37;
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
     }
@@ -252,12 +269,7 @@ const htmlContent = `<!DOCTYPE html>
     .cover-brand-wrap {
       display: flex;
       align-items: center;
-      gap: 14px;
-    }
-    .cover-logo-img {
-      height: 60px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 12px rgba(212, 163, 75, 0.35));
+      gap: 12px;
     }
     .cover-brand-titles {
       display: flex;
@@ -265,14 +277,14 @@ const htmlContent = `<!DOCTYPE html>
     }
     .cover-brand-name {
       font-family: 'Cinzel', serif;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       color: #ffffff;
       line-height: 1.1;
     }
     .cover-brand-name span {
-      color: #d4a34b;
+      color: #d4af37;
     }
     .cover-brand-sub {
       font-size: 9px;
@@ -282,8 +294,8 @@ const htmlContent = `<!DOCTYPE html>
       margin-top: 3px;
     }
     .cover-badge {
-      background: rgba(212, 163, 75, 0.1);
-      border: 1px solid rgba(212, 163, 75, 0.35);
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.35);
       padding: 8px 16px;
       border-radius: 4px;
       text-align: right;
@@ -291,7 +303,7 @@ const htmlContent = `<!DOCTYPE html>
     .cover-badge .badge-title {
       font-size: 9.5px;
       font-weight: 700;
-      color: #d4a34b;
+      color: #d4af37;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -310,10 +322,10 @@ const htmlContent = `<!DOCTYPE html>
       font-family: 'Cinzel', serif;
       font-size: 11px;
       letter-spacing: 4px;
-      color: #d4a34b;
+      color: #d4af37;
       text-transform: uppercase;
       margin-bottom: 14px;
-      border-bottom: 1px solid rgba(212, 163, 75, 0.4);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
       padding-bottom: 4px;
     }
     .cover-main-title {
@@ -334,8 +346,8 @@ const htmlContent = `<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: rgba(22, 29, 44, 0.85);
-      border: 1px solid rgba(212, 163, 75, 0.3);
+      background: rgba(22, 27, 40, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       padding: 10px 18px;
       border-radius: 8px;
     }
@@ -354,7 +366,7 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     .cover-bottom {
-      border-top: 1px solid rgba(212, 163, 75, 0.25);
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
       padding-top: 14px;
       display: flex;
       justify-content: space-between;
@@ -375,7 +387,7 @@ const htmlContent = `<!DOCTYPE html>
 
     /* Metric Boxes */
     .metric-box {
-      background: rgba(15, 21, 33, 0.8);
+      background: rgba(15, 18, 27, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 6px;
       padding: 9px;
@@ -385,10 +397,6 @@ const htmlContent = `<!DOCTYPE html>
       border-color: rgba(239, 68, 68, 0.35);
       background: rgba(239, 68, 68, 0.06);
     }
-    .metric-box.gold {
-      border-color: rgba(212, 163, 75, 0.35);
-      background: rgba(212, 163, 75, 0.06);
-    }
     .metric-val {
       font-size: 18px;
       font-weight: 700;
@@ -396,8 +404,6 @@ const htmlContent = `<!DOCTYPE html>
       margin-bottom: 3px;
     }
     .metric-val.red { color: #f87171; }
-    .metric-val.gold { color: #d4a34b; }
-    .metric-val.green { color: #34d399; }
     .metric-label {
       font-size: 8px;
       text-transform: uppercase;
@@ -413,14 +419,14 @@ const htmlContent = `<!DOCTYPE html>
       font-size: 9.5px;
     }
     .exec-table th {
-      background: rgba(26, 35, 54, 0.9);
-      color: #d4a34b;
+      background: rgba(24, 29, 43, 0.9);
+      color: #d4af37;
       text-transform: uppercase;
       font-size: 8px;
       letter-spacing: 1px;
       padding: 7px 9px;
       text-align: left;
-      border-bottom: 1px solid rgba(212, 163, 75, 0.3);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     }
     .exec-table td {
       padding: 6px 9px;
@@ -443,8 +449,8 @@ const htmlContent = `<!DOCTYPE html>
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #d4a34b;
-      color: #0b0f19;
+      background: #d4af37;
+      color: #090a0f;
       font-weight: bold;
       font-size: 9.5px;
       display: flex;
@@ -454,7 +460,7 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     .player-card {
-      background: rgba(20, 27, 43, 0.85);
+      background: rgba(20, 24, 36, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 6px;
       padding: 8px;
@@ -469,7 +475,7 @@ const htmlContent = `<!DOCTYPE html>
       height: 44px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid #d4a34b;
+      border: 2px solid #d4af37;
       margin-bottom: 5px;
       background: #111;
     }
@@ -501,8 +507,8 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     .didactic-box {
-      background: rgba(212, 163, 75, 0.08);
-      border: 1px dashed rgba(212, 163, 75, 0.4);
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px dashed rgba(212, 175, 55, 0.4);
       border-radius: 6px;
       padding: 10px 12px;
       margin: 8px 0;
@@ -526,7 +532,7 @@ const htmlContent = `<!DOCTYPE html>
 <body>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 1: CAPA EXECUTIVA -->
+  <!-- PÁGINA 1: CAPA EXECUTIVA (SOLUTION) -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -538,26 +544,26 @@ const htmlContent = `<!DOCTYPE html>
     <div class="cover-body">
       <div class="cover-top">
         <div class="cover-brand-wrap">
-          <img class="cover-logo-img" src="${logoBase64}" alt="KrM Corp">
+          ${solutionShieldSvg}
           <div class="cover-brand-titles">
-            <div class="cover-brand-name">KrM <span>CORP</span></div>
-            <div class="cover-brand-sub">Tecnologia, Dados & Ecossistemas Digitais</div>
+            <div class="cover-brand-name">SOLUTION <span>PLACE</span></div>
+            <div class="cover-brand-sub">Blindagem Boutique • Excelência & Segurança</div>
           </div>
         </div>
         <div class="cover-badge">
-          <div class="badge-title">Guia Explicativo ao Cliente</div>
-          <div class="badge-sub">Transparência & Gestão de Performance</div>
+          <div class="badge-title">Comunicado Interno Solution</div>
+          <div class="badge-sub">Inteligência de Tráfego & Performance</div>
         </div>
       </div>
 
       <div class="cover-center">
-        <div class="cover-tagline">Relatório Especial ao Parceiro • Q3/Q4 2026</div>
+        <div class="cover-tagline">Alinhamento Interno Especial • Q3/Q4 2026</div>
         <h1 class="cover-main-title">
           POR QUE OS <span class="gold-gradient-text">LEADS REDUZIRAM</span><br>
           NAS ÚLTIMAS SEMANAS?
         </h1>
         <p class="cover-description">
-          Um documento claro, transparente e didático explicando como o <strong>Período Eleitoral</strong> inflaciona o custo dos anúncios digitais no Brasil, por que isso é um fenômeno <strong>temporário de mercado</strong> e quais medidas a KrM Corp já colocou em prática para proteger seu investimento.
+          Um esclarecimento direto e transparente da nossa equipe interna de tráfego explicando como o <strong>Período Eleitoral</strong> inflaciona o leilão de anúncios no Brasil, por que isso é um fenômeno <strong>100% externo e temporário</strong>, e as medidas técnicas que a Solution já aplicou para proteger o investimento e o caixa da nossa operação.
         </p>
 
         <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
@@ -567,30 +573,30 @@ const htmlContent = `<!DOCTYPE html>
           </div>
           <div class="stat-pill" style="border-color: rgba(52, 211, 153, 0.4);">
             <span class="num" style="color: #34d399;">100%</span>
-            <span class="label">Fenômeno Externo & Passageiro<br>Normalização Pós-Eleição</span>
+            <span class="label">Cenário Cíclico & Passageiro<br>Normalização Pós-Eleição</span>
           </div>
         </div>
       </div>
 
       <div class="cover-bottom">
         <div class="meta-col">
-          <div class="label">Emitido por</div>
-          <div class="value">KrM Corp • Gestão de Tráfego & Ecossistemas</div>
+          <div class="label">Emissor Interno</div>
+          <div class="value">Equipe de Tráfego & Inteligência • Solution</div>
         </div>
         <div class="meta-col">
-          <div class="label">Objetivo do Relatório</div>
-          <div class="value">Esclarecimento Didático sobre Leads e Custos no Período Eleitoral</div>
+          <div class="label">Destinatários</div>
+          <div class="value">Diretoria, Gerência Comercial & Consultores Solution</div>
         </div>
         <div class="meta-col" style="text-align: right;">
           <div class="label">Vigência</div>
-          <div class="value" style="color: #d4a34b;">Setembro a Outubro de 2026</div>
+          <div class="value" style="color: #d4af37;">Período Eleitoral 2026</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 2: O QUE ESTÁ ACONTECENDO? (A ANALOGIA DO LEILÃO) -->
+  <!-- PÁGINA 2: O CENÁRIO REAL & A DISPUTA PELA ATENÇÃO -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -601,38 +607,39 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        <img src="${logoBase64}" alt="KrM Corp">
-        <span class="brand-header-text">KrM <span>CORP</span></span>
+        ${solutionShieldSvg}
+        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
-      <div class="header-meta">Explicação ao Cliente • <span>01: O Cenário Geral</span></div>
+      <div class="header-meta">Alinhamento Interno • <span>01: O Cenário Geral</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">A Realidade do Mercado</div>
-      <h2 class="section-title">"Se o investimento é o mesmo, por que chegam menos contatos?"</h2>
+      <div class="section-tag">Diagnóstico Interno da Operação</div>
+      <h2 class="section-title">"Se nosso produto é impecável, por que chegam menos mensagens?"</h2>
       <p class="section-subtitle">
-        A primeira resposta que você precisa ter com total clareza: <strong>não houve falha no seu produto, nem erro de configuração nas suas campanhas.</strong>
+        Como membro interno da equipe, quero começar tranquilizando todos: <strong>não há falha no posicionamento da Solution, nem erro técnico nas nossas contas de anúncio.</strong>
       </p>
 
       <div class="didactic-box">
-        <div class="didactic-title">💡 A Analogia Simples da "Sala de Leilão e do Espaço Físico":</div>
+        <div class="didactic-title">💡 A Analogia dos Outdoors na Avenida:</div>
         <div class="didactic-text">
-          Imagine que o Instagram e o Facebook são como uma avenida movimentada com um número limitado de outdoors. As pessoas continuam passando por ali o mesmo tempo de sempre. De repente, chegam <strong>dezenas de candidatos políticos com milhões de reais em verba pública</strong> e dizem ao dono dos outdoors: <em>"Não importa o preço, eu pago o dobro do que qualquer empresa pagar para colocar minha foto aqui agora."</em><br>
-          O que acontece com o preço do outdoor para as empresas comuns? <strong>Ele sobe imediatamente para todos.</strong>
+          Imagine que o Instagram e o Facebook são como uma avenida nobre por onde passam motoristas e potenciais compradores de veículos premium. A quantidade de pessoas passando ali por dia é fixa. De repente, chegam <strong>campanhas políticas com milhões de reais em verba pública</strong> e dizem ao dono dos outdoors: <em>"Eu cubro qualquer valor que qualquer empresa pagar para estampar meu candidato aqui agora."</em><br>
+          O que acontece com o preço do espaço para todas as empresas privadas? <strong>O valor dispara imediatamente.</strong>
         </div>
       </div>
 
       <div class="card card-highlight">
-        <div style="font-size: 11px; font-weight: 700; color: #d4a34b; margin-bottom: 3px;">
-          Por que a concorrência política é desleal com o comércio e serviços?
+        <div style="font-size: 11px; font-weight: 700; color: #d4af37; margin-bottom: 3px;">
+          Por que a concorrência política distorce o leilão contra nós?
         </div>
         <div style="font-size: 10px; color: #cbd5e1; line-height: 1.45;">
-          Empresas privadas anunciam buscando ter <strong>lucro</strong>. Elas calculam cada centavo. Já as campanhas políticas <strong>não buscam lucro</strong>: o objetivo delas é unicamente queimar o Fundo Eleitoral antes do dia da votação para conseguir votos a qualquer custo. Elas aceitam pagar qualquer lance no leilão.
+          Nós, na Solution, anunciamos com responsabilidade comercial buscando retorno e sustentabilidade. Já os comitês políticos <strong>não buscam lucro</strong>: o único objetivo deles é queimar o Fundo Eleitoral antes do dia da eleição para conquistar votos. Eles aceitam pagar qualquer lance no leilão da Meta, expulsando ou encarecendo os anúncios de quem busca vendas reais.
         </div>
       </div>
 
-      <h3 style="font-size: 11.5px; color: #d4a34b; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 6px;">
-        Exemplos Reais do Volume Diário Despejado nas Redes:
+      <h3 style="font-size: 11.5px; color: #d4af37; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 6px;">
+        Evidências Auditadas do Volume Despejado no Leilão:
       </h3>
 
       <!-- 4 Cards com fotos e valores -->
@@ -676,19 +683,19 @@ const htmlContent = `<!DOCTYPE html>
 
       <div class="card" style="margin-bottom: 0;">
         <div style="font-size: 10px; color: #94a3b8; line-height: 1.4;">
-          <strong style="color: #f1f5f9;">O que esses dados mostram:</strong> Apenas estes quatro exemplos somam mais de <strong style="color: #ef4444;">R$ 214 mil por DIA</strong> sendo injetados nas telas das pessoas. Quando somamos milhares de vereadores, deputados e prefeitos no país todo, o leilão é inundado de dinheiro, empurrando o custo de visualização para cima em todas as cidades.
+          <strong style="color: #f1f5f9;">O impacto direto no nosso público:</strong> Somente esses 4 exemplos somam mais de <strong style="color: #ef4444;">R$ 214 mil por DIA</strong> disputando as telas de celulares. Como os candidatos segmentam pessoas de maior renda e influência, o leilão sobre a nossa audiência qualificada sofre um impacto desproporcional.
         </div>
       </div>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">KrM Corp • Inteligência de Tráfego & Ecossistemas</div>
+      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
       <div>Página 02 de 05</div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 3: A MATEMÁTICA SIMPLES QUE EXPLICA A QUEDA -->
+  <!-- PÁGINA 3: A MATEMÁTICA SIMPLES DA QUEDA DE LEADS -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -699,108 +706,109 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        <img src="${logoBase64}" alt="KrM Corp">
-        <span class="brand-header-text">KrM <span>CORP</span></span>
+        ${solutionShieldSvg}
+        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
-      <div class="header-meta">Explicação ao Cliente • <span>02: A Matemática Simples</span></div>
+      <div class="header-meta">Alinhamento Interno • <span>02: A Matemática dos Dados</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Entendendo a Mecânica</div>
-      <h2 class="section-title">Como o Leilão Político Vira Menos Mensagens no WhatsApp?</h2>
+      <div class="section-tag">Entendendo a Dinâmica</div>
+      <h2 class="section-title">Como o Leilão Político Vira Menos Mensagens no WhatsApp da Solution?</h2>
       <p class="section-subtitle">
-        Veja o passo a passo de como o encarecimento do espaço publicitário se reflete diretamente no dia a dia da sua empresa.
+        Veja a mecânica exata de como a inflação do leilão impacta o volume final de contatos recebidos pelos nossos consultores.
       </p>
 
       <div class="grid-3" style="margin-bottom: 10px;">
         <div class="metric-box danger">
           <div class="metric-val red">Passo 1</div>
           <div class="metric-label">O Espaço Encarece</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Custa mais caro para o anúncio simplesmente aparecer na tela do celular.</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Custa mais caro para o anúncio da Solution simplesmente aparecer na tela.</div>
         </div>
         <div class="metric-box danger">
           <div class="metric-val red">Passo 2</div>
           <div class="metric-label">Menos Pessoas Alcançadas</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Com o mesmo valor diário, seu anúncio é visto por menos clientes potenciais.</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Com o mesmo orçamento, nosso anúncio é visto por um número menor de proprietários.</div>
         </div>
         <div class="metric-box danger">
           <div class="metric-val red">Passo 3</div>
           <div class="metric-label">Menor Volume de Leads</div>
-          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Menos pessoas vendo seu anúncio resulta em menos contatos gerados na semana.</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; margin-top: 3px;">Menos visualizações na semana resultam diretamente em menos cotações iniciadas.</div>
         </div>
       </div>
 
       <div class="card card-highlight">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span style="font-size: 10.5px; font-weight: 700; color: #d4a34b; text-transform: uppercase;">
-            Comparativo Didático: Um Exemplo Prático com R$ 100 por dia
+          <span style="font-size: 10.5px; font-weight: 700; color: #d4af37; text-transform: uppercase;">
+            Simulação Interna: Comparativo Didático de Desempenho
           </span>
           <span style="font-size: 8px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 3px; font-weight: 600;">
-            O Efeito da Disputa Eleitoral
+            Impacto do Período Eleitoral
           </span>
         </div>
 
         <table class="exec-table" style="margin: 0;">
           <thead>
             <tr>
-              <th>Situação</th>
-              <th>Investimento</th>
-              <th>Quantas Pessoas Viram</th>
-              <th>Custo por Contato</th>
-              <th>Total de Contatos / Leads</th>
+              <th>Cenário Operacional</th>
+              <th>Investimento Diário</th>
+              <th>Alcance de Pessoas</th>
+              <th>Custo por Lead (CPL)</th>
+              <th>Contatos Gerados / Dia</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Mês Normal (Sem Eleições)</strong></td>
-              <td>R$ 100,00 / dia</td>
-              <td>~ 6.000 pessoas</td>
-              <td>R$ 10,00</td>
-              <td><strong style="color: #34d399;">10 contatos / dia</strong></td>
+              <td><strong>Período Regular (Sem Eleições)</strong></td>
+              <td>R$ 150,00 / dia</td>
+              <td>~ 8.500 pessoas</td>
+              <td>R$ 25,00</td>
+              <td><strong style="color: #34d399;">6 a 7 cotações / dia</strong></td>
             </tr>
             <tr>
               <td><strong>Período Eleitoral (Leilão Inflacionado)</strong></td>
-              <td>R$ 100,00 / dia</td>
-              <td>~ 3.600 pessoas (-40%)</td>
-              <td>R$ 16,50 (+65%)</td>
-              <td><strong style="color: #f87171;">6 contatos / dia</strong></td>
+              <td>R$ 150,00 / dia</td>
+              <td>~ 5.100 pessoas (-40%)</td>
+              <td>R$ 41,00 (+64%)</td>
+              <td><strong style="color: #f87171;">3 a 4 cotações / dia</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="didactic-box" style="margin-top: 8px;">
-        <div class="didactic-title">📱 Outro Fator: A "Atenção Dividida" do Usuário nas Redes</div>
+        <div class="didactic-title">📱 Atenção Dividida do Cliente Premium</div>
         <div class="didactic-text">
-          Durante as eleições, o feed das pessoas fica inundado de polêmicas, notícias e debates inflamados. O usuário passa o dedo mais rápido e presta menos atenção em anúncios comerciais em geral. Isso faz com que a taxa de cliques de todas as empresas diminua temporariamente no Brasil.
+          O cliente de blindagem boutique também é bombardeado por notícias políticas e debates. Ele desliza o feed mais rapidamente e responde com menor frequência a estímulos comerciais. Isso derruba a taxa de cliques momentaneamente em todo o mercado.
         </div>
       </div>
 
-      <h3 style="font-size: 11.5px; color: #f8fafc; margin: 8px 0 4px;">O que NUNCA Deve Ser Feito Nesse Momento:</h3>
+      <h3 style="font-size: 11.5px; color: #f8fafc; margin: 8px 0 4px;">O que a Nossa Equipe NÃO Irá Fazer:</h3>
 
       <div class="bullet-point">
         <div class="step-badge">✕</div>
         <div>
-          <strong style="color: #f87171;">Pausar todos os anúncios:</strong> Quando você pausa, o algoritmo do Facebook/Instagram "esquece" a inteligência acumulada sobre quem são seus clientes ideais. Quando você reativar, terá que pagar o dobro para reensinar a plataforma.
+          <strong style="color: #f87171;">Jamais pausar as campanhas da Solution:</strong> Interromper os anúncios destrói o histórico de inteligência do pixel. Quando a eleição terminar, teríamos que recomeçar do zero pagando taxas de aprendizado altíssimas.
         </div>
       </div>
 
       <div class="bullet-point">
         <div class="step-badge">✕</div>
         <div>
-          <strong style="color: #f87171;">Dobrar o investimento no desespero:</strong> Tentar manter o mesmo volume injetando mais dinheiro às cegas apenas alimenta o leilão caro e encarece sua venda final sem necessidade.
+          <strong style="color: #f87171;">Não queimar verba extra no desespero:</strong> Aumentar orçamento de forma desordenada apenas jogaria dinheiro na mão da Meta a custos inflacionados.
         </div>
       </div>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">KrM Corp • Inteligência de Tráfego & Ecossistemas</div>
+      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
       <div>Página 03 de 05</div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 4: O QUE A KRM CORP ESTÁ FAZENDO -->
+  <!-- PÁGINA 4: O QUE NÓS DA SOLUTION ESTAMOS EXECUTANDO -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -811,97 +819,98 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        <img src="${logoBase64}" alt="KrM Corp">
-        <span class="brand-header-text">KrM <span>CORP</span></span>
+        ${solutionShieldSvg}
+        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
-      <div class="header-meta">Explicação ao Cliente • <span>03: Nossa Atuação</span></div>
+      <div class="header-meta">Alinhamento Interno • <span>03: Nossa Atuação Técnica</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Ações Práticas de Proteção</div>
-      <h2 class="section-title">O que a KrM Corp está fazendo para proteger seu caixa?</h2>
+      <div class="section-tag">Manobras de Blindagem Operacional</div>
+      <h2 class="section-title">O que nós da equipe de tráfego já implementamos?</h2>
       <p class="section-subtitle">
-        Não ficamos de braços cruzados esperando a eleição passar. Implementamos 4 manobras técnicas para extrair o máximo resultado possível do seu orçamento.
+        Estamos agindo proativamente com 4 medidas técnicas para manter a eficiência da Solution mesmo com o leilão pressionado.
       </p>
 
       <div class="grid-2" style="gap: 10px; margin-bottom: 10px;">
         
         <!-- Ação 1 -->
-        <div class="card" style="border-left: 3px solid #d4a34b;">
+        <div class="card" style="border-left: 3px solid #d4af37;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">01</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Travas de Segurança no Orçamento</strong>
+            <strong style="font-size: 11px; color: #d4af37;">Travas de Segurança de Lance (Bid Cap)</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Configuramos limites máximos de custo por lance. Isso impede que a inteligência da Meta gaste seu dinheiro em dias ou horários de pico onde os políticos estão disputando o leilão a preços absurdos.
+            Limitamos o valor máximo que a Meta pode cobrar por resultado. Se em determinado dia os candidatos inundarem a rede com lances astronômicos, o algoritmo freia a compra e não queima nosso orçamento a preços abusivos.
           </p>
           <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Proteção direta para seu dinheiro não ser desperdiçado no pico do leilão.
+            ✓ Blindagem direta do caixa da Solution contra leilões superfaturados.
           </div>
         </div>
 
         <!-- Ação 2 -->
-        <div class="card" style="border-left: 3px solid #d4a34b;">
+        <div class="card" style="border-left: 3px solid #d4af37;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">02</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Criativos que Fogem do Padrão Político</strong>
+            <strong style="font-size: 11px; color: #d4af37;">Criativos Boutique Anti-Ruído</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Anúncios muito formais ou tipo "santinho" são ignorados porque parecem política. Estamos priorizando formatos mais humanos, conversacionais e diretos que chamam a atenção imediatamente.
+            Criativos que parecem panfleto ou anúncio genérico são ignorados porque o cérebro do usuário confunde com política. Estamos usando detalhes artesanais da blindagem, vidros balísticos de alta transparência e carros de luxo reais em oficina boutique.
           </p>
           <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Seus anúncios se destacam visualmente no meio do barulho eleitoral.
+            ✓ Rompe a poluição visual e resgata o CTR com público qualificado.
           </div>
         </div>
 
         <!-- Ação 3 -->
-        <div class="card" style="border-left: 3px solid #d4a34b;">
+        <div class="card" style="border-left: 3px solid #d4af37;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">03</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Reforço em Tráfego de Busca (Google)</strong>
+            <strong style="font-size: 11px; color: #d4af37;">Reforço no Google Search (Intenção Pura)</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            Políticos gastam dinheiro aparecendo de surpresa no feed das redes. Eles <strong>não compram</strong> a pesquisa no Google por termos como <em>"comprar [seu produto]"</em> ou <em>"contratar [seu serviço]"</em>. Redirecionamos esforços onde a intenção do cliente é 100% comercial.
+            Políticos não disputam termos de pesquisa no Google como <em>"blindagem de veículos RJ"</em> ou <em>"blindar Defender / Porsche"</em>. Mantemos presença máxima no Google onde o cliente pesquisa ativamente para comprar.
           </p>
           <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Clientes que já estão procurando pelo que você vende continuam chegando.
+            ✓ Captação de cotações com alta urgência e prontidão de fechamento.
           </div>
         </div>
 
         <!-- Ação 4 -->
-        <div class="card" style="border-left: 3px solid #d4a34b;">
+        <div class="card" style="border-left: 3px solid #d4af37;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
             <div class="step-badge">04</div>
-            <strong style="font-size: 11px; color: #d4a34b;">Ativação de Contatos Anteriores (WhatsApp)</strong>
+            <strong style="font-size: 11px; color: #d4af37;">Higienização e Exclusão Cirúrgica</strong>
           </div>
           <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.4;">
-            O canal mais barato hoje é quem já falou com sua empresa nos últimos meses. Incentivamos réguas de recontato via WhatsApp e e-mail marketing, onde o custo de comunicação é praticamente zero.
+            Excluímos das campanhas quem já comprou, quem já é cliente e quem não possui perfil econômico para blindagem boutique, direcionando cada centavo com precisão cirúrgica.
           </p>
           <div style="margin-top: 4px; font-size: 8.5px; color: #34d399; font-weight: 600;">
-            ✓ Geração de vendas imediatas sem depender de pagar caro por novos cliques.
+            ✓ Redução de desperdício e foco total em leads qualificados.
           </div>
         </div>
 
       </div>
 
       <div class="card card-highlight" style="margin-bottom: 0;">
-        <div style="font-size: 10.5px; font-weight: 700; color: #d4a34b; text-transform: uppercase; margin-bottom: 4px;">
-          Nossa Postura como seu Parceiro de Ecossistema:
+        <div style="font-size: 10.5px; font-weight: 700; color: #d4af37; text-transform: uppercase; margin-bottom: 4px;">
+          Nossa Filosofia Interna Solution:
         </div>
         <div style="font-size: 10px; color: #f1f5f9; line-height: 1.45;">
-          "Transparência é a base do nosso trabalho. Não inventamos desculpas técnicas vazias quando o mercado oscila. Apresentamos os dados reais, explicamos a causa exata e aplicamos as estratégias certas para que o seu negócio passe por esse período com estabilidade e pronto para acelerar forte quando o leilão normalizar."
+          "Como equipe interna, nosso compromisso é com a verdade dos dados e a proteção do resultado da Solution. O mercado oscila por fatores externos, mas nossa disciplina técnica e padrão boutique permanecem inabaláveis. Estamos no controle da operação."
         </div>
       </div>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">KrM Corp • Inteligência de Tráfego & Ecossistemas</div>
+      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
       <div>Página 04 de 05</div>
     </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- PÁGINA 5: COMO SUA EQUIPE PODE AJUDAR HOJE -->
+  <!-- PÁGINA 5: PLANO DE AÇÃO EM CONJUNTO COM O COMERCIAL -->
   <!-- ============================================================== -->
   <div class="page">
     <div class="page-border-frame"></div>
@@ -912,48 +921,49 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-header">
       <div class="header-logo-wrap">
-        <img src="${logoBase64}" alt="KrM Corp">
-        <span class="brand-header-text">KrM <span>CORP</span></span>
+        ${solutionShieldSvg}
+        <span class="brand-header-text">SOLUTION <span>PLACE</span></span>
+        <span class="brand-header-tag">Blindagem Boutique</span>
       </div>
-      <div class="header-meta">Explicação ao Cliente • <span>04: Ações em Conjunto</span></div>
+      <div class="header-meta">Alinhamento Interno • <span>04: Ações em Conjunto</span></div>
     </div>
 
     <div class="page-content">
-      <div class="section-tag">Orientações Práticas</div>
-      <h2 class="section-title">Como a sua equipe comercial pode nos ajudar agora?</h2>
+      <div class="section-tag">Orientações aos Consultores Solution</div>
+      <h2 class="section-title">Como a equipe de atendimento nos ajuda a vencer este mês?</h2>
       <p class="section-subtitle">
-        Enquanto nossa equipe cuida da parte técnica dos anúncios, três atitudes simples do seu time de atendimento farão toda a diferença nas suas vendas deste mês.
+        Enquanto blindamos as contas de anúncio, o papel dos nossos consultores de atendimento é crucial para transformar cada contato em venda.
       </p>
 
       <div class="card" style="margin-bottom: 10px;">
         <table class="exec-table" style="margin: 0;">
           <thead>
             <tr>
-              <th style="width: 25%;">Ação da Sua Equipe</th>
-              <th style="width: 50%;">Por que isso é decisivo agora?</th>
-              <th style="width: 25%;">Impacto Esperado</th>
+              <th style="width: 28%;">Protocolo Comercial</th>
+              <th style="width: 48%;">Diretriz de Atendimento Boutique</th>
+              <th style="width: 24%;">Impacto Direto</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>1. Atendimento Ultra Rápido (&lt; 5 min)</strong></td>
-              <td>Como o volume de leads é menor e mais caro, cada pessoa que manda mensagem tem que ser atendida na hora. Responder em até 5 minutos triplica a chance de fechar.</td>
-              <td><span style="color: #34d399; font-weight: 700;">Aumento de Conversão</span></td>
+              <td><strong>1. SLA de Resposta (&lt; 5 a 10 min)</strong></td>
+              <td>Como o lead custa 60% a mais hoje, responder imediatamente no WhatsApp é inegociável. Iniciar o protocolo boutique logo no primeiro minuto.</td>
+              <td><span style="color: #34d399; font-weight: 700;">Máxima Conversão</span></td>
             </tr>
             <tr>
-              <td><strong>2. Recontato da Base Antiga</strong></td>
-              <td>Abra o WhatsApp da empresa e mande mensagem para orçamentos que esfriaram nos últimos 60 dias oferecendo uma condição especial para fechar hoje.</td>
+              <td><strong>2. Resgate de Cotações Anteriores</strong></td>
+              <td>Recontatar proativamente orçamentos enviados nos últimos 60 dias que não fecharam. Esse é o canal mais rentável no momento.</td>
               <td><span style="color: #34d399; font-weight: 700;">Vendas Sem Custo</span></td>
             </tr>
             <tr>
-              <td><strong>3. Pacotes com Mais Valor</strong></td>
-              <td>Ao invés de oferecer apenas o produto/serviço básico, crie combos ou planos com ticket mais alto para compensar o aumento pontual do custo do lead.</td>
-              <td><span style="color: #34d399; font-weight: 700;">Maior Faturamento</span></td>
+              <td><strong>3. Rigor na Etiquetagem</strong></td>
+              <td>Classificar perfeitamente cada contato (Sem Etiqueta, Novo Cliente, Pago) para alimentar a inteligência do nosso CRM e do algoritmo.</td>
+              <td><span style="color: #d4af37; font-weight: 700;">Inteligência de Dados</span></td>
             </tr>
             <tr>
-              <td><strong>4. Manter a Calma e a Consistência</strong></td>
-              <td>Lembre-se que as eleições têm data certa para acabar. As empresas que mantêm a estrutura ativa colhem um salto enorme de vendas assim que o leilão esvazia.</td>
-              <td><span style="color: #d4a34b; font-weight: 700;">Segurança de Mercado</span></td>
+              <td><strong>4. Convite para Visita Boutique</strong></td>
+              <td>Oferecer agendamento de visita ao showroom da Solution para conhecer a oficina e os materiais. A experiência presencial fecha a venda.</td>
+              <td><span style="color: #34d399; font-weight: 700;">Fechamento de Alto Padrão</span></td>
             </tr>
           </tbody>
         </table>
@@ -961,33 +971,33 @@ const htmlContent = `<!DOCTYPE html>
 
       <div class="card card-highlight" style="margin-bottom: 10px; padding: 12px 14px;">
         <div style="font-size: 12px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">
-          KrM Corp: Ao Seu Lado em Todos os Ciclos de Mercado
+          Resumo Final & Perspectiva Positiva
         </div>
         <p style="font-size: 9.5px; color: #cbd5e1; line-height: 1.45; margin-bottom: 8px;">
-          Sob a liderança de <strong>Carlos Eduardo Ribeiro Menezes</strong>, a <strong>KrM Corp</strong> cuida de todo o seu ecossistema digital: sites de alta performance, CRMs, integrações de WhatsApp e inteligência de tráfego pago. Nosso compromisso não é apenas colocar anúncios no ar, mas garantir a sustentabilidade e a rentabilidade do seu negócio em qualquer cenário.
+          As eleições têm data final marcada. As empresas concorrentes que entram em desespero, pausam anúncios ou queimam margem sofrem as consequências. A <strong>Solution</strong> continuará operando com serenidade, excelência técnica e foco no cliente de alto luxo. Assim que o leilão político se encerrar, nossas campanhas estarão otimizadas para colher um salto massivo de resultados.
         </p>
-        <div style="display: flex; gap: 14px; font-size: 8.5px; color: #d4a34b; font-weight: 600; flex-wrap: wrap;">
-          <div>◆ Monitoramento Diário de Custos</div>
-          <div>◆ Blindagem Contra Leilões Inflacionados</div>
-          <div>◆ Ecossistemas e CRMs Sob Medida</div>
-          <div>◆ Parceria Estratégica Transparente</div>
+        <div style="display: flex; gap: 14px; font-size: 8.5px; color: #d4af37; font-weight: 600; flex-wrap: wrap;">
+          <div>◆ Monitoramento Diário dos Indicadores</div>
+          <div>◆ Proteção de Custo por Resultado</div>
+          <div>◆ Atendimento Boutique de Excelência</div>
+          <div>◆ Parceria Interna Alinhada</div>
         </div>
       </div>
 
-      <div style="background: rgba(15, 21, 33, 0.9); border: 1px solid rgba(212, 163, 75, 0.35); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="background: rgba(15, 18, 27, 0.9); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
         <div>
-          <div style="font-size: 10.5px; font-weight: 700; color: #f8fafc;">Tem alguma dúvida sobre suas campanhas?</div>
-          <div style="font-size: 8.5px; color: #94a3b8;">Estamos à disposição para alinhar qualquer ajuste com você e seu time.</div>
+          <div style="font-size: 10.5px; font-weight: 700; color: #f8fafc;">Equipe de Tráfego & Inteligência de Performance</div>
+          <div style="font-size: 8.5px; color: #94a3b8;">Solution Place · Blindagem Automotiva Boutique</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 10px; font-weight: 700; color: #d4a34b;">KrM Corp • Montes Claros / MG</div>
-          <div style="font-size: 8.5px; color: #64748b;">WhatsApp Direto: +55 (38) 98845-0377</div>
+          <div style="font-size: 10px; font-weight: 700; color: #d4af37;">Rio de Janeiro / Brasil</div>
+          <div style="font-size: 8.5px; color: #64748b;">Canal Interno de Performance</div>
         </div>
       </div>
     </div>
 
     <div class="page-footer">
-      <div class="brand-signature">KrM Corp • Inteligência de Tráfego & Ecossistemas</div>
+      <div class="brand-signature">Solution Place • Blindagem Boutique & Segurança</div>
       <div>Página 05 de 05</div>
     </div>
   </div>
@@ -997,7 +1007,7 @@ const htmlContent = `<!DOCTYPE html>
 `;
 
 async function generatePDF() {
-  console.log("Gerando PDF com linguagem explicativa e didática para o cliente...");
+  console.log("Gerando PDF com a identidade visual da Solution e narrativa interna...");
   const browser = await chromium.launch({ channel: "msedge", headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -1005,8 +1015,8 @@ async function generatePDF() {
   await page.setContent(htmlContent, { waitUntil: "networkidle" });
 
   const targetDir = path.join(rootDir, "Documentos", "Elevação do CPR");
-  const outputPathFolder = path.join(targetDir, "Relatorio_Estrategico_Elevacao_CPR_KrMCorp.pdf");
-  const outputPathRoot = path.join(rootDir, "Relatorio_Estrategico_Elevacao_CPR_KrMCorp.pdf");
+  const outputPathFolder = path.join(targetDir, "Relatorio_Estrategico_Elevacao_CPR_Solution.pdf");
+  const outputPathRoot = path.join(rootDir, "Relatorio_Estrategico_Elevacao_CPR_Solution.pdf");
 
   await page.pdf({
     path: outputPathFolder,
@@ -1023,7 +1033,7 @@ async function generatePDF() {
 
   fs.copyFileSync(outputPathFolder, outputPathRoot);
 
-  console.log(`PDF didático gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
+  console.log(`PDF da Solution gerado com sucesso em:\n- ${outputPathFolder}\n- ${outputPathRoot}`);
   await browser.close();
 }
 
