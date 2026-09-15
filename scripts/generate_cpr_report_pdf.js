@@ -587,11 +587,8 @@ const htmlContent = `<!DOCTYPE html>
           POR QUE OS <span class="brand-red-text">LEADS REDUZIRAM</span><br>
           NAS ÚLTIMAS SEMANAS?
         </h1>
-        <p class="cover-description">
-          Um esclarecimento direto e transparente da nossa equipe interna de tráfego explicando como o <strong>Período Eleitoral</strong> inflaciona o leilão de anúncios no Brasil, por que isso é um fenômeno <strong>100% externo e temporário</strong>, e as medidas técnicas que a Solution Place já aplicou para proteger o investimento e o caixa da nossa operação.
-        </p>
 
-        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 24px;">
           <div class="stat-pill">
             <span class="num">+62,3%</span>
             <span class="label">Subida no Custo por Resultado<br>Registrada nas Redes no Período</span>
@@ -641,7 +638,7 @@ const htmlContent = `<!DOCTYPE html>
 
     <div class="page-content">
       <div class="section-tag">Diagnóstico Interno da Operação</div>
-      <h2 class="section-title">"Se nosso produto é impecável, por que chegam menos mensagens?"</h2>
+      <h2 class="section-title">"Se os conteúdos estão alinhados, por que chegam menos mensagens?"</h2>
       <p class="section-subtitle">
         Como membro interno da equipe, quero começar tranquilizando todos: <strong>não há falha no posicionamento da Solution Place, nem erro técnico nas nossas contas de anúncio.</strong>
       </p>
@@ -708,7 +705,7 @@ const htmlContent = `<!DOCTYPE html>
 
       <div class="card" style="margin-bottom: 0;">
         <div style="font-size: 10px; color: #94a3b8; line-height: 1.4;">
-          <strong style="color: #f1f5f9;">O impacto direto no nosso público:</strong> Somente esses 4 exemplos somam mais de <strong style="color: #ef4444;">R$ 214 mil por DIA</strong> disputando as telas de celulares. Como os candidatos segmentam pessoas de maior renda e influência, o leilão sobre a nossa audiência qualificada sofre um impacto desproporcional.
+          <strong style="color: #f1f5f9;">O impacto direto no leilão geral:</strong> Somente esses 4 exemplos somam mais de <strong style="color: #ef4444;">R$ 214 mil por DIA</strong> disputando as telas de celulares. Como as campanhas políticas compram alcance massivo e aberto para toda a população da região, elas disputam a atenção de praticamente todos os usuários ativos nas redes ao mesmo tempo, congestionando o inventário geral e encarecendo a exibição de qualquer anúncio comercial.
         </div>
       </div>
     </div>
